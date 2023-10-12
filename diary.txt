@@ -4,3 +4,8 @@
 - Set up react router dom and globals.css for future use
 - Set up skeleton folders and necessary package updates for backend
 - Added some back end code to begin database/server development
+
+12/10/23
+
+- Creating main container for dashboard 
+- App.js now has router functionality
