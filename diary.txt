@@ -9,3 +9,10 @@
 
 - Creating main container for dashboard 
 - App.js now has router functionality
+
+17/10/23
+
+- Adding custom made placeholder images for graphs
+- Creating new pages folder to store code for each individual page
+- Creating dashboard page
+- Adding new routes to app.js

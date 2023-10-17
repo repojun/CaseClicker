@@ -16,7 +16,7 @@ const MainContainer = ({ children, className = " ", ...props }) => {
         <hr className={styles.divider}></hr>
         <div>
         <div className={styles.navbutton} onClick={() => navigate('')}> <AiOutlineSliders /> Tracker</div>
-        <div className={styles.navbutton} onClick={() => navigate('')}>  <AiOutlineDeploymentUnit /> Dashboard </div>
+        <div className={styles.navbutton} onClick={() => navigate('/dashboard')}>  <AiOutlineDeploymentUnit /> Dashboard </div>
         <div className={styles.navbutton} onClick={() => navigate('')}>  <AiOutlineStock /> Investments</div>
         <div className={styles.navbutton} onClick={() => navigate('')}> <AiOutlineSlack /> Inventory</div>
         <div className={styles.navbutton} onClick={() => navigate('')}> <AiOutlineSliders /> Tracker</div>
