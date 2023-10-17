@@ -16,3 +16,4 @@
 - Creating new pages folder to store code for each individual page
 - Creating dashboard page
 - Adding new routes to app.js
+- Creating login front end 
