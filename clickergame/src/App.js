@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import MainContainer from "./components/maincontainer/maincontainer";
 import Dashboard from "./Pages/dashboard/dashboard";
 import Login from "./Pages/login/login";
-import Inventory from "./Pages/inventory/inventory";
+import Inventory from "./Pages/dashboard/inventory/inventory";
 function App() {
   return (
     <Routes>

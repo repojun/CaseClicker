@@ -21,3 +21,4 @@
 18/10/23
 
 - Created <InventoryItem> component to ensure that when it comes to creating the inventory page there is much less clutter
+- Creating inventory front end page
