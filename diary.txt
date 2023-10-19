@@ -22,3 +22,7 @@
 
 - Created <InventoryItem> component to ensure that when it comes to creating the inventory page there is much less clutter
 - Creating inventory front end page
+
+19/10/23
+
+- Front end for register page as well as some code necessary for back end
