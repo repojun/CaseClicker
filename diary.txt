@@ -26,3 +26,7 @@
 19/10/23
 
 - Front end for register page as well as some code necessary for back end
+
+25/10/23
+
+- Setting up bcrypt for password encryption when storing to database
