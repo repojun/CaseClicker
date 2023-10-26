@@ -1,0 +1,88 @@
+.maincontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 100px;
+    margin-top: 25px;
+    align-items: flex-start;
+}
+
+.circle {
+    width: 650px;
+    height: 650px;
+    line-height: 650px;
+    border-radius: 50%;
+    font-size: 50px;
+    color: #fff;
+    text-align: center;
+    background-color: #141f33;
+    box-shadow: 0px 0px 50px #0000008f;
+    transition: 0.2s;
+    user-select: none;
+    user-drag: none;
+    flex-shrink: 0;
+    flex: 0 0 auto;
+
+}
+
+.circle:hover {
+    box-shadow: 0px 0px 80px #00000097;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.priceGain {
+    color: #15e815;
+    text-shadow: 0px 0px 20px #05ff09;
+}
+
+.grid {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: repeat(3, 0fr);
+    gap:20px;
+}
+
+.upgradeContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: #141f33;
+    min-width: 400px;
+    max-width: 400px;
+    border-radius: 60px;
+    box-shadow: 0px 0px 50px #0000008f;
+    padding: 25px;
+    row-gap: 10px;
+    text-align: center;
+    flex: 1;
+}
+
+.priceTag {
+    font-weight: bold;
+    color: #15e815;
+    text-shadow: 0px 0px 20px #05ff09;
+}
+
+.money {
+    color: #15e815;
+    text-shadow: 0px 0px 20px #05ff09;
+    animation: float 2s forwards linear;
+    font-size: 30px;
+    position: absolute;
+    margin: 0px;
+    user-select: none;
+    pointer-events: none;
+}
+
+@keyframes float {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        top: 50%;
+        opacity: 0;
+    }
+}
