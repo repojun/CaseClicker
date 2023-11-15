@@ -30,3 +30,20 @@
 25/10/23
 
 - Setting up bcrypt for password encryption when storing to database
+
+26/10/23
+
+- Creating basic functionality for the main game page
+
+01/11/23 
+
+- Creating a file in order to make Axios requests easier and eliminate code reuse 
+
+07/11/13 
+- Tracker front end designed/created
+
+15/11/13
+
+- Setting up queries to contact database for the new login page, as well as register page
+- Adding UUID to store passwords
+- Adding axios request to react login page to contact back end 
