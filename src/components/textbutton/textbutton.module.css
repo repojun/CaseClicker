@@ -1,0 +1,21 @@
+:root {
+  --backgroundColor: #bbd3ff;
+  --backgroundColorGlow: #bbd3ff40;
+  }
+  
+  .outlineButton {
+    padding:8px;
+    color:#bbd3ff;
+    transition:0.4s;
+    text-align: center;
+    width: auto;
+    user-select: none;
+  }
+  
+  .outlineButton:hover {
+    padding:8px;
+    cursor: pointer;
+    transition:0.2s;
+    text-shadow: 0 0px 15px var(--backgroundColor);
+  }
+  

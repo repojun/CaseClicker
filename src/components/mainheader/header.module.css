@@ -1,0 +1,8 @@
+.container {
+  display:flex;
+}
+
+.mainheader {
+  font-weight: bold;
+  font-size: 48px;
+}
