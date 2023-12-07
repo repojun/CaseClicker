@@ -1,0 +1,57 @@
+# 11/10/23
+
+- Created react app and removed all redundant files
+- Set up react router dom and globals.css for future use
+- Set up skeleton folders and necessary package updates for backend
+- Added some back end code to begin database/server development
+
+# 12/10/23
+
+- Creating main container for dashboard 
+- App.js now has router functionality
+
+# 17/10/23
+
+- Adding custom made placeholder images for graphs
+- Creating new pages folder to store code for each individual page
+- Creating dashboard page
+- Adding new routes to app.js
+- Creating login front end 
+
+# 18/10/23
+
+- Created <InventoryItem> component to ensure that when it comes to creating the inventory page there is much less clutter
+- Creating inventory front end page
+
+# 19/10/23
+
+- Front end for register page as well as some code necessary for back end
+
+# 25/10/23
+
+- Setting up bcrypt for password encryption when storing to database
+
+# 26/10/23
+
+- Creating basic functionality for the main game page
+
+# 01/11/23 
+
+- Creating a file in order to make Axios requests easier and eliminate code reuse 
+
+# 07/11/23 
+- Tracker front end designed/created
+
+# 15/11/23
+
+- Setting up queries to contact database for the new login page, as well as register page
+- Adding UUID to store passwords
+- Adding axios request to react login page to contact back end 
+
+# 21/11/23 - 7/12/23
+
+- Getting repository up to date with current system (Extenuating circumstances caused delay)
+- Added routing to index.js, as well as all necessary backend calls
+- Added functionality for register/login
+- Added authentication for registered users
+- Created cookies as well as encryption for cookies
