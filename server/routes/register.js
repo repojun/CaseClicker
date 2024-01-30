@@ -8,7 +8,7 @@ router.post("/", async (req, res) => {
   if (!body.email || !body.username || !body.password) {
     return res.status(400).send("Missing fields"); // bad request
   }
-  const login = await fetchLogin(body.username, body.email); // runs fetchLogin() from users.js
+  const login = await fetchLogin(body.username, body.email); // runs fetchLogin() from users.j
   if (login) {
     return res.status(400).send("User already exists"); // user exists already
   }
