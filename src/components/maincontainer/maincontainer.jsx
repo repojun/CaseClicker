@@ -2,9 +2,15 @@
 import styles from "./maincontainer.module.css";
 import { AiOutlineStock, AiOutlineSlack, AiOutlineSliders, AiOutlineSetting, AiOutlineDeploymentUnit } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
-import React  from 'react';
+import {React, useState} from 'react';
 
 const MainContainer = ({ children, className = " ", ...props }) => {
+  const [selectedTab, setSelectedTab] = useState(0);
+
+  const selectTab = (tabIndex) => {
+    setSelectedTab(tabIndex);
+  };
+
   const navigate = useNavigate();
   return (
     <div className={styles.container}>
@@ -15,11 +21,11 @@ const MainContainer = ({ children, className = " ", ...props }) => {
         </div>
         <hr className={styles.divider}></hr>
         <div>
-        <div className={styles.navbutton} onClick={() => navigate('/dashboard/mainpage')}> <AiOutlineSliders /> Tracker</div>
-        <div className={styles.navbutton} onClick={() => navigate('/dashboard')}>  <AiOutlineDeploymentUnit /> Dashboard </div>
-        <div className={styles.navbutton} onClick={() => navigate('/dashboard/investments')}>  <AiOutlineStock /> Investments</div>
-        <div className={styles.navbutton} onClick={() => navigate('/dashboard/inventory')}> <AiOutlineSlack /> Inventory</div>
-        <div className={styles.navbutton} onClick={() => navigate('/dashboard/tracker')}> <AiOutlineSliders /> Tracker</div>
+        <div className={`${styles.navbutton} ${selectedTab === 1 ? styles.selected : ''}`} onClick={() => {navigate('/dashboard/mainpage'); selectTab(1)}}> <AiOutlineSliders /> Tracker</div>
+        <div className={`${styles.navbutton} ${selectedTab === 2 ? styles.selected : ''}`} onClick={() => {navigate('/dashboard/'); selectTab(2)}}>  <AiOutlineDeploymentUnit /> Dashboard </div>
+        <div className={`${styles.navbutton} ${selectedTab === 3 ? styles.selected : ''}`} onClick={() => {navigate('/dashboard/investments'); selectTab(3)}}>  <AiOutlineStock /> Investments</div>
+        <div className={`${styles.navbutton} ${selectedTab === 4 ? styles.selected : ''}`} onClick={() => {navigate('/dashboard/inventory'); selectTab(4)}}> <AiOutlineSlack /> Inventory</div>
+        <div className={`${styles.navbutton} ${selectedTab === 5 ? styles.selected : ''}`} onClick={() => {navigate('/dashboard/tracker'); selectTab(5)}}> <AiOutlineSliders /> Tracker</div>
         <div className={styles.navbutton}> <AiOutlineSetting /> Settings</div>
         </div>
         <hr className={styles.divider}></hr>
