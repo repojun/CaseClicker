@@ -2,18 +2,25 @@ import { Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Axios from "../api/agent";
 import React from "react";
+import { observer } from "mobx-react-lite";
+import useContextStore from "../context";
+import { useNavigate } from "react-router-dom";
 
 const RouteAuthenticated = ({ children }) => {
+  const {userStore: {setUser}} = useContextStore();
   const [isLogged, setIsLogged] = useState(true);
-
+  const navigate = useNavigate();
   const userExists = async () => {
     try {
       const userExists = await Axios("/api/user/exists");
+      console.log(userExists);
       if (!userExists) {
-        return setIsLogged(false);
+        return navigate("/login");
       }
+      setUser(userExists);
     } catch (err) {
-      return setIsLogged(false);
+      console.log(err);
+      return navigate("/login");
     }
   };
 
@@ -21,7 +28,7 @@ const RouteAuthenticated = ({ children }) => {
     userExists();
   }, []);
 
-  return !isLogged ? <Navigate to="/login" /> : children;
+  return children;
 };
 
-export default RouteAuthenticated;
+export default observer(RouteAuthenticated);

@@ -21,7 +21,7 @@ const MainContainer = ({ children, className = " ", ...props }) => {
         </div>
         <hr className={styles.divider}></hr>
         <div>
-        <div className={`${styles.navbutton} ${selectedTab === 1 ? styles.selected : ''}`} onClick={() => {navigate('/dashboard/mainpage'); selectTab(1)}}> <AiOutlineSliders /> Tracker</div>
+        <div className={`${styles.navbutton} ${selectedTab === 1 ? styles.selected : ''}`} onClick={() => { selectTab(1); navigate('/dashboard/mainpage');}}> <AiOutlineSliders /> Tracker</div>
         <div className={`${styles.navbutton} ${selectedTab === 2 ? styles.selected : ''}`} onClick={() => {navigate('/dashboard/'); selectTab(2)}}>  <AiOutlineDeploymentUnit /> Dashboard </div>
         <div className={`${styles.navbutton} ${selectedTab === 3 ? styles.selected : ''}`} onClick={() => {navigate('/dashboard/investments'); selectTab(3)}}>  <AiOutlineStock /> Investments</div>
         <div className={`${styles.navbutton} ${selectedTab === 4 ? styles.selected : ''}`} onClick={() => {navigate('/dashboard/inventory'); selectTab(4)}}> <AiOutlineSlack /> Inventory</div>

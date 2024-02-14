@@ -5,12 +5,17 @@ import SubContainer from "../../../components/subcontainer/subcontainer";
 import ClickUpgradesList from "../../../components/upgradelists/clickupgrades/clickupgradeslist";
 import PassiveUpgradesList from "../../../components/upgradelists/passiveupgradeslist/passiveupgradeslist";
 import Axios from "../../../api/agent";
+import { observer } from "mobx-react-lite";
+import useContextStore from "../../../context";
 
 var baseClick = 0.01;
 var multiplier = 1;
 
-export default function MainPage() {
-  const [balance, setBalance] = useState(0);
+function MainPage() {
+  // const testvariable = getCookieReact(request.cookies, "user_cookie", false)
+  // console.log("COOKIE TEST!!!!!: " + testvariable.name)
+  const {userStore: {user:{balance=0}, setBalance}} = useContextStore()
+  // const [balance, setBalance] = useState(0);
   const [moneyArray, setMoneyArray] = useState([]);
 
   const handleMultiplierChange = (newMultiplier) => {
@@ -25,8 +30,10 @@ export default function MainPage() {
     setMoneyArray([...moneyArray, newElement]);
   };
 
-  const handleClick = (e) => {
-    setBalance(balance + baseClick * multiplier);
+  const handleClick = async (e) => {
+    const newBalance = balance + baseClick * multiplier;
+    setBalance(newBalance);
+    const query = await Axios("/api/user/setbalance", "POST", {balance:newBalance})
     var Xlocation = e.clientX; // Get client's X and Y coordinates on click
     var Ylocation = e.clientY;
     var newElement = ( // Stores div in variable to be stored in useStateArray
@@ -99,3 +106,5 @@ export default function MainPage() {
     </>
   );
 }
+
+export default observer(MainPage);

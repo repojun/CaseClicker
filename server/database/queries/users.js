@@ -13,6 +13,12 @@ const fetchUser = async (userID) => {
   return null;
 };
 
+const updateUserBalance = async (userID, balance) => {
+  const user = await userSchema.findOne({ id: userID});
+  user.balance = balance;
+  await user.save();
+}
+
 const fetchLogin = async (username, email) => {
   if (email) {
     const loginEmail = await loginSchema.findOne({ email });
@@ -42,4 +48,4 @@ const createUser = async (email, username, password) => {
   return userQuery;
 };
 
-module.exports = { fetchUser, createUser, fetchLogin };
+module.exports = { fetchUser, createUser, fetchLogin, updateUserBalance };

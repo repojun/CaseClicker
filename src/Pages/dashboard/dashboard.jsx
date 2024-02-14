@@ -1,15 +1,20 @@
 import MainContainer from "../../components/maincontainer/maincontainer";
 import Header from "../../components/mainheader/header";
 import SubContainer from "../../components/subcontainer/subcontainer";
+import useContextStore from "../../context";
 import styles from "./dashboard.module.css";
 import React from "react";
+import { observer } from "mobx-react-lite";
 
-export default function Dashboard() {
+// either every click, 
+
+function Dashboard() {
+  const {userStore: {user}} = useContextStore();
   return (
     <>
       <MainContainer>
         <SubContainer>
-          <Header title="Welcome back, Bahpu!"> </Header>
+          <Header title={"Welcome back " + user.username}> </Header>
           <div className={styles.titleSubtext}>
             Have an indepth look at all your metrics with the dashboard.
           </div>
@@ -83,3 +88,5 @@ export default function Dashboard() {
     </>
   );
 }
+
+export default observer(Dashboard);

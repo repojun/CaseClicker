@@ -1,3 +1,4 @@
+
 const { decodeCookie } = require("./jwt")
 
 const getCookie = (cookies, name, isEncrypted = false) => {
@@ -13,5 +14,6 @@ const getCookie = (cookies, name, isEncrypted = false) => {
 
   return cookie; // if its not encrypted, then return it
 }
+
 
 module.exports = { getCookie };
