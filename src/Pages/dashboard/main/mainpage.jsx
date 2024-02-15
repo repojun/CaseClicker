@@ -22,8 +22,11 @@ function MainPage() {
     multiplier = multiplier * newMultiplier;
   };
 
-  const handleBalanceChange = (newBalance) => {
-    setBalance(balance - newBalance);
+  const handleBalanceChange = async (newBalance) => {
+    var newBalanceVariable = balance - newBalance
+    setBalance(newBalanceVariable);
+    const query = await Axios("/api/user/setbalance", "POST", {balance:newBalanceVariable})
+
   };
 
   const handleMoneyArrayChange = (newElement) => {

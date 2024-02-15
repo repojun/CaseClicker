@@ -1,17 +1,24 @@
 import styles from "./passiveupgradeslist.module.css";
 import React from "react";
+import { observer } from "mobx-react-lite";
+import useContextStore from "../../../context";
+import Axios from "../../../api/agent";
 
-const PassiveUpgradesList = ({
+const PassiveUpgradesList = (
+  {
   multiplierFunction,
   frontendArray,
   moneyFunction,
   balance,
   props,
 }) => {
-  const clickCheck = (e, price, multiplier) => {
+  const {userStore: {user, setBalance}} = useContextStore()
+
+  const clickCheck = async (e, price, multiplier) => {
     var Xlocation = e.clientX;
     var Ylocation = e.clientY;
     if (balance >= price) {
+      setBalance(balance);
       moneyFunction(price);
       multiplierFunction(multiplier);
     } else {
@@ -33,6 +40,8 @@ const PassiveUpgradesList = ({
         // REMOVE ARRAY ITEMS HERE
       }, 3000);
     }
+    
+    
   };
 
   const upgradeBoxes = [
@@ -65,4 +74,4 @@ const PassiveUpgradesList = ({
   return <>{upgradeList}</>;
 };
 
-export default PassiveUpgradesList;
+export default observer(PassiveUpgradesList);
