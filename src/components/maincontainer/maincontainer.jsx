@@ -3,9 +3,13 @@ import styles from "./maincontainer.module.css";
 import { AiOutlineStock, AiOutlineSlack, AiOutlineSliders, AiOutlineSetting, AiOutlineDeploymentUnit } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import {React, useState} from 'react';
+import { observer } from "mobx-react-lite";
+import useContextStore from "../../context";
 
 const MainContainer = ({ children, className = " ", ...props }) => {
   const [selectedTab, setSelectedTab] = useState(0);
+  const {userStore: {user}} = useContextStore();
+
 
   const selectTab = (tabIndex) => {
     setSelectedTab(tabIndex);
@@ -17,7 +21,7 @@ const MainContainer = ({ children, className = " ", ...props }) => {
       <div className={styles.left}>
         <div className={styles.welcomebox}>
           <img src="/circlepfp.png" alt=' ' className={styles.avatar}></img>
-          <div>Bahpu</div>
+          <div>{user.username}</div>
         </div>
         <hr className={styles.divider}></hr>
         <div>
@@ -44,4 +48,4 @@ const MainContainer = ({ children, className = " ", ...props }) => {
   );
 };
 
-export default MainContainer;
+export default observer(MainContainer);

@@ -60,7 +60,6 @@ function MainPage() {
             <div class={styles.circle} onClick={handleClick}>
               Click to earn money!
             </div>
-            <div onClick={console.log("h")}> YOOOOO </div>
             <div
               style={{
                 display: "flex",
