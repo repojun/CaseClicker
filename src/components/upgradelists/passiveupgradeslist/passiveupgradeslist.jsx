@@ -2,7 +2,6 @@ import styles from "./passiveupgradeslist.module.css";
 import React from "react";
 import { observer } from "mobx-react-lite";
 import useContextStore from "../../../context";
-import Axios from "../../../api/agent";
 
 const PassiveUpgradesList = (
   {

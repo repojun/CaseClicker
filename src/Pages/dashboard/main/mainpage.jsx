@@ -1,5 +1,5 @@
 import styles from "./mainpage.module.css";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import MainContainer from "../../../components/maincontainer/maincontainer";
 import SubContainer from "../../../components/subcontainer/subcontainer";
 import ClickUpgradesList from "../../../components/upgradelists/clickupgrades/clickupgradeslist";
@@ -12,10 +12,8 @@ var baseClick = 0.01;
 var multiplier = 1;
 
 function MainPage() {
-  // const testvariable = getCookieReact(request.cookies, "user_cookie", false)
-  // console.log("COOKIE TEST!!!!!: " + testvariable.name)
+
   const {userStore: {user:{balance=0}, setBalance}} = useContextStore()
-  // const [balance, setBalance] = useState(0);
   const [moneyArray, setMoneyArray] = useState([]);
 
   const handleMultiplierChange = (newMultiplier) => {
