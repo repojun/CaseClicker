@@ -8,6 +8,7 @@ import MainPage from "./Pages/dashboard/main/mainpage";
 import Login from "./Pages/login/login";
 import Register from "./Pages/register/register";
 import React from "react";
+import Store from "./Pages/dashboard/store/store";
 import RouteAuthenticated from "./routes/authenticated";
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
         <Route path="/dashboard/inventory" element={<RouteAuthenticated> <Inventory /> </RouteAuthenticated>} />
         <Route path="/dashboard/tracker" element={<RouteAuthenticated> <Tracker /> </RouteAuthenticated>} />
         <Route path="/dashboard/mainpage" element={<RouteAuthenticated> <MainPage /> </RouteAuthenticated>} />
-        <Route path="/dashboard/store" element={<RouteAuthenticated> <MainPage /> </RouteAuthenticated>} />
+        <Route path="/dashboard/store" element={<RouteAuthenticated> <Store /> </RouteAuthenticated>} />
       </Routes>
     </>
   );
