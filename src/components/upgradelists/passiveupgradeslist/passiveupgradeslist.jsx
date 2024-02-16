@@ -44,10 +44,10 @@ const PassiveUpgradesList = (
   };
 
   const upgradeBoxes = [
-    { title: "Passive 1", price: 0.25, multiplier: 2 },
-    { title: "Passive 2", price: 0.5, multiplier: 4 },
-    { title: "Passive 3", price: 0.65, multiplier: 4 },
-    { title: "Passive 4", price: 1.15, multiplier: 4 },
+    { title: "Passive 1", price: 0.25, multiplier: 2, isBought: user.passiveUpgrade1 },
+    { title: "Passive 2", price: 0.5, multiplier: 4, isBought: user.passiveUpgrade2 },
+    { title: "Passive 3", price: 0.65, multiplier: 4, isBought: user.passiveUpgrade3 },
+    { title: "Passive 4", price: 1.15, multiplier: 4, isBought: user.passiveUpgrade4 },
   ];
   const upgradeList = [
     upgradeBoxes.map((keyname) => {

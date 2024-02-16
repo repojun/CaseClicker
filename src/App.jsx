@@ -21,6 +21,7 @@ function App() {
         <Route path="/dashboard/inventory" element={<RouteAuthenticated> <Inventory /> </RouteAuthenticated>} />
         <Route path="/dashboard/tracker" element={<RouteAuthenticated> <Tracker /> </RouteAuthenticated>} />
         <Route path="/dashboard/mainpage" element={<RouteAuthenticated> <MainPage /> </RouteAuthenticated>} />
+        <Route path="/dashboard/store" element={<RouteAuthenticated> <MainPage /> </RouteAuthenticated>} />
       </Routes>
     </>
   );
