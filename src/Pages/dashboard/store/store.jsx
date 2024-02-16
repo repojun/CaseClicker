@@ -17,15 +17,15 @@ function Store() {
                         <div className={styles.itemCard}>
                             <div className={styles.itemCardBody}>
                                 <div className={styles.itemCardHeader}>
-                                    Weapons Upgrade
+                                    Random Item
                                 </div>
                                 <img className={styles.itemCardImage}
-                                    src="/brokenfangnew.png"
+                                    src="/recoilcasenew.png"
                                     alt=''
                                 ></img>
                                 <div className={styles.itemCardButtonContainer}>
                                     <div className={styles.itemCardButton}>
-                                        $250.00
+                                        $450.00
                                     </div>
                                 </div>
                             </div>
@@ -33,15 +33,15 @@ function Store() {
                         <div className={styles.itemCard}>
                             <div className={styles.itemCardBody}>
                                 <div className={styles.itemCardHeader}>
-                                    Weapons Upgrade
+                                    Super Item
                                 </div>
                                 <img className={styles.itemCardImage}
-                                    src="/brokenfangnew.png"
+                                    src="/dreamnightmaresnew.png"
                                     alt=''
                                 ></img>
                                 <div className={styles.itemCardButtonContainer}>
                                     <div className={styles.itemCardButton}>
-                                        $250.00
+                                        $1000.00
                                     </div>
                                 </div>
                             </div>
@@ -49,7 +49,7 @@ function Store() {
                         <div className={styles.itemCard}>
                             <div className={styles.itemCardBody}>
                                 <div className={styles.itemCardHeader}>
-                                    Weapons Upgrade
+                                    Wordy Item
                                 </div>
                                 <img className={styles.itemCardImage}
                                     src="/brokenfangnew.png"
@@ -57,7 +57,7 @@ function Store() {
                                 ></img>
                                 <div className={styles.itemCardButtonContainer}>
                                     <div className={styles.itemCardButton}>
-                                        $250.00
+                                        $100.00
                                     </div>
                                 </div>
                             </div>
@@ -67,7 +67,7 @@ function Store() {
                         <div className={styles.itemCard}>
                             <div className={styles.itemCardBody}>
                                 <div className={styles.itemCardHeader}>
-                                    Weapons Upgrade
+                                    Big Word Item
                                 </div>
                                 <img className={styles.itemCardImage}
                                     src="/brokenfangnew.png"
@@ -75,7 +75,7 @@ function Store() {
                                 ></img>
                                 <div className={styles.itemCardButtonContainer}>
                                     <div className={styles.itemCardButton}>
-                                        $250.00
+                                        $15,000.00
                                     </div>
                                 </div>
                             </div>
@@ -83,15 +83,15 @@ function Store() {
                         <div className={styles.itemCard}>
                             <div className={styles.itemCardBody}>
                                 <div className={styles.itemCardHeader}>
-                                    Weapons Upgrade
+                                    New Word Item
                                 </div>
                                 <img className={styles.itemCardImage}
-                                    src="/brokenfangnew.png"
+                                    src="/recoilcasenew.png"
                                     alt=''
                                 ></img>
                                 <div className={styles.itemCardButtonContainer}>
                                     <div className={styles.itemCardButton}>
-                                        $250.00
+                                        $750.00
                                     </div>
                                 </div>
                             </div>
@@ -99,10 +99,10 @@ function Store() {
                         <div className={styles.itemCard}>
                             <div className={styles.itemCardBody}>
                                 <div className={styles.itemCardHeader}>
-                                    Weapons Upgrade
+                                    Testing Items
                                 </div>
                                 <img className={styles.itemCardImage}
-                                    src="/brokenfangnew.png"
+                                    src="/dreamnightmaresnew.png"
                                     alt=''
                                 ></img>
                                 <div className={styles.itemCardButtonContainer}>
