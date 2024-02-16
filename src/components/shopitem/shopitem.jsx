@@ -1,5 +1,5 @@
-import styles from "./shopitem.module.css"
-import React from reaction
+import styles from "./shopitem.module.css";
+import React from 'react';
 
 const ShopItem = ({ image, title, price, className = " ", ...props }) => {
     return (
