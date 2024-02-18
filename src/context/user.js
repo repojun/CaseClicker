@@ -13,7 +13,10 @@ class userStore {
     setBalance = (balance) => {
         this.user.balance = balance;
     }
-    
+
+    setPassiveUpgrade = (upgradeNumber, purchased) => {
+        this.user[`passiveUpgrade${upgradeNumber}`] = purchased;
+    }
 
 }
 
