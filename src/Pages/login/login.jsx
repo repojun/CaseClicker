@@ -9,7 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  
+
   const navigate = useNavigate();
 
   const handleLogin = async () => {
@@ -31,7 +31,7 @@ export default function Login() {
           draggable: true,
           progress: undefined,
           theme: "dark",
-          });
+        });
       }
     }
   };
@@ -84,7 +84,7 @@ export default function Login() {
               type="submit"
               click={handleLogin}
             ></OutlineButton>
-            <OutlineButton title="Sign Up"></OutlineButton>
+            <OutlineButton title="Sign Up" click={() => navigate("/register/")}></OutlineButton>
           </div>
           <div className={styles.textButton}>Forgot your password?</div>
         </form>

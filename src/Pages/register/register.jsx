@@ -98,6 +98,10 @@ export default function Register() {
             type="submit"
             click={handleRegister}
           ></OutlineButton>
+          <OutlineButton
+            title="Sign In"
+            click={() => navigate("/login")}
+          ></OutlineButton>
         </div>
       </div>
     </div>
