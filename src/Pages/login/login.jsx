@@ -14,8 +14,6 @@ export default function Login() {
 
   const handleLogin = async () => {
     try {
-      console.log("hi im here")
-      // regex/.length()
       const query = await Axios("/api/login", "POST", { username, password });
       navigate("/dashboard/");
     } catch (error) {
