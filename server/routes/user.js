@@ -5,8 +5,8 @@ const { getCookie } = require("../cookies/get");
 const { fetchUser, updateUserBalance } = require("../database/queries/users");
 
 router.get("/exists", async (req, res) => {
-  console.log(req.cookies);
   const user = getCookie(req.cookies, "user_cookie", true);
+  console.log(user);
   const query = await fetchUser(user.id)
   if (!user || !query) {
     return res.sendStatus(404);

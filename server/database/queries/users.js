@@ -36,6 +36,7 @@ const fetchLogin = async (username, email) => {
 const createUser = async (email, username, password) => {
   const hashedPassword = generate(password);
   const userID = uuidv4();
+  console.log("USER ID FOUND:" + userID)
   const query = new loginSchema({
     id: userID,
     email,

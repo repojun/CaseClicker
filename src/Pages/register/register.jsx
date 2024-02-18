@@ -14,14 +14,13 @@ export default function Register() {
 
   const handleRegister = async () => {
     try {
-      console.log("Hello im here")
-      // regex/.length()
+
       const query = await Axios("/api/register", "POST", { // creates axios query, goes to agent.js
         email,
         username,
         password,
       });
-      navigate("/dashboard/");
+      navigate("/login");
     } catch (error) {
       const errorCode = error.response.status;
       const errorMessage = error.response.data;
