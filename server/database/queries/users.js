@@ -19,6 +19,12 @@ const updateUserBalance = async (userID, balance) => {
   await user.save();
 }
 
+const updateUserPassiveUpgrade = async(userID, passiveUpgradeID) => {
+  const user = await userSchema.findOne({ id: userID});
+  user[`passiveUpgrade${passiveUpgradeID}`] = 1;
+  await user.save(); 
+}
+
 const fetchLogin = async (username, email) => {
   if (email) {
     const loginEmail = await loginSchema.findOne({ email });
@@ -49,4 +55,4 @@ const createUser = async (email, username, password) => {
   return userQuery;
 };
 
-module.exports = { fetchUser, createUser, fetchLogin, updateUserBalance };
+module.exports = { fetchUser, createUser, fetchLogin, updateUserBalance, updateUserPassiveUpgrade };

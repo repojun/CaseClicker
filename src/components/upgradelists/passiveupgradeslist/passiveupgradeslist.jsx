@@ -2,6 +2,7 @@ import styles from "./passiveupgradeslist.module.css";
 import React from "react";
 import { observer } from "mobx-react-lite";
 import useContextStore from "../../../context";
+import Axios from "../../../api/agent";
 
 const PassiveUpgradesList = (
   {
@@ -11,15 +12,17 @@ const PassiveUpgradesList = (
   balance,
   props,
 }) => {
-  const {userStore: {user, setBalance}} = useContextStore()
+  const {userStore: {user, setBalance, setPassiveUpgrade}} = useContextStore()
 
-  const clickCheck = async (e, price, multiplier) => {
+  const clickCheck = async (e, price, multiplier, isBought, ID) => {
     var Xlocation = e.clientX;
     var Ylocation = e.clientY;
-    if (balance >= price) {
+    if (balance >= price && isBought == 0) {
       setBalance(balance);
       moneyFunction(price);
       multiplierFunction(multiplier);
+      setPassiveUpgrade(ID, 1)
+      const query = await Axios("/api/user/setpassiveupgrade", "POST", {passiveUpgradeID: ID})
     } else {
       var newElement = ( // Stores div in variable to be stored in useStateArray
         <div
@@ -44,10 +47,10 @@ const PassiveUpgradesList = (
   };
 
   const upgradeBoxes = [
-    { title: "Passive 1", price: 0.25, multiplier: 2, isBought: user.passiveUpgrade1 },
-    { title: "Passive 2", price: 0.5, multiplier: 4, isBought: user.passiveUpgrade2 },
-    { title: "Passive 3", price: 0.65, multiplier: 4, isBought: user.passiveUpgrade3 },
-    { title: "Passive 4", price: 1.15, multiplier: 4, isBought: user.passiveUpgrade4 },
+    { ID: 1, title: "Passive 1", price: 0.25, multiplier: 2, isBought: user.passiveUpgrade1 },
+    { ID: 2, title: "Passive 2", price: 0.5, multiplier: 4, isBought: user.passiveUpgrade2 },
+    { ID: 3, title: "Passive 3", price: 0.65, multiplier: 4, isBought: user.passiveUpgrade3 },
+    { ID: 4, title: "Passive 4", price: 1.15, multiplier: 4, isBought: user.passiveUpgrade4 },
   ];
   const upgradeList = [
     upgradeBoxes.map((keyname) => {
@@ -67,7 +70,7 @@ const PassiveUpgradesList = (
           }}
           className={styles.upgradeButton}
           onClick={(event) =>
-            clickCheck(event, keyname.price, keyname.multiplier)
+            clickCheck(event, keyname.price, keyname.multiplier, keyname.isBought, keyname.ID)
           }
         >
           {keyname.title} <br></br> Cost: {keyname.price}
