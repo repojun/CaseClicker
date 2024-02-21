@@ -55,7 +55,7 @@ const PassiveUpgradesList = (
   const upgradeList = [
     upgradeBoxes.map((keyname) => {
       var priceChecker = balance >= keyname.price ? "#15e815" : "red";
-     
+      
       if (keyname.isBought) {
         return null;
       }
