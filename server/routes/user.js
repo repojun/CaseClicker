@@ -6,9 +6,12 @@ const { fetchUser, updateUserBalance, updateUserPassiveUpgrade } = require("../d
 
 router.get("/exists", async (req, res) => {
   const user = getCookie(req.cookies, "user_cookie", true);
+  if (!user) {
+    return res.sendStatus(404);
+  }
   console.log(user);
   const query = await fetchUser(user.id)
-  if (!user || !query) {
+  if (!query) {
     return res.sendStatus(404);
   }
   return res.json(query);
@@ -31,7 +34,6 @@ router.post("/setbalance", async (req, res) => {
 
 router.post("/setpassiveupgrade", async (req, res) => {
   const { passiveUpgradeID } = req.body;
-  console.log("hey here is ID:" + passiveUpgradeID)
   if (!passiveUpgradeID) {
     return res.sendStatus(400);
   }

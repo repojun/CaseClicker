@@ -6,7 +6,6 @@ import styles from "./dashboard.module.css";
 import React from "react";
 import { observer } from "mobx-react-lite";
 
-// either every click, 
 
 function Dashboard() {
   const {userStore: {user}} = useContextStore();
