@@ -10,6 +10,7 @@ import Register from "./Pages/register/register";
 import React from "react";
 import Store from "./Pages/dashboard/store/store";
 import RouteAuthenticated from "./routes/authenticated";
+import PremiumStore from "./Pages/dashboard/premiumstore/premiumstore";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/dashboard/tracker" element={<RouteAuthenticated> <Tracker /> </RouteAuthenticated>} />
         <Route path="/dashboard/mainpage" element={<RouteAuthenticated> <MainPage /> </RouteAuthenticated>} />
         <Route path="/dashboard/store" element={<RouteAuthenticated> <Store /> </RouteAuthenticated>} />
+        <Route path="/dashboard/premiumstore" element={<RouteAuthenticated> <PremiumStore /> </RouteAuthenticated>} />
       </Routes>
     </>
   );
