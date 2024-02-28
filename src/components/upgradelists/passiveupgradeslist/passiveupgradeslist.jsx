@@ -1,5 +1,5 @@
 import styles from "./passiveupgradeslist.module.css";
-import React from "react";
+import React, { useEffect } from "react";
 import { observer } from "mobx-react-lite";
 import useContextStore from "../../../context";
 import Axios from "../../../api/agent";
@@ -14,13 +14,22 @@ const PassiveUpgradesList = (
 }) => {
   const {userStore: {user, setBalance, setPassiveUpgrade}} = useContextStore()
 
-  const clickCheck = async (e, price, multiplier, isBought, ID) => {
+  useEffect(() => {
+    const interval = setInterval(async () => {
+      // var newBalanceVariable = user.balance + 5
+      // setBalance(newBalanceVariable)
+      // const query = await Axios("/api/user/setbalance", "POST", {balance:newBalanceVariable})
+    }, 500); // 5000 milliseconds = 5 seconds
+
+    return () => clearInterval(interval); // Cleanup function to clear interval on component unmount
+  }, []); 
+
+  const clickCheck = async (e, price, isBought, ID) => {
     var Xlocation = e.clientX;
     var Ylocation = e.clientY;
     if (balance >= price && isBought == 0) {
       setBalance(balance);
-      moneyFunction(price);
-      multiplierFunction(multiplier);
+      moneyFunction(price); 
       setPassiveUpgrade(ID, 1)
       const query = await Axios("/api/user/setpassiveupgrade", "POST", {passiveUpgradeID: ID})
     } else {
