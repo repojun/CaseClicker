@@ -1,0 +1,14 @@
+.centerTitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.itemContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 30px;
+    margin-top: 50px;
+}

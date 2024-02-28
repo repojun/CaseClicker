@@ -5,6 +5,9 @@
     max-width: 400px;
     min-height: 300px;
     border-radius: 30px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .itemCardBody {
@@ -18,13 +21,16 @@
 .itemCardHeader {
     font-size: 30px;
     font-weight: bold;
-    margin-top: 15px;
 }
 
 .itemCardImage {
-    margin-top: 15px;
     width: 200px;
     height: 150px;
+}
+
+.itemCardImageSquare {
+    width: 173px;
+    height: 173px;
 }
 
 .itemCardButtonContainer {
