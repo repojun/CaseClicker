@@ -9,16 +9,16 @@ const PassiveUpgradesList = (
   multiplierFunction,
   frontendArray,
   moneyFunction,
-  balance,
   props,
 }) => {
   const {userStore: {user, setBalance, setPassiveUpgrade}} = useContextStore()
 
+
   useEffect(() => {
     const interval = setInterval(async () => {
-      // var newBalanceVariable = user.balance + 5
-      // setBalance(newBalanceVariable)
-      // const query = await Axios("/api/user/setbalance", "POST", {balance:newBalanceVariable})
+      var newBalanceVariable = user.balance + 5
+      setBalance(newBalanceVariable)
+      const query = await Axios("/api/user/setbalance", "POST", {balance:newBalanceVariable})
     }, 500); // 5000 milliseconds = 5 seconds
 
     return () => clearInterval(interval); // Cleanup function to clear interval on component unmount
@@ -27,12 +27,15 @@ const PassiveUpgradesList = (
   const clickCheck = async (e, price, isBought, ID) => {
     var Xlocation = e.clientX;
     var Ylocation = e.clientY;
-    if (balance >= price && isBought == 0) {
-      setBalance(balance);
+    console.log(user.balance);
+    console.log(isBought);
+    if (user.balance >= price && isBought == 0) {
+      setBalance(user.balance);
       moneyFunction(price); 
       setPassiveUpgrade(ID, 1)
       const query = await Axios("/api/user/setpassiveupgrade", "POST", {passiveUpgradeID: ID})
     } else {
+      console.log(user.balance);
       var newElement = ( // Stores div in variable to be stored in useStateArray
         <div
           className={styles.priceLossAnimation}
@@ -63,7 +66,7 @@ const PassiveUpgradesList = (
   ];
   const upgradeList = [
     upgradeBoxes.map((keyname) => {
-      var priceChecker = balance >= keyname.price ? "#15e815" : "red";
+      var priceChecker = user.balance >= keyname.price ? "#15e815" : "red";
       
       if (keyname.isBought) {
         return null;
@@ -79,7 +82,7 @@ const PassiveUpgradesList = (
           }}
           className={styles.upgradeButton}
           onClick={(event) =>
-            clickCheck(event, keyname.price, keyname.multiplier, keyname.isBought, keyname.ID)
+            clickCheck(event, keyname.price, keyname.isBought, keyname.ID)
           }
         >
           {keyname.title} <br></br> Cost: {keyname.price}
