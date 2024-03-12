@@ -13,7 +13,7 @@ var multiplier = 1;
 
 function MainPage() {
 
-  const {userStore: {user:{balance=0}, setBalance}} = useContextStore()
+  const { userStore: { user: { balance = 0 }, setBalance } } = useContextStore()
   const [moneyArray, setMoneyArray] = useState([]);
 
   const handleMultiplierChange = (newMultiplier) => {
@@ -23,21 +23,23 @@ function MainPage() {
   const handleBalanceChange = async (newBalance) => {
     var newBalanceVariable = balance - newBalance
     setBalance(newBalanceVariable);
-    const query = await Axios("/api/user/setbalance", "POST", {balance:newBalanceVariable})
+    const query = await Axios("/api/user/setbalance", "POST", { balance: newBalanceVariable })
 
   };
 
-  useEffect(() => {
-    // This code will run every time user.balance changes
-    console.log('User balance changed:', balance);
-
-    // You can perform any action here based on the new user balance
-
-    // Remember to clean up any resources if necessary
-    return () => {
-      // Cleanup code, if needed
-    };
-  }, [balance]); 
+  // useEffect(() => {
+  //   // This code will run every time user.balance changes
+  //   console.log('User balance changed:', balance);
+  //   var Xlocation = 500; // Get client's X and Y coordinates on click
+  //   var Ylocation = 500;
+  //   var newElement = ( // Stores div in variable to be stored in useStateArray
+  //     <div className={styles.money} style={{ top: Ylocation, left: Xlocation }}>
+  //       $
+  //     </div>
+  //     // Top is Y axis, left is X axis
+  //   );
+  //   setMoneyArray([...moneyArray, newElement]); // adds the div to the moneyArray
+  // }, [balance]);
 
   const handleMoneyArrayChange = (newElement) => {
     setMoneyArray([...moneyArray, newElement]);
@@ -46,7 +48,7 @@ function MainPage() {
   const handleClick = async (e) => {
     const newBalance = balance + baseClick * multiplier;
     setBalance(newBalance);
-    const query = await Axios("/api/user/setbalance", "POST", {balance:newBalance})
+    const query = await Axios("/api/user/setbalance", "POST", { balance: newBalance })
     var Xlocation = e.clientX; // Get client's X and Y coordinates on click
     var Ylocation = e.clientY;
     var newElement = ( // Stores div in variable to be stored in useStateArray
