@@ -1,5 +1,5 @@
 import styles from "./mainpage.module.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import MainContainer from "../../../components/maincontainer/maincontainer";
 import SubContainer from "../../../components/subcontainer/subcontainer";
 import ClickUpgradesList from "../../../components/upgradelists/clickupgrades/clickupgradeslist";
@@ -26,6 +26,18 @@ function MainPage() {
     const query = await Axios("/api/user/setbalance", "POST", {balance:newBalanceVariable})
 
   };
+
+  useEffect(() => {
+    // This code will run every time user.balance changes
+    console.log('User balance changed:', balance);
+
+    // You can perform any action here based on the new user balance
+
+    // Remember to clean up any resources if necessary
+    return () => {
+      // Cleanup code, if needed
+    };
+  }, [balance]); 
 
   const handleMoneyArrayChange = (newElement) => {
     setMoneyArray([...moneyArray, newElement]);

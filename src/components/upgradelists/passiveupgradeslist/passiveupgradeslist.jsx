@@ -13,16 +13,19 @@ const PassiveUpgradesList = (
 }) => {
   const {userStore: {user, setBalance, setPassiveUpgrade}} = useContextStore()
 
-
   useEffect(() => {
-    const interval = setInterval(async () => {
-      var newBalanceVariable = user.balance + 5
-      setBalance(newBalanceVariable)
-      const query = await Axios("/api/user/setbalance", "POST", {balance:newBalanceVariable})
-    }, 500); // 5000 milliseconds = 5 seconds
+    if (user && typeof user.balance !== 'undefined') {
+      const interval = setInterval(async () => {
+        var newBalanceVariable = user.balance + 5;
+        setBalance(newBalanceVariable);
+        const query = await Axios("/api/user/setbalance", "POST", {balance:newBalanceVariable});
+      }, 5000); // 5000 milliseconds = 5 seconds
+  
+      return () => clearInterval(interval);
+    }
+  }, [user]);
 
-    return () => clearInterval(interval); // Cleanup function to clear interval on component unmount
-  }, []); 
+
 
   const clickCheck = async (e, price, isBought, ID) => {
     var Xlocation = e.clientX;
