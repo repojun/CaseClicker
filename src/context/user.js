@@ -1,9 +1,9 @@
-import { makeObservable, observable, action} from "mobx";
+import { makeObservable, observable, action } from "mobx";
 
 class userStore {
     constructor() {
         this.user = {};
-        makeObservable(this, {user: observable, setUser: action, setBalance: action}) 
+        makeObservable(this, { user: observable, setUser: action, setBalance: action, setPassiveUpgrade: action, setPassiveUpgradeLevel: action })
     }
 
     setUser = (user) => {
@@ -15,7 +15,11 @@ class userStore {
     }
 
     setPassiveUpgrade = (upgradeNumber, purchased) => {
-        this.user[`passiveUpgrades.passiveUpgrade${upgradeNumber}`] = purchased;
+        this.user.passiveUpgrades[upgradeNumber] = { ...this.user.passiveUpgrades[upgradeNumber], value: purchased };
+    }
+
+    setPassiveUpgradeLevel = (upgradeNumber, level) => {
+        this.user.passiveUpgrades[upgradeNumber] = { ...this.user.passiveUpgrades[upgradeNumber], level: level };
     }
 
 }

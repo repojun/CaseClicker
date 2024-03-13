@@ -21,7 +21,8 @@ const updateUserBalance = async (userID, balance) => {
 
 const updateUserPassiveUpgrade = async(userID, passiveUpgradeID) => {
   const user = await userSchema.findOne({ id: userID});
-  user[`passiveUpgrade${passiveUpgradeID}`] = 1;
+  // user[`passiveUpgrade${passiveUpgradeID}`] = 1;
+  user.passiveUpgrades[`passiveUpgrade${passiveUpgradeID}`].value = 1;
   await user.save(); 
 }
 

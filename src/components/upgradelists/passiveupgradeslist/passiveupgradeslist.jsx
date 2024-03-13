@@ -13,7 +13,7 @@ const PassiveUpgradesList = (
   const { userStore: { user, setBalance, setPassiveUpgrade } } = useContextStore()
 
   useEffect(() => {
-    if (user && typeof user.balance !== 'undefined' && user.passiveUpgrades.passiveUpgrade1.value == 1) {
+    if (user && typeof user.balance !== 'undefined' && user.passiveUpgrades?.passiveUpgrade1?.value == 1) {
       const interval = setInterval(async () => {
         var newBalanceVariable = user.balance + 0.01;
         setBalance(newBalanceVariable);
@@ -21,11 +21,10 @@ const PassiveUpgradesList = (
       }, 5000); // 5000 milliseconds = 5 seconds
       return () => clearInterval(interval);
     }
-
   }, [user]);
 
   useEffect(() => {
-    if (user && typeof user.balance !== 'undefined' && user.passiveUpgrades.passiveUpgrade2.value == 1) {
+    if (user && typeof user.balance !== 'undefined' && user.passiveUpgrades?.passiveUpgrade2?.value == 1) {
       const interval = setInterval(async () => {
         var newBalanceVariable = user.balance + 0.02;
         setBalance(newBalanceVariable);
@@ -33,11 +32,12 @@ const PassiveUpgradesList = (
       }, 4000); // 5000 milliseconds = 5 seconds
       return () => clearInterval(interval);
     }
-    
-  }, [user]);
+      }, [user]);
 
   useEffect(() => {
-    if (user && typeof user.balance !== 'undefined' && user.passiveUpgrades.passiveUpgrade3.value == 1) {
+    console.log(user.passiveUpgrades?.passiveUpgrade3?.value);
+    if (user && typeof user.balance !== 'undefined' && user.passiveUpgrades?.passiveUpgrade3?.value == 1) {
+
       const interval = setInterval(async () => {
         var newBalanceVariable = user.balance + 0.04;
         setBalance(newBalanceVariable);
@@ -45,11 +45,10 @@ const PassiveUpgradesList = (
       }, 2000); // 5000 milliseconds = 5 seconds
       return () => clearInterval(interval);
     }
-    
   }, [user]);
 
   useEffect(() => {
-    if (user && typeof user.balance !== 'undefined' && user.passiveUpgrades.passiveUpgrade4.value == 1) {
+    if (user && typeof user.balance !== 'undefined' && user.passiveUpgrades?.passiveUpgrade4?.value == 1) {
       const interval = setInterval(async () => {
         var newBalanceVariable = user.balance + 0.08;
         setBalance(newBalanceVariable);
@@ -69,8 +68,10 @@ const PassiveUpgradesList = (
       setBalance(user.balance);
       moneyFunction(price);
       setPassiveUpgrade(ID, 1)
+
       const query = await Axios("/api/user/setpassiveupgrade", "POST", { passiveUpgradeID: ID })
     } else {
+
       console.log(user.balance);
       var newElement = ( // Stores div in variable to be stored in useStateArray
         <div
@@ -93,18 +94,18 @@ const PassiveUpgradesList = (
   };
 
   const upgradeBoxes = [
-    { ID: 1, title: "Factory", price: 0.25, level: 1, isBought: user.passiveUpgrades.passiveUpgrade1.value },
-    { ID: 2, title: "Restaurant", price: 0.5, level: 1, isBought: user.passiveUpgrades.passiveUpgrade2.value },
-    { ID: 3, title: "Placeholder", price: 0.65, level: 1, isBought: user.passiveUpgrades.passiveUpgrade3.value },
-    { ID: 4, title: "Building", price: 1.15, level: 1, isBought: user.passiveUpgrades.passiveUpgrade4.value },
+    { ID: 1, title: "Factory", price: 0.25, level: user.passiveUpgrades?.passiveUpgrade1?.level, isBought: user.passiveUpgrades?.passiveUpgrade1?.value },
+    { ID: 2, title: "Restaurant", price: 0.5, level: user.passiveUpgrades?.passiveUpgrade2?.level, isBought: user.passiveUpgrades?.passiveUpgrade2?.value },
+    { ID: 3, title: "Placeholder", price: 0.65, level: user.passiveUpgrades?.passiveUpgrade3?.level, isBought: user.passiveUpgrades?.passiveUpgrade3?.value },
+    { ID: 4, title: "Building", price: 1.15, level: user.passiveUpgrades?.passiveUpgrade4?.level, isBought: user.passiveUpgrades?.passiveUpgrade4?.value },
   ];
   const upgradeList = [
     upgradeBoxes.map((keyname) => {
       var priceChecker = user.balance >= keyname.price ? "#15e815" : "red";
 
-      if (keyname.isBought) {
-        return null;
-      }
+      // if (keyname.isBought) {
+      //   return null;
+      // }
 
       return (
         <div

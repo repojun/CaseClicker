@@ -5,10 +5,11 @@ import useContextStore from "../../context";
 import styles from "./dashboard.module.css";
 import React from "react";
 import { observer } from "mobx-react-lite";
-
+import { toJS } from "mobx";
 
 function Dashboard() {
-  const {userStore: {user}} = useContextStore();
+
+  const { userStore: { user } } = useContextStore();
   return (
     <>
       <MainContainer>
