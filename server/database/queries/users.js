@@ -26,6 +26,13 @@ const updateUserPassiveUpgrade = async(userID, passiveUpgradeID) => {
   await user.save(); 
 }
 
+const updateUserPassiveUpgradeLevel = async(userID, passiveUpgradeID, level) => {
+  const user = await userSchema.findOne({ id: userID});
+  // user[`passiveUpgrade${passiveUpgradeID}`] = 1;
+  user.passiveUpgrades[`passiveUpgrade${passiveUpgradeID}.level`].level = level;
+  await user.save(); 
+}
+
 const fetchLogin = async (username, email) => {
   if (email) {
     const loginEmail = await loginSchema.findOne({ email });
