@@ -6,7 +6,6 @@ import Axios from "../../../api/agent";
 
 const PassiveUpgradesList = (
   {
-    multiplierFunction,
     frontendArray,
     moneyFunction,
     props,
@@ -14,7 +13,7 @@ const PassiveUpgradesList = (
   const { userStore: { user, setBalance, setPassiveUpgrade } } = useContextStore()
 
   useEffect(() => {
-    if (user && typeof user.balance !== 'undefined' && user.passiveUpgrade1 == 1) {
+    if (user && typeof user.balance !== 'undefined' && user.passiveUpgrades.passiveUpgrade1.value == 1) {
       const interval = setInterval(async () => {
         var newBalanceVariable = user.balance + 0.01;
         setBalance(newBalanceVariable);
@@ -26,7 +25,7 @@ const PassiveUpgradesList = (
   }, [user]);
 
   useEffect(() => {
-    if (user && typeof user.balance !== 'undefined' && user.passiveUpgrade2 == 1) {
+    if (user && typeof user.balance !== 'undefined' && user.passiveUpgrades.passiveUpgrade2.value == 1) {
       const interval = setInterval(async () => {
         var newBalanceVariable = user.balance + 0.02;
         setBalance(newBalanceVariable);
@@ -37,9 +36,8 @@ const PassiveUpgradesList = (
     
   }, [user]);
 
-  
   useEffect(() => {
-    if (user && typeof user.balance !== 'undefined' && user.passiveUpgrade3 == 1) {
+    if (user && typeof user.balance !== 'undefined' && user.passiveUpgrades.passiveUpgrade3.value == 1) {
       const interval = setInterval(async () => {
         var newBalanceVariable = user.balance + 0.04;
         setBalance(newBalanceVariable);
@@ -51,7 +49,7 @@ const PassiveUpgradesList = (
   }, [user]);
 
   useEffect(() => {
-    if (user && typeof user.balance !== 'undefined' && user.passiveUpgrade3 == 1) {
+    if (user && typeof user.balance !== 'undefined' && user.passiveUpgrades.passiveUpgrade4.value == 1) {
       const interval = setInterval(async () => {
         var newBalanceVariable = user.balance + 0.08;
         setBalance(newBalanceVariable);
@@ -92,15 +90,13 @@ const PassiveUpgradesList = (
         // REMOVE ARRAY ITEMS HERE
       }, 3000);
     }
-
-
   };
 
   const upgradeBoxes = [
-    { ID: 1, title: "Passive 1", price: 0.25, multiplier: 2, isBought: user.passiveUpgrade1 },
-    { ID: 2, title: "Passive 2", price: 0.5, multiplier: 4, isBought: user.passiveUpgrade2 },
-    { ID: 3, title: "Passive 3", price: 0.65, multiplier: 4, isBought: user.passiveUpgrade3 },
-    { ID: 4, title: "Passive 4", price: 1.15, multiplier: 4, isBought: user.passiveUpgrade4 },
+    { ID: 1, title: "Factory", price: 0.25, level: 1, isBought: user.passiveUpgrades.passiveUpgrade1.value },
+    { ID: 2, title: "Restaurant", price: 0.5, level: 1, isBought: user.passiveUpgrades.passiveUpgrade2.value },
+    { ID: 3, title: "Placeholder", price: 0.65, level: 1, isBought: user.passiveUpgrades.passiveUpgrade3.value },
+    { ID: 4, title: "Building", price: 1.15, level: 1, isBought: user.passiveUpgrades.passiveUpgrade4.value },
   ];
   const upgradeList = [
     upgradeBoxes.map((keyname) => {
@@ -123,7 +119,7 @@ const PassiveUpgradesList = (
             clickCheck(event, keyname.price, keyname.isBought, keyname.ID)
           }
         >
-          {keyname.title} <br></br> Cost: {keyname.price}
+          {keyname.title} <br></br> Cost: ${keyname.price} <br></br> Level: {keyname.level}
         </div>
       );
     }),

@@ -15,7 +15,7 @@ class userStore {
     }
 
     setPassiveUpgrade = (upgradeNumber, purchased) => {
-        this.user[`passiveUpgrade${upgradeNumber}`] = purchased;
+        this.user[`passiveUpgrades.passiveUpgrade${upgradeNumber}`] = purchased;
     }
 
 }
