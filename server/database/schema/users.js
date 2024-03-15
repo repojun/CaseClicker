@@ -10,19 +10,19 @@ module.exports = mongoose.model( // exports allows us to use many functions with
     balance: { type: Number, default: 0 },
     passiveUpgrades: {
       passiveUpgrade1: {
-        level: { type: Number, default: 1 },
+        level: { type: Number, default: 0 },
         value: { type: Number, default: 0 }
       },
       passiveUpgrade2: {
-        level: { type: Number, default: 1 },
+        level: { type: Number, default: 0 },
         value: { type: Number, default: 0 }
       },
       passiveUpgrade3: {
-        level: { type: Number, default: 1 },
+        level: { type: Number, default: 0 },
         value: { type: Number, default: 0 }
       },
       passiveUpgrade4: {
-        level: { type: Number, default: 1 },
+        level: { type: Number, default: 0 },
         value: { type: Number, default: 0 }
       }
     }

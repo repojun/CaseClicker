@@ -27,7 +27,6 @@ const updateUserPassiveUpgrade = async(userID, passiveUpgradeID) => {
 }
 
 const updateUserPassiveUpgradeLevel = async(userID, passiveUpgradeID, level) => {
-  console.log("WE GOT HERE MAN")
 
   const user = await userSchema.findOne({ id: userID});
   // user[`passiveUpgrade${passiveUpgradeID}`] = 1;
