@@ -8,7 +8,7 @@ import Axios from "../../../api/agent";
 import { observer } from "mobx-react-lite";
 import useContextStore from "../../../context";
 
-var baseClick = 0.01;
+var baseClick = 0.10;
 var multiplier = 1;
 
 function MainPage() {

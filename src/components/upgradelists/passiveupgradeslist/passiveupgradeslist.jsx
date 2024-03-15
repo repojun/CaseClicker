@@ -56,20 +56,25 @@ const PassiveUpgradesList = (
       }, 1000); // 5000 milliseconds = 5 seconds
       return () => clearInterval(interval);
     }
-    
+
   }, [user]);
 
   const clickCheck = async (e, price, isBought, ID) => {
     var Xlocation = e.clientX;
+    console.log("HEY")
     var Ylocation = e.clientY;
     console.log(user.balance);
     console.log(isBought);
-    if (user.balance >= price && isBought == 0) {
+    if (user.balance >= price) {
       setBalance(user.balance);
       moneyFunction(price);
       setPassiveUpgrade(ID, 1)
-
-      const query = await Axios("/api/user/setpassiveupgrade", "POST", { passiveUpgradeID: ID })
+      console.log("HELLLLLOOOOOOOOOOO")
+      console.log("LEVEL IS: " + user.passiveUpgrades[`passiveUpgrade${ID}`].level)
+      let newLevel = user.passiveUpgrades[`passiveUpgrade${ID}`].level++ + 1;
+      console.log("LEVEL IS NOW: " + newLevel)
+      const levelQuery = await Axios("/api/user/setpassiveupgradelevel", "POST", {passiveUpgradeID: ID, newLevel: newLevel })
+      const upgradeQuery = await Axios("/api/user/setpassiveupgrade", "POST", {passiveUpgradeID: ID })
     } else {
 
       console.log(user.balance);
