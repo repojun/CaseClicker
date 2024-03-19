@@ -6,14 +6,23 @@ import useContextStore from "../../../context";
 import styles from "./store.module.css";
 import ShopItem from "../../../components/shopitem/shopitem";
 import Axios from "../../../api/agent";
+import { useState } from "react";
+import OutlineButton from "../../../components/outlinebutton/outlinebutton";
 
 
 function Store() {
+    const [modal, setModal] = useState(false);
+
+    const toggleModal = () => {
+        setModal(!modal);
+    }
+
     const {
         userStore: { user, setBalance },
     } = useContextStore();
 
-    const test = async (price) => {
+    const purchase = async (price) => {
+        toggleModal()
         if (user.balance >= price) {
             console.log("Pre: " + user.balance)
             let newBalance = user.balance - price
@@ -49,30 +58,46 @@ function Store() {
         <>
             <MainContainer>
                 <SubContainer>
+
                     <div className={styles.centerTitle}>
                         <Header title="Store" />
                     </div>
                     {itemChunks.map((chunk, index) => (
                         <div key={index} className={styles.itemContainer}>
                             {chunk.map((item, mapIndex) => (
-                                <ShopItem key={mapIndex} price={`$${item.price.toFixed(2)}`} title={item.title} image={item.image} click={() => test(item.price)} />
+                                <ShopItem key={mapIndex} price={`$${item.price.toFixed(2)}`} title={item.title} image={item.image} click={() => purchase(item.price)} />
                             ))}
                         </div>
                     ))}
+
+                    {modal && (
+                        <div className={styles.overlay} onClick={() => toggleModal()}>
+                            <div className={styles.modalContent}>
+                                <div className={styles.modalTitle}>
+                                    Purchase Confirmation
+                                </div>
+                                <img
+                                    className={styles.itemCardImage}
+                                    src={"/brokenfangnew.png"}
+                                    alt=''
+                                />
+                                <div>
+                                    Are you sure you would like to purchase this item?
+                                </div>
+                                <div className={styles.buttonContainer}>
+                                    <div onClick={() => toggleModal()}>
+                                        <OutlineButton title="Yes" minWidth={"50px"} />
+                                    </div>
+                                    <div onClick={() => toggleModal()}>
+                                        <OutlineButton title="No" minWidth={"50px"} />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>)}
                 </SubContainer>
             </MainContainer>
 
-            <div className={styles.itemContainer}>
-                    <ShopItem price="500 Diamonds" square={true} premium={true} title="+1,000 Dollars" image="/coin1000.png" />
-                    <ShopItem price="1000 Diamonds" square={true} premium={true} title="+10,000 Dollars" image="/coin10000.png" />
-                    <ShopItem price="2500 Diamonds" square={true} premium={true} title="+100,000 Dollars" image="/coin100000.png" />
-                </div>
-                <div className={styles.itemContainer}>
-                    <ShopItem price="500 Diamonds" square={true} premium={true} title="+1,000 Dollars" image="/coin1000.png" />
-                    <ShopItem price="1000 Diamonds" square={true} premium={true} title="+10,000 Dollars" image="/coin10000.png" />
-                    <ShopItem price="2500 Diamonds" square={true} premium={true} title="+100,000 Dollars" image="/coin100000.png" />
-                </div>
-                
+
         </>
     );
 }

@@ -1,6 +1,7 @@
 :root {
 --backgroundColor: #bbd3ff;
 --backgroundColorGlow: #bbd3ff40;
+--minWidth: auto;
 }
 
 .outlineButton {
@@ -10,7 +11,7 @@
   border: 2px solid #bbd3ff;
   transition:0.4s;
   text-align: center;
-  width: auto;
+  width: var(--minWidth);
   user-select: none;
 }
 
