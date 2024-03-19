@@ -2,7 +2,7 @@ import styles from "./shopitem.module.css";
 import React from 'react';
 import { IoDiamond } from 'react-icons/io5';
 
-const ShopItem = ({ image, title, price, premium, square, className = "", ...props }) => {
+const ShopItem = ({ image, title, price, premium, square, click, className = "", ...props }) => {
     return (
         <div className={styles.itemCard}>
             <div className={styles.itemCardBody}>
@@ -14,10 +14,10 @@ const ShopItem = ({ image, title, price, premium, square, className = "", ...pro
                     src={image}
                     alt=''
                 />
-                <div className={styles.itemCardButtonContainer}>
+                <div className={styles.itemCardButtonContainer} onClick={click}>
                     <div className={styles.itemCardButton}>
                         {premium && (
-                            <div style={{ display: 'flex', alignItems: 'center' }}>
+                            <div style={{ display: 'flex', alignItems: 'center' }} >
                                 <IoDiamond style={{ marginRight: '5px' }} />
                                 {price}
                             </div>

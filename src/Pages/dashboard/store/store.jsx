@@ -2,10 +2,32 @@ import MainContainer from "../../../components/maincontainer/maincontainer";
 import Header from "../../../components/mainheader/header";
 import SubContainer from "../../../components/subcontainer/subcontainer";
 import { observer } from "mobx-react-lite";
+import useContextStore from "../../../context";
 import styles from "./store.module.css";
 import ShopItem from "../../../components/shopitem/shopitem";
+import Axios from "../../../api/agent";
+
 
 function Store() {
+    const {
+        userStore: { user, setBalance, setPassiveUpgrade },
+    } = useContextStore();
+
+    const test = async (price) => {
+        if (user.balance >= price)
+        {
+            console.log("Pre: " + user.balance)
+            let newBalance = user.balance - price
+            setBalance(newBalance)
+            console.log("Post: " + user.balance)
+            const query = await Axios("/api/user/setbalance", "POST", {
+                balance: newBalance,
+              });
+        } else {
+            console.log("You're broke")
+        }
+    };
+
     const shopItems = [
         { ID: 1, price: 450, title: "Random Item", image: "/recoilcasenew.png" },
         { ID: 2, price: 1000, title: "Normal Item", image: "/dreamnightmaresnew.png" },
@@ -34,7 +56,7 @@ function Store() {
                     {itemChunks.map((chunk, index) => (
                         <div key={index} className={styles.itemContainer}>
                             {chunk.map((item, mapIndex) => (
-                                <ShopItem key={mapIndex} price={`$${item.price.toFixed(2)}`} title={item.title} image={item.image} />
+                                <ShopItem key={mapIndex} price={`$${item.price.toFixed(2)}`} title={item.title} image={item.image} click={() => test(item.price)} />
                             ))}
                         </div>
                     ))}
@@ -44,4 +66,4 @@ function Store() {
     );
 }
 
-export default observer(Store); 
+export default observer(Store);
