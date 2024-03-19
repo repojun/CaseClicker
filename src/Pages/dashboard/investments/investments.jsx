@@ -10,12 +10,24 @@ var money = 0;
 var multiplier = 1;
 export default function Investments() {
   const [moneyArray, setMoneyArray] = useState([]);
-
   const clickTest = () => {
     const items = ['Skin 1', 'Skin 2', 'Skin 3'];
     const randomItem = items[Math.floor(Math.random() * items.length)];
-    console.log(randomItem);
-  }
+    
+    switch (randomItem) {
+        case 'Skin 1':
+            console.log("You got a cool skin!");
+            break;
+        case 'Skin 2':
+            console.log("You got an awesome skin!");
+            break;
+        case 'Skin 3':
+            console.log("You got an amazing skin!");
+            break;
+        default:
+            console.log("Error");
+    }
+}
 
   const handleClick = (e) => {
     money = money + 1 * multiplier;
