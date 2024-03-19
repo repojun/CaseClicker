@@ -10,6 +10,15 @@ module.exports = mongoose.model( // exports allows us to use many functions with
     balance: { type: Number, default: 0 },
     premiumBalance: { type: Number, default: 0 },
     inventory: {
+      skin_test: {
+        value: { type: Number, default: 0 }
+      },
+      skin_test2: {
+        value: { type: Number, default: 0 }
+      },
+      skin_test3: {
+        value: { type: Number, default: 0 }
+      },
       case1: {
         value: { type: Number, default: 0 }
       },

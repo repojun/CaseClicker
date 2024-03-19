@@ -1,5 +1,5 @@
 import styles from "./investments.module.css";
-
+import Axios from "../../../api/agent";
 import MainContainer from "../../../components/maincontainer/maincontainer";
 import Header from "../../../components/mainheader/header";
 import SubContainer from "../../../components/subcontainer/subcontainer";
@@ -9,25 +9,21 @@ import React, { useState } from "react";
 var money = 0;
 var multiplier = 1;
 export default function Investments() {
+
+  const handleCaseUpdate = async (skin) => {
+    const query = await Axios("/api/user/setskin", "POST", {
+      skin: skin,
+    });
+  }
+
   const [moneyArray, setMoneyArray] = useState([]);
   const clickTest = () => {
-    const items = ['Skin 1', 'Skin 2', 'Skin 3'];
+    const items = ['skin_test', 'skin_test2', 'skin_test3'];
     const randomItem = items[Math.floor(Math.random() * items.length)];
-    
-    switch (randomItem) {
-        case 'Skin 1':
-            console.log("You got a cool skin!");
-            break;
-        case 'Skin 2':
-            console.log("You got an awesome skin!");
-            break;
-        case 'Skin 3':
-            console.log("You got an amazing skin!");
-            break;
-        default:
-            console.log("Error");
-    }
-}
+    console.log(randomItem);
+    handleCaseUpdate(randomItem);
+
+  }
 
   const handleClick = (e) => {
     money = money + 1 * multiplier;

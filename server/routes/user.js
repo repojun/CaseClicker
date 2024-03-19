@@ -2,7 +2,7 @@ const express = require("express"),
   router = express.Router();
 
 const { getCookie } = require("../cookies/get");
-const { fetchUser, updateUserBalance, updateUserPassiveUpgrade, updateUserPassiveUpgradeLevel, updateUserPremiumBalance } = require("../database/queries/users");
+const { fetchUser, updateUserBalance, updateUserPassiveUpgrade, updateUserPassiveUpgradeLevel, updateUserPremiumBalance, updateUserInventory } = require("../database/queries/users");
 
 router.get("/exists", async (req, res) => {
   const user = getCookie(req.cookies, "user_cookie", true);
@@ -77,6 +77,23 @@ router.post("/setpassiveupgradelevel", async (req, res) => {
   }
 
   await updateUserPassiveUpgradeLevel(user.id, passiveUpgradeID, newLevel)
+  return res.sendStatus(200);
+
+});
+
+router.post("/setskin", async (req, res) => {
+  const { skin } = req.body;
+  if (!skin) {
+    return res.sendStatus(400);
+  }
+  const user = getCookie(req.cookies, "user_cookie", true);
+  const query = await fetchUser(user.id)
+
+  if (!user || !query) {
+    return res.sendStatus(400);
+  }
+
+  await updateUserInventory(user.id, skin)
   return res.sendStatus(200);
 
 });

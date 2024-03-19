@@ -19,6 +19,13 @@ const updateUserBalance = async (userID, balance) => {
   await user.save();
 }
 
+const updateUserInventory = async (userID, skin) => {
+  const user = await userSchema.findOne({ id: userID });
+  console.log("SKIN HERE: " + skin)
+  user.inventory[`${skin}`].value = 1;
+  await user.save(); 
+}
+
 const updateUserPremiumBalance = async (userID, premiumBalance) => {
   const user = await userSchema.findOne({ id: userID});
   user.premiumBalance = premiumBalance;
@@ -70,4 +77,4 @@ const createUser = async (email, username, password) => {
   return userQuery;
 };
 
-module.exports = { fetchUser, createUser, fetchLogin, updateUserBalance, updateUserPassiveUpgrade, updateUserPassiveUpgradeLevel, updateUserPremiumBalance };
+module.exports = { fetchUser, createUser, fetchLogin, updateUserBalance, updateUserInventory, updateUserPassiveUpgrade, updateUserPassiveUpgradeLevel, updateUserPremiumBalance };
