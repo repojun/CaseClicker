@@ -11,6 +11,12 @@ var multiplier = 1;
 export default function Investments() {
   const [moneyArray, setMoneyArray] = useState([]);
 
+  const clickTest = () => {
+    const items = ['Skin 1', 'Skin 2', 'Skin 3'];
+    const randomItem = items[Math.floor(Math.random() * items.length)];
+    console.log(randomItem);
+  }
+
   const handleClick = (e) => {
     money = money + 1 * multiplier;
     console.log(money);
@@ -111,7 +117,7 @@ export default function Investments() {
                     <span className={styles.priceLoss}> ↓ 50.3 %</span>
                   </td>
                   <td>
-                    <div className={styles.editButton}>Edit</div>
+                    <div className={styles.editButton} onClick={() => clickTest()}>Edit</div>
                   </td>
                 </tr>
                 <tr>
@@ -132,7 +138,7 @@ export default function Investments() {
                     <span className={styles.priceGain}> ↑ 1.5 %</span>
                   </td>
                   <td>
-                    <div className={styles.editButton}>Edit</div>
+                    <div className={styles.editButton}> Edit</div>
                   </td>
                 </tr>
                 <tr>
