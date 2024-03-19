@@ -21,7 +21,7 @@ export default function Investments() {
     const items = ['skin_test', 'skin_test2', 'skin_test3'];
     const randomItem = items[Math.floor(Math.random() * items.length)];
     console.log(randomItem);
-    handleCaseUpdate(randomItem);
+    handleCaseUpdate(randomItem)
 
   }
 
