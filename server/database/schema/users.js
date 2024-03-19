@@ -8,6 +8,27 @@ module.exports = mongoose.model( // exports allows us to use many functions with
     username: { type: String },
     registeredAt: { type: Number, default: Date.now() },
     balance: { type: Number, default: 0 },
+    premiumBalance: { type: Number, default: 0 },
+    inventory: {
+      case1: {
+        value: { type: Number, default: 0 }
+      },
+      case2: {
+        value: { type: Number, default: 0 }
+      },
+      case3: {
+        value: { type: Number, default: 0 }
+      },
+      case4: {
+        value: { type: Number, default: 0 }
+      },
+      case5: {
+        value: { type: Number, default: 0 }
+      },
+      case6: {
+        value: { type: Number, default: 0 }
+      },
+    },
     passiveUpgrades: {
       passiveUpgrade1: {
         level: { type: Number, default: 0 },

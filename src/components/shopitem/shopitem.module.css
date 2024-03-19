@@ -60,7 +60,31 @@
     border-radius: 10px;
     cursor: pointer;
     transition:0.2s;
-    box-shadow: 0 0px 15px #04ff006a;
+    box-shadow: 0 0px 15px #04ff006a;    
+}
 
-    
+.itemCardButtonPremium {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 25px;
+    padding-right: 25px;
+    color:#ffffff;
+    background-color: #00ddff;
+    border-radius: 18px;
+    cursor: pointer;
+    transition:0.2s;
+    box-shadow: 0 0px 20px #04ff0010;
+}
+
+.itemCardButtonPremium:hover {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 25px;
+    padding-right: 25px;
+    color:#ffffff;
+    background-color: #00ddff;
+    border-radius: 10px;
+    cursor: pointer;
+    transition:0.2s;
+    box-shadow: 0 0px 15px #00d9ff6a;    
 }

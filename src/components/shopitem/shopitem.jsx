@@ -15,7 +15,7 @@ const ShopItem = ({ image, title, price, premium, square, click, className = "",
                     alt=''
                 />
                 <div className={styles.itemCardButtonContainer} onClick={click}>
-                    <div className={styles.itemCardButton}>
+                    <div className={`${premium ? styles.itemCardButtonPremium : styles.itemCardButton}`}>
                         {premium && (
                             <div style={{ display: 'flex', alignItems: 'center' }} >
                                 <IoDiamond style={{ marginRight: '5px' }} />

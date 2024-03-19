@@ -36,7 +36,7 @@ const MainContainer = ({ children, className = " ", ...props }) => {
         </div>
         <hr className={styles.divider}></hr>
         <div>
-          <div className={styles.navbutton}>Later Use</div>
+          <div className={`${styles.navbutton} ${selectedTab === 7 ? styles.selected : ''}`} onClick={() => { navigate('/dashboard/premiumstore'); selectTab(7) }}> <AiOutlineSetting /> Premium Store</div>
           <div className={styles.navbutton}>Graph</div>
           <div className={styles.navbutton}>Kutta</div>
           <div className={styles.navbutton}>Misc #2</div>
@@ -44,7 +44,7 @@ const MainContainer = ({ children, className = " ", ...props }) => {
         <hr className={styles.divider}></hr>
       </div>
       <div className={styles.right}>
-      {/* <img className={styles.bgtest} src="/BG1.png" /> */}
+        {/* <img className={styles.bgtest} src="/BG1.png" /> */}
         <div>{children}</div>
       </div>
     </div>

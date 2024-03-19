@@ -10,21 +10,20 @@ import Axios from "../../../api/agent";
 
 function Store() {
     const {
-        userStore: { user, setBalance, setPassiveUpgrade },
+        userStore: { user, setBalance },
     } = useContextStore();
 
     const test = async (price) => {
-        if (user.balance >= price)
-        {
+        if (user.balance >= price) {
             console.log("Pre: " + user.balance)
             let newBalance = user.balance - price
             setBalance(newBalance)
             console.log("Post: " + user.balance)
             const query = await Axios("/api/user/setbalance", "POST", {
                 balance: newBalance,
-              });
+            });
         } else {
-            console.log("You're broke")
+            console.log("Insufficient funds, would you like to purchase diamonds?")
         }
     };
 
@@ -62,6 +61,18 @@ function Store() {
                     ))}
                 </SubContainer>
             </MainContainer>
+
+            <div className={styles.itemContainer}>
+                    <ShopItem price="500 Diamonds" square={true} premium={true} title="+1,000 Dollars" image="/coin1000.png" />
+                    <ShopItem price="1000 Diamonds" square={true} premium={true} title="+10,000 Dollars" image="/coin10000.png" />
+                    <ShopItem price="2500 Diamonds" square={true} premium={true} title="+100,000 Dollars" image="/coin100000.png" />
+                </div>
+                <div className={styles.itemContainer}>
+                    <ShopItem price="500 Diamonds" square={true} premium={true} title="+1,000 Dollars" image="/coin1000.png" />
+                    <ShopItem price="1000 Diamonds" square={true} premium={true} title="+10,000 Dollars" image="/coin10000.png" />
+                    <ShopItem price="2500 Diamonds" square={true} premium={true} title="+100,000 Dollars" image="/coin100000.png" />
+                </div>
+                
         </>
     );
 }
