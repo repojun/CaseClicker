@@ -3,7 +3,7 @@ import { React, useState } from 'react';
 import OutlineButton from "../outlinebutton/outlinebutton";
 
 
-const Modal = ({ modal, toggleModal }) => {
+const Modal = ({ modal, toggleModal, image }) => {
     return (
         <>
             {modal && (
@@ -14,7 +14,7 @@ const Modal = ({ modal, toggleModal }) => {
                         </div>
                         <img
                             className={styles.itemCardImage}
-                            src={"/brokenfangnew.png"}
+                            src={image}
                             alt=''
                         />
                         <div>

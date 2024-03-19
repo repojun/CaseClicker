@@ -12,18 +12,22 @@ import Modal from "../../../components/modal/modal";
 
 function Store() {
     const [modal, setModal] = useState(false);
+    const [image, setImage] = useState("");
 
-    const toggleModal = () => {
+    const toggleModal = (image) => {
         setModal(!modal);
+        if (image != null) {
+            setImage(image);
+        }
     }
 
     const {
         userStore: { user, setBalance },
     } = useContextStore();
 
-    const purchase = async (price) => {
-        toggleModal()
-        console.log(modal);
+    const purchase = async (price, image) => {
+        toggleModal(image);
+
         if (user.balance >= price) {
             console.log("Pre: " + user.balance)
             let newBalance = user.balance - price
@@ -66,12 +70,12 @@ function Store() {
                     {itemChunks.map((chunk, index) => (
                         <div key={index} className={styles.itemContainer}>
                             {chunk.map((item, mapIndex) => (
-                                <ShopItem key={mapIndex} price={`$${item.price.toFixed(2)}`} title={item.title} image={item.image} click={() => purchase(item.price)} />
+                                <ShopItem key={mapIndex} price={`$${item.price.toFixed(2)}`} title={item.title} image={item.image} click={() => purchase(item.price, item.image)} />
                             ))}
                         </div>
                     ))}
 
-                   <Modal modal={modal} toggleModal={toggleModal}/>
+                    <Modal modal={modal} toggleModal={toggleModal} image={image} />
                 </SubContainer>
             </MainContainer>
 
