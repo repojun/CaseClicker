@@ -34,7 +34,7 @@ function Store() {
                     {itemChunks.map((chunk, index) => (
                         <div key={index} className={styles.itemContainer}>
                             {chunk.map((item, mapIndex) => (
-                                <ShopItem key={mapIndex} price={item.price} title={item.title} image={item.image} />
+                                <ShopItem key={mapIndex} price={`$${item.price.toFixed(2)}`} title={item.title} image={item.image} />
                             ))}
                         </div>
                     ))}
