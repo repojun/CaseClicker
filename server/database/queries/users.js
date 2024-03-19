@@ -27,7 +27,7 @@ const updateUserInventory = async (userID, skin) => {
 }
 
 const updateUserPremiumBalance = async (userID, premiumBalance) => {
-  const user = await userSchema.findOne({ id: userID});
+  const user = await userSchema.findOne({ id: userID });
   user.premiumBalance = premiumBalance;
   await user.save();
 }
