@@ -20,7 +20,9 @@ module.exports = mongoose.model( // exports allows us to use many functions with
         value: { type: Number, default: 0 }
       },
       case1: {
-        value: { type: Number, default: 0 }
+        value: { type: Number, default: 0 },
+        price: { type: Number, default: 0 },
+        image: { type: String, default: "/recoilcasenew.png"}
       },
       case2: {
         value: { type: Number, default: 0 }
