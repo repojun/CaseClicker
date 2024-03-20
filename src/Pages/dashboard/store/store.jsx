@@ -14,20 +14,24 @@ function Store() {
     const [modal, setModal] = useState(false);
     const [image, setImage] = useState("");
     const [itemName, setItemName] = useState("");
+    const [price, setPrice] = useState(0);
 
-    const toggleModal = (image, itemName) => {
+    const toggleModal = (image, itemName, price) => {
         setModal(!modal);
         setImage(image);
         setItemName(itemName);
+        setPrice(price);
     }
 
     const {
         userStore: { user, setBalance },
     } = useContextStore();
 
-    const purchase = async (price, image, itemName) => {
-        toggleModal(image, itemName);
+    const purchase = (price, image, itemName) => {
+        toggleModal(image, itemName, price);
+    };
 
+    const finalPurchase = async () => {
         if (user.balance >= price) {
             let newBalance = user.balance - price
             setBalance(newBalance)
@@ -37,7 +41,7 @@ function Store() {
         } else {
             console.log("Insufficient funds, would you like to purchase diamonds?")
         }
-    };
+    }
 
     const shopItems = [
         { ID: 1, price: 450, title: "Random Item", image: "/recoilcasenew.png" },
@@ -73,7 +77,7 @@ function Store() {
                         </div>
                     ))}
 
-                    <Modal modal={modal} toggleModal={toggleModal} image={image} itemName={itemName} />
+                    <Modal modal={modal} toggleModal={toggleModal} finalPurchase={finalPurchase} image={image} itemName={itemName} price={price} />
                 </SubContainer>
             </MainContainer>
         </>

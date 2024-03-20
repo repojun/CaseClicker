@@ -60,8 +60,6 @@ function PremiumStore() {
                     ))}
                 </SubContainer>
             </MainContainer>
-
-
         </>
     );
 }
