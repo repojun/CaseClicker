@@ -55,18 +55,26 @@ function Inventory() {
     const items = [];
 
     for (const key in user.inventory) {
-      items.push({
-        name: key,
-        value: user.inventory[key].value,
-        price: user.inventory[key].price.toFixed(2),
-        image: user.inventory[key].image
-      });
+      const item = user.inventory[key];
+      const itemName = key;
+
+      if (item.value > 0) {
+        for (let i = 0; i < item.value; i++) {
+          items.push({
+            name: key,
+            value: item.value,
+            price: "£" + item.price.toFixed(2),
+            image: item.image
+          });
+        }
+      }
     }
+
 
     setInventoryItems(items); // Update state with populated items
   };
-  
-  
+
+
 
   const rows = [];
 
