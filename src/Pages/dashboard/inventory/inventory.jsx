@@ -1,5 +1,4 @@
 import styles from "./inventory.module.css"
-
 import MainContainer from "../../../components/maincontainer/maincontainer";
 import Header from "../../../components/mainheader/header";
 import SubContainer from "../../../components/subcontainer/subcontainer";
@@ -7,8 +6,10 @@ import InventoryItem from "../../../components/inventoryitem/inventoryitem";
 import OutlineButton from "../../../components/outlinebutton/outlinebutton";
 import { BsSteam } from "react-icons/bs";
 import React  from 'react';
+import { observer } from "mobx-react-lite";
+import useContextStore from "../../../context";
 
-export default function Inventory() {
+function Inventory() {
   return (
     <>
       <MainContainer>
@@ -107,3 +108,5 @@ export default function Inventory() {
     </>
   );
 }
+
+export default observer(Inventory)
