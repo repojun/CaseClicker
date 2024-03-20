@@ -15,6 +15,12 @@
     animation: fadeIn 0.3s ease-in-out;
 }
 
+.money {
+    font-weight: bold;
+    color: #15e815;
+    text-shadow: 0px 0px 10px #05ff09b0;
+}
+
 .modalContent {
     padding: 30px;
     background-color: #141f33;

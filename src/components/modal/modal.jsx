@@ -1,9 +1,15 @@
 import styles from "./modal.module.css";
 import { React, useState } from 'react';
 import OutlineButton from "../outlinebutton/outlinebutton";
+import Axios from "../../api/agent";
+import { observer } from "mobx-react-lite";
+import useContextStore from "../../context";
 
+const Modal = ({ modal, toggleModal, image, itemName }) => {
+    const {
+        userStore: { user, setBalance },
+    } = useContextStore();
 
-const Modal = ({ modal, toggleModal, image }) => {
     return (
         <>
             {modal && (
@@ -18,7 +24,9 @@ const Modal = ({ modal, toggleModal, image }) => {
                             alt=''
                         />
                         <div>
-                            Are you sure you would like to purchase this item?
+                            Are you sure you would like to purchase <span style={{ fontWeight: "bold" }}> "{itemName}"</span>?</div>
+                        <div>
+                        <span style={{ fontWeight: "bold" }}>Current Balance: </span> <span className={styles.money}>${user.balance.toFixed(2)} </span>
                         </div>
                         <div className={styles.buttonContainer}>
                             <div onClick={toggleModal}>
@@ -35,4 +43,4 @@ const Modal = ({ modal, toggleModal, image }) => {
     );
 };
 
-export default Modal
+export default observer(Modal)

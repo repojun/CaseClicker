@@ -13,26 +13,24 @@ import Modal from "../../../components/modal/modal";
 function Store() {
     const [modal, setModal] = useState(false);
     const [image, setImage] = useState("");
+    const [itemName, setItemName] = useState("");
 
-    const toggleModal = (image) => {
+    const toggleModal = (image, itemName) => {
         setModal(!modal);
-        if (image != null) {
-            setImage(image);
-        }
+        setImage(image);
+        setItemName(itemName);
     }
 
     const {
         userStore: { user, setBalance },
     } = useContextStore();
 
-    const purchase = async (price, image) => {
-        toggleModal(image);
+    const purchase = async (price, image, itemName) => {
+        toggleModal(image, itemName);
 
         if (user.balance >= price) {
-            console.log("Pre: " + user.balance)
             let newBalance = user.balance - price
             setBalance(newBalance)
-            console.log("Post: " + user.balance)
             const query = await Axios("/api/user/setbalance", "POST", {
                 balance: newBalance,
             });
@@ -70,16 +68,14 @@ function Store() {
                     {itemChunks.map((chunk, index) => (
                         <div key={index} className={styles.itemContainer}>
                             {chunk.map((item, mapIndex) => (
-                                <ShopItem key={mapIndex} price={`$${item.price.toFixed(2)}`} title={item.title} image={item.image} click={() => purchase(item.price, item.image)} />
+                                <ShopItem key={mapIndex} price={`$${item.price.toFixed(2)}`} title={item.title} image={item.image} click={() => purchase(item.price, item.image, item.title)} />
                             ))}
                         </div>
                     ))}
 
-                    <Modal modal={modal} toggleModal={toggleModal} image={image} />
+                    <Modal modal={modal} toggleModal={toggleModal} image={image} itemName={itemName} />
                 </SubContainer>
             </MainContainer>
-
-
         </>
     );
 }
