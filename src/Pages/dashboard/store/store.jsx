@@ -7,7 +7,7 @@ import styles from "./store.module.css";
 import ShopItem from "../../../components/shopitem/shopitem";
 import Axios from "../../../api/agent";
 import { useState } from "react";
-import Modal from "../../../components/modal/modal";
+import Modal from "../../../components/modal/storemodal";
 
 
 function Store() {

@@ -1,11 +1,11 @@
-import styles from "./modal.module.css";
+import styles from "./storemodal.module.css";
 import { React, useState } from 'react';
 import OutlineButton from "../outlinebutton/outlinebutton";
 import Axios from "../../api/agent";
 import { observer } from "mobx-react-lite";
 import useContextStore from "../../context";
 
-const Modal = ({ modal, toggleModal, image, itemName, finalPurchase }) => {
+const StoreModal = ({ modal, toggleModal, image, itemName, finalPurchase }) => {
     const {
         userStore: { user, setBalance },
     } = useContextStore();
@@ -43,4 +43,4 @@ const Modal = ({ modal, toggleModal, image, itemName, finalPurchase }) => {
     );
 };
 
-export default observer(Modal)
+export default observer(StoreModal)
