@@ -1,5 +1,5 @@
 import styles from "./investments.module.css";
-
+import Axios from "../../../api/agent";
 import MainContainer from "../../../components/maincontainer/maincontainer";
 import Header from "../../../components/mainheader/header";
 import SubContainer from "../../../components/subcontainer/subcontainer";
@@ -9,7 +9,21 @@ import React, { useState } from "react";
 var money = 0;
 var multiplier = 1;
 export default function Investments() {
+
+  const handleCaseUpdate = async (item) => {
+    const query = await Axios("/api/user/setitem", "POST", {
+      item: item,
+    });
+  }
+
   const [moneyArray, setMoneyArray] = useState([]);
+  const clickTest = () => {
+    const items = ['skin_test', 'skin_test2', 'skin_test3'];
+    const randomItem = items[Math.floor(Math.random() * items.length)];
+    console.log(randomItem);
+    handleCaseUpdate(randomItem)
+
+  }
 
   const handleClick = (e) => {
     money = money + 1 * multiplier;
@@ -111,7 +125,7 @@ export default function Investments() {
                     <span className={styles.priceLoss}> ↓ 50.3 %</span>
                   </td>
                   <td>
-                    <div className={styles.editButton}>Edit</div>
+                    <div className={styles.editButton} onClick={() => clickTest()}>Edit</div>
                   </td>
                 </tr>
                 <tr>
@@ -132,7 +146,7 @@ export default function Investments() {
                     <span className={styles.priceGain}> ↑ 1.5 %</span>
                   </td>
                   <td>
-                    <div className={styles.editButton}>Edit</div>
+                    <div className={styles.editButton}> Edit</div>
                   </td>
                 </tr>
                 <tr>

@@ -7,6 +7,7 @@ const OutlineButton = (props) => {
       border: "2px solid " + props.overrideColor, 
       "--backgroundColor": props.overrideColor,
       "--backgroundColorGlow": props.overrideColor,
+      "--minWidth": props.minWidth,
     }} className={styles.outlineButton} onClick={props.click}>{props.title}</div>
   );
 };

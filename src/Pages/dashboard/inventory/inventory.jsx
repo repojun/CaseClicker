@@ -55,7 +55,7 @@ export default function Inventory() {
                     <InventoryItem image="/brokenfangnew.png" price="£ 3.52" />
                     <InventoryItem image="/stockholmdust.png" price="£ 0.65" />
                     <InventoryItem image="/overpassparis.png" price="£ 2.32" />
-                    <InventoryItem
+                    <InventoryItem  
                       image="/dreamnightmaresnew.png"
                       price="£ 1.24"
                     />
