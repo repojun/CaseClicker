@@ -58,7 +58,7 @@ function Inventory() {
       items.push({
         name: key,
         value: user.inventory[key].value,
-        price: user.inventory[key].price,
+        price: user.inventory[key].price.toFixed(2),
         image: user.inventory[key].image
       });
     }
