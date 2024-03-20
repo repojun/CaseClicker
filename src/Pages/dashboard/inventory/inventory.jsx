@@ -16,34 +16,53 @@ function Inventory() {
     userStore: { user, setBalance, setItem },
   } = useContextStore();
 
-
-  const inventoryItems = [
-    { image: "/brokenfangnew.png", price: "£ 3.52" },
-    { image: "/glockfade.png", price: "£ 1,800" },
-    { image: "/dreamnightmaresnew.png", price: "£ 1.24" },
-    { image: "/brokenfangnew.png", price: "£ 3.52" },
-    { image: "/brokenfangnew.png", price: "£ 3.52" },
-    { image: "/brokenfangnew.png", price: "£ 3.52" },
-    { image: "/recoilcasenew.png", price: "£ 0.65" },
-    { image: "/brokenfangnew.png", price: "£ 3.52" },
-    { image: "/brokenfangnew.png", price: "£ 3.52" },
-    { image: "/stockholmdust.png", price: "£ 0.65" },
-    { image: "/overpassparis.png", price: "£ 2.32" },
-    { image: "/dreamnightmaresnew.png", price: "£ 1.24" },
-    { image: "/glockfade.png", price: "£ 1,800" },
-    { image: "/stockholmdust.png", price: "£ 3.52" },
-    { image: "/overpassparis.png", price: "£ 2.32" },
-    { image: "/recoilcasenew.png", price: "£ 0.65" },
-    { image: "/overpassparis.png", price: "£ 2.32" },
-    { image: "/recoilcasenew.png", price: "£ 0.65" },
-    { image: "/dreamnightmaresnew.png", price: "£ 1.24" },
-    { image: "/negev.png", price: "£ 1.26" },
-    { image: "/dreamnightmaresnew.png", price: "£ 1.24" },
-    { image: "/recoilcasenew.png", price: "£ 0.65" },
-    { image: "/overpassparis.png", price: "£ 2.32" }
-  ];
+  // const inventoryItems = [
+  //   { image: "/brokenfangnew.png", price: "£ 3.52" },
+  //   { image: "/glockfade.png", price: "£ 1,800" },
+  //   { image: "/dreamnightmaresnew.png", price: "£ 1.24" },
+  //   { image: "/brokenfangnew.png", price: "£ 3.52" },
+  //   { image: "/brokenfangnew.png", price: "£ 3.52" },
+  //   { image: "/brokenfangnew.png", price: "£ 3.52" },
+  //   { image: "/recoilcasenew.png", price: "£ 0.65" },
+  //   { image: "/brokenfangnew.png", price: "£ 3.52" },
+  //   { image: "/brokenfangnew.png", price: "£ 3.52" },
+  //   { image: "/stockholmdust.png", price: "£ 0.65" },
+  //   { image: "/overpassparis.png", price: "£ 2.32" },
+  //   { image: "/dreamnightmaresnew.png", price: "£ 1.24" },
+  //   { image: "/glockfade.png", price: "£ 1,800" },
+  //   { image: "/stockholmdust.png", price: "£ 3.52" },
+  //   { image: "/overpassparis.png", price: "£ 2.32" },
+  //   { image: "/recoilcasenew.png", price: "£ 0.65" },
+  //   { image: "/overpassparis.png", price: "£ 2.32" },
+  //   { image: "/recoilcasenew.png", price: "£ 0.65" },
+  //   { image: "/dreamnightmaresnew.png", price: "£ 1.24" },
+  //   { image: "/negev.png", price: "£ 1.26" },
+  //   { image: "/dreamnightmaresnew.png", price: "£ 1.24" },
+  //   { image: "/recoilcasenew.png", price: "£ 0.65" },
+  //   { image: "/overpassparis.png", price: "£ 2.32" }
+  // ];
 
   const chunkSize = 8;
+
+  const inventoryItems = []
+
+  const test = () => {
+    console.log("Hey")
+    const itemCount = Object.keys(user.inventory).length;
+    console.log(itemCount);
+
+    for (const key in user.inventory) {
+      inventoryItems.push({
+        name: key,
+        value: user.inventory[key].value,
+        price: user.inventory[key].price,
+        image: user.inventory[key].image
+      });
+
+      console.log(inventoryItems);
+    }
+
+  }
 
   const rows = [];
 
@@ -51,12 +70,14 @@ function Inventory() {
     rows.push(inventoryItems.slice(i, i + chunkSize));
   }
 
+
+
   return (
     <>
       <MainContainer>
         <SubContainer>
           <Header title="Inventory"> </Header>
-          <div className={styles.titleSubtext}>
+          <div className={styles.titleSubtext} onClick={() => test()}>
             {" "}
             View and search through your inventory effortlessly.
           </div>
