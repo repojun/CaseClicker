@@ -9,8 +9,10 @@ import React from 'react';
 import { observer } from "mobx-react-lite";
 import useContextStore from "../../../context";
 import Axios from "../../../api/agent";
+import { useState } from "react";
 
 function Inventory() {
+  const [inventoryItems, setInventoryItems] = useState([]);
 
   const {
     userStore: { user, setBalance, setItem },
@@ -44,25 +46,27 @@ function Inventory() {
 
   const chunkSize = 8;
 
-  const inventoryItems = []
 
   const test = () => {
-    console.log("Hey")
+    console.log("Hey");
     const itemCount = Object.keys(user.inventory).length;
     console.log(itemCount);
 
+    const items = [];
+
     for (const key in user.inventory) {
-      inventoryItems.push({
+      items.push({
         name: key,
         value: user.inventory[key].value,
         price: user.inventory[key].price,
         image: user.inventory[key].image
       });
-
-      console.log(inventoryItems);
     }
 
-  }
+    setInventoryItems(items); // Update state with populated items
+  };
+  
+  
 
   const rows = [];
 

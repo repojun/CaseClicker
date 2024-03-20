@@ -13,7 +13,7 @@ module.exports = mongoose.model( // exports allows us to use many functions with
       skin_test: {
         value: { type: Number, default: 0 },
         price: { type: Number, default: 1.90 },
-        image: { type: String, default: "/recoilcasenew.png"}
+        image: { type: String, default: "/brokenfangnew.png"}
       },
       skin_test2: {
         value: { type: Number, default: 0 },
