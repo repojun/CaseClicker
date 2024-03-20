@@ -81,9 +81,9 @@ router.post("/setpassiveupgradelevel", async (req, res) => {
 
 });
 
-router.post("/setskin", async (req, res) => {
-  const { skin } = req.body;
-  if (!skin) {
+router.post("/setitem", async (req, res) => {
+  const { item } = req.body;
+  if (!item) {
     return res.sendStatus(400);
   }
   const user = getCookie(req.cookies, "user_cookie", true);
@@ -93,7 +93,7 @@ router.post("/setskin", async (req, res) => {
     return res.sendStatus(400);
   }
 
-  await updateUserInventory(user.id, skin)
+  await updateUserInventory(user.id, item)
   return res.sendStatus(200);
 
 });

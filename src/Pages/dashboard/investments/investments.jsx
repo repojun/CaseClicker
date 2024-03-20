@@ -10,9 +10,9 @@ var money = 0;
 var multiplier = 1;
 export default function Investments() {
 
-  const handleCaseUpdate = async (skin) => {
-    const query = await Axios("/api/user/setskin", "POST", {
-      skin: skin,
+  const handleCaseUpdate = async (item) => {
+    const query = await Axios("/api/user/setitem", "POST", {
+      item: item,
     });
   }
 

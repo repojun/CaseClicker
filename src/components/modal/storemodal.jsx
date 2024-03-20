@@ -5,7 +5,8 @@ import Axios from "../../api/agent";
 import { observer } from "mobx-react-lite";
 import useContextStore from "../../context";
 
-const StoreModal = ({ modal, toggleModal, image, itemName, finalPurchase }) => {
+
+const StoreModal = ({ modal, toggleModal, image, itemName, finalPurchase, entityName }) => {
     const {
         userStore: { user, setBalance },
     } = useContextStore();
@@ -29,7 +30,7 @@ const StoreModal = ({ modal, toggleModal, image, itemName, finalPurchase }) => {
                         <span style={{ fontWeight: "bold" }}>Current Balance: </span> <span className={styles.money}>${user.balance.toFixed(2)} </span>
                         </div>
                         <div className={styles.buttonContainer}>
-                            <div onClick={finalPurchase}>
+                            <div onClick={() => finalPurchase(entityName)}>
                                 <OutlineButton title="Yes" minWidth={"50px"} />
                             </div>
                             <div onClick={toggleModal}>
