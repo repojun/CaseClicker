@@ -16,6 +16,7 @@ function App() {
   return (
     <>
       <Routes>
+        {/* <Route path="/profile/:username" element={<Login></Login>} /> */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/dashboard" element={<RouteAuthenticated> <Dashboard /> </RouteAuthenticated>} />

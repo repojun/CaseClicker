@@ -2,14 +2,14 @@ import OutlineButton from "../../components/outlinebutton/outlinebutton";
 import styles from "./login.module.css";
 import React, { useState } from "react";
 import Axios from "../../api/agent";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams} from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
+  const { username: poop } = useParams()
   const navigate = useNavigate();
 
   const handleLogin = async () => {
