@@ -129,7 +129,7 @@ const MainContainer = ({ children, className = " ", ...props }) => {
           </div>
           <div
             className={styles.navbutton}
-            onClick={() => console.log("modal code here")}
+            onClick={() => toggleModal()}
           >
             <AiOutlineSetting /> Settings
           </div>
