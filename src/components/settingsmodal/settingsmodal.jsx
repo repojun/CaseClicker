@@ -18,10 +18,10 @@ const SettingsModal = ({ modal, toggleModal }) => {
           <div className={styles.modalContent}>
             <div className={styles.modalTitle}>Settings</div>
 
-            <CheckBox id={1} title="Enable FX" />
-            <CheckBox id={2} title="Hello" />
-            <CheckBox id={3} title="Hello" />
-            <CheckBox id={4} title="Hello" />
+            <CheckBox id={1} title="Special Effects" description="Disable special effects."/>
+            <CheckBox id={2} title="Dashboard" description="Default description about dashboard." />
+            <CheckBox id={3} title="Finance" description="Basic information about finance." />
+            <CheckBox id={4} title="Feedback Template" description="Some information about feedback." />
 
             <div className={styles.buttonContainer}>
               <div onClick={toggleModal}>

@@ -1,3 +1,21 @@
+.flexBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.settingName {
+  color: #bbd3ff;
+  font-size: 18px;
+}
+
+.nameContainer {
+  font-size: 14px;
+  color: #9098A9;
+  display:flex;
+  flex-direction: column;
+}
 .checkboxWrapper46 input[type="checkbox"] {
   display: none;
   visibility: hidden;
@@ -9,11 +27,13 @@
   user-select: none;
   cursor: pointer;
 }
+
 .checkboxWrapper46 .cbx span {
   display: inline-block;
   vertical-align: middle;
   transform: translate3d(0, 0, 0);
 }
+
 .checkboxWrapper46 .cbx span:first-child {
   position: relative;
   width: 18px;
@@ -24,6 +44,7 @@
   border: 1px solid #9098A9;
   transition: all 0.2s ease;
 }
+
 .checkboxWrapper46 .cbx span:first-child svg {
   position: absolute;
   top: 3px;
@@ -39,6 +60,7 @@
   transition-delay: 0.1s;
   transform: translate3d(0, 0, 0);
 }
+
 .checkboxWrapper46 .cbx span:first-child:before {
   content: "";
   width: 100%;
@@ -49,22 +71,26 @@
   opacity: 1;
   border-radius: 50%;
 }
+
 .checkboxWrapper46 .cbx span:last-child {
   padding-left: 8px;
 }
+
 .checkboxWrapper46 .cbx:hover span:first-child {
   border-color: #506EEC;
 }
 
-.checkboxWrapper46 .inpCbx:checked + .cbx span:first-child {
+.checkboxWrapper46 .inpCbx:checked+.cbx span:first-child {
   background: #506EEC;
   border-color: #506EEC;
   animation: wave-46 0.4s ease;
 }
-.checkboxWrapper46 .inpCbx:checked + .cbx span:first-child svg {
+
+.checkboxWrapper46 .inpCbx:checked+.cbx span:first-child svg {
   stroke-dashoffset: 0;
 }
-.checkboxWrapper46 .inpCbx:checked + .cbx span:first-child:before {
+
+.checkboxWrapper46 .inpCbx:checked+.cbx span:first-child:before {
   transform: scale(3.5);
   opacity: 0;
   transition: all 0.6s ease;
@@ -75,4 +101,3 @@
     transform: scale(0.9);
   }
 }
-

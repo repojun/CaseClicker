@@ -30,7 +30,7 @@
   margin: 40px;
   top: 50%;
   left: 50%;
-  min-width: 400px;
+  min-width: 550px;
   max-width: 100%;
   display: flex;
   justify-self: left;
@@ -40,16 +40,22 @@
 }
 
 .modalTitle {
-  font-size: 36px;
+  font-size: 32px;
   font-weight: bold;
   color: #ffffff;
+  display:flex;
+  align-items: center;
+  justify-content: center;
 }
+
+
 
 .buttonContainer {
   display: flex;
   justify-content: center;
   align-items: center;
   column-gap: 10px;
+  margin-top: 20px;
 }
 
 @keyframes fadeIn {
