@@ -5,11 +5,12 @@ import SubContainer from "../../../components/subcontainer/subcontainer";
 import InventoryItem from "../../../components/inventoryitem/inventoryitem";
 import OutlineButton from "../../../components/outlinebutton/outlinebutton";
 import { BsSteam } from "react-icons/bs";
-import React from 'react';
+import React, { useEffect } from 'react';
 import { observer } from "mobx-react-lite";
 import useContextStore from "../../../context";
 import Axios from "../../../api/agent";
 import { useState } from "react";
+import InventoryComponent from "../../../components/inventorycomponent/inventorycomponent";
 
 function Inventory() {
   const [inventoryItems, setInventoryItems] = useState([]);
@@ -44,44 +45,6 @@ function Inventory() {
   //   { image: "/overpassparis.png", price: "£ 2.32" }
   // ];
 
-  const chunkSize = 8;
-
-
-  const test = () => {
-    console.log("Hey");
-    const itemCount = Object.keys(user.inventory).length;
-    console.log(itemCount);
-
-    const items = [];
-
-    for (const key in user.inventory) {
-      const item = user.inventory[key];
-      const itemName = key;
-
-      if (item.value > 0) {
-        for (let i = 0; i < item.value; i++) {
-          items.push({
-            name: key,
-            value: item.value,
-            price: "£" + item.price.toFixed(2),
-            image: item.image
-          });
-        }
-      }
-    }
-
-
-    setInventoryItems(items); // Update state with populated items
-  };
-
-
-
-  const rows = [];
-
-  for (let i = 0; i < inventoryItems.length; i += chunkSize) {
-    rows.push(inventoryItems.slice(i, i + chunkSize));
-  }
-
 
 
   return (
@@ -112,17 +75,7 @@ function Inventory() {
             <div className={styles.inventoryContainer}>
               <div className={styles.inventoryBox}>
                 <div className={styles.inventoryColumn}>
-                  {rows.map((row, index) => (
-                    <div key={index} className={styles.inventoryRow}>
-                      {row.map((item, itemIndex) => (
-                        <InventoryItem
-                          key={itemIndex}
-                          image={item.image}
-                          price={item.price}
-                        />
-                      ))}
-                    </div>
-                  ))}
+                <InventoryComponent />
                 </div>
               </div>
             </div>
