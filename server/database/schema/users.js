@@ -13,12 +13,12 @@ module.exports = mongoose.model( // exports allows us to use many functions with
       skin_test: {
         value: { type: Number, default: 0 },
         price: { type: Number, default: 1.90 },
-        image: { type: String, default: "/brokenfangnew.png"}
+        image: { type: String, default: "/glockfade.png"}
       },
       skin_test2: {
         value: { type: Number, default: 0 },
         price: { type: Number, default: 1.90 },
-        image: { type: String, default: "/recoilcasenew.png"}
+        image: { type: String, default: "/forzeholo.png"}
       },
       skin_test3: {
         value: { type: Number, default: 0 },
@@ -33,22 +33,22 @@ module.exports = mongoose.model( // exports allows us to use many functions with
       case2: {
         value: { type: Number, default: 0 },
         price: { type: Number, default: 1.90 },
-        image: { type: String, default: "/recoilcasenew.png"}
+        image: { type: String, default: "/brokenfangnew.png"}
       },
       case3: {
         value: { type: Number, default: 0 },
         price: { type: Number, default: 1.90 },
-        image: { type: String, default: "/recoilcasenew.png"}
+        image: { type: String, default: "/dreamnightmaresnew.png"}
       },
       case4: {
         value: { type: Number, default: 0 },
         price: { type: Number, default: 1.90 },
-        image: { type: String, default: "/recoilcasenew.png"}
+        image: { type: String, default: "/stockholmcontenders.png"}
       },
       case5: {
         value: { type: Number, default: 0 },
         price: { type: Number, default: 1.90 },
-        image: { type: String, default: "/recoilcasenew.png"}
+        image: { type: String, default: "/stockholmdust.png"}
       },
       case6: {
         value: { type: Number, default: 0 },
