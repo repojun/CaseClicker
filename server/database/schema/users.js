@@ -13,47 +13,56 @@ module.exports = mongoose.model( // exports allows us to use many functions with
       skin_test: {
         value: { type: Number, default: 0 },
         price: { type: Number, default: 1.90 },
-        image: { type: String, default: "/glockfade.png"}
+        image: { type: String, default: "/glockfade.png"},
+        purchasable: { type: Number, default: 0}
       },
       skin_test2: {
         value: { type: Number, default: 0 },
         price: { type: Number, default: 1.90 },
-        image: { type: String, default: "/forzeholo.png"}
+        image: { type: String, default: "/forzeholo.png"},
+        purchasable: { type: Number, default: 0}
       },
       skin_test3: {
         value: { type: Number, default: 0 },
         price: { type: Number, default: 1.90 },
-        image: { type: String, default: "/recoilcasenew.png"}
+        image: { type: String, default: "/recoilcasenew.png"},
+        purchasable: { type: Number, default: 1}
       },
       case1: {
         value: { type: Number, default: 0 },
         price: { type: Number, default: 1.90 },
-        image: { type: String, default: "/recoilcasenew.png"}
+        image: { type: String, default: "/recoilcasenew.png"},
+        purchasable: { type: Number, default: 1}
       },
       case2: {
         value: { type: Number, default: 0 },
         price: { type: Number, default: 1.90 },
-        image: { type: String, default: "/brokenfangnew.png"}
+        image: { type: String, default: "/brokenfangnew.png"},
+        purchasable: { type: Number, default: 1}
       },
       case3: {
         value: { type: Number, default: 0 },
         price: { type: Number, default: 1.90 },
-        image: { type: String, default: "/dreamnightmaresnew.png"}
+        image: { type: String, default: "/dreamnightmaresnew.png"},
+        purchasable: { type: Number, default: 1}
       },
       case4: {
         value: { type: Number, default: 0 },
         price: { type: Number, default: 1.90 },
-        image: { type: String, default: "/stockholmcontenders.png"}
+        image: { type: String, default: "/stockholmcontenders.png"},
+        purchasable: { type: Number, default: 1}
       },
       case5: {
         value: { type: Number, default: 0 },
         price: { type: Number, default: 1.90 },
-        image: { type: String, default: "/stockholmdust.png"}
+        image: { type: String, default: "/stockholmdust.png"},
+        purchasable: { type: Number, default: 1}
       },
       case6: {
         value: { type: Number, default: 0 },
         price: { type: Number, default: 1.90 },
-        image: { type: String, default: "/recoilcasenew.png"}
+        image: { type: String, default: "/recoilcasenew.png"},
+        purchasable: { type: Number, default: 0}
       },
     },
     passiveUpgrades: {
