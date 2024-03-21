@@ -1,6 +1,12 @@
 import styles from "./inventoryitem.module.css";
-import React  from 'react';
+import React from 'react';
+import { observer } from "mobx-react-lite";
+import useContextStore from "../../context";
 const InventoryItem = ({ image, price, title, children, className = " ", ...props }) => {
+  const {
+    userStore: { user, setBalance },
+  } = useContextStore();
+
   return (
     <div className={styles.inventoryItemCard}>
       <div className={styles.inventoryItemCardContent}>
@@ -19,4 +25,4 @@ const InventoryItem = ({ image, price, title, children, className = " ", ...prop
   );
 };
 
-export default InventoryItem;
+export default observer(InventoryItem);

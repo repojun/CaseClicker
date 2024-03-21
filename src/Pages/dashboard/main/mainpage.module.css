@@ -22,13 +22,20 @@
     user-drag: none;
     flex-shrink: 0;
     flex: 0 0 auto;
-
 }
 
 .circle:hover {
     box-shadow: 0px 0px 80px #00000097;
     cursor: pointer;
     transition: 0.2s;
+    user-select: none;
+    user-drag: none;
+}
+
+.circletext {
+    font-size: 50px;
+    color: #fff;
+    text-align: center;
 }
 
 .priceGain {

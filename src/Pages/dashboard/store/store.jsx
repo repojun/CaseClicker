@@ -76,7 +76,7 @@ function Store() {
         { ID: 3, price: 100, title: "Wordy Item", image: "/brokenfangnew.png", entityName: "case3" },
         { ID: 4, price: 15000, title: "Big Word Item", image: "/brokenfangnew.png", entityName: "case4" },
         { ID: 5, price: 750, title: "New Word Item", image: "/recoilcasenew.png", entityName: "case5" },
-        { ID: 6, price: 250, title: "Testing Item", image: "/dreamnightmaresnew.png", entityName: "case6" }
+        { ID: 6, price: 250, title: "Testing Item", image: "/stockholmdust.png", entityName: "case6" }
     ];
 
     function chunkArray(array, size) {
