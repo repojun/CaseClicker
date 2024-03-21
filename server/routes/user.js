@@ -5,13 +5,16 @@ const { getCookie } = require("../cookies/get");
 const { fetchUser, updateUserBalance, updateUserPassiveUpgrade, updateUserPassiveUpgradeLevel, updateUserPremiumBalance, updateUserInventory } = require("../database/queries/users");
 
 router.get("/exists", async (req, res) => {
+ 
   const user = getCookie(req.cookies, "user_cookie", true);
   if (!user) {
+    console.log("1 ERROR CHECKING: " + user);
     return res.sendStatus(404);
   }
 
   const query = await fetchUser(user.id)
   if (!query) {
+    console.log("2 ERROR CHECKING: " + user);
     return res.sendStatus(404);
   }
   return res.json(query);

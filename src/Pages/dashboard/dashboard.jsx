@@ -10,6 +10,8 @@ import { toJS } from "mobx";
 function Dashboard() {
 
   const { userStore: { user } } = useContextStore();
+  console.log("HEY" + user.username);
+  console.log("HEY" + user.balance);
   return (
     <>
       <MainContainer>

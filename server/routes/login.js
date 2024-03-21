@@ -19,7 +19,7 @@ router.post("/", async (req, res) => {
   }
   const user = await fetchUser(login.id); // now that we can compare, we can send the proper data back below
   if (user) {
-    setServerSideCookie(res, "user_cookie", user, true);
+    setServerSideCookie(res, "user_cookie", {id: user.id, username: user.username}, true);
     return res.sendStatus(200); // successful status and send user data (balance, id etc)
   }
   return res.status(400).send("User not found."); // bad request
