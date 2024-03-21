@@ -9,7 +9,7 @@ router.get("/exists", async (req, res) => {
   if (!user) {
     return res.sendStatus(404);
   }
-  console.log(user);
+
   const query = await fetchUser(user.id)
   if (!query) {
     return res.sendStatus(404);

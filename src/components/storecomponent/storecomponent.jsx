@@ -42,7 +42,7 @@ const StoreComponent = ({ purchase }) => {
       chunkedArr.push(arr.slice(index, size + index));
       index += size;
     }
-    console.log("CHUNKY ARRAY: " + chunkedArr);
+
     return chunkedArr;
   };
   
