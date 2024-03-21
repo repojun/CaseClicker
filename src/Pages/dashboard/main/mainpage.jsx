@@ -12,8 +12,12 @@ var baseClick = 0.11;
 var multiplier = 1;
 
 function MainPage() {
-
-  const { userStore: { user: { balance = 0 }, setBalance } } = useContextStore()
+  const {
+    userStore: {
+      user: { balance = 0 },
+      setBalance,
+    },
+  } = useContextStore();
   const [moneyArray, setMoneyArray] = useState([]);
 
   const handleMultiplierChange = (newMultiplier) => {
@@ -21,10 +25,11 @@ function MainPage() {
   };
 
   const handleBalanceChange = async (newBalance) => {
-    var newBalanceVariable = balance - newBalance
+    var newBalanceVariable = balance - newBalance;
     setBalance(newBalanceVariable);
-    const query = await Axios("/api/user/setbalance", "POST", { balance: newBalanceVariable })
-
+    const query = await Axios("/api/user/setbalance", "POST", {
+      balance: newBalanceVariable,
+    });
   };
 
   // useEffect(() => {
@@ -48,15 +53,21 @@ function MainPage() {
   const handleClick = async (e) => {
     const newBalance = balance + baseClick * multiplier;
     setBalance(newBalance);
-    const query = await Axios("/api/user/setbalance", "POST", { balance: newBalance })
-    var Xlocation = e.clientX; // Get client's X and Y coordinates on click
-    var Ylocation = e.clientY;
-    var newElement = ( // Stores div in variable to be stored in useStateArray
-      <div className={styles.money} style={{ top: Ylocation, left: Xlocation }}>
-        ${multiplier * baseClick}
-      </div>
-      // Top is Y axis, left is X axis
-    );
+    const query = await Axios("/api/user/setbalance", "POST", {
+      balance: newBalance,
+    });
+    var Xlocation = e.clientX - 35; // Get client's X and Y coordinates on click
+    var Ylocation = e.clientY - 10;
+    var newElement = // Stores div in variable to be stored in useStateArray
+      (
+        <div
+          className={styles.money}
+          style={{ top: Ylocation, left: Xlocation }}
+        >
+          ${multiplier * baseClick}
+        </div>
+        // Top is Y axis, left is X axis
+      );
     setMoneyArray([...moneyArray, newElement]); // adds the div to the moneyArray
   };
 
