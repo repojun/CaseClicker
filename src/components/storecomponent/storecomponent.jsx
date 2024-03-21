@@ -24,7 +24,6 @@ const StoreComponent = ({ purchase }) => {
 
     if (item.purchasable > 0) {
       for (let i = 0; i < item.purchasable; i++) {
-        console.log("hello " + item.viewname)
         items.push({
           title: item.viewname,
           price: item.price,
@@ -59,7 +58,7 @@ const StoreComponent = ({ purchase }) => {
               price={"$" + item.price.toFixed(2)}
               title={item.title}
               image={item.image}
-              click={() => handlePurchase(item.price, item.image, item.viewname, item.entityName)} 
+              click={() => handlePurchase(item.price, item.image, item.title, item.entityName)} 
             />
           ))}
         </div>

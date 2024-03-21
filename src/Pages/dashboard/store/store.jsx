@@ -36,11 +36,7 @@ function Store() {
   };
 
   const finalPurchase = async (entityName) => {
-    console.log("I GOT HERE" + entityName)
-    console.log("I GOT HERE" + entityName)
-    console.log("I GOT HERE" + entityName)
-    console.log(user.balance);
-    console.log(price);
+
     if (user.balance >= price) {
       console.log(user.balance);
       console.log("helloooo " + user.balance);
