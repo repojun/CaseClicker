@@ -13,8 +13,8 @@ const StoreComponent = ({ purchase }) => {
     return null;
   }
 
-  const handlePurchase = (price, image, title, entityName) => {
-    purchase(price, image, title, entityName);
+  const handlePurchase = (price, image, viewname, entityName) => {
+    purchase(price, image, viewname, entityName);
   };
 
   const items = [];
@@ -24,12 +24,14 @@ const StoreComponent = ({ purchase }) => {
 
     if (item.purchasable > 0) {
       for (let i = 0; i < item.purchasable; i++) {
+        console.log("hello " + item.viewname)
         items.push({
-          title: key,
+          title: item.viewname,
           price: item.price,
           image: item.image,
           entityName: key
         });
+        
       }
     }
   }
@@ -57,7 +59,7 @@ const StoreComponent = ({ purchase }) => {
               price={"$" + item.price.toFixed(2)}
               title={item.title}
               image={item.image}
-              click={() => handlePurchase(item.price, item.image, item.title, item.title)} 
+              click={() => handlePurchase(item.price, item.image, item.viewname, item.entityName)} 
             />
           ))}
         </div>
