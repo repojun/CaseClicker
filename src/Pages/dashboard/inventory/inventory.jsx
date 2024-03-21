@@ -19,6 +19,13 @@ function Inventory() {
     userStore: { user, setBalance, setItem },
   } = useContextStore();
 
+  const [refreshKey, setRefreshKey] = useState(0);
+
+  const handleRefresh = () => {
+    // Increment the refresh key to trigger a re-render
+    setRefreshKey(prevKey => prevKey + 1);
+  };
+
   // const inventoryItems = [
   //   { image: "/brokenfangnew.png", price: "£ 3.52" },
   //   { image: "/glockfade.png", price: "£ 1,800" },
@@ -66,7 +73,7 @@ function Inventory() {
                 </div>
               </div>
               <div className={styles.buttonContainerRight}>
-                <OutlineButton title="Set" />
+                <OutlineButton title="Refresh" click={() => {window.location.reload();}}/>
                 <OutlineButton title="Add SCR" />
                 <OutlineButton title="Filter" />
                 <input type="text" className={styles.searchBar} placeholder="Search.."></input>
