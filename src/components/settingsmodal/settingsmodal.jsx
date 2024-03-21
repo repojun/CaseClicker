@@ -4,6 +4,7 @@ import OutlineButton from "../outlinebutton/outlinebutton";
 import Axios from "../../api/agent";
 import { observer } from "mobx-react-lite";
 import useContextStore from "../../context";
+import CheckBox from "../checkbox/checkbox";
 
 const SettingsModal = ({ modal, toggleModal }) => {
   const {
@@ -13,27 +14,18 @@ const SettingsModal = ({ modal, toggleModal }) => {
   return (
     <>
       {modal && (
-        <div className={styles.overlay} onClick={toggleModal}>
+        <div className={styles.overlay}>
           <div className={styles.modalContent}>
-            <div className={styles.modalTitle}>Purchase Confirmation</div>
-            <div>
-              Are you sure you would like to purchase
-              <span style={{ fontWeight: "bold" }}>hello</span>?
-            </div>
-            <div>
-              <span style={{ fontWeight: "bold" }}>Current Balance: </span>
-              <span className={styles.money}>hello</span>
-            </div>
+            <div className={styles.modalTitle}>Settings</div>
+
+            <CheckBox id={1} title="Enable FX" />
+            <CheckBox id={2} title="Hello" />
+            <CheckBox id={3} title="Hello" />
+            <CheckBox id={4} title="Hello" />
+
             <div className={styles.buttonContainer}>
-              <div
-                onClick={() => {
-                  console.log("hey");
-                }}
-              >
-                <OutlineButton title="Yes" minWidth={"50px"} />
-              </div>
               <div onClick={toggleModal}>
-                <OutlineButton title="No" minWidth={"50px"} />
+                <OutlineButton title="Close" minWidth={"80px"} />
               </div>
             </div>
           </div>
