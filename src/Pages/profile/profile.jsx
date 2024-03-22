@@ -14,17 +14,13 @@ function Profile() {
   useEffect(() => {
     const getUser = async () => {
       try {
-        console.log("1 I GOT HERE");
-        const response = await Axios("/api/user/exists", "GET", { username });
-        console.log("HERE" + response);
+        const response = await Axios("/api/user/existsusername", "GET", { username });
         setUserData(response);
       } catch (error) {
-        console.log("2 I GOT HERE " + error);
       }
     };
 
     if (username) {
-      console.log("3 I GOT HERE " + username);
 
       getUser();
     }
