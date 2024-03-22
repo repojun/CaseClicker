@@ -1,6 +1,6 @@
 import useContextStore from "../../context";
 import styles from "./profile.module.css";
-import React, {useState} from "react";
+import React, {useState, useParams} from "react";
 import { observer } from "mobx-react-lite";
 
 function Profile() {
@@ -8,10 +8,11 @@ function Profile() {
     userStore: { user },
   } = useContextStore();
 
+  let params = useParams();
 
   return (
     <div>
-      Test Page
+      {params.username}
     </div>
   )
 }

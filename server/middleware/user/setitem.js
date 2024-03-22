@@ -1,5 +1,5 @@
-const { getCookie } = require("../cookies/get");
-const { fetchUser, updateUserInventory } = require("../database/queries/users");
+const { getCookie } = require("../../cookies/get");
+const { fetchUser, updateUserInventory } = require("../../database/queries/users");
 
 const setItem = async (req, res) => {
   const { item } = req.body;
