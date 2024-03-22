@@ -20,6 +20,19 @@
   min-width: 1200px;
   display:flex;
   justify-content: center;
+  
+}
+
+.metricFlex {
+  display:flex;
+  column-gap: 30px;
+}
+
+
+.subContainerSep {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .subContainerTitle {
@@ -30,10 +43,80 @@
   justify-self: center;
   font-size: 32px;
   font-weight: bold;
+  margin-bottom: 30px;
 }
 
 .avatar {
   height: 170px;
   width: 170px;
   margin-bottom: 10px;
+}
+
+.metricTitle {
+  font-size: 16px;
+  color: #bbd3ff;
+}
+
+.metricTitleValue {
+  font-size: 16px;
+  color: #15e815;
+  text-shadow: 0px 0px 20px #05ff09;
+}
+
+.metricTitleValueNegative {
+  font-size: 16px;
+  color: #e81515;
+  text-shadow: 0px 0px 15px #ff0505;
+}
+
+.metricTitleContainer {
+  display: flex;
+  flex-direction: row;
+  column-gap: 100px;
+}
+
+.metricContent {
+  margin-top: 50px;
+  font-size: 50px;
+}
+
+.metricMainBox {
+  display: flex;
+  column-gap: 80px;
+}
+
+.metricContentSubtext {
+  color: #bbd3ff4a;
+  font-size: 10px;
+  text-shadow: none;
+  margin: none;
+}
+
+.metricBlock {
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 25px;
+  padding: 25px;
+  background-color: #243451;
+  border-radius: 30px;
+  transition: 0.4s;
+}
+
+.metricBlock:hover {
+  background-color: #30476e;
+  box-shadow: 0px 0px 20px -2px#00000041;
+  transition: 0.2s;
+}
+
+.metricValue {
+  font-size: 45px;
+}
+
+.dollar {
+  font-weight: bold;
+  font-size: 25px;
+  color: #bbd3ff;
+  vertical-align: text-top;
+  margin-right:5px;
 }
