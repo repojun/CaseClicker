@@ -72,6 +72,7 @@
 .metricTitleContainer {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   column-gap: 100px;
 }
 
@@ -93,7 +94,7 @@
 }
 
 .metricBlock {
-  min-width: 200px;
+  min-width: 275px;
   display: flex;
   flex-direction: column;
   row-gap: 25px;
