@@ -32,20 +32,6 @@ function MainPage() {
     });
   };
 
-  // useEffect(() => {
-  //   // This code will run every time user.balance changes
-  //   console.log('User balance changed:', balance);
-  //   var Xlocation = 500; // Get client's X and Y coordinates on click
-  //   var Ylocation = 500;
-  //   var newElement = ( // Stores div in variable to be stored in useStateArray
-  //     <div className={styles.money} style={{ top: Ylocation, left: Xlocation }}>
-  //       $
-  //     </div>
-  //     // Top is Y axis, left is X axis
-  //   );
-  //   setMoneyArray([...moneyArray, newElement]); // adds the div to the moneyArray
-  // }, [balance]);
-
   const handleMoneyArrayChange = (newElement) => {
     setMoneyArray([...moneyArray, newElement]);
   };

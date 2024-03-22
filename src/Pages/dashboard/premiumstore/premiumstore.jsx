@@ -14,10 +14,8 @@ function PremiumStore() {
 
     const test = async (price) => {
         if (user.premiumBalance >= price) {
-            console.log("Pre: " + user.premiumBalance)
             let newBalance = user.premiumBalance - price
             setPremiumBalance(newBalance)
-            console.log("Post: " + user.premiumBalance)
             const query = await Axios("/api/user/setpremiumbalance", "POST", {
                 premiumBalance: newBalance,
             });

@@ -17,7 +17,7 @@ export default function Login() {
       const query = await Axios("/api/login", "POST", { username, password });
       navigate("/dashboard/");
     } catch (error) {
-      console.log(error);
+
       const errorCode = error.response.status;
       const errorMessage = error.response.data;
 

@@ -1,5 +1,5 @@
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
+import {Routes, Route} from "react-router-dom";
 import Dashboard from "./Pages/dashboard/dashboard";
 import Investments from "./Pages/dashboard/investments/investments";
 import Tracker from "./Pages/dashboard/tracker/tracker";
@@ -11,21 +11,78 @@ import React from "react";
 import Store from "./Pages/dashboard/store/store";
 import RouteAuthenticated from "./routes/authenticated";
 import PremiumStore from "./Pages/dashboard/premiumstore/premiumstore";
+import Profile from "./Pages/profile/profile";
 
 function App() {
   return (
     <>
       <Routes>
-        {/* <Route path="/profile/:username" element={<Login></Login>} /> */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/dashboard" element={<RouteAuthenticated> <Dashboard /> </RouteAuthenticated>} />
-        <Route path="/dashboard/investments" element={<RouteAuthenticated> <Investments /> </RouteAuthenticated>} />
-        <Route path="/dashboard/inventory" element={<RouteAuthenticated> <Inventory /> </RouteAuthenticated>} />
-        <Route path="/dashboard/tracker" element={<RouteAuthenticated> <Tracker /> </RouteAuthenticated>} />
-        <Route path="/dashboard/mainpage" element={<RouteAuthenticated> <MainPage /> </RouteAuthenticated>} />
-        <Route path="/dashboard/store" element={<RouteAuthenticated> <Store /> </RouteAuthenticated>} />
-        <Route path="/dashboard/premiumstore" element={<RouteAuthenticated> <PremiumStore /> </RouteAuthenticated>} />
+        <Route
+          path="/dashboard"
+          element={
+            <RouteAuthenticated>
+              <Dashboard />
+            </RouteAuthenticated>
+          }
+        />
+        <Route
+          path="/dashboard/investments"
+          element={
+            <RouteAuthenticated>
+              <Investments />
+            </RouteAuthenticated>
+          }
+        />
+        <Route
+          path="/dashboard/inventory"
+          element={
+            <RouteAuthenticated>
+              <Inventory />
+            </RouteAuthenticated>
+          }
+        />
+        <Route
+          path="/dashboard/tracker"
+          element={
+            <RouteAuthenticated>
+              <Tracker />
+            </RouteAuthenticated>
+          }
+        />
+        <Route
+          path="/dashboard/mainpage"
+          element={
+            <RouteAuthenticated>
+              <MainPage />
+            </RouteAuthenticated>
+          }
+        />
+        <Route
+          path="/dashboard/store"
+          element={
+            <RouteAuthenticated>
+              <Store />
+            </RouteAuthenticated>
+          }
+        />
+        <Route
+          path="/dashboard/premiumstore"
+          element={
+            <RouteAuthenticated>
+              <PremiumStore />
+            </RouteAuthenticated>
+          }
+        />
+        <Route
+          path="/profile/:username"
+          element={
+            <RouteAuthenticated>
+              <Profile />
+            </RouteAuthenticated>
+          }
+        />
       </Routes>
     </>
   );

@@ -1,5 +1,5 @@
-const { getCookie } = require("../cookies/get");
-const { fetchUser, updateUserPassiveUpgrade} = require("../database/queries/users");
+const { getCookie } = require("../../cookies/get");
+const { fetchUser, updateUserPassiveUpgrade} = require("../../database/queries/users");
 
 const setPassiveUpgrade = async (req, res) => {
   const { passiveUpgradeID } = req.body;

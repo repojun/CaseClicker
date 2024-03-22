@@ -1,5 +1,5 @@
-const { getCookie } = require("../cookies/get");
-const { fetchUser, updateUserPremiumBalance, } = require("../database/queries/users");
+const { getCookie } = require("../../cookies/get");
+const { fetchUser, updateUserPremiumBalance, } = require("../../database/queries/users");
 
 const setPremiumBalance = async (req, res) => {
   const { premiumBalance } = req.body;

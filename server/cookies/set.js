@@ -5,7 +5,6 @@ const setServerSideCookie = (response, name, value, isEncrypted = false) => {
   if (isEncrypted) {
     // if it needs to be encrypted, encode it
     const encodedCookie = encodeCookie(value);
-    console.log(encodedCookie);
     response.cookie(name, encodedCookie, serverSideCookieOptions());
   } else {
     response.cookie(name, value, serverSideCookieOptions());
