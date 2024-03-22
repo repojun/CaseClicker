@@ -1,20 +1,16 @@
-import useContextStore from "../../context";
-import styles from "./profile.module.css";
-import React, {useState, useParams} from "react";
+import { React, useContext } from "react";
 import { observer } from "mobx-react-lite";
+import { useParams } from "react-router-dom"; 
+import useContextStore from "../../context";
 
 function Profile() {
   const {
     userStore: { user },
-  } = useContextStore();
+  } = useContext(useContextStore()); 
 
-  let params = useParams();
+  let { username } = useParams(); 
 
-  return (
-    <div>
-      {params.username}
-    </div>
-  )
+  return <div className={styles.profile}>{username}</div>; 
 }
 
 export default observer(Profile);
