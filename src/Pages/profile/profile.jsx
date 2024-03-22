@@ -1,6 +1,6 @@
-import React, { useContext, useState, useEffect } from "react";
-import { observer } from "mobx-react-lite";
-import { useParams } from "react-router-dom";
+import React, {useContext, useState, useEffect} from "react";
+import {observer} from "mobx-react-lite";
+import {useParams} from "react-router-dom";
 import useContextStore from "../../context";
 import styles from "./profile.module.css";
 import MainContainer from "../../components/maincontainer/maincontainer";
@@ -9,22 +9,26 @@ import Axios from "../../api/agent";
 
 function Profile() {
   const [userData, setUserData] = useState(null);
-  const { username } = useParams();
+  const {username} = useParams();
 
   useEffect(() => {
     const getUser = async () => {
       try {
-        const response = await Axios("/api/user/existsusername", "GET", { username });
+        const response = await Axios("/api/user/username/exists", "POST", {
+          username,
+        });
         setUserData(response);
       } catch (error) {
+        // throw error using toast
       }
     };
 
     if (username) {
-
       getUser();
     }
   }, [username]);
+
+  if (!username || !userData) return <div>User not found</div>;
 
   return (
     <>
