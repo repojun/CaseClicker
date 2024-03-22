@@ -11,12 +11,14 @@ import React from "react";
 import Store from "./Pages/dashboard/store/store";
 import RouteAuthenticated from "./routes/authenticated";
 import PremiumStore from "./Pages/dashboard/premiumstore/premiumstore";
+import Profile from "./Pages/profile/profile";
+
 
 function App() {
   return (
     <>
       <Routes>
-        {/* <Route path="/profile/:username" element={<Login></Login>} /> */}
+        <Route path="/profile/:username" element={<Profile></Profile>} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/dashboard" element={<RouteAuthenticated> <Dashboard /> </RouteAuthenticated>} />
