@@ -16,13 +16,15 @@ function Profile() {
   return (
     <MainContainer>
       <SubContainer>
+        <div className={styles.flex}>
+          <div className={styles.subContainer}>
+            <div className={styles.subContainerTitle}>
+              <img src="/circlepfp.png" alt=" " className={styles.avatar}></img>
 
-          <div className={styles.flex}>
-            <div className={styles.subContainer}>
-              <div className={styles.subContainerTitle}>{username}</div>
+              {username}
             </div>
           </div>
-
+        </div>
       </SubContainer>
     </MainContainer>
   );
