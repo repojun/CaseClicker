@@ -11,7 +11,7 @@ const userExistsUsername = async (req, res) => {
   if (!query) {
     return res.sendStatus(404);
   }
-  return res.json(query.id);
+  return res.json(query);
 };
 
 module.exports = userExistsUsername;

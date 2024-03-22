@@ -60,7 +60,8 @@
 .metricTitleValue {
   font-size: 16px;
   color: #15e815;
-  text-shadow: 0px 0px 20px #05ff09;
+  /* box-shadow: 0px 0px 20px #05ff09;
+  border-radius: 50%; */
 }
 
 .metricTitleValueNegative {
@@ -94,7 +95,8 @@
 }
 
 .metricBlock {
-  min-width: 275px;
+  min-width: 300px;
+  max-width: 300px;
   display: flex;
   flex-direction: column;
   row-gap: 25px;
