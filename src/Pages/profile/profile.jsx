@@ -17,7 +17,7 @@ function Profile() {
         const response = await Axios("/api/user/exists", "GET", { username });
         setUserData(response.data);
       } catch (error) {
-        console.log("here is the error" + error);
+
       } 
     };
 

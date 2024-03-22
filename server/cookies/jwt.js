@@ -25,7 +25,6 @@ function encodeCookie(value = "") {
     }
     return undefined;
   } catch (err) {
-    console.log(err);
     return undefined;
   }
 }

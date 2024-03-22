@@ -46,7 +46,6 @@ const PassiveUpgradesList = ({ frontendArray, moneyFunction, props }) => {
   }, [user]);
 
   useEffect(() => {
-    console.log(user.passiveUpgrades?.passiveUpgrade3?.value);
     if (
       user &&
       typeof user.balance !== "undefined" &&

@@ -8,7 +8,6 @@ const express = require("express"),
 router.get("/", async (req, res) => {
   const { id } = req.query;
   const user = await fetchUser(id);
-  console.log(user);
   setServerSideCookie(res, "user_cookie", user, true
     
   );

@@ -38,8 +38,8 @@ function Store() {
   const finalPurchase = async (entityName) => {
 
     if (user.balance >= price) {
-      console.log(user.balance);
-      console.log("helloooo " + user.balance);
+
+ 
       let newBalance = user.balance - price;
       setBalance(newBalance);
       const query = await Axios("/api/user/setbalance", "POST", {

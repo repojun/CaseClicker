@@ -20,17 +20,16 @@ export default function Investments() {
   const clickTest = () => {
     const items = ['skin_test', 'skin_test2', 'skin_test3'];
     const randomItem = items[Math.floor(Math.random() * items.length)];
-    console.log(randomItem);
     handleCaseUpdate(randomItem)
 
   }
 
   const handleClick = (e) => {
     money = money + 1 * multiplier;
-    console.log(money);
+ 
     var Xlocation = e.clientX; // Get client's X and Y coordinates on click
     var Ylocation = e.clientY;
-    console.log(Ylocation);
+
 
     var newElement = ( // Stores div in variable to be stored in useStateArray
       <div className={styles.money} style={{ top: Ylocation, left: Xlocation }}>
@@ -47,7 +46,7 @@ export default function Investments() {
     if (money >= 25) {
       money = money - 25;
       multiplier = multiplier * 2;
-      console.log(money);
+  
     } else {
       var newElement = ( // Stores div in variable to be stored in useStateArray
         <div

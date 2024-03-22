@@ -13,13 +13,13 @@ const RouteAuthenticated = ({ children }) => {
   const userExists = async () => {
     try {
       const userExists = await Axios("/api/user/exists");
-      console.log(userExists);
+ 
       if (!userExists) {
         return navigate("/login");
       }
       setUser(userExists);
     } catch (err) {
-      console.log(err);
+   
       return navigate("/login");
     }
   };
