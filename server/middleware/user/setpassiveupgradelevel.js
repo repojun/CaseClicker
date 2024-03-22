@@ -1,3 +1,6 @@
+const { getCookie } = require("../cookies/get");
+const { fetchUser, updateUserPassiveUpgradeLevel, } = require("../database/queries/users");
+
 const setPassiveUpgradeLevel = async (req, res) => {
   const { passiveUpgradeID, newLevel } = req.body;
   if (!passiveUpgradeID || !newLevel) {

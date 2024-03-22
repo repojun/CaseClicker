@@ -1,3 +1,6 @@
+const { getCookie } = require("../cookies/get");
+const { fetchUser } = require("../database/queries/users");
+
 const userExists = async (req, res) => {
   const user = getCookie(req.cookies, "user_cookie", true);
   if (!user) {

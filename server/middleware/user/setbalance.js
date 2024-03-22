@@ -1,3 +1,6 @@
+const { getCookie } = require("../cookies/get");
+const { fetchUser, updateUserBalance } = require("../database/queries/users");
+
 const setBalance = async (req, res) => {
   const { balance } = req.body;
   if (!balance) {

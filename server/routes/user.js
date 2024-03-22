@@ -8,8 +8,7 @@ const setPassiveUpgrade = require("../middleware/user/setpassiveupgrade");
 const setPassiveUpgradeLevel = require("../middleware/user/setpassiveupgradelevel");
 const setItem = require("../middleware/user/setitem");
 
-const { getCookie } = require("../cookies/get");
-const { fetchUser, updateUserBalance, updateUserPassiveUpgrade, updateUserPassiveUpgradeLevel, updateUserPremiumBalance, updateUserInventory } = require("../database/queries/users");
+
 
 router.get("/exists", userExists);
 router.post("/setbalance", setBalance);
