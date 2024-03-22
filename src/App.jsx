@@ -11,14 +11,12 @@ import React from "react";
 import Store from "./Pages/dashboard/store/store";
 import RouteAuthenticated from "./routes/authenticated";
 import PremiumStore from "./Pages/dashboard/premiumstore/premiumstore";
-import Profile from "./Pages/profile/profile";
-
+import Profile from "./Pages/profile/profile"; 
 
 function App() {
   return (
     <>
       <Routes>
-        <Route path="/profile/:username" element={<Profile></Profile>} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/dashboard" element={<RouteAuthenticated> <Dashboard /> </RouteAuthenticated>} />
@@ -28,6 +26,7 @@ function App() {
         <Route path="/dashboard/mainpage" element={<RouteAuthenticated> <MainPage /> </RouteAuthenticated>} />
         <Route path="/dashboard/store" element={<RouteAuthenticated> <Store /> </RouteAuthenticated>} />
         <Route path="/dashboard/premiumstore" element={<RouteAuthenticated> <PremiumStore /> </RouteAuthenticated>} />
+        <Route path="/profile/:username" element={<RouteAuthenticated> <Profile /> </RouteAuthenticated>} />
       </Routes>
     </>
   );
