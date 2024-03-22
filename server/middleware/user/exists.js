@@ -11,5 +11,4 @@ const userExists = async (req, res) => {
   return res.json(query);
 };
 
-
 module.exports = userExists
