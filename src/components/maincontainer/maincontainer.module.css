@@ -6,10 +6,13 @@
   padding:15px;
   text-align: left;
   z-index: 20;
+  position: fixed;
+  height: 100vh;
 }
 
 .right {
   flex: 1;
+  margin-left: 284px;
 }
 
 .bgtest {
