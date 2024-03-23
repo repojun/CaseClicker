@@ -27,7 +27,6 @@ function Leaderboard() {
     }
   }, [leaderboardData]);
 
-
   if (!leaderboardData)
     return (
       <MainContainer>
@@ -35,12 +34,11 @@ function Leaderboard() {
       </MainContainer>
     );
 
-    const topThree = leaderboardData.slice(0, 3).map((user) => ({ username: user.username, balance: user.balance.toFixed(2), profilePicture: user.profilePicture }));
-    const restOfLeaderboard = leaderboardData.slice(3).map((user) => ({ username: user.username, balance: user.balance.toFixed(2), profilePicture: user.profilePicture }));
+  const topThree = leaderboardData.slice(0, 3).map((user) => ({ username: user.username, balance: user.balance.toFixed(2), profilePicture: user.profilePicture }));
+  const restOfLeaderboard = leaderboardData.slice(3).map((user) => ({ username: user.username, balance: user.balance.toFixed(2), profilePicture: user.profilePicture }));
 
-    console.log("Top Three:", topThree);
-    console.log("Rest of Leaderboard:", restOfLeaderboard);
-
+  console.log("Top Three:", topThree);
+  console.log("Rest of Leaderboard:", restOfLeaderboard);
 
   return (
     <>
@@ -90,7 +88,7 @@ function Leaderboard() {
                       <td>#{index + 4}</td>
                       <td>
                         <div className={styles.flexy}>
-                          <img src={`${user.profilePicture}`} className={styles.avatar} alt=""></img> {user.username}
+                          <img src={`${user.profilePicture}`} className={styles.avatar} alt="" onClick={() => navigate(`/profile/${user.username}`)}></img> <div className={styles.username} onClick={() => navigate(`/profile/${user.username}`)}>{user.username}</div>
                         </div>
                       </td>
                       <td>{user.balance}</td>
