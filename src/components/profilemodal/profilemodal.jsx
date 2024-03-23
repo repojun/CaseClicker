@@ -18,7 +18,7 @@ const ProfileModal = ({ modal, toggleModal, image, itemName, finalPurchase, enti
             <div className={styles.modalTitle}>Profile Settings</div>
             <img className={styles.itemCardImage} src={image} alt="" />
             <div>Profile Picture Link:</div>
-            <input type="text" className={styles.searchBar} placeholder="Search.."></input>
+            <input type="text" className={styles.searchBar} placeholder="Enter image link..."></input>
             <div className={styles.buttonContainer}>
               <div onClick={() => finalPurchase(entityName)}>
                 <OutlineButton title="Confirm" minWidth={"80px"} />

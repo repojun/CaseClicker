@@ -26,7 +26,6 @@
   background-color: #141f33;
   border-radius: 25px;
   box-shadow: 0px 0px 20px -2px#000000ad;
-  margin: 40px;
   top: 50%;
   left: 50%;
   min-width: 500px;
@@ -39,13 +38,14 @@
 }
 
 .searchBar {
-  background-color: #141f33;
+  background-color: #192f57;
   border: 2px solid #141f33;
-  border-radius: 20px;
+  border-radius: 10px;
   padding: 10px;
   color: #bbd3ff;
   transition: 0.4s;
-
+  min-width: 300px;
+  margin-bottom: 30px;
 }
 
 .searchBar:focus {
