@@ -43,7 +43,7 @@ function Profile() {
     }
   }, [username]);
 
-  if (!username || !userData) return <div>User not found</div>;
+  if (!username || !userData) return <MainContainer><SubContainer>User Not Found</SubContainer></MainContainer>;
 
   return (
     <>
