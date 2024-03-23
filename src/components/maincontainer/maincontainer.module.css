@@ -29,6 +29,7 @@
 .avatar {
   height: 170px;
   width: 170px;
+  border-radius: 50%;
 }
 
 .avatar:hover {
