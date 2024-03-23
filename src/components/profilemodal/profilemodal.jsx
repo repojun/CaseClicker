@@ -16,7 +16,16 @@ const ProfileModal = ({ modal, toggleModal }) => {
     setImageLink(event.target.value);
   };
 
-  const handleConfirm = () => {};
+  const handleConfirm = async () => {
+
+    const query = await Axios("/api/user/setprofilepicture", "POST", {
+      profilePicture: imageLink,
+    });
+
+    toggleModal()
+    setImageLink("");
+
+  };
 
   console.log("Current image link:", imageLink);
 

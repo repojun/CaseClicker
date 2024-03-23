@@ -6,11 +6,14 @@ const setBalance = require("../middleware/user/setbalance");
 const setPremiumBalance = require("../middleware/user/setpremiumbalance");
 const setPassiveUpgrade = require("../middleware/user/setpassiveupgrade");
 const setPassiveUpgradeLevel = require("../middleware/user/setpassiveupgradelevel");
+const setProfilePicture = require("../middleware/user/setprofilepicture")
 const setItem = require("../middleware/user/setitem");
 const topTen = require("../middleware/user/topten");
 
+
 router.get("/exists", userExists);
 router.get("/topten", topTen);
+router.post("/setprofilepicture", setProfilePicture)
 router.post("/username/exists", userExistsUsername);
 router.post("/setbalance", setBalance);
 router.post("/setpremiumbalance", setPremiumBalance);
