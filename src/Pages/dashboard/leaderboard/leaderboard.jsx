@@ -16,10 +16,26 @@ function Leaderboard() {
           <div className={styles.mainFlex}>
             <div className={styles.topFlex}>
               <div className={styles.topThreeCard}>
-
+                <div className={styles.topThreeCardFlex}>
+                  <img src="/ksjaaypanda.jpg" className={styles.avatarLargeFirst} alt=""></img>
+                  <div className={styles.leaderboardName}>#1 KSJaay</div>
+                  <span className={styles.balance}>$17,283.38</span>
+                </div>
               </div>
-              <div className={styles.topThreeCard} />
-              <div className={styles.topThreeCard} />
+              <div className={styles.topThreeCard}>
+                <div className={styles.topThreeCardFlex}>
+                  <img src="/raytf.png" className={styles.avatarLargeSecond} alt=""></img>
+                  <div className={styles.leaderboardName}>#2 Raytf_</div>
+                  <span className={styles.balance}>$9793.72</span>
+                </div>
+              </div>
+              <div className={styles.topThreeCard}>
+                <div className={styles.topThreeCardFlex}>
+                  <img src="/stephen.png" className={styles.avatarLargeThird} alt=""></img>
+                  <div className={styles.leaderboardName}>#3 iDetixx</div>
+                  <span className={styles.balance}>$8329.27</span>
+                </div>
+              </div>
             </div>
             <div className={styles.bottomFlex}>
               <div className={styles.tableContainer}>

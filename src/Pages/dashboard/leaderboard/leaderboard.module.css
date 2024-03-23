@@ -20,6 +20,10 @@
   column-gap: 20px;
 }
 
+.leaderboardName {
+  font-weight: bold;
+}
+
 .bottomFlex {
   display:flex;
   flex-direction: column;
@@ -32,6 +36,16 @@
   min-height: 300px;
   margin-bottom: 30px;
   border-radius: 30px;
+
+}
+
+.topThreeCardFlex {
+  margin-top: 20px;
+  row-gap: 20px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .bottomCard {
@@ -68,9 +82,9 @@
   align-items: center;
 }
 
-.itemIcon{
-  max-width: 75px;
-  max-height: 75px;
+.itemIcon {
+  max-width: 65px;
+  max-height: 65px;
 }
 
 .avatar {
@@ -78,6 +92,31 @@
   width: 40px;
   margin-right: 10px;
   border-radius: 50%;
+}
+
+.avatarLargeFirst {
+  box-shadow: 0px 0px 15px rgba(255, 217, 0, 0.6);
+  height: 140px;
+  width: 140px;
+  border-radius: 50%;
+  border: 6px solid gold; 
+}
+
+.avatarLargeSecond {
+  height: 140px;
+  width: 140px;
+  border-radius: 50%;
+  border: 6px solid silver; 
+  box-shadow: 0px 0px 15px rgba(192, 192, 192, 0.6);
+}
+
+.avatarLargeThird {
+  height: 140px;
+  width: 140px;
+  border-radius: 50%;
+  border: 6px solid #CD7F32; 
+  box-shadow: 0px 0px 15px rgba(205, 128, 50, 0.6);
+
 }
 
 .tableContainer {
@@ -104,6 +143,13 @@
 
 .priceGain {
   color: #15e815;
+  text-shadow: 0px 0px 20px #05ff09;
+}
+
+.balance {
+  color: #15e815;
+  margin-top: -10px;
+  font-size: 30px;
   text-shadow: 0px 0px 20px #05ff09;
 }
 
