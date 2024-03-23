@@ -53,14 +53,6 @@ function App() {
           }
         />
         <Route
-          path="/dashboard/tracker"
-          element={
-            <RouteAuthenticated>
-              <Tracker />
-            </RouteAuthenticated>
-          }
-        />
-        <Route
           path="/dashboard/mainpage"
           element={
             <RouteAuthenticated>

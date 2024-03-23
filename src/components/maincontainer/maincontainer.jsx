@@ -96,26 +96,14 @@ const MainContainer = ({ children, className = " ", ...props }) => {
             {" "}
             <AiOutlineSlack /> Inventory
           </div>
+
           <div
             className={`${styles.navbutton} ${
               selectedTab === 5 ? styles.selected : ""
             }`}
             onClick={() => {
-              navigate("/dashboard/tracker");
-              selectTab(5);
-            }}
-          >
-            {" "}
-            <AiOutlineSliders /> Tracker
-          </div>
-
-          <div
-            className={`${styles.navbutton} ${
-              selectedTab === 7 ? styles.selected : ""
-            }`}
-            onClick={() => {
               navigate("/dashboard/leaderboard");
-              selectTab(7);
+              selectTab(5);
             }}
           >
             {" "}
