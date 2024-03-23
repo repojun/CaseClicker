@@ -19,9 +19,23 @@ function Leaderboard() {
       }
     };
 
-    getLeaderboard();
-  
+    if (leaderboardData === null) {
+      getLeaderboard();
+    }
+
   }, [leaderboardData]);
+
+  if (!leaderboardData)
+  return (
+    null
+  );
+
+  const topThree = leaderboardData.slice(0, 3).map(user => ({ username: user.username, balance: user.balance }));
+  const restOfLeaderboard = leaderboardData.slice(3).map(user => ({ username: user.username, balance: user.balance }));
+
+  console.log("Top Three:", topThree);
+  console.log("Rest of Leaderboard:", restOfLeaderboard);
+
 
   return (
     <>
@@ -29,7 +43,7 @@ function Leaderboard() {
         <SubContainer>
           <div className={styles.mainFlex}>
             <Header title="Leaderboard"></Header>
-            <div className={styles.titleSubtext}>View the best players in the game, nobody doing it like them.</div>
+            <div className={styles.titleSubtext}>{leaderboardData[0].username}View the best players in the game, nobody doing it like them.</div>
           </div>
           <div className={styles.mainFlex}>
             <div className={styles.topFlex}>
