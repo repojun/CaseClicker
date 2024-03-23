@@ -1,5 +1,5 @@
 .mainFlex {
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -15,7 +15,7 @@
 }
 
 .topFlex {
-  display:flex;
+  display: flex;
   flex-direction: row;
   column-gap: 20px;
 }
@@ -25,7 +25,7 @@
 }
 
 .bottomFlex {
-  display:flex;
+  display: flex;
   flex-direction: column;
 }
 
@@ -41,14 +41,14 @@
 .editButtonContainer {
   display: flex;
   justify-content: center;
-  align-items: center; 
-  height: 100%; 
+  align-items: center;
+  height: 100%;
 }
 
 .topThreeCardFlex {
   margin-top: 20px;
   row-gap: 20px;
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -61,11 +61,11 @@
 }
 
 .editButton {
-  padding:8px;
-  color:#bbd3ff;
+  padding: 8px;
+  color: #bbd3ff;
   border-radius: 15px;
   border: 2px solid #bbd3ff;
-  transition:0.4s;
+  transition: 0.4s;
   text-align: center;
   width: auto;
   max-width: 75px;
@@ -73,18 +73,18 @@
 }
 
 .editButton:hover {
-  padding:8px;
-  color:#000000;
+  padding: 8px;
+  color: #000000;
   background-color: #bbd3ff;
   border-radius: 10px;
   cursor: pointer;
-  transition:0.2s;
+  transition: 0.2s;
   box-shadow: 0 0px 15px #bbd3ff40;
   user-select: none;
 }
 
 .flexy {
-  display:flex;
+  display: flex;
   align-items: center;
 }
 
@@ -105,14 +105,14 @@
   height: 140px;
   width: 140px;
   border-radius: 50%;
-  border: 6px solid gold; 
+  border: 6px solid gold;
 }
 
 .avatarLargeSecond {
   height: 140px;
   width: 140px;
   border-radius: 50%;
-  border: 6px solid silver; 
+  border: 6px solid silver;
   box-shadow: 0px 0px 15px rgba(192, 192, 192, 0.6);
 }
 
@@ -120,10 +120,23 @@
   height: 140px;
   width: 140px;
   border-radius: 50%;
-  border: 6px solid #CD7F32; 
+  border: 6px solid #CD7F32;
   box-shadow: 0px 0px 15px rgba(205, 128, 50, 0.6);
 
 }
+
+.avatarLargeFirst:hover {
+  cursor: pointer;
+}
+
+.avatarLargeSecond:hover {
+  cursor: pointer;
+}
+
+.avatarLargeThird:hover {
+  cursor: pointer;
+}
+
 
 .tableContainer {
   display: flex;
@@ -163,8 +176,8 @@
   color: #e81515;
   text-shadow: 0px 0px 15px #ff0505;
   animation: float 1s forwards linear;
-  position:absolute;
-  margin:0px;
+  position: absolute;
+  margin: 0px;
   user-select: none;
   pointer-events: none;
 }
@@ -178,8 +191,8 @@
   color: #15e815;
   text-shadow: 0px 0px 20px #05ff09;
   animation: float 1s forwards linear;
-  position:absolute;
-  margin:0px;
+  position: absolute;
+  margin: 0px;
   user-select: none;
   pointer-events: none;
 }
