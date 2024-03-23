@@ -7,7 +7,6 @@ import React, { useContext, useState, useEffect } from "react";
 import Axios from "../../../api/agent";
 import { useNavigate } from "react-router-dom";
 
-
 function Leaderboard() {
   const [leaderboardData, setLeaderboardData] = useState(null);
   const navigate = useNavigate();
@@ -28,19 +27,20 @@ function Leaderboard() {
     }
   }, [leaderboardData]);
 
-  if (!leaderboardData) return (
-    <MainContainer>
-      <SubContainer>
 
-      </SubContainer>
-    </MainContainer>
-  );
+  if (!leaderboardData)
+    return (
+      <MainContainer>
+        <SubContainer></SubContainer>
+      </MainContainer>
+    );
 
-  const topThree = leaderboardData.slice(0, 3).map((user) => ({ username: user.username, balance: user.balance.toFixed(2) }));
-  const restOfLeaderboard = leaderboardData.slice(3).map((user) => ({ username: user.username, balance: user.balance.toFixed(2) }));
+    const topThree = leaderboardData.slice(0, 3).map((user) => ({ username: user.username, balance: user.balance.toFixed(2) }));
+    const restOfLeaderboard = leaderboardData.slice(3).map((user) => ({ username: user.username, balance: user.balance.toFixed(2) }));
 
-  console.log("Top Three:", topThree);
-  console.log("Rest of Leaderboard:", restOfLeaderboard);
+    console.log("Top Three:", topThree);
+    console.log("Rest of Leaderboard:", restOfLeaderboard);
+
 
   return (
     <>
