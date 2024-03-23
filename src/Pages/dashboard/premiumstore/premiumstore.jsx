@@ -6,6 +6,7 @@ import Header from "../../../components/mainheader/header";
 import ShopItem from "../../../components/shopitem/shopitem";
 import useContextStore from "../../../context";
 import Axios from "../../../api/agent";
+import PayPal from "../../../components/paypal/paypal";
 
 function PremiumStore() {
     const {
@@ -46,6 +47,7 @@ function PremiumStore() {
         <>
             <MainContainer>
                 <SubContainer>
+                    <PayPal total={3} userId={1}></PayPal>
                     <div className={styles.centerTitle}>
                         <Header title="Store" />
                     </div>

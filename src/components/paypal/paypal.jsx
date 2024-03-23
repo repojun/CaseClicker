@@ -1,5 +1,5 @@
 import {PayPalScriptProvider, PayPalButtons} from "@paypal/react-paypal-js";
-import createPayment from "./create";
+import createPayment from "./createpayment";
 
 export default function PayPal({total, userId, openModal, closeModal}) {
   const onApprove = (actions) => {
