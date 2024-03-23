@@ -2,7 +2,6 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Dashboard from "./Pages/dashboard/dashboard";
 import Investments from "./Pages/dashboard/investments/investments";
-import Tracker from "./Pages/dashboard/tracker/tracker";
 import Inventory from "./Pages/dashboard/inventory/inventory";
 import MainPage from "./Pages/dashboard/main/mainpage";
 import Login from "./Pages/login/login";
@@ -21,7 +20,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route
-          path="leaderboard"
+          path="/dashboard/leaderboard"
           element={
             <RouteAuthenticated>
               <Leaderboard />

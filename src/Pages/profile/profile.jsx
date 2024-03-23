@@ -6,8 +6,7 @@ import styles from "./profile.module.css";
 import MainContainer from "../../components/maincontainer/maincontainer";
 import SubContainer from "../../components/subcontainer/subcontainer";
 import Axios from "../../api/agent";
-import { AiFillDollarCircle, AiFillHeart, AiFillCreditCard, AiFillCalculator  } from "react-icons/ai";
-
+import { AiFillDollarCircle, AiFillHeart, AiFillCreditCard, AiFillCalculator } from "react-icons/ai";
 
 function Profile() {
   const [userData, setUserData] = useState(null);
@@ -22,9 +21,9 @@ function Profile() {
 
         const date = new Date(response.registeredAt);
         const day = date.getDate();
-        const month = date.getMonth() + 1; 
-        const year = date.getFullYear().toString().slice(-2); 
-        
+        const month = date.getMonth() + 1;
+        const year = date.getFullYear().toString().slice(-2);
+
         const formattedDay = day < 10 ? "0" + day : day;
         const formattedMonth = month < 10 ? "0" + month : month;
 
@@ -43,7 +42,12 @@ function Profile() {
     }
   }, [username]);
 
-  if (!username || !userData) return <MainContainer><SubContainer>User Not Found</SubContainer></MainContainer>;
+  if (!username || !userData)
+    return (
+      <MainContainer>
+        <SubContainer>User Not Found</SubContainer>
+      </MainContainer>
+    );
 
   return (
     <>
@@ -61,7 +65,10 @@ function Profile() {
                   <div className={styles.metricBlock}>
                     <div className={styles.metricTitleContainer}>
                       <div className={styles.metricTitle}> Net Worth </div>
-                      <div className={styles.metricTitleValue}> <AiFillCreditCard size={22}/></div>
+                      <div className={styles.metricTitleValue}>
+                        {" "}
+                        <AiFillCreditCard size={22} />
+                      </div>
                     </div>
                     <div className={styles.metricValue}>
                       <span className={styles.dollar}>$</span>
@@ -72,7 +79,10 @@ function Profile() {
                   <div className={styles.metricBlock}>
                     <div className={styles.metricTitleContainer}>
                       <div className={styles.metricTitle}> Total Balance </div>
-                      <div className={styles.metricTitleValue}> <AiFillDollarCircle size={22}/></div>
+                      <div className={styles.metricTitleValue}>
+                        {" "}
+                        <AiFillDollarCircle size={22} />
+                      </div>
                     </div>
                     <div className={styles.metricValue}>
                       <span className={styles.dollar}>$</span>182.89
@@ -82,7 +92,10 @@ function Profile() {
                   <div className={styles.metricBlock}>
                     <div className={styles.metricTitleContainer}>
                       <div className={styles.metricTitle}> Statistic </div>
-                      <div className={styles.metricTitleValue}> <AiFillCalculator size={22}/></div>
+                      <div className={styles.metricTitleValue}>
+                        {" "}
+                        <AiFillCalculator size={22} />
+                      </div>
                     </div>
                     <div className={styles.metricValue}>
                       <span className={styles.dollar}>$</span>230.00
@@ -93,11 +106,12 @@ function Profile() {
                     <div className={styles.metricTitleContainer}>
                       <div className={styles.metricTitle}> Join Date </div>
                       <div className={styles.metricTitleValue}>
-                        <AiFillHeart size={22}/>
+                        <AiFillHeart size={22} />
                       </div>
                     </div>
                     <div className={styles.metricValue}>
-                      <span className={styles.dollar}></span>{userData.registeredAt}
+                      <span className={styles.dollar}></span>
+                      {userData.registeredAt}
                     </div>
                   </div>
                 </div>
