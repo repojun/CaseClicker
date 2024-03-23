@@ -22,6 +22,8 @@ const ProfileModal = ({ modal, toggleModal }) => {
       profilePicture: imageLink,
     });
 
+    user.profilePicture = imageLink;
+
     toggleModal()
     setImageLink("");
 
