@@ -13,46 +13,57 @@ const fetchUser = async (userID) => {
   return null;
 };
 
+const fetchTopTen = async () => {
+  const topTen = await userSchema
+    .find({
+      balance: { $gt: 0 },
+    })
+    .sort({ balance: -1 })
+    .limit(10)
+    .lean();
+
+  return topTen;
+};
+
 const fetchUserByName = async (username) => {
-  const user = await userSchema.findOne({username: username}).lean();
+  const user = await userSchema.findOne({ username: username }).lean();
   if (user) {
     return user;
   }
   return null;
-}
+};
 
 const updateUserBalance = async (userID, balance) => {
-  const user = await userSchema.findOne({ id: userID});
+  const user = await userSchema.findOne({ id: userID });
   user.balance = balance;
   await user.save();
-}
+};
 
 const updateUserInventory = async (userID, item) => {
   const user = await userSchema.findOne({ id: userID });
   user.inventory[`${item}`].value += 1;
-  await user.save(); 
-}
+  await user.save();
+};
 
 const updateUserPremiumBalance = async (userID, premiumBalance) => {
   const user = await userSchema.findOne({ id: userID });
   user.premiumBalance = premiumBalance;
   await user.save();
-}
+};
 
-const updateUserPassiveUpgrade = async(userID, passiveUpgradeID) => {
-  const user = await userSchema.findOne({ id: userID});
+const updateUserPassiveUpgrade = async (userID, passiveUpgradeID) => {
+  const user = await userSchema.findOne({ id: userID });
   // user[`passiveUpgrade${passiveUpgradeID}`] = 1;
   user.passiveUpgrades[`passiveUpgrade${passiveUpgradeID}`].value = 1;
-  await user.save(); 
-}
+  await user.save();
+};
 
-const updateUserPassiveUpgradeLevel = async(userID, passiveUpgradeID, level) => {
-
-  const user = await userSchema.findOne({ id: userID});
+const updateUserPassiveUpgradeLevel = async (userID, passiveUpgradeID, level) => {
+  const user = await userSchema.findOne({ id: userID });
   // user[`passiveUpgrade${passiveUpgradeID}`] = 1;
   user.passiveUpgrades[`passiveUpgrade${passiveUpgradeID}`].level = level;
-  await user.save(); 
-}
+  await user.save();
+};
 
 const fetchLogin = async (username, email) => {
   if (email) {
@@ -84,4 +95,4 @@ const createUser = async (email, username, password) => {
   return userQuery;
 };
 
-module.exports = { fetchUser, createUser, fetchLogin, updateUserBalance, updateUserInventory, updateUserPassiveUpgrade, updateUserPassiveUpgradeLevel, updateUserPremiumBalance, fetchUserByName };
+module.exports = { fetchUser, createUser, fetchLogin, updateUserBalance, updateUserInventory, updateUserPassiveUpgrade, updateUserPassiveUpgradeLevel, updateUserPremiumBalance, fetchUserByName, fetchTopTen };

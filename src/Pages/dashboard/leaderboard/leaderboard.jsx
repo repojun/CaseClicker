@@ -3,8 +3,26 @@ import MainContainer from "../../../components/maincontainer/maincontainer";
 import Header from "../../../components/mainheader/header";
 import { observer } from "mobx-react-lite";
 import styles from "./leaderboard.module.css";
+import React, { useContext, useState, useEffect } from "react";
+import Axios from "../../../api/agent";
 
 function Leaderboard() {
+  const [leaderboardData, setLeaderboardData] = useState(null);
+  useEffect(() => {
+    const getLeaderboard = async () => {
+      try {
+        const response = await Axios("/api/user/topten", "GET", {});
+        setLeaderboardData(response);
+        console.log("LEADERBOARD DATA: ", response);
+      } catch (error) {
+        // toast
+      }
+    };
+
+    getLeaderboard();
+  
+  }, [leaderboardData]);
+
   return (
     <>
       <MainContainer>
