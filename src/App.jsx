@@ -1,8 +1,7 @@
 import "./App.css";
-import {Routes, Route} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Dashboard from "./Pages/dashboard/dashboard";
 import Investments from "./Pages/dashboard/investments/investments";
-import Tracker from "./Pages/dashboard/tracker/tracker";
 import Inventory from "./Pages/dashboard/inventory/inventory";
 import MainPage from "./Pages/dashboard/main/mainpage";
 import Login from "./Pages/login/login";
@@ -12,6 +11,7 @@ import Store from "./Pages/dashboard/store/store";
 import RouteAuthenticated from "./routes/authenticated";
 import PremiumStore from "./Pages/dashboard/premiumstore/premiumstore";
 import Profile from "./Pages/profile/profile";
+import Leaderboard from "./Pages/dashboard/leaderboard/leaderboard";
 
 function App() {
   return (
@@ -19,6 +19,14 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route
+          path="/dashboard/leaderboard"
+          element={
+            <RouteAuthenticated>
+              <Leaderboard />
+            </RouteAuthenticated>
+          }
+        />
         <Route
           path="/dashboard"
           element={
@@ -40,14 +48,6 @@ function App() {
           element={
             <RouteAuthenticated>
               <Inventory />
-            </RouteAuthenticated>
-          }
-        />
-        <Route
-          path="/dashboard/tracker"
-          element={
-            <RouteAuthenticated>
-              <Tracker />
             </RouteAuthenticated>
           }
         />

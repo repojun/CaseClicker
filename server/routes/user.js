@@ -7,8 +7,10 @@ const setPremiumBalance = require("../middleware/user/setpremiumbalance");
 const setPassiveUpgrade = require("../middleware/user/setpassiveupgrade");
 const setPassiveUpgradeLevel = require("../middleware/user/setpassiveupgradelevel");
 const setItem = require("../middleware/user/setitem");
+const topTen = require("../middleware/user/topten");
 
 router.get("/exists", userExists);
+router.get("/topten", topTen);
 router.post("/username/exists", userExistsUsername);
 router.post("/setbalance", setBalance);
 router.post("/setpremiumbalance", setPremiumBalance);

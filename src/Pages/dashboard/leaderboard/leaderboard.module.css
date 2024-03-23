@@ -1,0 +1,185 @@
+.mainFlex {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.titleSubtext {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #ffffff84;
+  font-weight: 0;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.topFlex {
+  display:flex;
+  flex-direction: row;
+  column-gap: 20px;
+}
+
+.leaderboardName {
+  font-weight: bold;
+}
+
+.bottomFlex {
+  display:flex;
+  flex-direction: column;
+}
+
+.topThreeCard {
+  background-color: #141f33;
+  box-shadow: 0 0px 15px rgba(0, 0, 0, 0.300);
+  min-width: 300px;
+  min-height: 300px;
+  margin-bottom: 30px;
+  border-radius: 30px;
+}
+
+.editButtonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  height: 100%; 
+}
+
+.topThreeCardFlex {
+  margin-top: 20px;
+  row-gap: 20px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.bottomCard {
+  min-width: 940px;
+  min-height: 300px;
+  background-color: #59f896;
+}
+
+.editButton {
+  padding:8px;
+  color:#bbd3ff;
+  border-radius: 15px;
+  border: 2px solid #bbd3ff;
+  transition:0.4s;
+  text-align: center;
+  width: auto;
+  max-width: 75px;
+  user-select: none;
+}
+
+.editButton:hover {
+  padding:8px;
+  color:#000000;
+  background-color: #bbd3ff;
+  border-radius: 10px;
+  cursor: pointer;
+  transition:0.2s;
+  box-shadow: 0 0px 15px #bbd3ff40;
+  user-select: none;
+}
+
+.flexy {
+  display:flex;
+  align-items: center;
+}
+
+.itemIcon {
+  max-width: 65px;
+  max-height: 65px;
+}
+
+.avatar {
+  height: 40px;
+  width: 40px;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+.avatarLargeFirst {
+  box-shadow: 0px 0px 15px rgba(255, 217, 0, 0.6);
+  height: 140px;
+  width: 140px;
+  border-radius: 50%;
+  border: 6px solid gold; 
+}
+
+.avatarLargeSecond {
+  height: 140px;
+  width: 140px;
+  border-radius: 50%;
+  border: 6px solid silver; 
+  box-shadow: 0px 0px 15px rgba(192, 192, 192, 0.6);
+}
+
+.avatarLargeThird {
+  height: 140px;
+  width: 140px;
+  border-radius: 50%;
+  border: 6px solid #CD7F32; 
+  box-shadow: 0px 0px 15px rgba(205, 128, 50, 0.6);
+
+}
+
+.tableContainer {
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 0px 15px rgba(0, 0, 0, 0.300);
+  min-width: 940px;
+}
+
+.item {
+  display: flex;
+  background-color: #141f33;
+  border-radius: 25px;
+  box-shadow: 0px 0px 20px -2px#000000ad;
+  padding: 40px;
+}
+
+.mainTable {
+  min-width: 100%;
+  width: 100%;
+  text-align: center;
+
+}
+
+.priceGain {
+  color: #15e815;
+  text-shadow: 0px 0px 20px #05ff09;
+}
+
+.balance {
+  color: #15e815;
+  margin-top: -10px;
+  font-size: 30px;
+  text-shadow: 0px 0px 20px #05ff09;
+}
+
+.priceLossAnimation {
+  color: #e81515;
+  text-shadow: 0px 0px 15px #ff0505;
+  animation: float 1s forwards linear;
+  position:absolute;
+  margin:0px;
+  user-select: none;
+  pointer-events: none;
+}
+
+.priceLoss {
+  color: #e81515;
+  text-shadow: 0px 0px 15px #ff0505;
+}
+
+.money {
+  color: #15e815;
+  text-shadow: 0px 0px 20px #05ff09;
+  animation: float 1s forwards linear;
+  position:absolute;
+  margin:0px;
+  user-select: none;
+  pointer-events: none;
+}
