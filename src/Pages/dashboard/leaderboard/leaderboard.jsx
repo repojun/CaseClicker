@@ -22,20 +22,21 @@ function Leaderboard() {
     if (leaderboardData === null) {
       getLeaderboard();
     }
-
   }, [leaderboardData]);
 
-  if (!leaderboardData)
-  return (
-    null
+  if (!leaderboardData) return (
+    <MainContainer>
+      <SubContainer>
+
+      </SubContainer>
+    </MainContainer>
   );
 
-  const topThree = leaderboardData.slice(0, 3).map(user => ({ username: user.username, balance: user.balance }));
-  const restOfLeaderboard = leaderboardData.slice(3).map(user => ({ username: user.username, balance: user.balance }));
+  const topThree = leaderboardData.slice(0, 3).map((user) => ({ username: user.username, balance: user.balance.toFixed(2) }));
+  const restOfLeaderboard = leaderboardData.slice(3).map((user) => ({ username: user.username, balance: user.balance.toFixed(2) }));
 
   console.log("Top Three:", topThree);
   console.log("Rest of Leaderboard:", restOfLeaderboard);
-
 
   return (
     <>
@@ -43,29 +44,29 @@ function Leaderboard() {
         <SubContainer>
           <div className={styles.mainFlex}>
             <Header title="Leaderboard"></Header>
-            <div className={styles.titleSubtext}>{leaderboardData[0].username}View the best players in the game, nobody doing it like them.</div>
+            <div className={styles.titleSubtext}>View the best players in the game, nobody doing it like them.</div>
           </div>
           <div className={styles.mainFlex}>
             <div className={styles.topFlex}>
               <div className={styles.topThreeCard}>
                 <div className={styles.topThreeCardFlex}>
                   <img src="/ksjaaypanda.jpg" className={styles.avatarLargeFirst} alt=""></img>
-                  <div className={styles.leaderboardName}>#1 KSJaay</div>
-                  <span className={styles.balance}>$17,283.38</span>
+                  <div className={styles.leaderboardName}>#1 {topThree[0].username}</div>
+                  <span className={styles.balance}>${topThree[0].balance}</span>
                 </div>
               </div>
               <div className={styles.topThreeCard}>
                 <div className={styles.topThreeCardFlex}>
                   <img src="/raytf.png" className={styles.avatarLargeSecond} alt=""></img>
-                  <div className={styles.leaderboardName}>#2 Raytf_</div>
-                  <span className={styles.balance}>$9793.72</span>
+                  <div className={styles.leaderboardName}>#2 {topThree[1].username}</div>
+                  <span className={styles.balance}>${topThree[1].balance}</span>
                 </div>
               </div>
               <div className={styles.topThreeCard}>
                 <div className={styles.topThreeCardFlex}>
                   <img src="/stephen.png" className={styles.avatarLargeThird} alt=""></img>
-                  <div className={styles.leaderboardName}>#3 iDetixx</div>
-                  <span className={styles.balance}>$8329.27</span>
+                  <div className={styles.leaderboardName}>#3 {topThree[2].username}</div>
+                  <span className={styles.balance}>${topThree[2].balance}</span>
                 </div>
               </div>
             </div>
@@ -76,46 +77,28 @@ function Leaderboard() {
                     <th>Position</th>
                     <th>Username</th>
                     <td>Balance</td>
-                    <td>Inventory</td>
+                    <td>Test</td>
                     <td>Net Worth</td>
                     <td>Profile</td>
                   </tr>
-                  <tr>
-                    <td>#4</td>
-                    <td>
-                      <div className={styles.flexy}>
-                        <img src="/circlepfp.png" className={styles.avatar} alt=""></img> Bahpu
-                      </div>
-                    </td>
-                    <td>4</td>
-                    <td>£8</td>
-
-                    <td>
-                      <span className={styles.priceGain}> $4233.12</span>
-                    </td>
-                    <td>
-                      <div className={styles.editButton} onClick={() => clickTest()}>
-                        View
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>#5</td>
-                    <td>
-                      <div className={styles.flexy}>
-                        <img src="/ksjaaypanda.jpg" className={styles.avatar} alt=""></img> KSJaay
-                      </div>
-                    </td>
-                    <td>8</td>
-                    <td>£8.00</td>
-
-                    <td>
-                      <span className={styles.priceGain}> $3843.98 </span>
-                    </td>
-                    <td>
-                      <div className={styles.editButton}> View</div>
-                    </td>
-                  </tr>
+                  {restOfLeaderboard.map((user, index) => (
+                    <tr key={index + 4}>
+                      <td>#{index + 4}</td>
+                      <td>
+                        <div className={styles.flexy}>
+                          <img src="/circlepfp.png" className={styles.avatar} alt=""></img> {user.username}
+                        </div>
+                      </td>
+                      <td>{user.balance}</td>
+                      <td>£8</td>
+                      <td>{user.balance}</td>
+                      <td>
+                        <div className={styles.editButton} onClick={() => clickTest()}>
+                          View
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
                 </table>
               </div>
             </div>

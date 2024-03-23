@@ -36,7 +36,13 @@
   min-height: 300px;
   margin-bottom: 30px;
   border-radius: 30px;
+}
 
+.editButtonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  height: 100%; 
 }
 
 .topThreeCardFlex {
