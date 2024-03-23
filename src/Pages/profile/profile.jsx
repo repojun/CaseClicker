@@ -8,6 +8,7 @@ import SubContainer from "../../components/subcontainer/subcontainer";
 import Axios from "../../api/agent";
 import { AiFillDollarCircle, AiFillHeart, AiFillCreditCard, AiFillCalculator } from "react-icons/ai";
 import ProfileModal from "../../components/profilemodal/profilemodal";
+import { FaRegEdit } from "react-icons/fa";
 
 function Profile() {
   const [userData, setUserData] = useState(null);
@@ -64,7 +65,9 @@ function Profile() {
             <div className={styles.subContainer}>
               <div className={styles.subContainerSep}>
                 <div className={styles.subContainerTitle}>
-                  <img src={`${userData.profilePicture}`} alt=" " className={styles.avatar} onClick={() => toggleModal()} />
+                  <div className={styles.avatarWrapper}>
+                    <img src={`${userData.profilePicture}`} alt=" " className={styles.avatar} onClick={() => toggleModal()}></img>
+                  </div>
                   <span>{userData ? userData.username : ""}</span>
                 </div>
 
