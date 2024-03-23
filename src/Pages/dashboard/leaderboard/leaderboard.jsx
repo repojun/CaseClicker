@@ -88,12 +88,17 @@ function Leaderboard() {
                       <td>#{index + 4}</td>
                       <td>
                         <div className={styles.flexy}>
-                          <img src={`${user.profilePicture}`} className={styles.avatar} alt="" onClick={() => navigate(`/profile/${user.username}`)}></img> <div className={styles.username} onClick={() => navigate(`/profile/${user.username}`)}>{user.username}</div>
+                          <img src={`${user.profilePicture}`} className={styles.avatar} alt="" onClick={() => navigate(`/profile/${user.username}`)}></img>{" "}
+                          <div className={styles.username} onClick={() => navigate(`/profile/${user.username}`)}>
+                            {user.username}
+                          </div>
                         </div>
                       </td>
-                      <td>{user.balance}</td>
+                      <td>${user.balance}</td>
                       <td>£8</td>
-                      <td>{user.balance}</td>
+                      <td>
+                        <span className={styles.priceGain} > ${user.balance}</span>
+                      </td>
                       <td>
                         <div className={styles.editButton} onClick={() => navigate(`/profile/${user.username}`)}>
                           View

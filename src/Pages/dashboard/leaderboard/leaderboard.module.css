@@ -177,6 +177,7 @@
 .priceGain {
   color: #15e815;
   text-shadow: 0px 0px 20px #05ff09;
+  font-weight: bold;
 }
 
 .balance {
