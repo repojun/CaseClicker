@@ -13,12 +13,12 @@ const ProfileModal = ({ modal, toggleModal, image, itemName, finalPurchase, enti
   return (
     <>
       {modal && (
-        <div className={styles.overlay} onClick={toggleModal}>
+        <div className={styles.overlay}>
           <div className={styles.modalContent}>
             <div className={styles.modalTitle}>Profile Settings</div>
             <img className={styles.itemCardImage} src={image} alt="" />
             <div>Profile Picture Link:</div>
-            <div></div>
+            <input type="text" className={styles.searchBar} placeholder="Search.."></input>
             <div className={styles.buttonContainer}>
               <div onClick={() => finalPurchase(entityName)}>
                 <OutlineButton title="Confirm" minWidth={"80px"} />

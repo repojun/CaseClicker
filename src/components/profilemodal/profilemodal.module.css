@@ -35,15 +35,33 @@
   justify-self: center;
   align-items: center;
   flex-direction: column;
-  row-gap: 12px;
+  row-gap: 8px;
 }
 
+.searchBar {
+  background-color: #141f33;
+  border: 2px solid #141f33;
+  border-radius: 20px;
+  padding: 10px;
+  color: #bbd3ff;
+  transition: 0.4s;
+
+}
+
+.searchBar:focus {
+  outline: 2px solid #bbd3ff;
+}
+
+.searchBar:hover {
+  border: 2px solid #bbd3ff;
+  transition: 0.2s;
+  box-shadow: 0 0px 15px #bbd3ff40;
+}
 
 .modalTitle {
   font-size: 36px;
   font-weight: bold;
   color: #ffffff;
-  margin-bottom: -10px;
 }
 
 .buttonContainer {
