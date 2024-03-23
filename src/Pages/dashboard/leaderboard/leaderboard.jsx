@@ -5,9 +5,13 @@ import { observer } from "mobx-react-lite";
 import styles from "./leaderboard.module.css";
 import React, { useContext, useState, useEffect } from "react";
 import Axios from "../../../api/agent";
+import { useNavigate } from "react-router-dom";
+
 
 function Leaderboard() {
   const [leaderboardData, setLeaderboardData] = useState(null);
+  const navigate = useNavigate();
+
   useEffect(() => {
     const getLeaderboard = async () => {
       try {
@@ -50,21 +54,21 @@ function Leaderboard() {
             <div className={styles.topFlex}>
               <div className={styles.topThreeCard}>
                 <div className={styles.topThreeCardFlex}>
-                  <img src="/ksjaaypanda.jpg" className={styles.avatarLargeFirst} alt=""></img>
+                  <img src="/ksjaaypanda.jpg" className={styles.avatarLargeFirst} alt="" onClick={() => navigate(`/profile/${topThree[0].username}`)}></img>
                   <div className={styles.leaderboardName}>#1 {topThree[0].username}</div>
                   <span className={styles.balance}>${topThree[0].balance}</span>
                 </div>
               </div>
               <div className={styles.topThreeCard}>
                 <div className={styles.topThreeCardFlex}>
-                  <img src="/raytf.png" className={styles.avatarLargeSecond} alt=""></img>
+                  <img src="/raytf.png" className={styles.avatarLargeSecond} alt="" onClick={() => navigate(`/profile/${topThree[1].username}`)}></img>
                   <div className={styles.leaderboardName}>#2 {topThree[1].username}</div>
                   <span className={styles.balance}>${topThree[1].balance}</span>
                 </div>
               </div>
               <div className={styles.topThreeCard}>
                 <div className={styles.topThreeCardFlex}>
-                  <img src="/stephen.png" className={styles.avatarLargeThird} alt=""></img>
+                  <img src="/stephen.png" className={styles.avatarLargeThird} alt="" onClick={() => navigate(`/profile/${topThree[2].username}`)}></img>
                   <div className={styles.leaderboardName}>#3 {topThree[2].username}</div>
                   <span className={styles.balance}>${topThree[2].balance}</span>
                 </div>
@@ -93,7 +97,7 @@ function Leaderboard() {
                       <td>£8</td>
                       <td>{user.balance}</td>
                       <td>
-                        <div className={styles.editButton} onClick={() => clickTest()}>
+                        <div className={styles.editButton} onClick={() => navigate(`/profile/${user.username}`)}>
                           View
                         </div>
                       </td>
