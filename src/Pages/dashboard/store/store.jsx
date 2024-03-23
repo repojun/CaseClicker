@@ -7,7 +7,7 @@ import styles from "./store.module.css";
 import ShopItem from "../../../components/shopitem/shopitem";
 import Axios from "../../../api/agent";
 import { useState } from "react";
-import Modal from "../../../components/modal/storemodal";
+import Modal from "../../../components/storemodal/storemodal";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import StoreComponent from "../../../components/storecomponent/storecomponent";
@@ -39,7 +39,7 @@ function Store() {
 
     if (user.balance >= price) {
 
- 
+
       let newBalance = user.balance - price;
       setBalance(newBalance);
       const query = await Axios("/api/user/setbalance", "POST", {

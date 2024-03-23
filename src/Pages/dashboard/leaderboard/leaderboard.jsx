@@ -90,7 +90,7 @@ function Leaderboard() {
                       <td>#{index + 4}</td>
                       <td>
                         <div className={styles.flexy}>
-                          <img src="/circlepfp.png" className={styles.avatar} alt=""></img> {user.username}
+                          <img src="/romeo.png" className={styles.avatar} alt=""></img> {user.username}
                         </div>
                       </td>
                       <td>{user.balance}</td>

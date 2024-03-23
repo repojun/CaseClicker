@@ -7,10 +7,19 @@ import MainContainer from "../../components/maincontainer/maincontainer";
 import SubContainer from "../../components/subcontainer/subcontainer";
 import Axios from "../../api/agent";
 import { AiFillDollarCircle, AiFillHeart, AiFillCreditCard, AiFillCalculator } from "react-icons/ai";
+import ProfileModal from "../../components/profilemodal/profilemodal";
 
 function Profile() {
   const [userData, setUserData] = useState(null);
   const { username } = useParams();
+  const [modal, setModal] = useState(false);
+
+
+  const toggleModal = () => {
+    setModal(!modal);
+
+  };
+
 
   useEffect(() => {
     const getUser = async () => {
@@ -53,11 +62,12 @@ function Profile() {
     <>
       <MainContainer>
         <SubContainer>
+          <ProfileModal modal={modal} toggleModal={toggleModal}></ProfileModal>
           <div className={styles.flex}>
             <div className={styles.subContainer}>
               <div className={styles.subContainerSep}>
                 <div className={styles.subContainerTitle}>
-                  <img src="/circlepfp.png" alt=" " className={styles.avatar} />
+                  <img src="/circlepfp.png" alt=" " className={styles.avatar} onClick={() => toggleModal()}/>
                   <span>{userData ? userData.username : ""}</span>
                 </div>
 
