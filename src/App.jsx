@@ -12,7 +12,7 @@ import Store from "./Pages/dashboard/store/store";
 import RouteAuthenticated from "./routes/authenticated";
 import PremiumStore from "./Pages/dashboard/premiumstore/premiumstore";
 import Profile from "./Pages/profile/profile";
-import Leaderboard from "./Pages/leaderboard/leaderboard";
+import Leaderboard from "./Pages/dashboard/leaderboard/leaderboard";
 
 function App() {
   return (

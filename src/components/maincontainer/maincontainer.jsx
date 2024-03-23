@@ -12,6 +12,7 @@ import { React, useState } from "react";
 import { observer } from "mobx-react-lite";
 import useContextStore from "../../context";
 import SettingsModal from "../settingsmodal/settingsmodal";
+import { GoTrophy } from "react-icons/go";
 
 const MainContainer = ({ children, className = " ", ...props }) => {
   const [selectedTab, setSelectedTab] = useState(0);
@@ -35,7 +36,14 @@ const MainContainer = ({ children, className = " ", ...props }) => {
       <SettingsModal modal={modal} toggleModal={toggleModal} />
       <div className={styles.left}>
         <div className={styles.welcomebox}>
-          <img src="/circlepfp.png" alt=" " className={styles.avatar} onClick={() => {navigate("/profile/" + user.username)}}></img>
+          <img
+            src="/circlepfp.png"
+            alt=" "
+            className={styles.avatar}
+            onClick={() => {
+              navigate("/profile/" + user.username);
+            }}
+          ></img>
           <div>{user.username}</div>
         </div>
         <hr className={styles.divider}></hr>
@@ -100,6 +108,25 @@ const MainContainer = ({ children, className = " ", ...props }) => {
             {" "}
             <AiOutlineSliders /> Tracker
           </div>
+
+          <div
+            className={`${styles.navbutton} ${
+              selectedTab === 7 ? styles.selected : ""
+            }`}
+            onClick={() => {
+              navigate("/dashboard/leaderboard");
+              selectTab(7);
+            }}
+          >
+            {" "}
+            <GoTrophy /> Leaderboard
+          </div>
+
+          {/* <GoTrophy /> */}
+        </div>
+        <hr className={styles.divider}></hr>
+
+        <div>
           <div
             className={`${styles.navbutton} ${
               selectedTab === 6 ? styles.selected : ""
@@ -112,9 +139,6 @@ const MainContainer = ({ children, className = " ", ...props }) => {
             {" "}
             <AiOutlineSetting /> Store
           </div>
-        </div>
-        <hr className={styles.divider}></hr>
-        <div>
           <div
             className={`${styles.navbutton} ${
               selectedTab === 7 ? styles.selected : ""
@@ -127,14 +151,10 @@ const MainContainer = ({ children, className = " ", ...props }) => {
             {" "}
             <AiOutlineSetting /> Premium Store
           </div>
-          <div
-            className={styles.navbutton}
-            onClick={() => toggleModal()}
-          >
+          <div className={styles.navbutton} onClick={() => toggleModal()}>
             <AiOutlineSetting /> Settings
           </div>
           <div className={styles.navbutton}>Kutta</div>
-          <div className={styles.navbutton}>Misc #2</div>
         </div>
         <hr className={styles.divider}></hr>
       </div>
