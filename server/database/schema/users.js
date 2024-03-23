@@ -9,6 +9,7 @@ module.exports = mongoose.model( // exports allows us to use many functions with
     registeredAt: { type: Number, default: Date.now() },
     balance: { type: Number, default: 0 },
     premiumBalance: { type: Number, default: 0 },
+    profilePicture: { type: String, default: "/defaultpfp.png"},
     inventory: {
       glock_fade: {
         viewname: { type: String, default: "Glock - Fade"},

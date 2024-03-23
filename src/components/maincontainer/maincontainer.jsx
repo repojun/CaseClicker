@@ -31,7 +31,7 @@ const MainContainer = ({ children, className = " ", ...props }) => {
       <div className={styles.left}>
         <div className={styles.welcomebox}>
           <img
-            src="/circlepfp.png"
+            src={`${user.profilePicture}`}
             alt=" "
             className={styles.avatar}
             onClick={() => {

@@ -14,12 +14,9 @@ function Profile() {
   const { username } = useParams();
   const [modal, setModal] = useState(false);
 
-
   const toggleModal = () => {
     setModal(!modal);
-
   };
-
 
   useEffect(() => {
     const getUser = async () => {
@@ -67,7 +64,7 @@ function Profile() {
             <div className={styles.subContainer}>
               <div className={styles.subContainerSep}>
                 <div className={styles.subContainerTitle}>
-                  <img src="/circlepfp.png" alt=" " className={styles.avatar} onClick={() => toggleModal()}/>
+                  <img src={`${userData.profilePicture}`} alt=" " className={styles.avatar} onClick={() => toggleModal()} />
                   <span>{userData ? userData.username : ""}</span>
                 </div>
 
