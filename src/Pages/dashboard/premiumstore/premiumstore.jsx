@@ -45,9 +45,9 @@ function PremiumStore() {
 
     return (
         <>
+        
             <MainContainer>
                 <SubContainer>
-                    <PayPal total={3} userId={1}></PayPal>
                     <div className={styles.centerTitle}>
                         <Header title="Store" />
                     </div>

@@ -28,6 +28,10 @@
   width: 170px;
 }
 
+.avatar:hover {
+  cursor:pointer;
+}
+
 .divider {
   border-radius: 100px;
   height: 2px;

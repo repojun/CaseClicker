@@ -1,6 +1,7 @@
 import styles from "./shopitem.module.css";
 import React from 'react';
 import { IoDiamond } from 'react-icons/io5';
+import PayPal from "../paypal/paypal";
 
 const ShopItem = ({ image, title, price, premium, square, click, className = "", ...props }) => {
     return (
@@ -22,9 +23,12 @@ const ShopItem = ({ image, title, price, premium, square, click, className = "",
                                 {price}
                             </div>
                         )}
+                        
                         {!premium && price}
                     </div>
+                    
                 </div>
+                <PayPal total={3} userId={1} />
             </div>
         </div>
     );

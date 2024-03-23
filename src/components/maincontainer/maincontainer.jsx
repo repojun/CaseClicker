@@ -35,7 +35,7 @@ const MainContainer = ({ children, className = " ", ...props }) => {
       <SettingsModal modal={modal} toggleModal={toggleModal} />
       <div className={styles.left}>
         <div className={styles.welcomebox}>
-          <img src="/circlepfp.png" alt=" " className={styles.avatar}></img>
+          <img src="/circlepfp.png" alt=" " className={styles.avatar} onClick={() => {navigate("/profile/" + user.username)}}></img>
           <div>{user.username}</div>
         </div>
         <hr className={styles.divider}></hr>
