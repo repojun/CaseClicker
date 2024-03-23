@@ -5,7 +5,7 @@ import Axios from "../../api/agent";
 import { observer } from "mobx-react-lite";
 import useContextStore from "../../context";
 
-const ProfileModal = ({ modal, toggleModal, image, itemName, finalPurchase, entityName }) => {
+const ProfileModal = ({ modal, toggleModal }) => {
   const {
     userStore: { user, setBalance },
   } = useContextStore();
@@ -16,11 +16,10 @@ const ProfileModal = ({ modal, toggleModal, image, itemName, finalPurchase, enti
         <div className={styles.overlay}>
           <div className={styles.modalContent}>
             <div className={styles.modalTitle}>Profile Settings</div>
-            <img className={styles.itemCardImage} src={image} alt="" />
             <div>Profile Picture Link:</div>
             <input type="text" className={styles.searchBar} placeholder="Enter image link..."></input>
             <div className={styles.buttonContainer}>
-              <div onClick={() => finalPurchase(entityName)}>
+              <div>
                 <OutlineButton title="Confirm" minWidth={"80px"} />
               </div>
               <div onClick={toggleModal}>
