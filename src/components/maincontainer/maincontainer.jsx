@@ -122,7 +122,16 @@ const MainContainer = ({ children, className = " ", ...props }) => {
           <div className={styles.navbutton} onClick={() => toggleModal()}>
             <AiOutlineSetting /> Settings
           </div>
-          <div className={styles.navbutton}>Kutta</div>
+          <div
+            className={`${styles.navbutton} ${selectedTab === 6 ? styles.selected : ""}`}
+            onClick={() => {
+              navigate("/dashboard/messageboard");
+              selectTab(6);
+            }}
+          >
+            {" "}
+            <AiOutlineSetting /> Message Board
+          </div>
         </div>
         <hr className={styles.divider}></hr>
       </div>
