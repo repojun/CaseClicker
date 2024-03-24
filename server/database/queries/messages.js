@@ -1,9 +1,10 @@
 const messageSchema = require("../schema/messages"); // import
+const userSchema = require("../schema/users"); // import
 
 const fetchMessages = async () => {
   const messages = await messageSchema
     .find({
-      id: { $gt: 0 },
+      postedAt: { $gt: 0 },
     })
     .sort({ id: -1 })
     .lean();
@@ -11,4 +12,12 @@ const fetchMessages = async () => {
   return messages;
 };
 
-module.exports = {fetchMessages}
+const updateMessages = async (userID, username, message) => {
+
+
+  const messageQuery = new messageSchema({ userID: userID, username: username, message: message });
+  await messageQuery.save();
+
+}
+
+module.exports = {fetchMessages, updateMessages}

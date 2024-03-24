@@ -6,8 +6,10 @@ module.exports = mongoose.model(
   "Messages",
   new mongoose.Schema({
     id: { type: String }, // message ID
+    userid: { type: String},
     username : { type: String},
     message: { type: String },
+    postedAt: { type: Number, default: Date.now() },
     likes: { type: Number, default: 0 },
     replies: {
       replyID: {type: String},
