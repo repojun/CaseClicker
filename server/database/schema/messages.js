@@ -11,6 +11,7 @@ module.exports = mongoose.model(
     likes: { type: Number, default: 0 },
     replies: {
       replyID: {type: String},
+      replyMessage: {type: String},
       likes: {type: Number, default : 0}
     },
   })
