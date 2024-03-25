@@ -3,7 +3,6 @@ const userSchema = require("../schema/users"); // import
 
 const fetchMessages = async () => {
   const messages = await messageSchema.find().sort({ postedAt: -1 }).lean();
-
   return messages;
 };
 

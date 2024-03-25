@@ -12,7 +12,8 @@ import { FaHeart } from "react-icons/fa";
 import { IoChatboxEllipses } from "react-icons/io5";
 
 function MessageBoard() {
-  const [messageContents, setMessageContents] = useState("");
+  const [messageContents, setMessageContents] = useState(null);
+  const [messageData, setMessageData] = useState(null);
 
   const navigate = useNavigate();
 
@@ -24,15 +25,38 @@ function MessageBoard() {
     setMessageContents(event.target.value);
   };
 
+  const fetchMessages = async () => {
+    const query = await Axios("api/messages/getmessages");
+    console.log(query);
+  };
+
+  useEffect(() => {
+    const getMessages = async () => {
+      try {
+        let response = null;
+        while (response === null) {
+          response = await Axios("api/messages/getmessages");
+          if (response) {
+            setMessageData(response);
+            console.log("USER DATA: ", messageData);
+          }
+        }
+      } catch (error) {
+        // toast
+      }
+    };
+
+    getMessages();
+
+    return () => {};
+  }, []);
 
   const handleConfirm = async () => {
-
     const query = await Axios("/api/messages/setmessage", "POST", {
       message: messageContents,
     });
 
     setMessageContents("");
-
   };
 
   return (
@@ -49,83 +73,40 @@ function MessageBoard() {
                   <textarea type="text" className={styles.searchBar} placeholder="What's on your mind?" value={messageContents} onChange={handleInputChange} />
                 </div>
                 <div className={styles.buttonContainer}>
-                  <div className={styles.outlineButton} onClick={() => handleConfirm()}> Post </div>
+                  <div className={styles.outlineButton} onClick={() => handleConfirm()}>
+                    {" "}
+                    Post{" "}
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div className={styles.messageContainer}>
-              <div className={styles.messageContainerMainFlex}>
-                <div className={styles.messageContainerFlex}>
-                  <img src={`${user.profilePicture}`} className={styles.avatar} alt="" onClick={() => navigate(`/profile/${user.username}`)}></img>
-                  <div className={styles.profileDetailsFlex}>
-                    <div className={styles.username}>Bobby</div>
-                    <div type="text" className={styles.messageContents}>
-                      Today was a very long day.
+            <div>
+              {messageData !== null &&
+                messageData.map((message, index) => (
+                  <div className={styles.messageContainer} key={index}>
+                    <div className={styles.messageContainerMainFlex}>
+                      <div className={styles.messageContainerFlex}>
+                        <img src={`${message.profilePicture}`} className={styles.avatar} alt="" onClick={() => navigate(`/profile/${message.username}`)} />
+                        <div className={styles.profileDetailsFlex}>
+                          <div className={styles.username}>{message.username}</div>
+                          <div className={styles.messageContents}>{message.message}</div>
+                        </div>
+                      </div>
+                      <div className={styles.buttonContainerMessage}>
+                        <div className={styles.replyButton}>
+                          <IoChatboxEllipses />
+                        </div>
+                        <span className={styles.comments}>0</span>
+                        <div className={styles.likeButton}>
+                          <FaHeart />
+                        </div>
+                        <span className={styles.likes}>{message.likes}</span>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className={styles.buttonContainerMessage}>
-                  <div className={styles.replyButton}>
-                    <IoChatboxEllipses />
-                  </div>
-                  <span className={styles.comments}>0</span>
-                  <div className={styles.likeButton}>
-                    <FaHeart />
-                  </div>
-                  <span className={styles.likes}>0</span>
-                </div>
-              </div>
+                ))}
             </div>
-
-            <div className={styles.messageContainer}>
-              <div className={styles.messageContainerMainFlex}>
-                <div className={styles.messageContainerFlex}>
-                  <img src={`${user.profilePicture}`} className={styles.avatar} alt="" onClick={() => navigate(`/profile/${user.username}`)}></img>
-                  <div className={styles.profileDetailsFlex}>
-                    <div className={styles.username}>Bobby</div>
-                    <div type="text" className={styles.messageContents}>
-                      Today was a very long day.
-                    </div>
-                  </div>
-                </div>
-                <div className={styles.buttonContainerMessage}>
-                  <div className={styles.replyButton}>
-                    <IoChatboxEllipses />
-                  </div>
-                  <span className={styles.comments}>0</span>
-                  <div className={styles.likeButton}>
-                    <FaHeart />
-                  </div>
-                  <span className={styles.likes}>0</span>
-                </div>
-              </div>
-            </div>
-
-            <div className={styles.messageContainer}>
-              <div className={styles.messageContainerMainFlex}>
-                <div className={styles.messageContainerFlex}>
-                  <img src={`${user.profilePicture}`} className={styles.avatar} alt="" onClick={() => navigate(`/profile/${user.username}`)}></img>
-                  <div className={styles.profileDetailsFlex}>
-                    <div className={styles.username}>Bobby</div>
-                    <div type="text" className={styles.messageContents}>
-                      Today was a very long day.
-                    </div>
-                  </div>
-                </div>
-                <div className={styles.buttonContainerMessage}>
-                  <div className={styles.replyButton}>
-                    <IoChatboxEllipses />
-                  </div>
-                  <span className={styles.comments}>0</span>
-                  <div className={styles.likeButton}>
-                    <FaHeart />
-                  </div>
-                  <span className={styles.likes}>0</span>
-                </div>
-              </div>
-            </div>
-
           </div>
         </SubContainer>
       </MainContainer>
