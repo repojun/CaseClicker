@@ -25,6 +25,19 @@ const fetchTopTen = async () => {
   return topTen;
 };
 
+const getUserPosition = async (userID) => {
+  const userPos =
+    await userSchema
+      .find({
+        balance: { $gt: 0 },
+      })
+      .sort({ balance: -1 })
+      .lean()
+      .findOne({ id: userID });
+
+  return userPos;
+}
+
 const fetchUserByName = async (username) => {
   const user = await userSchema.findOne({ username: username }).lean();
   if (user) {
@@ -34,7 +47,7 @@ const fetchUserByName = async (username) => {
 };
 
 const updateUserProfilePicture = async (userID, newProfileURL) => {
-  const user = await userSchema.findOne({ id: userID});
+  const user = await userSchema.findOne({ id: userID });
   user.profilePicture = newProfileURL;
   await user.save();
 }
