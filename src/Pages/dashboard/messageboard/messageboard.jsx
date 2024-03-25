@@ -23,6 +23,18 @@ function MessageBoard() {
   const handleInputChange = (event) => {
     setMessageContents(event.target.value);
   };
+
+
+  const handleConfirm = async () => {
+
+    const query = await Axios("/api/messages/setmessage", "POST", {
+      message: messageContents,
+    });
+
+    setMessageContents("");
+
+  };
+
   return (
     <>
       <MainContainer>
@@ -37,7 +49,7 @@ function MessageBoard() {
                   <textarea type="text" className={styles.searchBar} placeholder="What's on your mind?" value={messageContents} onChange={handleInputChange} />
                 </div>
                 <div className={styles.buttonContainer}>
-                  <div className={styles.outlineButton}> Post </div>
+                  <div className={styles.outlineButton} onClick={() => handleConfirm()}> Post </div>
                 </div>
               </div>
             </div>
@@ -113,7 +125,7 @@ function MessageBoard() {
                 </div>
               </div>
             </div>
-            
+
           </div>
         </SubContainer>
       </MainContainer>

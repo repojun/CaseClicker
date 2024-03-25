@@ -1,8 +1,8 @@
 const { getCookie } = require("../../cookies/get");
-const { fetchUser, updateMessages } = require("../../database/queries/users");
-const messages = require("../../database/schema/messages");
+const { updateMessages } = require("../../database/queries/messages");
+const { fetchUser } = require("../../database/queries/users");
 
-const setItem = async (req, res) => {
+const setMessage = async (req, res) => {
   const { message } = req.body;
   if (!message) {
     return res.sendStatus(400);
@@ -19,4 +19,4 @@ const setItem = async (req, res) => {
 
 };
 
-module.exports = setItem;
+module.exports = setMessage;
