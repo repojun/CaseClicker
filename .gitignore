@@ -12,6 +12,8 @@
 /build
 /server/node_modules
 /src/node_modules
+PROJECT/server/node_modules
+PROJECT/src/node_modules
 
 # misc
 .DS_Store
