@@ -86,7 +86,7 @@ function MessageBoard() {
                   <div className={styles.messageContainer} key={index}>
                     <div className={styles.messageContainerMainFlex}>
                       <div className={styles.messageContainerFlex}>
-                        <img src={"/circlepfp.png"} className={styles.avatar} alt="" onClick={() => navigate(`/profile/${message.username}`)} />
+                        <img src={message.profilePicture} className={styles.avatar} alt="" onClick={() => navigate(`/profile/${message.username}`)} />
                         <div className={styles.profileDetailsFlex}>
                           <div className={styles.username}>{message.username}</div>
                           <div className={styles.messageContents}>{message.message}</div>

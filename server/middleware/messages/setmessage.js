@@ -13,7 +13,7 @@ const setMessage = async (req, res) => {
   if (!user || !query) {
     return res.sendStatus(400);
   }
-
+  console.log("USER ID LMFAOO: " + user.id)
   await updateMessages(user.id, user.username, message)
   return res.sendStatus(200);
 
