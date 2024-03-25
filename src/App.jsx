@@ -12,6 +12,7 @@ import RouteAuthenticated from "./routes/authenticated";
 import PremiumStore from "./Pages/dashboard/premiumstore/premiumstore";
 import Profile from "./Pages/profile/profile";
 import Leaderboard from "./Pages/dashboard/leaderboard/leaderboard";
+import MessageBoard from "./Pages/dashboard/messageboard/messageboard";
 
 function App() {
   return (
@@ -24,6 +25,14 @@ function App() {
           element={
             <RouteAuthenticated>
               <Leaderboard />
+            </RouteAuthenticated>
+          }
+        />
+                <Route
+          path="/dashboard/messageboard"
+          element={
+            <RouteAuthenticated>
+              <MessageBoard />
             </RouteAuthenticated>
           }
         />
