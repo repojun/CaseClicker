@@ -11,6 +11,7 @@ module.exports = mongoose.model(
     message: { type: String },
     postedAt: { type: Number, default: Date.now() },
     likes: { type: Number, default: 0 },
+    profilePicture: { type: String, default: "/circlepfp.png"},
     replies: {
       replyID: {type: String},
       replyMessage: {type: String},

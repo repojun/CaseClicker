@@ -7,7 +7,6 @@ import React, { useContext, useState, useEffect } from "react";
 import Axios from "../../../api/agent";
 import { useNavigate } from "react-router-dom";
 import useContextStore from "../../../context";
-import OutlineButton from "../../../components/outlinebutton/outlinebutton";
 import { FaHeart } from "react-icons/fa";
 import { IoChatboxEllipses } from "react-icons/io5";
 
@@ -25,10 +24,6 @@ function MessageBoard() {
     setMessageContents(event.target.value);
   };
 
-  const fetchMessages = async () => {
-    const query = await Axios("api/messages/getmessages");
-    console.log(query);
-  };
 
   useEffect(() => {
     const getMessages = async () => {
@@ -52,9 +47,13 @@ function MessageBoard() {
   }, []);
 
   const handleConfirm = async () => {
-    const query = await Axios("/api/messages/setmessage", "POST", {
-      message: messageContents,
-    });
+    if (!messageContents) {
+      console.log("Toast Error");
+    } else {
+      const query = await Axios("/api/messages/setmessage", "POST", {
+        message: messageContents,
+      });
+    }
 
     setMessageContents("");
   };
