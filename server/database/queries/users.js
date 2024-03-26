@@ -26,16 +26,23 @@ const fetchTopTen = async () => {
 };
 
 const getUserPosition = async (userID) => {
-  const userPos =
-    await userSchema
-      .find({
-        balance: { $gt: 0 },
-      })
-      .sort({ balance: -1 })
-      .lean()
-      .findOne({ id: userID });
+  try {
+    // Assuming userSchema is your Mongoose model
+    const user = await userSchema.findOne({ id: userID }).lean();
+    
+    if (!user) {
+      throw new Error('User not found');
+    }
 
-  return userPos;
+    // Find the count of users with a higher balance than the current user
+    const position = await userSchema.countDocuments({ balance: { $gt: user.balance } });
+
+    // Adding 1 to the position to get the user's position in the leaderboard
+    return position + 1;
+  } catch (error) {
+    console.error('Error:', error.message);
+    return null; // or handle the error accordingly
+  }
 }
 
 const fetchUserByName = async (username) => {

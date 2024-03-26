@@ -12,6 +12,7 @@ import { FaRegEdit } from "react-icons/fa";
 
 function Profile() {
   const [userData, setUserData] = useState(null);
+  const [userPos, setUserPos] = useState(null);
   const { username } = useParams();
   const [modal, setModal] = useState(false);
 
@@ -25,7 +26,12 @@ function Profile() {
         const response = await Axios("/api/user/username/exists", "POST", {
           username,
         });
-
+        const userID = response.id;
+        const leaderboardPos = await Axios("/api/user/getuserposition", "POST", {
+          userID,
+        });
+        console.log("HERE IS THE ID: " + userID);
+        
         const date = new Date(response.registeredAt);
         const day = date.getDate();
         const month = date.getMonth() + 1;
@@ -38,7 +44,7 @@ function Profile() {
         response.registeredAt = finalDate;
 
         setUserData(response);
-        console.log("USER DATA: " + userData);
+        // setUserPos(leaderboardPos)
       } catch (error) {
         // throw error using toast
       }
@@ -88,14 +94,14 @@ function Profile() {
 
                   <div className={styles.metricBlock}>
                     <div className={styles.metricTitleContainer}>
-                      <div className={styles.metricTitle}> Total Balance </div>
+                      <div className={styles.metricTitle}> Leaderboard Position </div>
                       <div className={styles.metricTitleValue}>
                         {" "}
                         <AiFillDollarCircle size={22} />
                       </div>
                     </div>
                     <div className={styles.metricValue}>
-                      <span className={styles.dollar}>$</span>182.89
+                      <span className={styles.dollar}>$</span>123
                     </div>
                   </div>
 
