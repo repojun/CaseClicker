@@ -1,13 +1,13 @@
 :root {
-  --backgroundColor: #bbd3ff;
-  --backgroundColorGlow: #bbd3ff40;
+  --backgroundColor: var(--blue-text-colour);
+  --backgroundColorGlow: rgba((var(--blue-text-colour)),0.64);
 }
 
 .upgradeButton {
   padding: 8px;
-  color: #bbd3ff;
+  color: var(--blue-text-colour);
   border-radius: 23px;
-  border: 2px solid #bbd3ff;
+  border: 2px solid var(--blue-text-colour);
   transition: 0.4s;
   text-align: center;
   width: auto;

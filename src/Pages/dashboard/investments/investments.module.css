@@ -62,9 +62,9 @@
 
 .editButton {
   padding:8px;
-  color:#bbd3ff;
+  color:var(--blue-text-colour);
   border-radius: 15px;
-  border: 2px solid #bbd3ff;
+  border: 2px solid var(--blue-text-colour);
   transition:0.4s;
   text-align: center;
   width: auto;
@@ -75,11 +75,11 @@
 .editButton:hover {
   padding:8px;
   color:#000000;
-  background-color: #bbd3ff;
+  background-color: var(--blue-text-colour);
   border-radius: 10px;
   cursor: pointer;
   transition:0.2s;
-  box-shadow: 0 0px 15px #bbd3ff40;
+  box-shadow: 0 0px 15px rgba(var(var(--blue-text-colour)),0.64);
   user-select: none;
 }
 
@@ -101,7 +101,7 @@
 
 .item {
   display: flex;
-  background-color: #141f33;
+  background-color: var(--sidebar-colour);
   border-radius: 25px;
   box-shadow: 0px 0px 20px -2px#000000ad;
   padding: 40px;

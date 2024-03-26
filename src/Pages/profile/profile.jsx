@@ -27,10 +27,10 @@ function Profile() {
           username,
         });
         const userID = response.id;
-        const leaderboardPos = await Axios("/api/user/getuserposition", "POST", {
-          userID,
-        });
-        console.log("HERE IS THE ID: " + userID);
+        // const leaderboardPos = await Axios("/api/user/getuserposition", "POST", {
+        //   userID,
+        // });
+        // console.log("HERE IS THE ID: " + userID);
         
         const date = new Date(response.registeredAt);
         const day = date.getDate();

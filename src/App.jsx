@@ -13,6 +13,7 @@ import PremiumStore from "./Pages/dashboard/premiumstore/premiumstore";
 import Profile from "./Pages/profile/profile";
 import Leaderboard from "./Pages/dashboard/leaderboard/leaderboard";
 import MessageBoard from "./Pages/dashboard/messageboard/messageboard";
+import "./globals.css"
 
 function App() {
   return (

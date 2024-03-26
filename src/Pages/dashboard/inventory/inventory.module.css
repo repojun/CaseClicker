@@ -15,7 +15,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #141f33;
+  background-color: var(--sidebar-colour);
   border-radius: 25px;
   box-shadow: 0px 0px 20px -2px#000000ad;
   padding: 40px;
@@ -137,21 +137,21 @@
 
 
 .searchBar {
-  background-color: #141f33;
-  border: 2px solid #141f33;
+  background-color: var(--sidebar-colour);
+  border: 2px solid var(--sidebar-colour);
   border-radius: 20px;
   padding: 10px;
-  color: #bbd3ff;
+  color: var(--blue-text-colour);
   transition: 0.4s;
 
 }
 
 .searchBar:focus {
-  outline: 2px solid #bbd3ff;
+  outline: 2px solid var(--blue-text-colour);
 }
 
 .searchBar:hover {
-  border: 2px solid #bbd3ff;
+  border: 2px solid var(--blue-text-colour);
   transition: 0.2s;
-  box-shadow: 0 0px 15px #bbd3ff40;
+  box-shadow: 0 0px 15px rgba(var(var(--blue-text-colour)),0.64);
 }

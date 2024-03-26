@@ -6,7 +6,7 @@
 }
 
 .settingName {
-  color: #bbd3ff;
+  color: var(--blue-text-colour);
   font-size: 18px;
 }
 

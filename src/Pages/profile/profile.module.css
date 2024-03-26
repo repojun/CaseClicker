@@ -1,7 +1,7 @@
 .container {
   min-height: 100vh;
   min-width: 100vw;
-  background-color: #1e283b;
+  background-color: var(--main-background-colour);
 }
 
 .flex {
@@ -12,7 +12,7 @@
 
 .subContainer {
   padding: 30px;
-  background-color: #141f33;
+  background-color: var(--sidebar-colour);
   border-radius: 25px;
   box-shadow: 0px 0px 20px -2px#000000ad;
   margin: 40px;
@@ -70,7 +70,7 @@
 
 .metricTitle {
   font-size: 16px;
-  color: #bbd3ff;
+  color: var(--blue-text-colour);
 }
 
 .metricTitleValue {
@@ -104,7 +104,7 @@
 }
 
 .metricContentSubtext {
-  color: #bbd3ff4a;
+  color: rgba((var(--blue-text-colour)),0.64);
   font-size: 10px;
   text-shadow: none;
   margin: none;
@@ -117,13 +117,13 @@
   flex-direction: column;
   row-gap: 25px;
   padding: 25px;
-  background-color: #243451;
+  background-color: var(--metric-colour);
   border-radius: 30px;
   transition: 0.4s;
 }
 
 .metricBlock:hover {
-  background-color: #30476e;
+  background-color: var(--metric-colour-highlight);
   box-shadow: 0px 0px 20px -2px#00000041;
   transition: 0.2s;
 }
@@ -135,7 +135,7 @@
 .dollar {
   font-weight: bold;
   font-size: 25px;
-  color: #bbd3ff;
+  color: var(--blue-text-colour);
   vertical-align: text-top;
   margin-right: 5px;
 }

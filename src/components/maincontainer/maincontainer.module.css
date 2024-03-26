@@ -1,9 +1,9 @@
 .left {
   width: 284px;
-  background: #141f33;
-  display:flex;
+  background: var(--sidebar-colour);
+  display: flex;
   flex-direction: column;
-  padding:15px;
+  padding: 15px;
   text-align: left;
   z-index: 20;
   position: fixed;
@@ -33,7 +33,7 @@
 }
 
 .avatar:hover {
-  cursor:pointer;
+  cursor: pointer;
 }
 
 .divider {
@@ -42,7 +42,7 @@
   border: none;
   border-radius: 6px;
   background-color: #bbd3ff43;
-  margin-top:30px;
+  margin-top: 30px;
   margin-bottom: 30px;
   margin-left: 20px;
   margin-right: 20px;
@@ -65,21 +65,20 @@
 .container {
   min-height: 100vh;
   display: flex;
-  background-color: #1e283b;
+  background-color: var(--main-background-colour);
 }
 
 .navbutton {
   font-size: 16px;
   text-align: left;
-  color:#bbd3ff;
-  padding:15px;
+  color: var(--blue-text-colour);
+  padding: 15px;
   transition: 0.2s;
-  margin-left:15px;
+  margin-left: 15px;
 }
 
 .navbutton:hover {
   transition: 0.2s;
   background-color: #2d426a;
-  cursor:pointer;
+  cursor: pointer;
 }
-

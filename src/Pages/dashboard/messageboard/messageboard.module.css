@@ -7,7 +7,7 @@
 }
 
 .messageContainerMain {
-  background-color: #141f33;
+  background-color: var(--sidebar-colour);
   box-shadow: 0 0px 15px rgba(0, 0, 0, 0.300);
   min-width: 600px;
   min-height: 120px;
@@ -20,7 +20,7 @@
 }
 
 .messageContainer {
-  background-color: #141f33;
+  background-color: var(--sidebar-colour);
   box-shadow: 0 0px 15px rgba(0, 0, 0, 0.300);
   min-width: 500px;
   min-height: 120px;
@@ -61,10 +61,10 @@
 .searchBar {
   margin-left: 10px;
   background-color: #192f57;
-  border: 2px solid #141f33;
+  border: 2px solid var(--sidebar-colour);
   border-radius: 15px;
   padding: 10px;
-  color: #bbd3ff;
+  color: var(--blue-text-colour);
   transition: 0.4s;
   min-width: 520px;
   min-height: 40px;
@@ -92,7 +92,7 @@
 }
 
 .searchBar:focus {
-  outline: 2px solid #bbd3ff;
+  outline: 2px solid var(--blue-text-colour);
 }
 
 .buttonContainer {
@@ -115,17 +115,17 @@
 }
 
 .searchBar:hover {
-  border: 2px solid #bbd3ff;
+  border: 2px solid var(--blue-text-colour);
   transition: 0.2s;
-  box-shadow: 0 0px 15px #bbd3ff40;
+  box-shadow: 0 0px 15px rgba(var(var(--blue-text-colour)),0.64);
 }
 
 
 .outlineButton {
   padding: 4px;
-  color: #bbd3ff;
+  color: var(--blue-text-colour);
   border-radius: 15px;
-  border: 2px solid #bbd3ff;
+  border: 2px solid var(--blue-text-colour);
   transition: 0.4s;
   text-align: center;
   width: 60px;
@@ -135,11 +135,11 @@
 
 .outlineButton:hover {
   color: #2d2d2d !important;
-  background-color: #bbd3ff;
+  background-color: var(--blue-text-colour);
   border-radius: 10px;
   cursor: pointer;
   transition: 0.2s;
-  box-shadow: 0 0px 15px #bbd3ff40;
+  box-shadow: 0 0px 15px rgba(var(var(--blue-text-colour)),0.64);
 }
 
 .likeButton {
@@ -168,9 +168,9 @@
 
 .replyButton {
   padding: 6px;
-  color: #bbd3ff;
+  color: var(--blue-text-colour);
   border-radius: 15px;
-  border: 2px solid #bbd3ff;
+  border: 2px solid var(--blue-text-colour);
   transition: 0.4s;
   text-align: center;
   justify-content: center;
@@ -183,15 +183,15 @@
 
 .replyButton:hover {
   color: #2d2d2d !important;
-  background-color: #bbd3ff;
+  background-color: var(--blue-text-colour);
   border-radius: 10px;
   cursor: pointer;
   transition: 0.2s;
-  box-shadow: 0 0px 15px #bbd3ff40;
+  box-shadow: 0 0px 15px rgba(var(var(--blue-text-colour)),0.64);
 }
 
 .comments {
-  color:#bbd3ff;
+  color:var(--blue-text-colour);
 }
 
 .likes{
