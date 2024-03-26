@@ -19,7 +19,8 @@ const CaseOpener = () => {
             title: item.viewname,
             price: item.price,
             image: item.image,
-            entityName: key
+            rarity: item.rarity,
+            entityName: item.entname,
           });
           
         }
