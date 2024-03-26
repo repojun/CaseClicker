@@ -6,6 +6,7 @@ import styles from "./dashboard.module.css";
 import React from "react";
 import { observer } from "mobx-react-lite";
 import { toJS } from "mobx";
+import CaseOpener from "../../components/caseopener/caseopener";
 
 function Dashboard() {
 
@@ -22,7 +23,6 @@ function Dashboard() {
             <div className={styles.metricsContainer}>
               <div>
                 <div className={styles.portfolioTitle}>Overall Portfolio</div>
-
                 <div className={styles.metricContent}>
                   <div className={styles.metricMainBox}>
                     <div className={styles.metricBlock}>
@@ -83,6 +83,7 @@ function Dashboard() {
               </div>
             </div>
           </div>
+          <CaseOpener></CaseOpener>
         </SubContainer>
       </MainContainer>
     </>
