@@ -3,7 +3,7 @@ import MainContainer from "../../../components/maincontainer/maincontainer";
 import Header from "../../../components/mainheader/header";
 import { observer } from "mobx-react-lite";
 import styles from "./messageboard.module.css";
-import React, { useContext, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Axios from "../../../api/agent";
 import { useNavigate } from "react-router-dom";
 import useContextStore from "../../../context";
@@ -28,35 +28,47 @@ function MessageBoard() {
   useEffect(() => {
     const getMessages = async () => {
       try {
-        let response = null;
-        while (response === null) {
-          response = await Axios("api/messages/getmessages");
-          if (response) {
-            setMessageData(response);
-            console.log("USER DATA: ", messageData);
-          }
-        }
+         const response = await Axios("api/messages/getmessages");
+        // Sort the messages based on the postedAt field in ascending order
+        response.sort((a, b) => new Date(a.postedAt) - new Date(b.postedAt));
+        // Reverse the order of the sorted array to display messages in descending order
+        response.reverse();
+        // Set the sorted messages in the component state
+        console.log("HERE IS RESPONSE: " + response)
+        setMessageData(response);
       } catch (error) {
-        // toast
+        // Handle error
       }
     };
-
+    
     getMessages();
-
-    return () => {};
+  
+   
   }, []);
 
   const handleConfirm = async () => {
     if (!messageContents) {
       console.log("Toast Error");
     } else {
-      const query = await Axios("/api/messages/setmessage", "POST", {
-        message: messageContents,
-      });
+      try {
+        // Send the message
+        await Axios("/api/messages/setmessage", "POST", {
+          message: messageContents,
+        });
+        // After successfully sending the message, fetch the updated messages
+        const response = await Axios("api/messages/getmessages");
+        // Sort the messages based on the postedAt field in ascending order
+        response.sort((a, b) => new Date(a.postedAt) - new Date(b.postedAt));
+        // Reverse the order of the sorted array to display messages in descending order
+        response.reverse();
+        setMessageData(response);
+      } catch (error) {
+        // Handle error
+      }
     }
 
-    setMessageContents("");
-  };
+  setMessageContents("");
+};
 
   return (
     <>
