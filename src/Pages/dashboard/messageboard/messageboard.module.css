@@ -54,8 +54,11 @@
 .avatar {
   height: 40px;
   width: 40px;
-
   border-radius: 50%;
+}
+
+.avatar:hover {
+  cursor: pointer;
 }
 
 .searchBar {
@@ -82,6 +85,14 @@
 .username {
   font-size: 15px;
   font-weight: bold;
+  transition: 0.2s;
+  width:fit-content;
+}
+
+.username:hover {
+  cursor: pointer;
+  text-shadow: 0px 0px 10px #ffffff;
+  transition: 0.2s;
 }
 
 .profileDetailsFlex {
@@ -117,7 +128,7 @@
 .searchBar:hover {
   border: 2px solid var(--blue-text-colour);
   transition: 0.2s;
-  box-shadow: 0 0px 15px rgba(var(var(--blue-text-colour)),0.64);
+  box-shadow: 0 0px 15px rgba(var(var(--blue-text-colour)), 0.64);
 }
 
 
@@ -139,7 +150,7 @@
   border-radius: 10px;
   cursor: pointer;
   transition: 0.2s;
-  box-shadow: 0 0px 15px rgba(var(var(--blue-text-colour)),0.64);
+  box-shadow: 0 0px 15px rgba(var(var(--blue-text-colour)), 0.64);
 }
 
 .likeButton {
@@ -187,13 +198,13 @@
   border-radius: 10px;
   cursor: pointer;
   transition: 0.2s;
-  box-shadow: 0 0px 15px rgba(var(var(--blue-text-colour)),0.64);
+  box-shadow: 0 0px 15px rgba(var(var(--blue-text-colour)), 0.64);
 }
 
 .comments {
-  color:var(--blue-text-colour);
+  color: var(--blue-text-colour);
 }
 
-.likes{
-  color:#ff4362;
+.likes {
+  color: #ff4362;
 }
