@@ -24,51 +24,55 @@ function MessageBoard() {
     setMessageContents(event.target.value);
   };
 
+  const refreshState = (response) => {
+    response.sort((a, b) => new Date(a.postedAt) - new Date(b.postedAt));
+    response.reverse();
+    setMessageData(response);
+  }
 
   useEffect(() => {
     const getMessages = async () => {
       try {
-         const response = await Axios("api/messages/getmessages");
-        // Sort the messages based on the postedAt field in ascending order
-        response.sort((a, b) => new Date(a.postedAt) - new Date(b.postedAt));
-        // Reverse the order of the sorted array to display messages in descending order
-        response.reverse();
-        // Set the sorted messages in the component state
-        console.log("HERE IS RESPONSE: " + response)
-        setMessageData(response);
+        const response = await Axios("api/messages/getmessages");
+        refreshState(response);
+
       } catch (error) {
         // Handle error
       }
     };
-    
+
     getMessages();
-  
-   
+
+
   }, []);
+
+  const likeButton = async (messageID, liked) => {
+    console.log("message ID: " + messageID);
+    await Axios("/api/messages/setmessagelike", "POST", {
+      messageID: messageID,
+      liked: liked
+    });
+    const response = await Axios("api/messages/getmessages");
+    refreshState(response);
+  }
 
   const handleConfirm = async () => {
     if (!messageContents) {
       console.log("Toast Error");
     } else {
       try {
-        // Send the message
         await Axios("/api/messages/setmessage", "POST", {
           message: messageContents,
         });
-        // After successfully sending the message, fetch the updated messages
         const response = await Axios("api/messages/getmessages");
-        // Sort the messages based on the postedAt field in ascending order
-        response.sort((a, b) => new Date(a.postedAt) - new Date(b.postedAt));
-        // Reverse the order of the sorted array to display messages in descending order
-        response.reverse();
-        setMessageData(response);
+        refreshState(response);
       } catch (error) {
         // Handle error
       }
     }
 
-  setMessageContents("");
-};
+    setMessageContents("");
+  };
 
   return (
     <>
@@ -109,7 +113,7 @@ function MessageBoard() {
                           <IoChatboxEllipses />
                         </div>
                         <span className={styles.comments}>0</span>
-                        <div className={styles.likeButton}>
+                        <div className={styles.likeButton} onClick={() => likeButton(message._id, true)}>
                           <FaHeart />
                         </div>
                         <span className={styles.likes}>{message.likes}</span>
