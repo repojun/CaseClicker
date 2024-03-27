@@ -14,6 +14,7 @@ import Profile from "./Pages/profile/profile";
 import Leaderboard from "./Pages/dashboard/leaderboard/leaderboard";
 import MessageBoard from "./Pages/dashboard/messageboard/messageboard";
 import "./globals.css"
+import "./themes.css"
 
 function App() {
   return (

@@ -27,11 +27,12 @@ const CaseOpener = () => {
         'awp_suninleo',
         'deagle_mudder',
         'glock_candyapple',
-        'mp7_gunsmoke'
+        'mp7_gunsmoke',
+        "glock_sanddune"
     ];
 
     case1.forEach(entname => {
-        const item = user.inventory[entname];
+        const item = user.inventory && user.inventory[entname];
         if (item && item.purchasable === 0) {
             const rarity = item.rarity;
             const chance = rarityChances[rarity];
