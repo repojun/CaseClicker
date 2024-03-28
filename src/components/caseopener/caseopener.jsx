@@ -10,8 +10,6 @@ const CaseOpener = () => {
 
     const selectRandomItems = () => {
 
-        const items = [];
-
         const case1 = [
             'karambit_fade',       // Contraband
             'glock_fade',          // Ultra Rare
@@ -25,6 +23,20 @@ const CaseOpener = () => {
             'mp7_gunsmoke',        // Common
             'glock_sanddune'       // Common
         ];
+
+        const case2 = [
+            'karambit_fade', // Contraband
+            'awp_fade', // Ultra Rare
+            'usp_printstream', // Ultra Rare
+            'ak_icecoaled', // Rare
+            'deagle_kumicho', // Rare
+            'ak_firstclass', // Uncommon
+            'ak_redlaminate', // Uncommon
+            'usp_guardian', // Common
+            'ak_safarimesh', // Common
+            'glock_reach', // Common
+            'dealge_mudder', // Common
+        ]
 
         let selectedRarity;
 
@@ -54,11 +66,22 @@ const CaseOpener = () => {
             return item && item.purchasable === 0 && item.rarity === selectedRarity;
         });
 
+        const selectedItems2 = case2.filter(entname => {
+            const item = user.inventory && user.inventory[entname];
+            return item && item.purchasable === 0 && item.rarity === selectedRarity;
+        });
+
         // Log the selected rarity and items
         const randomIndex = Math.floor(Math.random() * selectedItems.length);
         const randomValue = selectedItems[randomIndex];
+
+        const randomIndex2 = Math.floor(Math.random() * selectedItems.length);
+        const randomValue2 = selectedItems[randomIndex2];
+        
         console.log("Selected Rarity:", selectedRarity);
         console.log("Selected Items:", randomValue);
+        console.log("Selected Items 2:", randomValue2);
+
     };
 
     return (
