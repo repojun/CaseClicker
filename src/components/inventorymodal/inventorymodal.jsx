@@ -1,12 +1,11 @@
-import styles from "./storemodal.module.css";
+import styles from "./inventorymodal.module.css";
 import { React, useState } from 'react';
 import OutlineButton from "../outlinebutton/outlinebutton";
 import Axios from "../../api/agent";
 import { observer } from "mobx-react-lite";
 import useContextStore from "../../context";
 
-
-const StoreModal = ({ modal, toggleModal, image, itemName, finalPurchase, entityName }) => {
+const InventoryModal = ({ modal, toggleModal, price, image, itemName, finalPurchase, entityName }) => {
     const {
         userStore: { user },
     } = useContextStore();
@@ -17,7 +16,7 @@ const StoreModal = ({ modal, toggleModal, image, itemName, finalPurchase, entity
                 <div className={styles.overlay} onClick={toggleModal}>
                     <div className={styles.modalContent}>
                         <div className={styles.modalTitle}>
-                            Purchase Confirmation
+                            {itemName}
                         </div>
                         <img
                             className={styles.itemCardImage}
@@ -25,16 +24,16 @@ const StoreModal = ({ modal, toggleModal, image, itemName, finalPurchase, entity
                             alt=''
                         />
                         <div>
-                            Are you sure you would like to purchase <span style={{ fontWeight: "bold" }}> "{itemName}"</span>?</div>
+                            Market Value: <span className={styles.money}>{"$" + price.toFixed(2)}</span></div>
                         <div>
-                        <span style={{ fontWeight: "bold" }}>Current Balance: </span> <span className={styles.money}>${user.balance.toFixed(2)} </span>
+                            <span style={{ fontWeight: "bold" }}>Actions: </span>
                         </div>
                         <div className={styles.buttonContainer}>
-                            <div onClick={() => finalPurchase(entityName)}>
-                                <OutlineButton title="Yes" minWidth={"50px"} />
+                            <div onClick={toggleModal}>
+                                <OutlineButton title="Open" minWidth={"60px"} />
                             </div>
                             <div onClick={toggleModal}>
-                                <OutlineButton title="No" minWidth={"50px"} />
+                                <OutlineButton title="Sell" minWidth={"60px"} />
                             </div>
                         </div>
                     </div>
@@ -44,4 +43,4 @@ const StoreModal = ({ modal, toggleModal, image, itemName, finalPurchase, entity
     );
 };
 
-export default observer(StoreModal)
+export default observer(InventoryModal)

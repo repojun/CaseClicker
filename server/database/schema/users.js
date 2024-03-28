@@ -338,7 +338,6 @@ module.exports = mongoose.model( // exports allows us to use many functions with
         image: { type: String, default: "/skins/usp_printstream.png"},
         purchasable: { type: Number, default: 0},
         rarity: {type: String, default: "Ultra Rare"}
-
       },
       usp_stainless: {
         viewname: {type: String, default: "USP - Stainless"},
@@ -384,28 +383,33 @@ module.exports = mongoose.model( // exports allows us to use many functions with
         value: { type: Number, default: 0 },
         price: { type: Number, default: 1.90 },
         image: { type: String, default: "/brokenfangnew.png"},
-        purchasable: { type: Number, default: 1}
+        purchasable: { type: Number, default: 1},
+        entname: {type: String, default: "brokenfang"}
       },
       case_dreams: {
         viewname: { type: String, default: "Dream Case"},
         value: { type: Number, default: 0 },
         price: { type: Number, default: 1.90 },
         image: { type: String, default: "/dreamnightmaresnew.png"},
-        purchasable: { type: Number, default: 1}
+        purchasable: { type: Number, default: 1},
+        entname: { type: String, default: "dream"}
       },
       case_contenders: {
         viewname: { type: String, default: "Sticker Capsule"},
         value: { type: Number, default: 0 },
         price: { type: Number, default: 1.90 },
         image: { type: String, default: "/stockholmcontenders.png"},
-        purchasable: { type: Number, default: 1}
+        purchasable: { type: Number, default: 1},
+        entname: { type: String, default: "themecapsule"}
       },
       case_dust: {
         viewname: { type: String, default: "Souvenir Package"},
         value: { type: Number, default: 0 },
         price: { type: Number, default: 1.90 },
         image: { type: String, default: "/stockholmdust.png"},
-        purchasable: { type: Number, default: 1}
+        purchasable: { type: Number, default: 1},
+        entname: { type: String, default: "powerup"}
+
       },
       case_unknown: {
         viewname: { type: String, default: "Unknown Case #2"},

@@ -39,7 +39,6 @@ function Store() {
 
     if (user.balance >= price) {
 
-
       let newBalance = user.balance - price;
       setBalance(newBalance);
       const query = await Axios("/api/user/setbalance", "POST", {
@@ -60,6 +59,7 @@ function Store() {
         progress: undefined,
         theme: "dark",
       });
+
     } else {
       toast.error("Insufficient Funds!", {
         position: "bottom-right",
@@ -73,10 +73,6 @@ function Store() {
       });
     }
   };
-
-  
-
-
 
   return (
     <>
@@ -94,12 +90,10 @@ function Store() {
             pauseOnHover
             theme="dark"
           />
-
           <div className={styles.centerTitle}>
             <Header title="Store" />
           </div>
           <StoreComponent purchase={purchase} />
-
           <Modal
             modal={modal}
             toggleModal={toggleModal}

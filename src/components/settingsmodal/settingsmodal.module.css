@@ -1,6 +1,6 @@
 .overlay {
   background: rgba(49, 53, 65, 0.5);
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(8px);
   z-index: 99;
   width: 100vw;
   height: 100vh;

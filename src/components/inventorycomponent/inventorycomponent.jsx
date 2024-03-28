@@ -3,8 +3,9 @@ import useContextStore from "../../context";
 import React from "react";
 import styles from "./inventorycomponent.module.css";
 import InventoryItem from "../inventoryitem/inventoryitem";
+import InventoryModal from "../inventorymodal/inventorymodal";
 
-const InventoryComponent = () => {
+const InventoryComponent = ({purchase}) => {
   const {
     userStore: { user },
   } = useContextStore();
@@ -12,6 +13,14 @@ const InventoryComponent = () => {
   if (!user || !user.inventory) {
     return null;
   }
+
+  const handlePurchase = (price, image, viewname, entityName) => {
+    console.log(price);
+    console.log(image);
+    console.log(viewname);
+    console.log(entityName);
+    purchase(price, image, viewname, entityName);
+  };
 
   const items = [];
 
@@ -23,8 +32,10 @@ const InventoryComponent = () => {
         items.push({
           name: key,
           value: item.value,
-          price: "£" + item.price.toFixed(2),
+          price: item.price,
           image: item.image,
+          viewname: item.viewname,
+          entity: item.entname
         });
       }
     }
@@ -41,6 +52,8 @@ const InventoryComponent = () => {
     return chunkedArr;
   };
 
+  console.log(items)
+
   const rows = chunkArray(items, 8);
 
   return (
@@ -52,7 +65,8 @@ const InventoryComponent = () => {
               <InventoryItem
                 key={itemIndex}
                 image={item.image}
-                price={item.price}
+                price={"$" + item.price.toFixed(2)}
+                click={() => {handlePurchase(item.price, item.image, item.viewname, item.entity)}}
               />
             ))}
           </div>
