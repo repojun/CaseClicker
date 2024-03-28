@@ -8,49 +8,64 @@ const CaseOpener = () => {
         userStore: { user },
     } = useContextStore();
 
-    const items = [];
-    const rarityChances = {
-        'Contraband': 0.0025,    // 0.25%
-        'Ultra Rare': 0.005,      // 0.5%
-        'Rare': 0.02,             // 2%
-        'Uncommon': 0.0975,       // 9.75%
-        'Common': 0.1875          // 18.75%
+    const selectRandomItems = () => {
+
+        const items = [];
+
+        const case1 = [
+            'karambit_fade',       // Contraband
+            'glock_fade',          // Ultra Rare
+            'deagle_codered',      // Ultra Rare
+            'mp7_bloodsport',      // Rare
+            'scar20_emerald',      // Rare
+            'usp_stainless',       // Uncommon
+            'awp_suninleo',        // Uncommon
+            'deagle_mudder',       // Common
+            'glock_candyapple',    // Common
+            'mp7_gunsmoke',        // Common
+            'glock_sanddune'       // Common
+        ];
+
+        let selectedRarity;
+
+        // Selecting rarity based on random number
+        const randomChoice = Math.random();
+        console.log("RANDOM NUMBER: " + randomChoice)
+        switch (true) {
+            case (randomChoice <= 0.75):
+                selectedRarity = 'Common';
+                break;
+            case (randomChoice <= 0.945):
+                selectedRarity = 'Uncommon';
+                break;
+            case (randomChoice <= 0.9675):
+                selectedRarity = 'Rare';
+                break;
+            case (randomChoice <= 0.9745):
+                selectedRarity = 'Ultra Rare';
+                break;
+            default:
+                selectedRarity = 'Contraband';
+        }
+
+        // Filter items based on the selected rarity
+        const selectedItems = case1.filter(entname => {
+            const item = user.inventory && user.inventory[entname];
+            return item && item.purchasable === 0 && item.rarity === selectedRarity;
+        });
+
+        // Log the selected rarity and items
+        const randomIndex = Math.floor(Math.random() * selectedItems.length);
+        const randomValue = selectedItems[randomIndex];
+        console.log("Selected Rarity:", selectedRarity);
+        console.log("Selected Items:", randomValue);
     };
 
-    const case1 = [
-        'karambit_fade',
-        'glock_fade',
-        'deagle_codered',
-        'mp7_bloodsport',
-        'scar20_emerald',
-        'usp_stainless',
-        'awp_suninleo',
-        'deagle_mudder',
-        'glock_candyapple',
-        'mp7_gunsmoke',
-        "glock_sanddune"
-    ];
-
-    case1.forEach(entname => {
-        const item = user.inventory && user.inventory[entname];
-        if (item && item.purchasable === 0) {
-            const rarity = item.rarity;
-            const chance = rarityChances[rarity];
-            items.push({
-                title: item.viewname,
-                price: item.price,
-                image: item.image,
-                rarity: rarity,
-                entityName: entname,
-                chance: chance,
-            });
-        }
-    });
-
     return (
-        <div onClick={() => console.log(items)}>hey</div>
-    )
-
+        <div>
+            <button onClick={() => selectRandomItems()}>Select Random Items</button>
+        </div>
+    );
 };
 
 export default observer(CaseOpener);
