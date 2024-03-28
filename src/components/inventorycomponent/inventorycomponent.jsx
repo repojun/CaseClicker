@@ -15,10 +15,6 @@ const InventoryComponent = ({purchase}) => {
   }
 
   const handlePurchase = (price, image, viewname, entityName) => {
-    console.log(price);
-    console.log(image);
-    console.log(viewname);
-    console.log(entityName);
     purchase(price, image, viewname, entityName);
   };
 
@@ -52,7 +48,6 @@ const InventoryComponent = ({purchase}) => {
     return chunkedArr;
   };
 
-  console.log(items)
 
   const rows = chunkArray(items, 8);
 
