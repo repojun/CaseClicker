@@ -1,5 +1,5 @@
 import styles from "./inventorymodal.module.css";
-import { React, useState, useEffect } from 'react';
+import { React, useState, useEffect } from "react";
 import OutlineButton from "../outlinebutton/outlinebutton";
 import Axios from "../../api/agent";
 import { observer } from "mobx-react-lite";
@@ -8,155 +8,195 @@ import CaseItem from "../caseitem/caseitem";
 import Inventory from "../../Pages/dashboard/inventory/inventory";
 
 const InventoryModal = ({ modal, toggleModal, price, image, itemName, finalPurchase, entityName }) => {
-    const {
-        userStore: { user },
-    } = useContextStore();
-    const [selectedImages, setSelectedImages] = useState([]);
-    const [firstRow, setFirstRow] = useState([]);
-    const [secondRow, setSecondRow] = useState([]);
+  const {
+    userStore: { user },
+  } = useContextStore();
+  const [selectedImages, setSelectedImages] = useState([]);
+  const [firstRow, setFirstRow] = useState([]);
+  const [secondRow, setSecondRow] = useState([]);
+  const case1 = [
+    "karambit_fade", // Contraband
+    "glock_fade", // Ultra Rare
+    "deagle_codered", // Ultra Rare
+    "mp7_bloodsport", // Rare
+    "scar20_emerald", // Rare
+    "usp_stainless", // Uncommon
+    "awp_suninleo", // Uncommon
+    "deagle_mudder", // Common
+    "glock_candyapple", // Common
+    "mp7_gunsmoke", // Common
+    "glock_sanddune", // Common
+  ];
 
-    useEffect(() => {
-        selectRandomItems(entityName);
-    }, [entityName]); // Call selectRandomItems whenever entityName changes
+  const case2 = [
+    "karambit_fade", // Contraband
+    "awp_fade", // Ultra Rare
+    "usp_printstream", // Ultra Rare
+    "ak_icecoaled", // Rare
+    "deagle_kumicho", // Rare
+    "ak_firstclass", // Uncommon
+    "ak_redlaminate", // Uncommon
+    "usp_guardian", // Common
+    "ak_safarimesh", // Common
+    "glock_reach", // Common
+    "deagle_mudder", // Common
+  ];
 
-    const selectRandomItems = (caseName) => {
-        const getRarity = () => {
-            let selectedRarity;
+  useEffect(() => {
+    populateRows(entityName);
+  }, [entityName]); // Call selectRandomItems whenever entityName changes
 
-            const randomChoice = Math.random();
+  const populateRows = (caseName) => {
+    let images = [];
 
-            switch (true) {
-                case (randomChoice <= 0.75):
-                    selectedRarity = 'Common';
-                    break;
-                case (randomChoice <= 0.945):
-                    selectedRarity = 'Uncommon';
-                    break;
-                case (randomChoice <= 0.97):
-                    selectedRarity = 'Rare';
-                    break;
-                case (randomChoice <= 0.995):
-                    selectedRarity = 'Ultra Rare';
-                    break;
-                default:
-                    selectedRarity = 'Contraband';
-            }
+    if (caseName == "brokenfang") {
+      images = case1
+        .map((entname) => {
+          const item = user.inventory && user.inventory[entname];
+          return item ? { image: item.image, rarity: item.rarity } : null;
+        })
+        .filter((item) => item !== null);
+    }
 
-            return selectedRarity;
-        }
+    if (caseName == "dream") {
+      images = case2
+        .map((entname) => {
+          const item = user.inventory && user.inventory[entname];
+          return item ? { image: item.image, rarity: item.rarity } : null;
+        })
+        .filter((item) => item !== null);
+    }
 
-        if (caseName === "brokenfang") {
-            const case1 = [
-                'karambit_fade',       // Contraband
-                'glock_fade',          // Ultra Rare
-                'deagle_codered',      // Ultra Rare
-                'mp7_bloodsport',      // Rare
-                'scar20_emerald',      // Rare
-                'usp_stainless',       // Uncommon
-                'awp_suninleo',        // Uncommon
-                'deagle_mudder',       // Common
-                'glock_candyapple',    // Common
-                'mp7_gunsmoke',        // Common
-                'glock_sanddune'       // Common
-            ];
+    const firstRow = images.slice(0, 5);
+    const secondRow = images.slice(5);
+    setSelectedImages(images);
+    setFirstRow(firstRow);
+    setSecondRow(secondRow);
+  };
 
-            const selectedRarity = getRarity();
+  const selectRandomItems = (caseName) => {
+    console.log(caseName); // THIS PRINTS brokenfang OR dream
 
-            // Filter items based on the selected rarity
-            const selectedItems = case1.filter(entname => {
-                const item = user.inventory && user.inventory[entname];
-                return item && item.purchasable === 0 && item.rarity === selectedRarity;
-            });
+    const getRarity = () => {
+      let selectedRarity;
 
-            const images = case1.map(entname => {
-                const item = user.inventory && user.inventory[entname];
-                return item ? { image: item.image, rarity: item.rarity } : null;
-            }).filter(item => item !== null);
+      const randomChoice = Math.random();
 
+      switch (true) {
+        case randomChoice <= 0.75:
+          selectedRarity = "Common";
+          break;
+        case randomChoice <= 0.945:
+          selectedRarity = "Uncommon";
+          break;
+        case randomChoice <= 0.97:
+          selectedRarity = "Rare";
+          break;
+        case randomChoice <= 0.995:
+          selectedRarity = "Ultra Rare";
+          break;
+        default:
+          selectedRarity = "Contraband";
+      }
 
-            const firstRow = images.slice(0, 5);
-            const secondRow = images.slice(5);
-            setSelectedImages(images);
-            setFirstRow(firstRow);
-            setSecondRow(secondRow);
-        }
-
-        if (caseName === "dream") {
-            const case2 = [
-                'karambit_fade', // Contraband
-                'awp_fade', // Ultra Rare
-                'usp_printstream', // Ultra Rare
-                'ak_icecoaled', // Rare
-                'deagle_kumicho', // Rare
-                'ak_firstclass', // Uncommon
-                'ak_redlaminate', // Uncommon
-                'usp_guardian', // Common
-                'ak_safarimesh', // Common
-                'glock_reach', // Common
-                'deagle_mudder', // Common
-            ]
-
-            const selectedRarity = getRarity();
-
-            const selectedItems = case2.filter(entname => {
-                const item = user.inventory && user.inventory[entname];
-                return item && item.purchasable === 0 && item.rarity === selectedRarity;
-            });
-
-            const images = case2.map(entname => {
-                const item = user.inventory && user.inventory[entname];
-                return item ? { image: item.image, rarity: item.rarity } : null;
-            }).filter(item => item !== null);
-
-
-            const firstRow = images.slice(0, 5);
-            const secondRow = images.slice(5);
-            setSelectedImages(images);
-            setFirstRow(firstRow);
-            setSecondRow(secondRow);
-        }
+      return selectedRarity;
     };
 
-    return (
-        <>
-            {modal && (
-                <div className={styles.overlay} >
-                    <div className={styles.modalContent}>
-                        <div className={styles.modalTitle}>
-                            {itemName}
-                        </div>
-                        <img
-                            className={styles.itemCardImage}
-                            src={image}
-                            alt=''
-                        />
-                        <div>
-                            Market Value: <span className={styles.money}>{"$" + price.toFixed(2)}</span></div>
-                        <div>
-                            <div className={styles.modalCaseItems}>
-                                {firstRow.map((item, index) => (
-                                    <CaseItem key={index} image={item.image} rarity={item.rarity} />
-                                ))}
-                            </div>
-                            <div className={styles.modalCaseItems}>
-                                {secondRow.map((item, index) => (
-                                    <CaseItem key={index + 5} image={item.image} rarity={item.rarity} />
-                                ))}
-                            </div>
-                        </div>
-                        <div className={styles.buttonContainer}>
-                            <div onClick={toggleModal}>
-                                <OutlineButton title="Open" minWidth={"60px"} click={toggleModal} />
-                            </div>
-                            <div onClick={toggleModal}>
-                                <OutlineButton title="Sell" minWidth={"60px"} click={toggleModal} />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            )}
-        </>
-    );
+    let selectedItems = [];
+    if (caseName === "brokenfang") {
+      const selectedRarity = getRarity();
+
+      selectedItems = case1.filter((entname) => {
+        const item = user.inventory && user.inventory[entname];
+        return item && item.purchasable === 0 && item.rarity === selectedRarity;
+      });
+
+      const images = case1
+        .map((entname) => {
+          const item = user.inventory && user.inventory[entname];
+          return item ? { image: item.image, rarity: item.rarity } : null;
+        })
+        .filter((item) => item !== null);
+
+      const firstRow = images.slice(0, 5);
+      const secondRow = images.slice(5);
+      setSelectedImages(images);
+      setFirstRow(firstRow);
+      setSecondRow(secondRow);
+
+      console.log("rarity: " + selectedRarity);
+      console.log("items " + selectedItems);
+
+      const lastIndex = selectedItems.length - 1;
+      const lastSelectedItem = selectedItems[Math.floor(Math.random() * (lastIndex + 1))];
+      console.log("Last selected item: ", lastSelectedItem);
+    }
+
+    if (caseName === "dream") {
+      const selectedRarity = getRarity();
+
+      selectedItems = case2.filter((entname) => {
+        const item = user.inventory && user.inventory[entname];
+        return item && item.purchasable === 0 && item.rarity === selectedRarity;
+      });
+
+      const images = case2
+        .map((entname) => {
+          const item = user.inventory && user.inventory[entname];
+          return item ? { image: item.image, rarity: item.rarity } : null;
+        })
+        .filter((item) => item !== null);
+
+      const firstRow = images.slice(0, 5);
+      const secondRow = images.slice(5);
+      setSelectedImages(images);
+      setFirstRow(firstRow);
+      setSecondRow(secondRow);
+
+      console.log("rarity: " + selectedRarity);
+      console.log("items " + selectedItems);
+
+      const lastIndex = selectedItems.length - 1;
+      const lastSelectedItem = selectedItems[Math.floor(Math.random() * (lastIndex + 1))];
+      console.log("Last selected item: ", lastSelectedItem);
+    }
+  };
+
+  return (
+    <>
+      {modal && (
+        <div className={styles.overlay}>
+          <div className={styles.modalContent}>
+            <div className={styles.modalTitle}>{itemName}</div>
+            <img className={styles.itemCardImage} src={image} alt="" />
+            <div>
+              Market Value: <span className={styles.money}>{"$" + price.toFixed(2)}</span>
+            </div>
+            <div>
+              <div className={styles.modalCaseItems}>
+                {firstRow.map((item, index) => (
+                  <CaseItem key={index} image={item.image} rarity={item.rarity} />
+                ))}
+              </div>
+              <div className={styles.modalCaseItems}>
+                {secondRow.map((item, index) => (
+                  <CaseItem key={index + 5} image={item.image} rarity={item.rarity} />
+                ))}
+              </div>
+            </div>
+            <div className={styles.buttonContainer}>
+              <div onClick={toggleModal}>
+                <OutlineButton title="Open" minWidth={"60px"} click={() => selectRandomItems(entityName)} />
+              </div>
+              <div onClick={toggleModal}>
+                <OutlineButton title="Sell" minWidth={"60px"} click={toggleModal} />
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
 };
 
 export default observer(InventoryModal);
