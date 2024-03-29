@@ -1,5 +1,5 @@
 import styles from "./inventorymodal.module.css";
-import { React, useState } from 'react';
+import { React, useState, useEffect } from 'react';
 import OutlineButton from "../outlinebutton/outlinebutton";
 import Axios from "../../api/agent";
 import { observer } from "mobx-react-lite";
@@ -15,9 +15,11 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, finalPurch
     const [firstRow, setFirstRow] = useState([]);
     const [secondRow, setSecondRow] = useState([]);
 
+    useEffect(() => {
+        selectRandomItems(entityName);
+    }, [entityName]); // Call selectRandomItems whenever entityName changes
 
     const selectRandomItems = (caseName) => {
-
         const getRarity = () => {
             let selectedRarity;
 
@@ -43,7 +45,7 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, finalPurch
             return selectedRarity;
         }
 
-        if (caseName == "brokenfang") {
+        if (caseName === "brokenfang") {
             const case1 = [
                 'karambit_fade',       // Contraband
                 'glock_fade',          // Ultra Rare
@@ -66,14 +68,20 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, finalPurch
                 return item && item.purchasable === 0 && item.rarity === selectedRarity;
             });
 
-            const randomIndex = Math.floor(Math.random() * selectedItems.length);
-            const randomValue = selectedItems[randomIndex];
+            const images = case1.map(entname => {
+                const item = user.inventory && user.inventory[entname];
+                return item ? { image: item.image, rarity: item.rarity } : null;
+            }).filter(item => item !== null);
 
-            console.log("Selected Rarity:", selectedRarity);
-            console.log("Selected Items:", randomValue);
+
+            const firstRow = images.slice(0, 5);
+            const secondRow = images.slice(5);
+            setSelectedImages(images);
+            setFirstRow(firstRow);
+            setSecondRow(secondRow);
         }
 
-        if (caseName == "dream") {
+        if (caseName === "dream") {
             const case2 = [
                 'karambit_fade', // Contraband
                 'awp_fade', // Ultra Rare
@@ -106,15 +114,6 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, finalPurch
             setSelectedImages(images);
             setFirstRow(firstRow);
             setSecondRow(secondRow);
-
-
-
-            console.log("IMG " + selectedImages[0]);
-            const randomIndex = Math.floor(Math.random() * selectedItems.length);
-            const randomValue = selectedItems[randomIndex];
-
-            console.log("Selected Rarity:", selectedRarity);
-            console.log("Selected Items:", randomValue);
         }
     };
 
@@ -147,7 +146,7 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, finalPurch
                         </div>
                         <div className={styles.buttonContainer}>
                             <div onClick={toggleModal}>
-                                <OutlineButton title="Open" minWidth={"60px"} click={() => selectRandomItems(entityName)} />
+                                <OutlineButton title="Open" minWidth={"60px"} click={toggleModal} />
                             </div>
                             <div onClick={toggleModal}>
                                 <OutlineButton title="Sell" minWidth={"60px"} click={toggleModal} />
@@ -160,4 +159,4 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, finalPurch
     );
 };
 
-export default observer(InventoryModal)
+export default observer(InventoryModal);
