@@ -1,0 +1,60 @@
+
+::root {
+    --BGDEFAULT: #FFD816
+}
+
+    /* background-color: rgba(var(--BGDEFAULT), 0.35); */
+    /* border: 2px solid var(--BGDEFAULT);  */
+    /* background-color: rgba(var(--BGDEFAULT), 0.37);  */
+
+.inventoryItemCard {
+    height:100px;
+    width:110px;
+    margin:8px;
+    background-color: #ffd81635;
+    border-radius: 5px;
+    border: 2px solid #ffd816;
+    padding:8px;
+    transition: 0.4s;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .inventoryItemCard:hover {
+    transition: 0.2s;
+    background-color: #ffd8165f;
+    cursor: pointer;
+  }
+  
+  .inventoryItemCardImage {
+    width:69px;
+    height:53px;
+    transition: 0.4s;
+  }
+  
+  .inventoryItemCardImage:hover {
+    -webkit-filter: drop-shadow(5px 5px 3px #222);
+    transform: rotatez(3deg) scale(1.02);
+    transition: 0.2s;
+    cursor:pointer;
+  }
+  
+  .inventoryItemCardContent {
+    display:flex;
+    flex-direction: column;
+    text-align: left;
+  }
+  
+  .inventoryItemCardTop{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .inventoryItemCardBottom{
+    display: flex;
+    font-size: 16px;
+  }
+  
+  

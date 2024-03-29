@@ -4,11 +4,16 @@ import OutlineButton from "../outlinebutton/outlinebutton";
 import Axios from "../../api/agent";
 import { observer } from "mobx-react-lite";
 import useContextStore from "../../context";
+import CaseItem from "../caseitem/caseitem";
+import Inventory from "../../Pages/dashboard/inventory/inventory";
 
 const InventoryModal = ({ modal, toggleModal, price, image, itemName, finalPurchase, entityName }) => {
     const {
         userStore: { user },
     } = useContextStore();
+    const [selectedImages, setSelectedImages] = useState([]);
+    const [firstRow, setFirstRow] = useState([]);
+    const [secondRow, setSecondRow] = useState([]);
 
 
     const selectRandomItems = (caseName) => {
@@ -90,6 +95,21 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, finalPurch
                 return item && item.purchasable === 0 && item.rarity === selectedRarity;
             });
 
+            const images = case2.map(entname => {
+                const item = user.inventory && user.inventory[entname];
+                return item ? { image: item.image, rarity: item.rarity } : null;
+            }).filter(item => item !== null);
+
+
+            const firstRow = images.slice(0, 5);
+            const secondRow = images.slice(5);
+            setSelectedImages(images);
+            setFirstRow(firstRow);
+            setSecondRow(secondRow);
+
+
+
+            console.log("IMG " + selectedImages[0]);
             const randomIndex = Math.floor(Math.random() * selectedItems.length);
             const randomValue = selectedItems[randomIndex];
 
@@ -114,14 +134,23 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, finalPurch
                         <div>
                             Market Value: <span className={styles.money}>{"$" + price.toFixed(2)}</span></div>
                         <div>
-                            <span style={{ fontWeight: "bold" }}>Actions: </span>
+                            <div className={styles.modalCaseItems}>
+                                {firstRow.map((item, index) => (
+                                    <CaseItem key={index} image={item.image} rarity={item.rarity} />
+                                ))}
+                            </div>
+                            <div className={styles.modalCaseItems}>
+                                {secondRow.map((item, index) => (
+                                    <CaseItem key={index + 5} image={item.image} rarity={item.rarity} />
+                                ))}
+                            </div>
                         </div>
                         <div className={styles.buttonContainer}>
                             <div onClick={toggleModal}>
-                                <OutlineButton title="Open" minWidth={"60px"} click={() => selectRandomItems(entityName)}/>
+                                <OutlineButton title="Open" minWidth={"60px"} click={() => selectRandomItems(entityName)} />
                             </div>
                             <div onClick={toggleModal}>
-                                <OutlineButton title="Sell" minWidth={"60px"} click={toggleModal}/>
+                                <OutlineButton title="Sell" minWidth={"60px"} click={toggleModal} />
                             </div>
                         </div>
                     </div>

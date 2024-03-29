@@ -5,7 +5,7 @@ import styles from "./inventorycomponent.module.css";
 import InventoryItem from "../inventoryitem/inventoryitem";
 import InventoryModal from "../inventorymodal/inventorymodal";
 
-const InventoryComponent = ({purchase}) => {
+const InventoryComponent = ({ purchase }) => {
   const {
     userStore: { user },
   } = useContextStore();
@@ -61,7 +61,7 @@ const InventoryComponent = ({purchase}) => {
                 key={itemIndex}
                 image={item.image}
                 price={"$" + item.price.toFixed(2)}
-                click={() => {handlePurchase(item.price, item.image, item.viewname, item.entity)}}
+                click={() => { handlePurchase(item.price, item.image, item.viewname, item.entity) }}
               />
             ))}
           </div>

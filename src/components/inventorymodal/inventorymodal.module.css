@@ -21,6 +21,15 @@
     text-shadow: 0px 0px 10px #05ff09b0;
 }
 
+
+.modalCaseItems {
+    display:flex;
+    column-gap: 10px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  
 .modalContent {
     padding: 30px;
     background-color: var(--sidebar-colour);
