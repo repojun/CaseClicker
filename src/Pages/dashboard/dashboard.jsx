@@ -15,7 +15,7 @@ function Dashboard() {
     <>
       <MainContainer>
         <SubContainer>
-          <Header title={"Welcome back " + user.username}> </Header>
+          <Header data-testid="cypress-username-title" title={"Welcome back " + user.username}> </Header>
           <div className={styles.titleSubtext}>
             Have an indepth look at all your metrics with the dashboard.
           </div>

@@ -14,8 +14,8 @@ export default function Register() {
 
   const handleRegister = async () => {
     try {
-
-      const query = await Axios("/api/register", "POST", { // creates axios query, goes to agent.js
+      const query = await Axios("/api/register", "POST", {
+        // creates axios query, goes to agent.js
         email,
         username,
         password,
@@ -42,22 +42,12 @@ export default function Register() {
 
   return (
     <div className={styles.mainContainer}>
-      <ToastContainer
-        position="bottom-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-      />
+      <ToastContainer position="bottom-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="dark" />
       <div className={styles.loginContainer}>
         <div className={styles.inputContainer}>
           <div className={styles.headerContainer}>Register</div>
           <input
+            data-testid="cypress-register-email"
             value={email}
             className={styles.inputBox}
             type="text"
@@ -69,6 +59,7 @@ export default function Register() {
             }}
           />
           <input
+            data-testid="cypress-register-username"
             value={username}
             className={styles.inputBox}
             type="text"
@@ -80,6 +71,7 @@ export default function Register() {
             }}
           />
           <input
+            data-testid="cypress-register-password"
             value={password}
             className={styles.inputBox}
             type="password"
@@ -92,15 +84,10 @@ export default function Register() {
           />
         </div>
         <div className={styles.buttonContainer}>
-          <OutlineButton
-            title="Register"
-            type="submit"
-            click={handleRegister}
-          ></OutlineButton>
-          <OutlineButton
-            title="Sign In"
-            click={() => navigate("/login")}
-          ></OutlineButton>
+          <div data-testid="cypress-register-button">
+            <OutlineButton title="Register" type="submit" click={handleRegister}></OutlineButton>
+          </div>
+          <OutlineButton title="Sign In" click={() => navigate("/login")}></OutlineButton>
         </div>
       </div>
     </div>

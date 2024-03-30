@@ -11,9 +11,9 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, finalPurch
   const {
     userStore: { user },
   } = useContextStore();
-  const [selectedImages, setSelectedImages] = useState([]);
   const [firstRow, setFirstRow] = useState([]);
   const [secondRow, setSecondRow] = useState([]);
+
   const case1 = [
     "karambit_fade", // Contraband
     "glock_fade", // Ultra Rare
@@ -69,14 +69,11 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, finalPurch
 
     const firstRow = images.slice(0, 5);
     const secondRow = images.slice(5);
-    setSelectedImages(images);
     setFirstRow(firstRow);
     setSecondRow(secondRow);
   };
 
   const selectRandomItems = (caseName) => {
-    console.log(caseName); // THIS PRINTS brokenfang OR dream
-
     const getRarity = () => {
       let selectedRarity;
 
@@ -120,7 +117,6 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, finalPurch
 
       const firstRow = images.slice(0, 5);
       const secondRow = images.slice(5);
-      setSelectedImages(images);
       setFirstRow(firstRow);
       setSecondRow(secondRow);
 
@@ -130,6 +126,7 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, finalPurch
       const lastIndex = selectedItems.length - 1;
       const lastSelectedItem = selectedItems[Math.floor(Math.random() * (lastIndex + 1))];
       console.log("Last selected item: ", lastSelectedItem);
+      updateInventory(lastSelectedItem);
     }
 
     if (caseName === "dream") {
@@ -149,7 +146,6 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, finalPurch
 
       const firstRow = images.slice(0, 5);
       const secondRow = images.slice(5);
-      setSelectedImages(images);
       setFirstRow(firstRow);
       setSecondRow(secondRow);
 
@@ -159,8 +155,15 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, finalPurch
       const lastIndex = selectedItems.length - 1;
       const lastSelectedItem = selectedItems[Math.floor(Math.random() * (lastIndex + 1))];
       console.log("Last selected item: ", lastSelectedItem);
+      updateInventory(lastSelectedItem);
     }
   };
+
+  const updateInventory = async (item) => {
+    const query = await Axios("/api/user/setitem", "POST", {
+      item: item,
+    });
+  }
 
   return (
     <>

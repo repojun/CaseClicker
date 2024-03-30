@@ -23,13 +23,13 @@
 
 
 .modalCaseItems {
-    display:flex;
+    display: flex;
     column-gap: 10px;
     justify-content: center;
     align-items: center;
-  }
+}
 
-  
+
 .modalContent {
     padding: 30px;
     background-color: var(--sidebar-colour);

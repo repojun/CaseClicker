@@ -2,14 +2,14 @@ import OutlineButton from "../../components/outlinebutton/outlinebutton";
 import styles from "./login.module.css";
 import React, { useState } from "react";
 import Axios from "../../api/agent";
-import { useNavigate, useParams} from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const { username: poop } = useParams()
+  const { username: poop } = useParams();
   const navigate = useNavigate();
 
   const handleLogin = async () => {
@@ -17,7 +17,6 @@ export default function Login() {
       const query = await Axios("/api/login", "POST", { username, password });
       navigate("/dashboard/");
     } catch (error) {
-
       const errorCode = error.response.status;
       const errorMessage = error.response.data;
 
@@ -38,24 +37,14 @@ export default function Login() {
 
   return (
     <div className={styles.mainContainer}>
-      <ToastContainer
-        position="bottom-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-      />
+      <ToastContainer position="bottom-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="dark" />
       <div className={styles.loginContainer}>
         {/* <form action="/api/signin" method="POST"> */}
         <form>
           <div className={styles.inputContainer}>
             <div className={styles.headerContainer}>User Login</div>
             <input
+              data-testid="cypress-login-username"
               className={styles.inputBox}
               value={username}
               type="text"
@@ -67,6 +56,7 @@ export default function Login() {
               }}
             />
             <input
+              data-testid="cypress-login-password"
               value={password}
               className={styles.inputBox}
               type="password"
@@ -79,11 +69,10 @@ export default function Login() {
             />
           </div>
           <div className={styles.buttonContainer}>
-            <OutlineButton
-              title="Login"
-              type="submit"
-              click={handleLogin}
-            ></OutlineButton>
+            <div data-testid="cypress-login-button">
+              <OutlineButton title="Login" type="submit" click={handleLogin}></OutlineButton>
+            </div>
+
             <OutlineButton title="Sign Up" click={() => navigate("/register/")}></OutlineButton>
           </div>
           <div className={styles.textButton}>Forgot your password?</div>
