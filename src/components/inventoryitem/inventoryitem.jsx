@@ -12,7 +12,7 @@ const InventoryItem = ({ image, price, click, rarity, title, children, className
   let rarityClass = styles.inventoryItemCard; // Default to base class
   if (rarity === "Contraband") {
     rarityClass = styles.Contraband;
-  } else if (rarity === "UltraRare") {
+  } else if (rarity === "Ultra Rare") {
     rarityClass = styles.UltraRare;
   } else if (rarity === "Rare") {
     rarityClass = styles.Rare;

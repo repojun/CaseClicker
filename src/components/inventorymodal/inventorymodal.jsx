@@ -215,8 +215,8 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, rarity, en
       {modal && (
         <div className={styles.overlay}>
           <div className={styles.modalContent}>
-            <div className={`${styles.titleFinal} ${styles[`titleFinal${(rarity || "").replace(/\s/g, "")}`]}`}>
-              {itemName} ({rarity})
+            <div className={`${styles.titleFinal} ${rarity ? styles[`titleFinal${rarity.replace(/\s/g, "")}`] : styles.modalTitle}`}>
+              {itemName} ({rarity ? rarity : "Regular"})
             </div>
             <img className={styles.itemCardImage} src={image} alt="" />
             <div>
