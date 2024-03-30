@@ -30,7 +30,7 @@ const StoreModal = ({ modal, toggleModal, image, itemName, finalPurchase, entity
                         <span style={{ fontWeight: "bold" }}>Current Balance: </span> <span className={styles.money}>${user.balance.toFixed(2)} </span>
                         </div>
                         <div className={styles.buttonContainer}>
-                            <div onClick={() => finalPurchase(entityName)}>
+                            <div data-testid="cypress-store-purchase" onClick={() => finalPurchase(entityName)}>
                                 <OutlineButton title="Yes" minWidth={"50px"} />
                             </div>
                             <div onClick={toggleModal}>

@@ -70,7 +70,7 @@ function MainPage() {
           </div>
           <div class={styles.maincontainer}>
             <div class={styles.circle} onClick={handleClick}>
-              <div class={styles.circletext}>Click to earn money!</div>
+              <div data-testid="cypress-game-click" class={styles.circletext}>Click to earn money!</div>
             </div>
             <div
               style={{

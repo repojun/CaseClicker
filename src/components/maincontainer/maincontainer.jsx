@@ -31,6 +31,7 @@ const MainContainer = ({ children, className = " ", ...props }) => {
       <div className={styles.left}>
         <div className={styles.welcomebox}>
           <img
+            data-testid="cypress-main-profile"
             src={`${user.profilePicture}`}
             alt=" "
             className={styles.avatar}
@@ -43,6 +44,7 @@ const MainContainer = ({ children, className = " ", ...props }) => {
         <hr className={styles.divider}></hr>
         <div>
           <div
+            data-testid="cypress-main-mainpage"
             className={`${styles.navbutton} ${selectedTab === 1 ? styles.selected : ""}`}
             onClick={() => {
               selectTab(1);
@@ -53,6 +55,7 @@ const MainContainer = ({ children, className = " ", ...props }) => {
             <AiOutlineSliders /> Play Game
           </div>
           <div
+            data-testid="cypress-main-dashboard"
             className={`${styles.navbutton} ${selectedTab === 2 ? styles.selected : ""}`}
             onClick={() => {
               navigate("/dashboard/");
@@ -63,6 +66,7 @@ const MainContainer = ({ children, className = " ", ...props }) => {
             <AiOutlineDeploymentUnit /> Dashboard{" "}
           </div>
           <div
+            data-testid="cypress-main-investments"
             className={`${styles.navbutton} ${selectedTab === 3 ? styles.selected : ""}`}
             onClick={() => {
               navigate("/dashboard/investments");
@@ -73,6 +77,7 @@ const MainContainer = ({ children, className = " ", ...props }) => {
             <AiOutlineStock /> Investments
           </div>
           <div
+            data-testid="cypress-main-inventory"
             className={`${styles.navbutton} ${selectedTab === 4 ? styles.selected : ""}`}
             onClick={() => {
               navigate("/dashboard/inventory");
@@ -84,6 +89,7 @@ const MainContainer = ({ children, className = " ", ...props }) => {
           </div>
 
           <div
+            data-testid="cypress-main-leaderboard"
             className={`${styles.navbutton} ${selectedTab === 5 ? styles.selected : ""}`}
             onClick={() => {
               navigate("/dashboard/leaderboard");
@@ -100,6 +106,7 @@ const MainContainer = ({ children, className = " ", ...props }) => {
 
         <div>
           <div
+            data-testid="cypress-main-store"
             className={`${styles.navbutton} ${selectedTab === 6 ? styles.selected : ""}`}
             onClick={() => {
               navigate("/dashboard/store");
@@ -110,6 +117,7 @@ const MainContainer = ({ children, className = " ", ...props }) => {
             <AiOutlineSetting /> Store
           </div>
           <div
+            data-testid="cypress-main-premiumstore"
             className={`${styles.navbutton} ${selectedTab === 7 ? styles.selected : ""}`}
             onClick={() => {
               navigate("/dashboard/premiumstore");
@@ -123,6 +131,7 @@ const MainContainer = ({ children, className = " ", ...props }) => {
             <AiOutlineSetting /> Settings
           </div>
           <div
+            data-testid="cypress-main-messageboard"
             className={`${styles.navbutton} ${selectedTab === 6 ? styles.selected : ""}`}
             onClick={() => {
               navigate("/dashboard/messageboard");

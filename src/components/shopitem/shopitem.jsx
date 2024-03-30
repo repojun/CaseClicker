@@ -15,7 +15,7 @@ const ShopItem = ({ image, title, price, premium, square, click, className = "",
                     src={image}
                     alt=''
                 />
-                <div className={styles.itemCardButtonContainer} onClick={click}>
+                <div data-testid="cypress-store-button" className={styles.itemCardButtonContainer} onClick={click}>
                     <div className={`${premium ? styles.itemCardButtonPremium : styles.itemCardButton}`}>
                         {premium && (
                             <div style={{ display: 'flex', alignItems: 'center' }} >

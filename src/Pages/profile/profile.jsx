@@ -31,7 +31,7 @@ function Profile() {
         //   userID,
         // });
         // console.log("HERE IS THE ID: " + userID);
-        
+
         const date = new Date(response.registeredAt);
         const day = date.getDate();
         const month = date.getMonth() + 1;
@@ -72,7 +72,7 @@ function Profile() {
               <div className={styles.subContainerSep}>
                 <div className={styles.subContainerTitle}>
                   <div className={styles.avatarWrapper}>
-                    <img src={`${userData.profilePicture}`} alt=" " className={styles.avatar} onClick={() => toggleModal()}></img>
+                    <img data-testid="cypress-profile-picture" src={`${userData.profilePicture}`} alt=" " className={styles.avatar} onClick={() => toggleModal()}></img>
                   </div>
                   <span>{userData ? userData.username : ""}</span>
                 </div>

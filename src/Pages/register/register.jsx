@@ -87,7 +87,9 @@ export default function Register() {
           <div data-testid="cypress-register-button">
             <OutlineButton title="Register" type="submit" click={handleRegister}></OutlineButton>
           </div>
-          <OutlineButton title="Sign In" click={() => navigate("/login")}></OutlineButton>
+          <div data-testid="cypress-register-signin-button">
+            <OutlineButton title="Sign In" click={() => navigate("/login")}></OutlineButton>
+          </div>
         </div>
       </div>
     </div>

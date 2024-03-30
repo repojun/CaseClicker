@@ -5,6 +5,7 @@ const { v4: uuidv4 } = require("uuid");
 
 const fetchUser = async (userID) => {
   // userID given to try find info on user
+  
   const user = await userSchema.findOne({ id: userID }).lean(); // find one document where the ID matches the user ID provided
   if (user) {
     // if the user exists, return the user as an object?
@@ -21,7 +22,6 @@ const fetchTopTen = async () => {
     .sort({ balance: -1 })
     .limit(10)
     .lean();
-
   return topTen;
 };
 

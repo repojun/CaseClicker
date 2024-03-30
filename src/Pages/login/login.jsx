@@ -72,8 +72,9 @@ export default function Login() {
             <div data-testid="cypress-login-button">
               <OutlineButton title="Login" type="submit" click={handleLogin}></OutlineButton>
             </div>
-
-            <OutlineButton title="Sign Up" click={() => navigate("/register/")}></OutlineButton>
+            <div data-testid="cypress-login-signup-button">
+              <OutlineButton title="Sign Up" click={() => navigate("/register/")}></OutlineButton>
+            </div>
           </div>
           <div className={styles.textButton}>Forgot your password?</div>
         </form>

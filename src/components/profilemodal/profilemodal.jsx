@@ -17,16 +17,14 @@ const ProfileModal = ({ modal, toggleModal }) => {
   };
 
   const handleConfirm = async () => {
-
     const query = await Axios("/api/user/setprofilepicture", "POST", {
       profilePicture: imageLink,
     });
 
     user.profilePicture = imageLink;
 
-    toggleModal()
+    toggleModal();
     setImageLink("");
-
   };
 
   console.log("Current image link:", imageLink);
@@ -38,9 +36,9 @@ const ProfileModal = ({ modal, toggleModal }) => {
           <div className={styles.modalContent}>
             <div className={styles.modalTitle}>Profile Settings</div>
             <div>Profile Picture Link:</div>
-            <input type="text" className={styles.searchBar} placeholder="Enter image link..." value={imageLink} onChange={handleInputChange} />
+            <input data-testid="cypress-profile-input" type="text" className={styles.searchBar} placeholder="Enter image link..." value={imageLink} onChange={handleInputChange} />
             <div className={styles.buttonContainer}>
-              <div onClick={() => handleConfirm()}>
+              <div data-testid="cypress-profile-confirm" onClick={() => handleConfirm()}>
                 <OutlineButton title="Confirm" minWidth={"80px"} />
               </div>
               <div onClick={toggleModal}>

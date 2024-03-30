@@ -85,10 +85,10 @@ function MessageBoard() {
               <div className={styles.messageContainerMainFlex}>
                 <div className={styles.messageContainerFlex}>
                   <img src={`${user.profilePicture}`} className={styles.avatar} alt="" onClick={() => navigate(`/profile/${user.username}`)}></img>
-                  <textarea type="text" className={styles.searchBar} placeholder="What's on your mind?" value={messageContents} onChange={handleInputChange} />
+                  <textarea data-testid="cypress-messageboard-input" type="text" className={styles.searchBar} placeholder="What's on your mind?" value={messageContents} onChange={handleInputChange} />
                 </div>
                 <div className={styles.buttonContainer}>
-                  <div className={styles.outlineButton} onClick={() => handleConfirm()}>
+                  <div data-testid="cypress-messageboard-post" className={styles.outlineButton} onClick={() => handleConfirm()}>
                     {" "}
                     Post{" "}
                   </div>
