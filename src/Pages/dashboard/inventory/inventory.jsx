@@ -15,17 +15,20 @@ function Inventory() {
   const [itemName, setItemName] = useState("");
   const [price, setPrice] = useState(0);
   const [entityName, setEntityName] = useState("");
+  const [rarity, setRarity] = useState("");
 
-  const toggleModal = (image, itemName, price, entityName) => {
+
+  const toggleModal = (image, itemName, price, entityName, rarity) => {
     setModal(!modal);
     setImage(image);
     setItemName(itemName);
     setPrice(price);
     setEntityName(entityName);
+    setRarity(rarity);
   };
 
-  const purchase = (price, image, itemName, entityName) => {
-    toggleModal(image, itemName, price, entityName);
+  const purchase = (price, image, itemName, entityName, rarity) => {
+    toggleModal(image, itemName, price, entityName, rarity);
   };
 
   const finalPurchase = () => { 
@@ -73,6 +76,7 @@ function Inventory() {
             itemName={itemName}
             price={price}
             entityName={entityName}
+            rarity={rarity}
           />
         </SubContainer>
       </MainContainer>

@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import useContextStore from "../../context";
 import styles from "./inventorycomponent.module.css";
 import InventoryItem from "../inventoryitem/inventoryitem";
-import InventoryModal from "../inventorymodal/inventorymodal";
 
 const InventoryComponent = ({ purchase }) => {
   const {
@@ -27,7 +26,8 @@ const InventoryComponent = ({ purchase }) => {
               price: item.price,
               image: item.image,
               viewname: item.viewname,
-              entity: item.entname
+              entity: item.entname,
+              rarity: item.rarity
             });
           }
         }
@@ -37,8 +37,8 @@ const InventoryComponent = ({ purchase }) => {
     }
   }, [user]); 
   
-  const handlePurchase = (price, image, viewname, entityName) => {
-    purchase(price, image, viewname, entityName);
+  const handlePurchase = (price, image, viewname, entityName, rarity) => {
+    purchase(price, image, viewname, entityName, rarity);
   };
 
   const chunkArray = (arr, size) => {
@@ -62,8 +62,9 @@ const InventoryComponent = ({ purchase }) => {
             <InventoryItem
               key={itemIndex}
               image={item.image}
+              rarity={item.rarity}
               price={"$" + item.price.toFixed(2)}
-              click={() => { handlePurchase(item.price, item.image, item.viewname, item.entity) }}
+              click={() => { handlePurchase(item.price, item.image, item.viewname, item.entity, item.rarity) }}
             />
           ))}
         </div>

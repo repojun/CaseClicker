@@ -7,12 +7,19 @@ import useContextStore from "../../context";
 import CaseItem from "../caseitem/caseitem";
 import Inventory from "../../Pages/dashboard/inventory/inventory";
 
-const InventoryModal = ({ modal, toggleModal, price, image, itemName, finalPurchase, entityName }) => {
+const InventoryModal = ({ modal, toggleModal, price, image, itemName, rarity, entityName }) => {
   const {
     userStore: { user },
   } = useContextStore();
   const [firstRow, setFirstRow] = useState([]);
   const [secondRow, setSecondRow] = useState([]);
+  const [openModal, setOpenModal] = useState(null);
+  const [itemOpenDetails, setItemOpenDetails] = useState(null);
+
+  const handleModalsFinal = () => {
+    setItemOpenDetails(null);
+    setOpenModal(false);
+  };
 
   const case1 = [
     "karambit_fade", // Contraband
@@ -73,7 +80,21 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, finalPurch
     setSecondRow(secondRow);
   };
 
-  const selectRandomItems = (caseName) => {
+  const handleItems = async (firstRow, secondRow, item) => {
+    setFirstRow(firstRow);
+    setSecondRow(secondRow);
+    setFirstRow(firstRow);
+    setSecondRow(secondRow);
+    updateInventory(item);
+    setOpenModal(true);
+    setItemOpenDetails(item);
+    const query = await Axios("/api/user/getitem", "POST", {
+      item: item,
+    });
+    setItemOpenDetails(query);
+  };
+
+  const selectRandomItems = async (caseName) => {
     const getRarity = () => {
       let selectedRarity;
 
@@ -108,6 +129,8 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, finalPurch
         return item && item.purchasable === 0 && item.rarity === selectedRarity;
       });
 
+      console.log("SELECTED: " + selectedItems);
+
       const images = case1
         .map((entname) => {
           const item = user.inventory && user.inventory[entname];
@@ -117,16 +140,10 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, finalPurch
 
       const firstRow = images.slice(0, 5);
       const secondRow = images.slice(5);
-      setFirstRow(firstRow);
-      setSecondRow(secondRow);
-
-      console.log("rarity: " + selectedRarity);
-      console.log("items " + selectedItems);
-
       const lastIndex = selectedItems.length - 1;
       const lastSelectedItem = selectedItems[Math.floor(Math.random() * (lastIndex + 1))];
-      console.log("Last selected item: ", lastSelectedItem);
-      updateInventory(lastSelectedItem);
+
+      handleItems(firstRow, secondRow, lastSelectedItem);
     }
 
     if (caseName === "dream") {
@@ -146,16 +163,10 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, finalPurch
 
       const firstRow = images.slice(0, 5);
       const secondRow = images.slice(5);
-      setFirstRow(firstRow);
-      setSecondRow(secondRow);
-
-      console.log("rarity: " + selectedRarity);
-      console.log("items " + selectedItems);
-
       const lastIndex = selectedItems.length - 1;
       const lastSelectedItem = selectedItems[Math.floor(Math.random() * (lastIndex + 1))];
-      console.log("Last selected item: ", lastSelectedItem);
-      updateInventory(lastSelectedItem);
+
+      handleItems(firstRow, secondRow, lastSelectedItem);
     }
   };
 
@@ -163,17 +174,53 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, finalPurch
     const query = await Axios("/api/user/setitem", "POST", {
       item: item,
     });
-  }
+  };
 
   return (
     <>
+      {openModal && (
+        <div className={styles.overlay}>
+          <div className={styles.modalContent}>
+            <div className={styles.modalTitle}>YOU HAVE UNBOXED:</div>
+            <div className={`${styles.titleFinal} ${styles[`titleFinal${(itemOpenDetails.rarity || "").replace(/\s/g, "")}`]}`}>
+              {itemOpenDetails.viewname} ({itemOpenDetails.rarity})
+            </div>
+            <img className={styles.itemCardImage} src={itemOpenDetails.image} alt="" />
+            <div className={styles.spanFinal}>
+              Market Value: <span className={styles.moneyFinal}>{"$" + itemOpenDetails.price}</span>
+            </div>
+            <div className={styles.buttonContainer}>
+              <div>
+                <OutlineButton
+                  title="Keep"
+                  minWidth={"60px"}
+                  click={() => {
+                    setOpenModal(false);
+                  }}
+                />
+              </div>
+              <div>
+                <OutlineButton
+                  title="Sell"
+                  minWidth={"60px"}
+                  click={() => {
+                    setOpenModal(false);
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
       {modal && (
         <div className={styles.overlay}>
           <div className={styles.modalContent}>
-            <div className={styles.modalTitle}>{itemName}</div>
+            <div className={`${styles.titleFinal} ${styles[`titleFinal${(rarity || "").replace(/\s/g, "")}`]}`}>
+              {itemName} ({rarity})
+            </div>
             <img className={styles.itemCardImage} src={image} alt="" />
             <div>
-              Market Value: <span className={styles.money}>{"$" + price.toFixed(2)}</span>
+              Market Value: <span className={styles.money}>{"$" + price}</span>
             </div>
             <div>
               <div className={styles.modalCaseItems}>

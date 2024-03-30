@@ -22,6 +22,18 @@
 }
 
 
+.spanFinal {
+    font-size: 28px;
+}
+
+.moneyFinal {
+    font-weight: bold;
+    color: #15e815;
+    text-shadow: 0px 0px 10px #05ff09b0;
+    font-size: 28px;
+}
+
+
 .modalCaseItems {
     display: flex;
     column-gap: 10px;
@@ -52,7 +64,44 @@
     font-size: 36px;
     font-weight: bold;
     color: #ffffff;
+
 }
+
+.titleFinalContraband {
+    font-size: 32px;
+    font-weight: bold;
+    color: #ffcc00;
+    text-shadow: 0px 0px 10px #ffcc00b0;
+}
+
+.titleFinalUltraRare {
+    font-size: 32px;
+    font-weight: bold;
+    color: #ff3535;
+    text-shadow: 0px 0px 10px #ff3535b0;
+}
+
+.titleFinalRare {
+    font-size: 32px;
+    font-weight: bold;
+    color: #fa33f0;
+    text-shadow: 0px 0px 10px #fa33f0b0;
+}
+
+.titleFinalUncommon {
+    font-size: 32px;
+    font-weight: bold;
+    color: #9516e9;
+    text-shadow: 0px 0px 10px #9516e9b0;
+}
+
+.titleFinalCommon {
+    font-size: 32px;
+    font-weight: bold;
+    color: #1671e9;
+    text-shadow: 0px 0px 10px #1671e9b0;
+}
+
 
 .buttonContainer {
     display: flex;

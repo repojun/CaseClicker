@@ -1,12 +1,63 @@
+/* Contraband item card */
+.inventoryItemCard.Contraband {
+  color: #ffcc00;
+  text-shadow: 0px 0px 10px #ffcc00b0;
+}
+
+.inventoryItemCard.Contraband:hover {
+  background-color: #ff35355f;
+}
+
+/* UltraRare item card */
+.inventoryItemCard.UltraRare {
+  background-color: #ff353535;
+  border: 2px solid  #ff3535;
+}
+
+.inventoryItemCard.UltraRare:hover {
+  background-color: #ff35355f; 
+}
+
+/* Rare item card */
+.inventoryItemCard.Rare {
+  background-color: #fa33f035;
+  border: 2px solid  #fa33f0;
+}
+
+.inventoryItemCard.Rare:hover {
+  background-color: #fa33f05f; 
+}
+
+/* Uncommon item card */
+.inventoryItemCard.Uncommon {
+  background-color: #9516e935;
+  border: 2px solid  #9516e9;
+}
+
+.inventoryItemCard.Uncommon:hover {
+  background-color: #9516e95f; 
+}
+
+/* Common item card */
+.inventoryItemCard.Common {
+  background-color: #1671e935;
+  border: 2px solid #1671e9;
+}
+
+.inventoryItemCard.Common:hover {
+  background-color: #1671e95f;
+}
+
+/* Shared styling for all item cards */
 .inventoryItemCard {
-  height:120px;
-  width:150px;
-  margin:8px;
-  background-color: #ffd81635;
+  height: 120px;
+  width: 150px;
+  margin: 8px;
   border-radius: 20px;
   border: 2px solid #ffd816;
-  padding:8px;
+  padding: 8px;
   transition: 0.4s;
+  background-color: #ffd81635;
 }
 
 .inventoryItemCard:hover {
@@ -16,8 +67,8 @@
 }
 
 .inventoryItemCardImage {
-  width:99px;
-  height:76px;
+  width: 99px;
+  height: 76px;
   transition: 0.4s;
 }
 
@@ -25,23 +76,22 @@
   -webkit-filter: drop-shadow(5px 5px 3px #222);
   transform: rotatez(3deg) scale(1.02);
   transition: 0.2s;
-  cursor:pointer;
+  cursor: pointer;
 }
 
 .inventoryItemCardContent {
-  display:flex;
+  display: flex;
   flex-direction: column;
   text-align: left;
 }
 
-.inventoryItemCardTop{
+.inventoryItemCardTop {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.inventoryItemCardBottom{
+.inventoryItemCardBottom {
   display: flex;
   font-size: 16px;
 }
-

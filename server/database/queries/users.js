@@ -40,6 +40,13 @@ const fetchUserByName = async (username) => {
   return null;
 };
 
+const fetchItemName = async (userID, entname) => {
+  const user = await userSchema.findOne({ id: userID });
+  if (entname) {
+    return user.inventory[`${entname}`];
+  }
+}
+
 const updateUserProfilePicture = async (userID, newProfileURL) => {
   const user = await userSchema.findOne({ id: userID });
   user.profilePicture = newProfileURL;
@@ -92,6 +99,8 @@ const fetchLogin = async (username, email) => {
   return null;
 };
 
+
+
 const createUser = async (email, username, password) => {
   const hashedPassword = generate(password);
   const userID = uuidv4();
@@ -108,4 +117,4 @@ const createUser = async (email, username, password) => {
   return userQuery;
 };
 
-module.exports = { fetchUser, createUser, fetchLogin, updateUserBalance, getUserPosition, updateUserProfilePicture, updateUserInventory, updateUserPassiveUpgrade, updateUserPassiveUpgradeLevel, updateUserPremiumBalance, fetchUserByName, fetchTopTen };
+module.exports = { fetchUser, createUser, fetchLogin, fetchItemName, updateUserBalance, getUserPosition, updateUserProfilePicture, updateUserInventory, updateUserPassiveUpgrade, updateUserPassiveUpgradeLevel, updateUserPremiumBalance, fetchUserByName, fetchTopTen };
