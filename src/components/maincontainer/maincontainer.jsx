@@ -21,10 +21,18 @@ const MainContainer = ({ children, className = " ", ...props }) => {
   };
 
   const toggleModal = () => {
+    const audio = new Audio("/sfx/clickButton.wav");
+    audio.play();
     setModal(!modal);
   };
 
   const navigate = useNavigate();
+
+  const navigateFunction = (page) => {
+    navigate(page);
+    const audio = new Audio("/sfx/clickButton.wav");
+    audio.play();
+  };
   return (
     <div className={styles.container}>
       <SettingsModal modal={modal} toggleModal={toggleModal} />
@@ -36,7 +44,7 @@ const MainContainer = ({ children, className = " ", ...props }) => {
             alt=" "
             className={styles.avatar}
             onClick={() => {
-              navigate("/profile/" + user.username);
+              navigateFunction("/profile/" + user.username);
             }}
           ></img>
           <div>{user.username}</div>
@@ -48,7 +56,7 @@ const MainContainer = ({ children, className = " ", ...props }) => {
             className={`${styles.navbutton} ${selectedTab === 1 ? styles.selected : ""}`}
             onClick={() => {
               selectTab(1);
-              navigate("/dashboard/mainpage");
+              navigateFunction("/dashboard/mainpage");
             }}
           >
             {" "}
@@ -58,7 +66,7 @@ const MainContainer = ({ children, className = " ", ...props }) => {
             data-testid="cypress-main-dashboard"
             className={`${styles.navbutton} ${selectedTab === 2 ? styles.selected : ""}`}
             onClick={() => {
-              navigate("/dashboard/");
+              navigateFunction("/dashboard/");
               selectTab(2);
             }}
           >
@@ -69,7 +77,7 @@ const MainContainer = ({ children, className = " ", ...props }) => {
             data-testid="cypress-main-investments"
             className={`${styles.navbutton} ${selectedTab === 3 ? styles.selected : ""}`}
             onClick={() => {
-              navigate("/dashboard/investments");
+              navigateFunction("/dashboard/investments");
               selectTab(3);
             }}
           >
@@ -80,7 +88,7 @@ const MainContainer = ({ children, className = " ", ...props }) => {
             data-testid="cypress-main-inventory"
             className={`${styles.navbutton} ${selectedTab === 4 ? styles.selected : ""}`}
             onClick={() => {
-              navigate("/dashboard/inventory");
+              navigateFunction("/dashboard/inventory");
               selectTab(4);
             }}
           >
@@ -92,7 +100,7 @@ const MainContainer = ({ children, className = " ", ...props }) => {
             data-testid="cypress-main-leaderboard"
             className={`${styles.navbutton} ${selectedTab === 5 ? styles.selected : ""}`}
             onClick={() => {
-              navigate("/dashboard/leaderboard");
+              navigateFunction("/dashboard/leaderboard");
               selectTab(5);
             }}
           >
@@ -109,7 +117,7 @@ const MainContainer = ({ children, className = " ", ...props }) => {
             data-testid="cypress-main-store"
             className={`${styles.navbutton} ${selectedTab === 6 ? styles.selected : ""}`}
             onClick={() => {
-              navigate("/dashboard/store");
+              navigateFunction("/dashboard/store");
               selectTab(6);
             }}
           >
@@ -120,7 +128,7 @@ const MainContainer = ({ children, className = " ", ...props }) => {
             data-testid="cypress-main-premiumstore"
             className={`${styles.navbutton} ${selectedTab === 7 ? styles.selected : ""}`}
             onClick={() => {
-              navigate("/dashboard/premiumstore");
+              navigateFunction("/dashboard/premiumstore");
               selectTab(7);
             }}
           >
@@ -134,7 +142,7 @@ const MainContainer = ({ children, className = " ", ...props }) => {
             data-testid="cypress-main-messageboard"
             className={`${styles.navbutton} ${selectedTab === 6 ? styles.selected : ""}`}
             onClick={() => {
-              navigate("/dashboard/messageboard");
+              navigateFunction("/dashboard/messageboard");
               selectTab(6);
             }}
           >
