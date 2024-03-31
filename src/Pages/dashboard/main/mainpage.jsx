@@ -8,6 +8,7 @@ import Axios from "../../../api/agent";
 import { observer } from "mobx-react-lite";
 import useContextStore from "../../../context";
 
+
 var baseClick = 0.01;
 var multiplier = 1;
 
@@ -39,6 +40,8 @@ function MainPage() {
   };
 
   const handleClick = async (e) => {
+    const audio = new Audio("/sfx/coinSound.wav");
+    audio.play();
     const newBalance = balance + baseClick * multiplier;
     setBalance(newBalance);
     const query = await Axios("/api/user/setbalance", "POST", {

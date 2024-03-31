@@ -67,6 +67,8 @@ const PassiveUpgradesList = ({ frontendArray, moneyFunction, props }) => {
     var Xlocation = e.clientX;
     var Ylocation = e.clientY;
     if (user.balance >= price) {
+      const audio = new Audio("/sfx/clickButton.wav");
+      audio.play();
       setBalance(user.balance);
       moneyFunction(price);
       setPassiveUpgrade(ID, 1);
@@ -76,6 +78,8 @@ const PassiveUpgradesList = ({ frontendArray, moneyFunction, props }) => {
         passiveUpgradeID: ID,
       });
     } else {
+      const audio = new Audio("/sfx/error.wav");
+      audio.play();
       var newElement = // Stores div in variable to be stored in useStateArray
         (
           <div
