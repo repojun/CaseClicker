@@ -7,7 +7,7 @@ import useContextStore from "../../context";
 import CaseItem from "../caseitem/caseitem";
 import Inventory from "../../Pages/dashboard/inventory/inventory";
 
-const InventoryModal = ({ modal, toggleModal, price, image, itemName, rarity, entityName }) => {
+const InventoryModal = ({ modal, toggleModal, price, image, itemName, rarity, purchasable, entityName }) => {
   const {
     userStore: { user },
   } = useContextStore();
@@ -16,9 +16,8 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, rarity, en
   const [openModal, setOpenModal] = useState(null);
   const [itemOpenDetails, setItemOpenDetails] = useState(null);
 
-  const handleModalsFinal = () => {
-    setItemOpenDetails(null);
-    setOpenModal(false);
+  const handleModalsFinal = (price, entityName) => {
+    toggleModal(null, null, price, entityName, null, null, true);
   };
 
   const case1 = [
@@ -235,11 +234,16 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, rarity, en
               </div>
             </div>
             <div className={styles.buttonContainer}>
+              {purchasable == 1 && (
+                <div onClick={toggleModal}>
+                  <OutlineButton title="Open" minWidth={"60px"} click={() => selectRandomItems(entityName)} />
+                </div>
+              )}
               <div onClick={toggleModal}>
-                <OutlineButton title="Open" minWidth={"60px"} click={() => selectRandomItems(entityName)} />
+                <OutlineButton title="Sell" minWidth={"60px"} click={() => handleModalsFinal(price, entityName)} />
               </div>
-              <div onClick={toggleModal}>
-                <OutlineButton title="Sell" minWidth={"60px"} click={toggleModal} />
+              <div>
+                <OutlineButton title="Close" minWidth={"60px"} click={toggleModal} />
               </div>
             </div>
           </div>

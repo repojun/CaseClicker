@@ -27,7 +27,8 @@ const InventoryComponent = ({ purchase }) => {
               image: item.image,
               viewname: item.viewname,
               entity: item.entname,
-              rarity: item.rarity
+              rarity: item.rarity,
+              purchasable: item.purchasable
             });
           }
         }
@@ -37,8 +38,8 @@ const InventoryComponent = ({ purchase }) => {
     }
   }, [user]); 
   
-  const handlePurchase = (price, image, viewname, entityName, rarity) => {
-    purchase(price, image, viewname, entityName, rarity);
+  const handlePurchase = (price, image, viewname, entityName, rarity, purchasable) => {
+    purchase(price, image, viewname, entityName, rarity, purchasable);
   };
 
   const chunkArray = (arr, size) => {
@@ -63,8 +64,9 @@ const InventoryComponent = ({ purchase }) => {
               key={itemIndex}
               image={item.image}
               rarity={item.rarity}
+              purchasable={item.purchasable}
               price={"$" + item.price.toFixed(2)}
-              click={() => { handlePurchase(item.price, item.image, item.viewname, item.entity, item.rarity) }}
+              click={() => { handlePurchase(item.price, item.image, item.viewname, item.entity, item.rarity, item.purchasable) }}
             />
           ))}
         </div>
