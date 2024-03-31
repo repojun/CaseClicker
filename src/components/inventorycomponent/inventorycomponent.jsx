@@ -60,6 +60,7 @@ const InventoryComponent = ({ purchase }) => {
       {rows.map((row, rowIndex) => (
         <div key={rowIndex} className={styles.inventoryRow}>
           {row.map((item, itemIndex) => (
+            
             <InventoryItem
               key={itemIndex}
               image={item.image}

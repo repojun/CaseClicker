@@ -2,7 +2,7 @@ const { getCookie } = require("../../cookies/get");
 const { fetchUser, updateUserInventory } = require("../../database/queries/users");
 
 const setItem = async (req, res) => {
-  const { item } = req.body;
+  const { item, add } = req.body;
   if (!item) {
     return res.sendStatus(400);
   }
@@ -13,7 +13,7 @@ const setItem = async (req, res) => {
     return res.sendStatus(400);
   }
 
-  await updateUserInventory(user.id, item)
+  await updateUserInventory(user.id, item, add)
   return res.sendStatus(200);
 
 };

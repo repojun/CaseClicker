@@ -47,6 +47,7 @@ function Store() {
 
       const query2 = await Axios("/api/user/setitem", "POST", {
         item: entityName,
+        add: true
       });
 
       toast.success("💰 Purchase Completed!", {

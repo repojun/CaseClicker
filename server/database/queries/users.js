@@ -59,9 +59,17 @@ const updateUserBalance = async (userID, balance) => {
   await user.save();
 };
 
-const updateUserInventory = async (userID, item) => {
+const updateUserInventory = async (userID, item, add) => {
   const user = await userSchema.findOne({ id: userID });
+
+  if (add == true) {
   user.inventory[`${item}`].value += 1;
+  } 
+
+  if (add == false) {
+    user.inventory[`${item}`].value -= 1;
+  }
+
   await user.save();
 };
 

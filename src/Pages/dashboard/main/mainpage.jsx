@@ -8,7 +8,7 @@ import Axios from "../../../api/agent";
 import { observer } from "mobx-react-lite";
 import useContextStore from "../../../context";
 
-var baseClick = 0.11;
+var baseClick = 0.01;
 var multiplier = 1;
 
 function MainPage() {
@@ -19,6 +19,8 @@ function MainPage() {
     },
   } = useContextStore();
   const [moneyArray, setMoneyArray] = useState([]);
+  const [passivePower, setPassivePower] = useState(0);
+  const [clickPower, setClickPower] = useState(multiplier * baseClick);
 
   const handleMultiplierChange = (newMultiplier) => {
     multiplier = multiplier * newMultiplier;
@@ -44,13 +46,11 @@ function MainPage() {
     });
     var Xlocation = e.clientX - 35; // Get client's X and Y coordinates on click
     var Ylocation = e.clientY - 10;
+    var clickNumber = (multiplier * baseClick).toFixed(2);
     var newElement = // Stores div in variable to be stored in useStateArray
       (
-        <div
-          className={styles.money}
-          style={{ top: Ylocation, left: Xlocation }}
-        >
-          ${multiplier * baseClick}
+        <div className={styles.money} style={{ top: Ylocation, left: Xlocation }}>
+          ${clickNumber}
         </div>
         // Top is Y axis, left is X axis
       );
@@ -62,15 +62,16 @@ function MainPage() {
       <div style={{ top: 0, left: 0, position: "absolute" }}>{moneyArray}</div>
       <MainContainer>
         <SubContainer>
-          <div style={{ display: "flex", columnGap: "8px", fontSize: "40px" }}>
-            <div style={{ fontWeight: "bold" }}>Balance:</div>
-            <span class={styles.priceTag}>
-              ${Math.round(balance * 100) / 100}{" "}
-            </span>
+          <div style={{ display: "flex", columnGap: "8px", fontSize: "40px", flexDirection: "column" }}>
+            <div style={{ fontWeight: "bold" }}>
+              Balance: <span class={styles.priceTag}>${(Math.round(balance * 100) / 100).toFixed(2)}</span>
+            </div>
           </div>
           <div class={styles.maincontainer}>
             <div class={styles.circle} onClick={handleClick}>
-              <div data-testid="cypress-game-click" class={styles.circletext}>Click to earn money!</div>
+              <div data-testid="cypress-game-click" class={styles.circletext}>
+                Click to earn money!
+              </div>
             </div>
             <div
               style={{
@@ -80,16 +81,12 @@ function MainPage() {
               }}
             >
               <div class={styles.upgradeContainer}>
-                <span style={{ fontWeight: "bold", fontSize: "20px" }}>
-                  Click Upgrade Station:
-                </span>
+                <span style={{ fontWeight: "bold", fontSize: "20px" }}>Click Upgrade Station:</span>
+                <div style={{ fontSize: "20px" }}>
+                  Click Power: <span class={styles.priceTagNoBold}>${clickPower.toFixed(2)}</span>
+                </div>
                 <div className={styles.grid}>
-                  <ClickUpgradesList
-                    multiplierFunction={handleMultiplierChange}
-                    frontendArray={handleMoneyArrayChange}
-                    moneyFunction={handleBalanceChange}
-                    balance={balance}
-                  />
+                  <ClickUpgradesList setPassivePower={setPassivePower} multiplierFunction={handleMultiplierChange} frontendArray={handleMoneyArrayChange} moneyFunction={handleBalanceChange} balance={balance} />
                 </div>
               </div>
               <div class={styles.upgradeContainer}>
@@ -100,15 +97,11 @@ function MainPage() {
                     columnGap: "20px",
                   }}
                 ></div>
-                <span style={{ fontWeight: "bold", fontSize: "20px" }}>
-                  Building Upgrade Station:
-                </span>
-                <PassiveUpgradesList
-                  multiplierFunction={handleMultiplierChange}
-                  frontendArray={handleMoneyArrayChange}
-                  moneyFunction={handleBalanceChange}
-                  balance={balance}
-                />
+                <span style={{ fontWeight: "bold", fontSize: "20px" }}>Building Upgrade Station:</span>
+                <div style={{ fontSize: "20px" }}>
+                  Passive Power <span class={styles.priceTagNoBold}>${baseClick.toFixed(2)}</span>
+                </div>
+                <PassiveUpgradesList setPassivePower={setPassivePower} multiplierFunction={handleMultiplierChange} frontendArray={handleMoneyArrayChange} moneyFunction={handleBalanceChange} balance={balance} />
               </div>
             </div>
           </div>

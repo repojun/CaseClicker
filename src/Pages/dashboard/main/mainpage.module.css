@@ -72,6 +72,12 @@
     text-shadow: 0px 0px 20px #05ff09;
 }
 
+.priceTagNoBold {
+    font-weight: normal !important;
+    color: #15e815;
+
+}
+
 .money {
     color: #15e815;
     text-shadow: 0px 0px 20px #05ff09;

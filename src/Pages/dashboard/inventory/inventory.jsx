@@ -8,6 +8,8 @@ import React, { useEffect, useState } from "react";
 import { observer } from "mobx-react-lite";
 import InventoryComponent from "../../../components/inventorycomponent/inventorycomponent";
 import InventoryModal from "../../../components/inventorymodal/inventorymodal";
+import Axios from "../../../api/agent";
+import useContextStore from "../../../context";
 
 function Inventory() {
   const [modal, setModal] = useState(false);
@@ -17,8 +19,14 @@ function Inventory() {
   const [entityName, setEntityName] = useState("");
   const [rarity, setRarity] = useState("");
   const [purchasable, setPurchasable] = useState("");
+  const {
+    userStore: {
+      user: { balance = 0 },
+      setBalance,
+    },
+  } = useContextStore();
 
-  const toggleModal = (image, itemName, price, entityName, rarity, purchasable, sell) => {
+  const toggleModal = async (image, itemName, price, entityName, rarity, purchasable, sell, consume) => {
     setModal(!modal);
     setImage(image);
     setItemName(itemName);
@@ -27,10 +35,29 @@ function Inventory() {
     setRarity(rarity);
     setPurchasable(purchasable);
 
+
+    if (consume === true) {
+      const removeItem = await Axios("/api/user/setitem", "POST", {
+        item: entityName,
+        add: false
+      });
+    }
     if (sell === true) {
       console.log(entityName);
       console.log(price);
+      console.log(sell);
       console.log("Complete Sell Here");
+
+      var newBalanceVariable = balance + price;
+      setBalance(newBalanceVariable);
+      const addBalance = await Axios("/api/user/setbalance", "POST", {
+        balance: newBalanceVariable,
+      });
+
+      const removeItem = await Axios("/api/user/setitem", "POST", {
+        item: entityName,
+        add: false
+      });
     }
   };
 
@@ -47,7 +74,7 @@ function Inventory() {
       <MainContainer>
         <SubContainer>
           <Header title="Inventory"> </Header>
-          <div className={styles.titleSubtext} onClick={() => test()}>
+          <div className={styles.titleSubtext}>
             {" "}
             View and search through your inventory effortlessly.
           </div>

@@ -13,6 +13,7 @@ export default function Investments() {
   const handleCaseUpdate = async (item) => {
     const query = await Axios("/api/user/setitem", "POST", {
       item: item,
+      add: true,
     });
   }
 
