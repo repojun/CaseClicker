@@ -1,7 +1,10 @@
 import styles from "./home.module.css";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const Home = () => {
+  const [moneyArray, setMoneyArray] = useState([]);
+
   const move = (id) => {
     const element = document.getElementById(id);
     element?.scrollIntoView({
@@ -12,6 +15,19 @@ const Home = () => {
 
   const navigate = useNavigate();
 
+  const handleClick = async (e) => {
+    const audio = new Audio("/sfx/coinSound.wav");
+    audio.play();
+    var Xlocation = e.clientX - 35;
+    var Ylocation = e.clientY - 10;
+    var newElement = (
+      <div className={styles.money} style={{ top: Ylocation, left: Xlocation }}>
+        $0.01
+      </div>
+    );
+    setMoneyArray([...moneyArray, newElement]);
+  };
+
   const navigateFunction = (page) => {
     navigate(page);
     const audio = new Audio("/sfx/clickButton.wav");
@@ -20,10 +36,13 @@ const Home = () => {
 
   return (
     <>
+      <div style={{ top: 0, left: 0, position: "absolute" }}>{moneyArray}</div>
       <div className={styles.navbar}>
         <div className={styles.navFlexLeft}>
           <img src={"logo.png"} className={styles.navLogo} />
-          <div className={styles.navItem} onClick={() => move("features")}>Features</div>
+          <div className={styles.navItem} onClick={() => move("features")}>
+            Features
+          </div>
           <div className={styles.navItem}>hey</div>
           <div className={styles.navItem}>hey</div>
           <div className={styles.navItem}>hey</div>
@@ -32,12 +51,11 @@ const Home = () => {
           <div className={styles.navButton} onClick={() => navigateFunction("/login")}>
             Login
           </div>
-          
         </div>
       </div>
       <div className={styles.mainContainer}>
         <div className={styles.subContainer}>
-          <img className={styles.logo} src={"/logo.png"} />
+          <img className={styles.logo} src={"/logo.png"} onClick={handleClick} />
           <div className={styles.welcomeBox}>
             {/* <div className={styles.welcomeCaseClicker}>
               CASE CLICKER

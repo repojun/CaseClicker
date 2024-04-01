@@ -178,6 +178,15 @@
   width: 300px;
   filter: drop-shadow(rgba(0, 0, 0, 0.7) 0px 0px 10px);
   animation: floatAnimation 3s infinite alternate;
+  transition: 0.4s;
+  user-select: none;
+  user-drag: none;
+}
+
+.logo:hover {
+  cursor:pointer;
+  filter: drop-shadow(#8284ff 0px 0px 10px);
+  transition: 0.4s;
 }
 
 .leaderboardFeatureImage {
@@ -203,6 +212,29 @@
   animation: floatAnimation 3s infinite alternate;
   transition: 0.2s;
   filter: drop-shadow(rgba(0, 0, 0, 0.3) 0px 0px 50px);
+}
+
+.money {
+  color: #15e815;
+  text-shadow: 0px 0px 20px #05ff09;
+  animation: float 2s forwards linear;
+  font-size: 35px;
+  position: absolute;
+  margin: 0px;
+  user-select: none;
+  pointer-events: none;
+  z-index: 999;
+}
+
+@keyframes float {
+  0% {
+      opacity: 1;
+  }
+
+  100% {
+      top: 50%;
+      opacity: 0;
+  }
 }
 
 @keyframes floatAnimation {

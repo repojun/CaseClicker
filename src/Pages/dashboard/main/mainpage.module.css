@@ -93,6 +93,7 @@
     margin: 0px;
     user-select: none;
     pointer-events: none;
+    
 }
 
 @keyframes float {
