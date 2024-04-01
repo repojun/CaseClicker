@@ -1,0 +1,273 @@
+.mainContainer {
+  background-color: var(--main-background-colour);
+  min-width: 100vw;
+  min-height: 100vh;
+  padding-left: 150px;
+  padding-right: 150px;
+  padding-bottom: 500px;
+}
+
+.subContainer {
+  background-color: var(--main-background-colour);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 50px;
+}
+
+.welcomeBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 25px;
+}
+
+.welcomeCaseClicker {
+  font-family: Montserrat !important;
+  font-weight: bold;
+  font-size: 48px;
+  background: -webkit-linear-gradient(80deg, #5858ff, #8080ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.welcomeTitle {
+  font-family: Montserrat !important;
+  font-weight: bold;
+  font-size: 48px;
+}
+
+.welcomeBody {
+  font-family: Montserrat !important;
+  color: #b8b8b8;
+  font-size: 20px;
+}
+
+.buttonContainer {
+  display: flex;
+  column-gap: 36px;
+  margin-top: 8px;
+}
+
+.welcomeButtonLeft {
+  font-family: Montserrat !important;
+  background-color: #5858ff;
+  border-radius: 10px;
+  text-align: center;
+  width: 190px;
+  padding: 16px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.welcomeButtonLeft:hover {
+  font-family: Montserrat !important;
+  background-color: #4a49ef8b;
+  cursor: pointer;
+  transform: 0.3s;
+}
+
+.navButton {
+  font-family: Montserrat !important;
+  background-color: #5858ff;
+  border-radius: 10px;
+  text-align: center;
+  width: 100px;
+  padding: 12px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.navButton:hover {
+  font-family: Montserrat !important;
+  background-color: #4a49ef8b;
+  cursor: pointer;
+  transform: 0.3s;
+}
+
+.welcomeButtonRight {
+  font-family: Montserrat !important;
+  background-color: #516ea3;
+  border-radius: 10px;
+  text-align: center;
+  width: 190px;
+  padding: 16px;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.welcomeButtonRight:hover {
+  font-family: Montserrat !important;
+  background-color: #516ea38b;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.featuresContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.featuresTitle {
+  margin-top: 350px;
+  font-size: 48px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.featuresSubtitle {
+  font-size: 24px;
+  color: #b8b8b8;
+}
+
+.featuresBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 75px;
+  column-gap: 200px;
+  min-width: 100%;
+  margin-bottom: 75px;
+}
+
+.featuresBoxLeft {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.featuresBoxLeftTitle {
+  font-size: 36px;
+  font-weight: bold;
+  background: -webkit-linear-gradient(80deg, #5858ff, #8284ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 12px;
+}
+
+.featuresBoxLeftBody {
+  font-size: 18px;
+}
+
+.featuresBoxRightTitle {
+  font-size: 36px;
+  font-weight: bold;
+  background: -webkit-linear-gradient(80deg, #5858ff, #8284ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 12px;
+  text-align: right;
+}
+
+.featuresBoxRightBody {
+  text-align: right;
+  font-size: 18px;
+}
+
+
+.featuresBoxRight {
+  text-align: left;
+}
+
+.logo {
+  height: 300px;
+  width: 300px;
+  filter: drop-shadow(rgba(0, 0, 0, 0.7) 0px 0px 10px);
+  animation: floatAnimation 3s infinite alternate;
+}
+
+.leaderboardFeatureImage {
+  position: relative;
+  width: 680px;
+  height: 435px;
+  animation: floatAnimation 3s infinite alternate;
+  transition: 0.2s;
+  filter: drop-shadow(rgba(0, 0, 0, 0.3) 0px 0px 50px);
+}
+
+.messageBoardFeatureImage {
+  position: relative;
+  animation: floatAnimation 3s infinite alternate;
+  transition: 0.2s;
+  filter: drop-shadow(rgba(0, 0, 0, 0.3) 0px 0px 50px);
+}
+
+.inventoryFeatureImage {
+  width: 813px;
+  height: 393px;
+  position: relative;
+  animation: floatAnimation 3s infinite alternate;
+  transition: 0.2s;
+  filter: drop-shadow(rgba(0, 0, 0, 0.3) 0px 0px 50px);
+}
+
+@keyframes floatAnimation {
+  0% {
+    transform: translateY(0);
+    /* Start position */
+  }
+
+  100% {
+    transform: translateY(-10px);
+    /* End position */
+  }
+}
+
+.navbar {
+  display: flex;
+  background-color: var(--main-background-colour);
+  width: 100vw;
+  min-height: 65px;
+  position: relative;
+  box-shadow: 0px 0px 20px -2px#00000085;
+}
+
+.navButtonContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding-right: 30px;
+}
+
+.navFlexLeft {
+  flex: 1 1 0%;
+  display: flex;
+  column-gap: 40px;
+  padding-left: 15px;
+  align-items: center;
+
+}
+
+.navFlexRight {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.navLogo {
+  max-height: 72px;
+  max-width: 72px;
+  filter: drop-shadow(rgba(0, 0, 0, 0.7) 0px 0px 10px);
+}
+
+.navItem {
+  font-size: 24px;
+  transition: 0.5s;
+}
+
+.navItem:hover {
+  font-size: 24px;
+  text-shadow: 0px 0px 10px #8284ff,
+    0px 0px 15px #8284ff;
+  transition: 0.1s;
+  cursor: pointer;
+}
+
+.test {
+  justify-self: flex-end;
+}

@@ -24,6 +24,8 @@ function Store() {
     setImage(image);
     setItemName(itemName);
     setPrice(price);
+    const audio = new Audio("/sfx/clickButton.wav");
+    audio.play();
     setEntityName(entityName);
   };
 
@@ -36,7 +38,9 @@ function Store() {
   };
 
   const finalPurchase = async (entityName) => {
-
+    setModal(!modal)
+    const audio = new Audio("/sfx/clickButton.wav");
+    audio.play();
     if (user.balance >= price) {
 
       let newBalance = user.balance - price;

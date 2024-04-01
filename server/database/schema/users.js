@@ -9,6 +9,8 @@ module.exports = mongoose.model(
     username: { type: String },
     registeredAt: { type: Number, default: Date.now() },
     balance: { type: Number, default: 0 },
+    clickPower: { type: Number, default: 0.01},
+    passivePower: { type: Number, default: 0},
     premiumBalance: { type: Number, default: 0 },
     profilePicture: { type: String, default: "/defaultpfp.png" },
     inventory: {

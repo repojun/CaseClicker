@@ -1,7 +1,6 @@
 import styles from "./settingsmodal.module.css";
-import { React } from "react";
+import React, { useState, useEffect } from "react";
 import OutlineButton from "../outlinebutton/outlinebutton";
-import Axios from "../../api/agent";
 import { observer } from "mobx-react-lite";
 import useContextStore from "../../context";
 import CheckBox from "../checkbox/checkbox";
@@ -11,6 +10,24 @@ const SettingsModal = ({ modal, toggleModal }) => {
     userStore: { user, setBalance },
   } = useContextStore();
 
+  const [disableSound, setDisableSound] = useState(false);
+
+  // Effect to mute all sounds when disableSound changes
+  useEffect(() => {
+    const allAudioElements = document.querySelectorAll("audio");
+    allAudioElements.forEach((audio) => {
+      audio.volume = disableSound ? 0 : 1;
+    });
+  }, [disableSound]);
+
+  const handleDisableSound = () => {
+    setDisableSound(!disableSound);
+  };
+
+  const handlePlayThemeSong = () => {
+    setPlayThemeSong(!playThemeSong);
+  };
+
   return (
     <>
       {modal && (
@@ -18,10 +35,18 @@ const SettingsModal = ({ modal, toggleModal }) => {
           <div className={styles.modalContent}>
             <div className={styles.modalTitle}>Settings</div>
 
-            <CheckBox id={1} title="Special Effects" description="Disable special effects."/>
-            <CheckBox id={2} title="Dashboard" description="Default description about dashboard." />
-            <CheckBox id={3} title="Finance" description="Basic information about finance." />
-            <CheckBox id={4} title="Feedback Template" description="Some information about feedback." />
+            <CheckBox
+              id={1}
+              title="Disable Sound"
+              description="Disable all sound effects."
+              checked={disableSound}
+              onChange={handleDisableSound}
+            />
+            <CheckBox
+              id={2}
+              title="Enable Theme Song"
+              description="Play the theme song."
+            />
 
             <div className={styles.buttonContainer}>
               <div onClick={toggleModal}>

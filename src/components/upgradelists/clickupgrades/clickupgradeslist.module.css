@@ -41,6 +41,14 @@
   pointer-events: none;
 }
 
+.upgradeFlex {
+  text-align: center;
+  display: flex;
+  justify-self: center;
+  align-items: center;
+
+}
+
 @keyframes float {
   0% {
     opacity: 1;

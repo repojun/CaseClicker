@@ -34,12 +34,13 @@ function Inventory() {
     setEntityName(entityName);
     setRarity(rarity);
     setPurchasable(purchasable);
-
+    const audio = new Audio("/sfx/clickButton.wav");
+    audio.play();
 
     if (consume === true) {
       const removeItem = await Axios("/api/user/setitem", "POST", {
         item: entityName,
-        add: false
+        add: false,
       });
     }
     if (sell === true) {
@@ -56,7 +57,7 @@ function Inventory() {
 
       const removeItem = await Axios("/api/user/setitem", "POST", {
         item: entityName,
-        add: false
+        add: false,
       });
     }
   };
@@ -74,10 +75,7 @@ function Inventory() {
       <MainContainer>
         <SubContainer>
           <Header title="Inventory"> </Header>
-          <div className={styles.titleSubtext}>
-            {" "}
-            View and search through your inventory effortlessly.
-          </div>
+          <div className={styles.titleSubtext}> View and search through your inventory effortlessly.</div>
           <div className={styles.mainContainer}>
             <div className={styles.buttonContainerMain}>
               <div className={styles.buttonContainerLeft}>

@@ -14,7 +14,7 @@ const StoreModal = ({ modal, toggleModal, image, itemName, finalPurchase, entity
     return (
         <>
             {modal && (
-                <div className={styles.overlay} onClick={toggleModal}>
+                <div className={styles.overlay}>
                     <div className={styles.modalContent}>
                         <div className={styles.modalTitle}>
                             Purchase Confirmation

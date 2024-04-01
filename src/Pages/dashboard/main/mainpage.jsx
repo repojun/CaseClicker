@@ -8,8 +8,7 @@ import Axios from "../../../api/agent";
 import { observer } from "mobx-react-lite";
 import useContextStore from "../../../context";
 
-
-var baseClick = 0.01;
+var baseClick = 100;
 var multiplier = 1;
 
 function MainPage() {
@@ -40,8 +39,8 @@ function MainPage() {
   };
 
   const handleClick = async (e) => {
-    const audio = new Audio("/sfx/coinSound.wav");
-    audio.play();
+    // const audio = new Audio("/sfx/coinSound.wav");
+    // audio.play();
     const newBalance = balance + baseClick * multiplier;
     setBalance(newBalance);
     const query = await Axios("/api/user/setbalance", "POST", {
@@ -88,8 +87,11 @@ function MainPage() {
                 <div style={{ fontSize: "20px" }}>
                   Click Power: <span class={styles.priceTagNoBold}>${clickPower.toFixed(2)}</span>
                 </div>
-                <div className={styles.grid}>
+                {/* <div className={styles.grid}>
                   <ClickUpgradesList setPassivePower={setPassivePower} multiplierFunction={handleMultiplierChange} frontendArray={handleMoneyArrayChange} moneyFunction={handleBalanceChange} balance={balance} />
+                </div> */}
+                <div className={styles.upgradeFlex}>
+                  {/* <ClickUpgradesList></ClickUpgradesList> */}
                 </div>
               </div>
               <div class={styles.upgradeContainer}>

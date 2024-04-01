@@ -9,7 +9,7 @@ import Inventory from "../../Pages/dashboard/inventory/inventory";
 
 const InventoryModal = ({ modal, toggleModal, price, image, itemName, rarity, purchasable, entityName }) => {
   const {
-    userStore: { user },
+    userStore: { user, setItemAdd },
   } = useContextStore();
   const [firstRow, setFirstRow] = useState([]);
   const [secondRow, setSecondRow] = useState([]);
@@ -125,16 +125,16 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, rarity, pu
       const randomChoice = Math.random();
 
       switch (true) {
-        case randomChoice <= 0.4:
+        case randomChoice <= 0.55:
           selectedRarity = "Common";
           break;
-        case randomChoice <= 0.945:
+        case randomChoice <= 0.95:
           selectedRarity = "Uncommon";
           break;
-        case randomChoice <= 0.97:
+        case randomChoice <= 0.98:
           selectedRarity = "Rare";
           break;
-        case randomChoice <= 0.995:
+        case randomChoice <= 0.9975:
           selectedRarity = "Ultra Rare";
           break;
         default:
@@ -166,6 +166,8 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, rarity, pu
       const lastSelectedItem = selectedItems[Math.floor(Math.random() * (lastIndex + 1))];
 
       handleItems(firstRow, secondRow, lastSelectedItem);
+      setItemAdd("brokenfang", false)
+
     }
 
     if (caseName === "dream") {
@@ -189,6 +191,7 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, rarity, pu
       const lastSelectedItem = selectedItems[Math.floor(Math.random() * (lastIndex + 1))];
 
       handleItems(firstRow, secondRow, lastSelectedItem);
+      setItemAdd("dream", false)
     }
 
     if (caseName === "recoil") {
@@ -212,6 +215,8 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, rarity, pu
       const lastSelectedItem = selectedItems[Math.floor(Math.random() * (lastIndex + 1))];
 
       handleItems(firstRow, secondRow, lastSelectedItem);
+      setItemAdd("recoil", false)
+
     }
   };
 

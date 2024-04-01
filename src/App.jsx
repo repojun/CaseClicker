@@ -13,13 +13,15 @@ import PremiumStore from "./Pages/dashboard/premiumstore/premiumstore";
 import Profile from "./Pages/profile/profile";
 import Leaderboard from "./Pages/dashboard/leaderboard/leaderboard";
 import MessageBoard from "./Pages/dashboard/messageboard/messageboard";
-import "./globals.css"
-import "./themes.css"
+import Home from "./Pages/home/home";
+import "./globals.css";
+import "./themes.css";
 
 function App() {
   return (
     <>
       <Routes>
+        <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route
@@ -30,7 +32,7 @@ function App() {
             </RouteAuthenticated>
           }
         />
-                <Route
+        <Route
           path="/dashboard/messageboard"
           element={
             <RouteAuthenticated>
