@@ -25,18 +25,24 @@ const InventoryComponent = ({ purchase }) => {
     .flat(Infinity)
     .sort((a, b) => b.price - a.price);
 
-    useEffect(() => {
-      const totalPrice = items.reduce((acc, item) => acc + item.price, 0);
-      console.log(totalPrice);
-      const updateNetworth = async () => {
-        await Axios("/api/user/setnetworth", "POST", {
-          networth: totalPrice,
-        });
-      };
-  
-      updateNetworth();   
-      setNetWorth(totalPrice);
-    }, [inventory]);
+  useEffect(() => {
+    let totalPrice = 0;
+
+    if (items.length > 0) {
+      totalPrice = items.reduce((acc, item) => acc + item.price, 0);
+    }
+
+    console.log(totalPrice);
+
+    // const updateNetworth = async () => {
+    //   await Axios("/api/user/setnetworth", "POST", {
+    //     networth: totalPrice,
+    //   });
+    // };
+
+    // updateNetworth();
+    setNetWorth(totalPrice);
+  }, [inventory]);
 
   if (!items.length) return <div>Empty Inventory</div>;
 

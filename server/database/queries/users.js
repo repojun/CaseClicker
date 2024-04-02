@@ -5,7 +5,7 @@ const { v4: uuidv4 } = require("uuid");
 
 const fetchUser = async (userID) => {
   // userID given to try find info on user
-  
+
   const user = await userSchema.findOne({ id: userID }).lean(); // find one document where the ID matches the user ID provided
   if (user) {
     // if the user exists, return the user as an object?
@@ -17,9 +17,9 @@ const fetchUser = async (userID) => {
 const fetchTopTen = async () => {
   const topTen = await userSchema
     .find({
-      balance: { $gt: 0 },
+      netWorth: { $gt: 0 },
     })
-    .sort({ balance: -1 })
+    .sort({ netWorth: -1 })
     .limit(10)
     .lean();
   return topTen;
@@ -27,10 +27,10 @@ const fetchTopTen = async () => {
 
 const getUserPosition = async (userID) => {
   const user = await userSchema.findOne({ id: userID }).lean();
-  const final = await userSchema.countDocument({ balance: { $gt: user.balance } })
+  const final = await userSchema.countDocument({ balance: { $gt: user.balance } });
 
   return final;
-}
+};
 
 const fetchUserByName = async (username) => {
   const user = await userSchema.findOne({ username: username }).lean();
@@ -45,37 +45,56 @@ const fetchItemName = async (userID, entname) => {
   if (entname) {
     return user.inventory[`${entname}`];
   }
-}
+};
 
 const updateUserProfilePicture = async (userID, newProfileURL) => {
   const user = await userSchema.findOne({ id: userID });
   user.profilePicture = newProfileURL;
   await user.save();
-}
+};
 
 const updateUserBalance = async (userID, balance) => {
   const user = await userSchema.findOne({ id: userID });
+
   user.balance = balance;
+
+  const items = !user.inventory
+    ? []
+    : Object.values(user.inventory)
+        .filter(({ value }) => value > 0)
+        .map((item) => {
+          if (item.value > 1) {
+            return Array.from({ length: item.value }, () => item);
+          }
+          return item;
+        })
+        .flat(Infinity);
+  user.netWorth = items.reduce((acc, item) => acc + item.price, 0) + user.balance;
   await user.save();
 };
-
-const updateUserNetworth = async (userID, networth) => {
-  const user = await userSchema.findOne({id: userID});
-  user.netWorth = networth;
-  await user.save();
-}
 
 const updateUserInventory = async (userID, item, add) => {
   const user = await userSchema.findOne({ id: userID });
 
   if (add == true) {
-  user.inventory[`${item}`].value += 1;
-  } 
+    user.inventory[`${item}`].value += 1;
+  }
 
   if (add == false) {
     user.inventory[`${item}`].value -= 1;
   }
-
+  const items = !user.inventory
+    ? []
+    : Object.values(user.inventory)
+        .filter(({ value }) => value > 0)
+        .map((item) => {
+          if (item.value > 1) {
+            return Array.from({ length: item.value }, () => item);
+          }
+          return item;
+        })
+        .flat(Infinity);
+  user.netWorth = items.reduce((acc, item) => acc + item.price, 0) + user.balance;
   await user.save();
 };
 
@@ -113,8 +132,6 @@ const fetchLogin = async (username, email) => {
   return null;
 };
 
-
-
 const createUser = async (email, username, password) => {
   const hashedPassword = generate(password);
   const userID = uuidv4();
@@ -131,4 +148,4 @@ const createUser = async (email, username, password) => {
   return userQuery;
 };
 
-module.exports = { fetchUser, createUser, fetchLogin, fetchItemName, updateUserBalance, updateUserNetworth, getUserPosition, updateUserProfilePicture, updateUserInventory, updateUserPassiveUpgrade, updateUserPassiveUpgradeLevel, updateUserPremiumBalance, fetchUserByName, fetchTopTen };
+module.exports = { fetchUser, createUser, fetchLogin, fetchItemName, updateUserBalance, getUserPosition, updateUserProfilePicture, updateUserInventory, updateUserPassiveUpgrade, updateUserPassiveUpgradeLevel, updateUserPremiumBalance, fetchUserByName, fetchTopTen };

@@ -27,10 +27,6 @@ function Profile() {
           username,
         });
         const userID = response.id;
-        // const leaderboardPos = await Axios("/api/user/getuserposition", "POST", {
-        //   userID,
-        // });
-        // console.log("HERE IS THE ID: " + userID);
 
         const date = new Date(response.registeredAt);
         const day = date.getDate();
@@ -82,8 +78,20 @@ function Profile() {
                     <div className={styles.metricTitleContainer}>
                       <div className={styles.metricTitle}> Net Worth </div>
                       <div className={styles.metricTitleValue}>
-                        {" "}
                         <AiFillCreditCard size={22} />
+                      </div>
+                    </div>
+                    <div className={styles.metricValue}>
+                      <span className={styles.dollar}>$</span>
+                      {userData.netWorth.toFixed(2)}
+                    </div>
+                  </div>
+
+                  <div className={styles.metricBlock}>
+                    <div className={styles.metricTitleContainer}>
+                      <div className={styles.metricTitle}> Statistic </div>
+                      <div className={styles.metricTitleValue}>
+                        <AiFillCalculator size={22} />
                       </div>
                     </div>
                     <div className={styles.metricValue}>
@@ -101,20 +109,7 @@ function Profile() {
                       </div>
                     </div>
                     <div className={styles.metricValue}>
-                      <span className={styles.dollar}>$</span>123
-                    </div>
-                  </div>
-
-                  <div className={styles.metricBlock}>
-                    <div className={styles.metricTitleContainer}>
-                      <div className={styles.metricTitle}> Statistic </div>
-                      <div className={styles.metricTitleValue}>
-                        {" "}
-                        <AiFillCalculator size={22} />
-                      </div>
-                    </div>
-                    <div className={styles.metricValue}>
-                      <span className={styles.dollar}>$</span>230.00
+                      <span className={styles.dollar}>#</span>123
                     </div>
                   </div>
 

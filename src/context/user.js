@@ -44,7 +44,21 @@ class userStore {
 
   setNetWorth = (newValue) => {
     this.user.netWorth = newValue;
-  }
+  };
+
+  getNetworth = () => {
+    const items = !this?.user?.inventory ? [] : Object.values(this.user.inventory)
+      .filter(({ value }) => value > 0)
+      .map((item) => {
+        if (item.value > 1) {
+          return Array.from({ length: item.value }, () => item);
+        }
+        return item;
+      })
+      .flat(Infinity);
+
+      return items?.reduce((acc, item) => acc + item.price, 0)
+  };
 }
 
 export default userStore;

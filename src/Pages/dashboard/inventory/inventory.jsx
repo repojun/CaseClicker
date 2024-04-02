@@ -23,22 +23,14 @@ function Inventory() {
 
   const {
     userStore: {
-      user: { balance = 0, networth },
+      user: { balance = 0 },
       setBalance,
       setItemAdd,
+      getNetworth,
     },
   } = useContextStore();
 
-  useEffect(() => {
-
-      if (networth) {
-        console.log("ooo we changing")
-        console.log("networth: " + networth)
-        setNetworthFinal(networth);
-        console.log("State networth: " + networthFinal);
-      }
-
-  }, [networth]); 
+  const networthHello = getNetworth();
 
   const toggleModal = async (image, itemName, price, entityName, rarity, purchasable, sell, consume) => {
     if (!sell) {
@@ -99,7 +91,7 @@ function Inventory() {
               <div className={styles.buttonContainerLeft}>
                 <div className={styles.priceText}>
                   {" "}
-                  <BsSteam /> Total Price: <span className={styles.priceTag}> ${networthFinal} </span>{" "}
+                  <BsSteam /> Total Price: <span className={styles.priceTag}> ${networthHello} </span>{" "}
                 </div>
               </div>
               <div className={styles.buttonContainerRight}>
