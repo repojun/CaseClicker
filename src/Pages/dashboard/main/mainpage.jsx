@@ -103,9 +103,6 @@ function MainPage() {
                   }}
                 ></div>
                 <span style={{ fontWeight: "bold", fontSize: "20px" }}>Building Upgrade Station:</span>
-                <div style={{ fontSize: "20px" }}>
-                  Passive Power <span class={styles.priceTagNoBold}>${baseClick.toFixed(2)}</span>
-                </div>
                 <PassiveUpgradesList setPassivePower={setPassivePower} multiplierFunction={handleMultiplierChange} frontendArray={handleMoneyArrayChange} moneyFunction={handleBalanceChange} balance={balance} />
               </div>
             </div>

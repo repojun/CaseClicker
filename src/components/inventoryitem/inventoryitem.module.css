@@ -1,11 +1,12 @@
 /* Contraband item card */
 .inventoryItemCard.Contraband {
-  color: #ffcc00;
-  text-shadow: 0px 0px 10px #ffcc00b0;
+  background-color: #ff35356f !important;
+  text-shadow: 0px 0px 10px #000000b0;
+  border: 2px solid  #ff3535;
 }
 
 .inventoryItemCard.Contraband:hover {
-  background-color: #ff35355f;
+  background-color: #ffffff5f !important;
 }
 
 /* UltraRare item card */
