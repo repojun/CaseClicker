@@ -1,12 +1,13 @@
 import { observer } from "mobx-react-lite";
-import React from "react";
+import React, { useEffect } from "react";
 import useContextStore from "../../context";
 import styles from "./inventorycomponent.module.css";
 import InventoryItem from "../inventoryitem/inventoryitem";
+import Axios from "../../api/agent";
 
 const InventoryComponent = ({ purchase }) => {
   const {
-    userStore: { user: { inventory = {} } = {} },
+    userStore: { user: { inventory = {} } = {}, setNetWorth },
   } = useContextStore();
 
   const items = Object.keys(inventory)
@@ -22,7 +23,20 @@ const InventoryComponent = ({ purchase }) => {
       return item;
     })
     .flat(Infinity)
-    .sort((a, b) => b.price - a.price); // Sort in descending order of price
+    .sort((a, b) => b.price - a.price);
+
+    useEffect(() => {
+      const totalPrice = items.reduce((acc, item) => acc + item.price, 0);
+      console.log(totalPrice);
+      const updateNetworth = async () => {
+        await Axios("/api/user/setnetworth", "POST", {
+          networth: totalPrice,
+        });
+      };
+  
+      updateNetworth();   
+      setNetWorth(totalPrice);
+    }, [inventory]);
 
   if (!items.length) return <div>Empty Inventory</div>;
 

@@ -3,7 +3,7 @@ import { makeObservable, observable, action } from "mobx";
 class userStore {
   constructor() {
     this.user = {};
-    makeObservable(this, { user: observable, setUser: action, setItemAdd: action, setPremiumBalance: action, setItem: action, setBalance: action, setPassiveUpgrade: action, setPassiveUpgradeLevel: action });
+    makeObservable(this, { user: observable, setUser: action, setItemAdd: action, setPremiumBalance: action, setItem: action, setBalance: action, setNetWorth: action, setPassiveUpgrade: action, setPassiveUpgradeLevel: action });
   }
 
   setUser = (user) => {
@@ -41,6 +41,10 @@ class userStore {
     }
     console.log(item, add, this.user.inventory[item]?.value, "SECOND LOG");
   };
+
+  setNetWorth = (newValue) => {
+    this.user.netWorth = newValue;
+  }
 }
 
 export default userStore;

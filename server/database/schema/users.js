@@ -11,6 +11,7 @@ module.exports = mongoose.model(
     balance: { type: Number, default: 0 },
     clickPower: { type: Number, default: 0.01},
     passivePower: { type: Number, default: 0},
+    netWorth: { type: Number, default: 0},
     premiumBalance: { type: Number, default: 0 },
     profilePicture: { type: String, default: "/defaultpfp.png" },
     inventory: {
