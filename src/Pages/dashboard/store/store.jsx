@@ -30,7 +30,7 @@ function Store() {
   };
 
   const {
-    userStore: { user, setBalance },
+    userStore: { user, setItemAdd, setBalance },
   } = useContextStore();
 
   const purchase = (price, image, itemName, entityName) => {
@@ -42,7 +42,7 @@ function Store() {
     const audio = new Audio("/sfx/clickButton.wav");
     audio.play();
     if (user.balance >= price) {
-
+      setItemAdd(entityName, true);
       let newBalance = user.balance - price;
       setBalance(newBalance);
       const query = await Axios("/api/user/setbalance", "POST", {

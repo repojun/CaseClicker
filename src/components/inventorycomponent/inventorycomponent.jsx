@@ -1,44 +1,36 @@
-import { observer } from "mobx-react-lite";
-import React, { useState, useEffect } from "react";
+import {observer} from "mobx-react-lite";
+import React from "react";
 import useContextStore from "../../context";
 import styles from "./inventorycomponent.module.css";
 import InventoryItem from "../inventoryitem/inventoryitem";
 
-const InventoryComponent = ({ purchase }) => {
+const InventoryComponent = ({purchase}) => {
   const {
-    userStore: { user },
+    userStore: {user: {inventory = {}} = {}},
   } = useContextStore();
 
-  const [items, setItems] = useState([]);
-
-  useEffect(() => {
-    if (user && user.inventory) {
-      const updatedItems = [];
-
-      for (const key in user.inventory) {
-        const item = user.inventory[key];
-
-        if (item.value > 0) {
-          for (let i = 0; i < item.value; i++) {
-            updatedItems.push({
-              name: key,
-              value: item.value,
-              price: item.price,
-              image: item.image,
-              viewname: item.viewname,
-              entity: item.entname,
-              rarity: item.rarity,
-              purchasable: item.purchasable
-            });
-          }
-        }
-      }
-
-      setItems(updatedItems);
+  const items = Object.keys(inventory).map((key) => ({
+    ...inventory[key],
+    name: key,
+  })).filter(({value}) => value > 0).map((item) => {
+    
+    if (item.value > 1) {
+      return Array.from({length: item.value}, () => item) 
     }
-  }, [user]); 
-  
-  const handlePurchase = (price, image, viewname, entityName, rarity, purchasable) => {
+
+    return item;
+  }).flat(Infinity);
+
+  if (!items.length) return <div>Empty Inventory</div>;
+
+  const handlePurchase = (
+    price,
+    image,
+    viewname,
+    entityName,
+    rarity,
+    purchasable
+  ) => {
     purchase(price, image, viewname, entityName, rarity, purchasable);
   };
 
@@ -60,14 +52,22 @@ const InventoryComponent = ({ purchase }) => {
       {rows.map((row, rowIndex) => (
         <div key={rowIndex} className={styles.inventoryRow}>
           {row.map((item, itemIndex) => (
-            
             <InventoryItem
               key={itemIndex}
               image={item.image}
               rarity={item.rarity}
               purchasable={item.purchasable}
               price={"$" + item.price.toFixed(2)}
-              click={() => { handlePurchase(item.price, item.image, item.viewname, item.entity, item.rarity, item.purchasable) }}
+              click={() => {
+                handlePurchase(
+                  item.price,
+                  item.image,
+                  item.viewname,
+                  item.entname,
+                  item.rarity,
+                  item.purchasable
+                );
+              }}
             />
           ))}
         </div>

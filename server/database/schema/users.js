@@ -95,12 +95,12 @@ module.exports = mongoose.model(
         purchasable: { type: Number, default: 0 },
         rarity: { type: String, default: "Ultra Rare" },
       },
-      awp_redline: {
-        viewname: { type: String, default: "AWP - Redline" },
-        entname: { type: String, default: "awp_redline" },
+      ak_redline: {
+        viewname: { type: String, default: "AK - Redline" },
+        entname: { type: String, default: "ak_redline" },
         value: { type: Number, default: 0, min: 0, min: 0 },
         price: { type: Number, default: 250 },
-        image: { type: String, default: "/skins/awp_redline.png" },
+        image: { type: String, default: "/skins/ak_redline.png" },
         purchasable: { type: Number, default: 0 },
         rarity: { type: String, default: "Uncommon" },
       },

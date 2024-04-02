@@ -6,7 +6,7 @@ import ShopItem from "../shopitem/shopitem";
 
 const StoreComponent = ({ purchase }) => { 
   const {
-    userStore: { user },
+    userStore: { user, setItemAdd },
   } = useContextStore();
 
   if (!user || !user.inventory) {

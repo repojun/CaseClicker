@@ -16,8 +16,8 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, rarity, pu
   const [openModal, setOpenModal] = useState(null);
   const [itemOpenDetails, setItemOpenDetails] = useState(null);
 
-  const handleModalsFinal = (price, entityName, sell, consume) => {
-    toggleModal(null, null, price, entityName, null, null, sell, consume);
+  const handleModalsFinal = (price, entityName, sell, consume, keep) => {
+    toggleModal(null, null, price, entityName, null, null, sell, consume, keep);
   };
 
   const recoil = [
@@ -41,7 +41,7 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, rarity, pu
     "mp7_bloodsport", // Rare
     "scar20_emerald", // Rare
     "usp_stainless", // Uncommon
-    "awp_redline", // Uncommon
+    "ak_redline", // Uncommon
     "deagle_mudder", // Common
     "glock_candyapple", // Common
     "mp7_gunsmoke", // Common
@@ -166,8 +166,6 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, rarity, pu
       const lastSelectedItem = selectedItems[Math.floor(Math.random() * (lastIndex + 1))];
 
       handleItems(firstRow, secondRow, lastSelectedItem);
-      setItemAdd("brokenfang", false)
-
     }
 
     if (caseName === "dream") {
@@ -191,7 +189,6 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, rarity, pu
       const lastSelectedItem = selectedItems[Math.floor(Math.random() * (lastIndex + 1))];
 
       handleItems(firstRow, secondRow, lastSelectedItem);
-      setItemAdd("dream", false)
     }
 
     if (caseName === "recoil") {
@@ -215,12 +212,11 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, rarity, pu
       const lastSelectedItem = selectedItems[Math.floor(Math.random() * (lastIndex + 1))];
 
       handleItems(firstRow, secondRow, lastSelectedItem);
-      setItemAdd("recoil", false)
-
     }
   };
 
   const updateInventory = async (item) => {
+    setItemAdd(item, true);
     const query = await Axios("/api/user/setitem", "POST", {
       item: item,
       add: true,
@@ -246,7 +242,7 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, rarity, pu
                   title="Keep"
                   minWidth={"60px"}
                   click={() => {
-                    setOpenModal(false);
+                    setOpenModal(!openModal);
                   }}
                 />
               </div>
@@ -254,8 +250,10 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, rarity, pu
                 <OutlineButton
                   title="Sell"
                   minWidth={"60px"}
+
                   click={() => {
-                    setOpenModal(false);
+                    setOpenModal(!openModal);
+                    handleModalsFinal(itemOpenDetails.price, itemOpenDetails.entname, true, false);
                   }}
                 />
               </div>

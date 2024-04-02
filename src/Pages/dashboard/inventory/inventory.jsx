@@ -23,11 +23,15 @@ function Inventory() {
     userStore: {
       user: { balance = 0 },
       setBalance,
+      setItemAdd,
     },
   } = useContextStore();
 
   const toggleModal = async (image, itemName, price, entityName, rarity, purchasable, sell, consume) => {
-    setModal(!modal);
+    if (!sell) {
+      setModal(!modal);
+    }
+
     setImage(image);
     setItemName(itemName);
     setPrice(price);
@@ -38,24 +42,25 @@ function Inventory() {
     audio.play();
 
     if (consume === true) {
-      const removeItem = await Axios("/api/user/setitem", "POST", {
+      await Axios("/api/user/setitem", "POST", {
         item: entityName,
         add: false,
       });
+      setItemAdd(entityName, false);
     }
     if (sell === true) {
       console.log(entityName);
-      console.log(price);
-      console.log(sell);
       console.log("Complete Sell Here");
+      setItemAdd(entityName, false);
 
       var newBalanceVariable = balance + price;
       setBalance(newBalanceVariable);
-      const addBalance = await Axios("/api/user/setbalance", "POST", {
+
+      await Axios("/api/user/setbalance", "POST", {
         balance: newBalanceVariable,
       });
 
-      const removeItem = await Axios("/api/user/setitem", "POST", {
+      await Axios("/api/user/setitem", "POST", {
         item: entityName,
         add: false,
       });
