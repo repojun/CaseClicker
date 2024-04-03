@@ -38,7 +38,7 @@ const PassiveUpgradesList = ({ frontendArray, moneyFunction, props }) => {
   useEffect(() => {
     if (user && typeof user.balance !== "undefined" && user.passiveUpgrades?.passiveUpgrade1?.value == 1) {
       const interval = setInterval(async () => {
-        var newBalanceVariable = user.balance + (0.01 + user.passiveUpgrades?.passiveUpgrade1?.level * 0.005) * Math.pow(1.01, user.passiveUpgrades?.passiveUpgrade1?.level);
+        var newBalanceVariable = user.balance + (0.01 * user.passiveUpgrades?.passiveUpgrade1?.level)
         setBalance(newBalanceVariable);
         const query = await Axios("/api/user/setbalance", "POST", {
           balance: newBalanceVariable,
@@ -51,7 +51,7 @@ const PassiveUpgradesList = ({ frontendArray, moneyFunction, props }) => {
   useEffect(() => {
     if (user && typeof user.balance !== "undefined" && user.passiveUpgrades?.passiveUpgrade2?.value == 1) {
       const interval = setInterval(async () => {
-        var newBalanceVariable = user.balance + (0.04 + user.passiveUpgrades?.passiveUpgrade2?.level * 0.01) * Math.pow(1.03, user.passiveUpgrades?.passiveUpgrade2?.level);
+        var newBalanceVariable = user.balance + (0.04 * user.passiveUpgrades?.passiveUpgrade2?.level)
         setBalance(newBalanceVariable);
         const query = await Axios("/api/user/setbalance", "POST", {
           balance: newBalanceVariable,
@@ -64,7 +64,7 @@ const PassiveUpgradesList = ({ frontendArray, moneyFunction, props }) => {
   useEffect(() => {
     if (user && typeof user.balance !== "undefined" && user.passiveUpgrades?.passiveUpgrade3?.value == 1) {
       const interval = setInterval(async () => {
-        var newBalanceVariable = user.balance + (0.08 + user.passiveUpgrades?.passiveUpgrade3?.level * 0.02) * Math.pow(1.04, user.passiveUpgrades?.passiveUpgrade3?.level);
+        var newBalanceVariable = user.balance + (0.08 * user.passiveUpgrades?.passiveUpgrade3?.level)
         setBalance(newBalanceVariable);
         const query = await Axios("/api/user/setbalance", "POST", {
           balance: newBalanceVariable,
@@ -77,7 +77,7 @@ const PassiveUpgradesList = ({ frontendArray, moneyFunction, props }) => {
   useEffect(() => {
     if (user && typeof user.balance !== "undefined" && user.passiveUpgrades?.passiveUpgrade4?.value == 1) {
       const interval = setInterval(async () => {
-        var newBalanceVariable = user.balance + (0.16 + user.passiveUpgrades?.passiveUpgrade4?.level * 0.04) * Math.pow(1.05, user.passiveUpgrades?.passiveUpgrade4?.level);
+        var newBalanceVariable = user.balance + (0.16 * user.passiveUpgrades?.passiveUpgrade4?.level)
         setBalance(newBalanceVariable);
         const query = await Axios("/api/user/setbalance", "POST", {
           balance: newBalanceVariable,
@@ -88,7 +88,6 @@ const PassiveUpgradesList = ({ frontendArray, moneyFunction, props }) => {
   }, [user]);
 
   const clickCheck = async (e, price, isBought, ID) => {
-    console.log(totalPassive);
     var Xlocation = e.clientX;
     var Ylocation = e.clientY;
     if (user.balance >= price) {
@@ -133,7 +132,7 @@ const PassiveUpgradesList = ({ frontendArray, moneyFunction, props }) => {
       ID: 1,
       title: "Factory",
       description: "Factories to produce materials!",
-      price: (1 + Math.pow(1.1, user.passiveUpgrades?.passiveUpgrade1?.level - 1)).toFixed(2),
+      price: (1 + Math.pow(1.13, user.passiveUpgrades?.passiveUpgrade1?.level - 1)).toFixed(2),
       level: user.passiveUpgrades?.passiveUpgrade1?.level,
       isBought: user.passiveUpgrades?.passiveUpgrade1?.value,
     },
@@ -141,7 +140,7 @@ const PassiveUpgradesList = ({ frontendArray, moneyFunction, props }) => {
       ID: 2,
       title: "Restaurant",
       description: "Provide food and earn money!",
-      price: (10 + Math.pow(1.12, user.passiveUpgrades?.passiveUpgrade2?.level - 1)).toFixed(2),
+      price: (10 + Math.pow(1.14, user.passiveUpgrades?.passiveUpgrade2?.level - 1)).toFixed(2),
       level: user.passiveUpgrades?.passiveUpgrade2?.level,
       isBought: user.passiveUpgrades?.passiveUpgrade2?.value,
     },
@@ -149,7 +148,7 @@ const PassiveUpgradesList = ({ frontendArray, moneyFunction, props }) => {
       ID: 3,
       title: "Tech Company",
       description: "Sell computers and earn money!",
-      price: (30 + Math.pow(1.13, user.passiveUpgrades?.passiveUpgrade3?.level - 1)).toFixed(2),
+      price: (30 + Math.pow(1.15, user.passiveUpgrades?.passiveUpgrade3?.level - 1)).toFixed(2),
       level: user.passiveUpgrades?.passiveUpgrade3?.level,
       isBought: user.passiveUpgrades?.passiveUpgrade3?.value,
     },
@@ -157,7 +156,7 @@ const PassiveUpgradesList = ({ frontendArray, moneyFunction, props }) => {
       ID: 4,
       title: "Building",
       description: "Buildings to earn money!",
-      price: (50 + Math.pow(1.14, user.passiveUpgrades?.passiveUpgrade4?.level - 1)).toFixed(2),
+      price: (50 + Math.pow(1.16, user.passiveUpgrades?.passiveUpgrade4?.level - 1)).toFixed(2),
       level: user.passiveUpgrades?.passiveUpgrade4?.level,
       isBought: user.passiveUpgrades?.passiveUpgrade4?.value,
     },
