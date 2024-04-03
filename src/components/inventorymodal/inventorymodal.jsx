@@ -20,6 +20,19 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, rarity, pu
     toggleModal(null, null, price, entityName, null, null, sell, consume, keep);
   };
 
+  const lunchbox = [
+    "strangeliquid", // Contraband
+    "robosandwich", // Ultra Rare
+    "festivesandwich", // Rare
+    "fishcake", // Rare
+    "steak", // Uncommon
+    "sandwich", // Uncommon
+    "purple_soda", // Common
+    "yellow_soda", // Common
+    "milk", // Common
+    "banana", // Common
+  ];
+
   const recoil = [
     "flipknife", // Contraband
     "ak_asiimov", // Ultra Rare
@@ -68,7 +81,7 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, rarity, pu
 
   const populateRows = (caseName) => {
     let images = [];
-  
+
     switch (caseName) {
       case "brokenfang":
         images = brokenfang;
@@ -79,18 +92,21 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, rarity, pu
       case "recoil":
         images = recoil;
         break;
+      case "lunchbox":
+        images = lunchbox;
+        break;
       default:
         console.log("Invalid case name");
         return;
     }
-  
+
     images = images
       .map((entname) => {
         const item = user.inventory && user.inventory[entname];
         return item ? { image: item.image, rarity: item.rarity } : null;
       })
       .filter((item) => item !== null);
-  
+
     const firstRow = images.slice(0, 5);
     const secondRow = images.slice(5);
     setFirstRow(firstRow);
@@ -114,11 +130,11 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, rarity, pu
   const selectRandomItems = async (caseName, price) => {
     console.log("CASE NAME: " + caseName);
     handleModalsFinal(price, caseName, false, true);
-  
+
     const getRarity = () => {
       let selectedRarity;
       const randomChoice = Math.random();
-  
+
       switch (true) {
         case randomChoice <= 0.55:
           selectedRarity = "Common";
@@ -135,31 +151,33 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, rarity, pu
         default:
           selectedRarity = "Contraband";
       }
-  
+
       return selectedRarity;
     };
-  
+
     const handleCase = (caseItems) => {
       const selectedRarity = getRarity();
-  
+
       let selectedItems = caseItems.filter((entname) => {
         const item = user.inventory && user.inventory[entname];
         return item && item.purchasable === 0 && item.rarity === selectedRarity;
       });
-  
-      const images = caseItems.map((entname) => {
-        const item = user.inventory && user.inventory[entname];
-        return item ? { image: item.image, rarity: item.rarity } : null;
-      }).filter((item) => item !== null);
-  
+
+      const images = caseItems
+        .map((entname) => {
+          const item = user.inventory && user.inventory[entname];
+          return item ? { image: item.image, rarity: item.rarity } : null;
+        })
+        .filter((item) => item !== null);
+
       const firstRow = images.slice(0, 5);
       const secondRow = images.slice(5);
       const lastIndex = selectedItems.length - 1;
       const lastSelectedItem = selectedItems[Math.floor(Math.random() * (lastIndex + 1))];
-  
+
       handleItems(firstRow, secondRow, lastSelectedItem);
     };
-  
+
     switch (caseName) {
       case "brokenfang":
         handleCase(brokenfang);
@@ -169,6 +187,9 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, rarity, pu
         break;
       case "recoil":
         handleCase(recoil);
+        break;
+      case "lunchbox":
+        handleCase(lunchbox);
         break;
       default:
         console.log("Invalid case name");
@@ -210,7 +231,6 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, rarity, pu
                 <OutlineButton
                   title="Sell"
                   minWidth={"60px"}
-
                   click={() => {
                     setOpenModal(!openModal);
                     handleModalsFinal(itemOpenDetails.price, itemOpenDetails.entname, true, false);
