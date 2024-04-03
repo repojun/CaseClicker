@@ -75,6 +75,20 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, rarity, pu
     "deagle_conspiracy", // Common
   ];
 
+  const electron = [
+    "karambit_gold", // Contraband
+    "awp_gungir", // Ultra Rare
+    "ak_gold", // Ultra Rare
+    "m4a1_goldencoil", // Rare
+    "usp_killconfirmed", // Rare
+    "m4a1_icarusfell", // Uncommon
+    "deagle_sunset", // Uncommon
+    "awp_wormgod", // Common
+    "sg_pulse", // Common
+    "awp_boom", // Common
+    "deagle_mudder", // Common
+  ];
+
   useEffect(() => {
     populateRows(entityName);
   }, [entityName]); // Call selectRandomItems whenever entityName changes
@@ -95,7 +109,11 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, rarity, pu
       case "lunchbox":
         images = lunchbox;
         break;
+      case "electron":
+        images = electron;
+        break;
       default:
+        images = null;
         console.log("Invalid case name");
         return;
     }
@@ -109,6 +127,7 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, rarity, pu
 
     const firstRow = images.slice(0, 5);
     const secondRow = images.slice(5);
+
     setFirstRow(firstRow);
     setSecondRow(secondRow);
   };
@@ -191,6 +210,9 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, rarity, pu
       case "lunchbox":
         handleCase(lunchbox);
         break;
+      case "electron":
+        handleCase(electron);
+        break;
       default:
         console.log("Invalid case name");
     }
@@ -252,25 +274,46 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, rarity, pu
               Market Value: <span className={styles.money}>{"$" + price?.toFixed(2)}</span>
             </div>
             <div>
-              <div className={styles.modalCaseItems}>
-                {firstRow.map((item, index) => (
-                  <CaseItem key={index} image={item.image} rarity={item.rarity} />
-                ))}
-              </div>
-              <div className={styles.modalCaseItems}>
-                {secondRow.map((item, index) => (
-                  <CaseItem key={index + 5} image={item.image} rarity={item.rarity} />
-                ))}
-              </div>
+              {firstRow && firstRow.length > 0 && (
+                <div className={styles.modalCaseItems}>
+                  {firstRow.map((item, index) => (
+                    <CaseItem key={index} image={item.image} rarity={item.rarity} />
+                  ))}
+                </div>
+              )}
+
+              {secondRow && secondRow !== null && secondRow.length > 0 && (
+                <div className={styles.modalCaseItems}>
+                  {secondRow.map((item, index) => (
+                    <CaseItem key={index + 5} image={item.image} rarity={item.rarity} />
+                  ))}
+                </div>
+              )}
             </div>
             <div className={styles.buttonContainer}>
               {purchasable == 1 && (
                 <div onClick={toggleModal}>
-                  <OutlineButton title="Open" minWidth={"60px"} click={() => selectRandomItems(entityName, price)} />
+                  <OutlineButton
+                    title="Open"
+                    minWidth={"60px"}
+                    click={() => {
+                      selectRandomItems(entityName, price);
+                      setFirstRow(null);
+                      setSecondRow(null);
+                    }}
+                  />
                 </div>
               )}
               <div onClick={toggleModal}>
-                <OutlineButton title="Sell" minWidth={"60px"} click={() => handleModalsFinal(price, entityName, true, false)} />
+                <OutlineButton
+                  title="Sell"
+                  minWidth={"60px"}
+                  click={() => {
+                    handleModalsFinal(price, entityName, true, false);
+                    setFirstRow(null);
+                    setSecondRow(null);
+                  }}
+                />
               </div>
               <div>
                 <OutlineButton title="Close" minWidth={"60px"} click={toggleModal} />

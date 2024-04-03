@@ -55,7 +55,7 @@ function Profile() {
     return (
       <MainContainer>
         <SubContainer>
-        <div className={styles.subContainer} />
+          <div className={styles.subContainer} />
         </SubContainer>
       </MainContainer>
     );
@@ -126,6 +126,14 @@ function Profile() {
                       <span className={styles.dollar}></span>
                       {userData.registeredAt}
                     </div>
+                  </div>
+                </div>
+                <div className={styles.bioBlock}>
+                  <div className={styles.bioTitle}>
+                    Profile Bio
+                  </div>
+                  <div className={styles.bioBody}>
+                  Devin Miles Haney (/ˈheɪni/; born November 17, 1998) is an American professional boxer. He has held multiple world championships in two weight classes, including the World Boxing Council (WBC) super lightweight title since December 2023. Previously he held the undisputed championship[a] at lightweight from 2022 to August 2023.[3] As of June 2023, he is ranked as the world's best active lightweight by ESPN and the Transnational Boxing Rankings Board, and third by BoxRec.[4][5][6]
                   </div>
                 </div>
               </div>

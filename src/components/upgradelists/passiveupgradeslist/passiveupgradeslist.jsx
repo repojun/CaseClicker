@@ -5,40 +5,37 @@ import useContextStore from "../../../context";
 import Axios from "../../../api/agent";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
+import { MdFactory } from "react-icons/md";
+import { IoRestaurant } from "react-icons/io5";
+import { FaBuilding, FaLaptopCode } from "react-icons/fa";
 
 const PassiveUpgradesList = ({ frontendArray, moneyFunction, props }) => {
   const {
     userStore: { user, setBalance, setPassiveUpgrade, setPassiveUpgradeLevel },
   } = useContextStore();
 
-  // const [passiveIncome1, setPassiveIncome1] = useState(0);
-  // const [passiveIncome2, setPassiveIncome2] = useState(0);
-  // const [passiveIncome3, setPassiveIncome3] = useState(0);
-  // const [passiveIncome4, setPassiveIncome4] = useState(0);
-  // const [totalPassive, setTotalPassive] = useState(0);
+  const [passiveIncome1, setPassiveIncome1] = useState(0);
+  const [passiveIncome2, setPassiveIncome2] = useState(0);
+  const [passiveIncome3, setPassiveIncome3] = useState(0);
+  const [passiveIncome4, setPassiveIncome4] = useState(0);
+  const [totalPassive, setTotalPassive] = useState(0);
 
   // useEffect(() => {
   //   if (user && user.passiveUpgrades) {
-  //     const income1 = (0.01 + user.passiveUpgrades.passiveUpgrade1.level * 0.005) * Math.pow(1.01, user.passiveUpgrades.passiveUpgrade1.level);
-  //     const income2 = (0.04 + user.passiveUpgrades.passiveUpgrade2.level * 0.01) * Math.pow(1.03, user.passiveUpgrades.passiveUpgrade2.level);
-  //     const income3 = (0.08 + user.passiveUpgrades.passiveUpgrade3.level * 0.02) * Math.pow(1.04, user.passiveUpgrades.passiveUpgrade3.level);
-  //     const income4 = (0.16 + user.passiveUpgrades.passiveUpgrade4.level * 0.04) * Math.pow(1.05, user.passiveUpgrades.passiveUpgrade4.level);
+  //     setPassiveIncome1(0.01 * user.passiveUpgrades?.passiveUpgrade1?.level);
+  //     setPassiveIncome2(0.04 * user.passiveUpgrades?.passiveUpgrade2?.level);
+  //     setPassiveIncome3(0.08 * user.passiveUpgrades?.passiveUpgrade3?.level);
+  //     setPassiveIncome4(0.16 * user.passiveUpgrades?.passiveUpgrade4?.level);
 
-  //     setPassiveIncome1(() => income1);
-  //     setPassiveIncome2(() => income2);
-  //     setPassiveIncome3(() => income3);
-  //     setPassiveIncome4(() => income4);
-
-  //     const newTotalPassive = income1 + income2 + income3 + income4;
+  //     let newTotalPassive = passiveIncome1 + passiveIncome2 + passiveIncome3 + passiveIncome4;
   //     setTotalPassive(() => newTotalPassive);
-  //     console.log(newTotalPassive);
   //   }
   // }, [user]);
 
   useEffect(() => {
     if (user && typeof user.balance !== "undefined" && user.passiveUpgrades?.passiveUpgrade1?.value == 1) {
       const interval = setInterval(async () => {
-        var newBalanceVariable = user.balance + (0.01 * user.passiveUpgrades?.passiveUpgrade1?.level)
+        var newBalanceVariable = user.balance + 0.01 * user.passiveUpgrades?.passiveUpgrade1?.level;
         setBalance(newBalanceVariable);
         const query = await Axios("/api/user/setbalance", "POST", {
           balance: newBalanceVariable,
@@ -51,7 +48,7 @@ const PassiveUpgradesList = ({ frontendArray, moneyFunction, props }) => {
   useEffect(() => {
     if (user && typeof user.balance !== "undefined" && user.passiveUpgrades?.passiveUpgrade2?.value == 1) {
       const interval = setInterval(async () => {
-        var newBalanceVariable = user.balance + (0.04 * user.passiveUpgrades?.passiveUpgrade2?.level)
+        var newBalanceVariable = user.balance + 0.04 * user.passiveUpgrades?.passiveUpgrade2?.level;
         setBalance(newBalanceVariable);
         const query = await Axios("/api/user/setbalance", "POST", {
           balance: newBalanceVariable,
@@ -64,7 +61,7 @@ const PassiveUpgradesList = ({ frontendArray, moneyFunction, props }) => {
   useEffect(() => {
     if (user && typeof user.balance !== "undefined" && user.passiveUpgrades?.passiveUpgrade3?.value == 1) {
       const interval = setInterval(async () => {
-        var newBalanceVariable = user.balance + (0.08 * user.passiveUpgrades?.passiveUpgrade3?.level)
+        var newBalanceVariable = user.balance + 0.08 * user.passiveUpgrades?.passiveUpgrade3?.level;
         setBalance(newBalanceVariable);
         const query = await Axios("/api/user/setbalance", "POST", {
           balance: newBalanceVariable,
@@ -77,7 +74,7 @@ const PassiveUpgradesList = ({ frontendArray, moneyFunction, props }) => {
   useEffect(() => {
     if (user && typeof user.balance !== "undefined" && user.passiveUpgrades?.passiveUpgrade4?.value == 1) {
       const interval = setInterval(async () => {
-        var newBalanceVariable = user.balance + (0.16 * user.passiveUpgrades?.passiveUpgrade4?.level)
+        var newBalanceVariable = user.balance + 0.16 * user.passiveUpgrades?.passiveUpgrade4?.level;
         setBalance(newBalanceVariable);
         const query = await Axios("/api/user/setbalance", "POST", {
           balance: newBalanceVariable,
@@ -135,6 +132,7 @@ const PassiveUpgradesList = ({ frontendArray, moneyFunction, props }) => {
       price: (1 + Math.pow(1.13, user.passiveUpgrades?.passiveUpgrade1?.level - 1)).toFixed(2),
       level: user.passiveUpgrades?.passiveUpgrade1?.level,
       isBought: user.passiveUpgrades?.passiveUpgrade1?.value,
+      icon: <MdFactory />,
     },
     {
       ID: 2,
@@ -143,6 +141,7 @@ const PassiveUpgradesList = ({ frontendArray, moneyFunction, props }) => {
       price: (10 + Math.pow(1.14, user.passiveUpgrades?.passiveUpgrade2?.level - 1)).toFixed(2),
       level: user.passiveUpgrades?.passiveUpgrade2?.level,
       isBought: user.passiveUpgrades?.passiveUpgrade2?.value,
+      icon: <IoRestaurant />,
     },
     {
       ID: 3,
@@ -151,6 +150,7 @@ const PassiveUpgradesList = ({ frontendArray, moneyFunction, props }) => {
       price: (30 + Math.pow(1.15, user.passiveUpgrades?.passiveUpgrade3?.level - 1)).toFixed(2),
       level: user.passiveUpgrades?.passiveUpgrade3?.level,
       isBought: user.passiveUpgrades?.passiveUpgrade3?.value,
+      icon: <FaLaptopCode />,
     },
     {
       ID: 4,
@@ -159,6 +159,7 @@ const PassiveUpgradesList = ({ frontendArray, moneyFunction, props }) => {
       price: (50 + Math.pow(1.16, user.passiveUpgrades?.passiveUpgrade4?.level - 1)).toFixed(2),
       level: user.passiveUpgrades?.passiveUpgrade4?.level,
       isBought: user.passiveUpgrades?.passiveUpgrade4?.value,
+      icon: <FaBuilding />,
     },
   ];
   const upgradeList = [
@@ -167,27 +168,26 @@ const PassiveUpgradesList = ({ frontendArray, moneyFunction, props }) => {
 
       return (
         <Tippy content={keyname.description + " | " + "Price: $" + keyname.price}>
-          <div
-            style={{
-              color: priceChecker,
-              border: "2px solid " + priceChecker,
-              "--backgroundColor": priceChecker,
-              "--backgroundColorGlow": priceChecker,
-            }}
-            className={styles.upgradeButton}
-            onClick={(event) => clickCheck(event, keyname.price, keyname.isBought, keyname.ID)}
-          >
-            {keyname.title} <br></br> Cost: ${keyname.price} <br></br> Level: {keyname.level}
+          <div style={{ minWidth: "100%", color: priceChecker, border: "2px solid " + priceChecker, "--backgroundColor": priceChecker, "--backgroundColorGlow": priceChecker }} className={styles.upgradeButton} onClick={(event) => clickCheck(event, keyname.price, keyname.isBought, keyname.ID)}>
+            <div style={{ display: "flex", textAlign: "center", alignItems: "center", justifyContent: "center", minWidth: "100%" }}>
+              <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "flex-start", flex: "1", fontSize: "50px" }}> {keyname.icon}</div>
+              <div style={{ justifySelf: "center", alignSelf: "center", flex: "10" }}>
+                {keyname.title} <br></br> Cost: ${keyname.price} <br></br> Level: {keyname.level}
+              </div>
+            </div>
           </div>
         </Tippy>
       );
     }),
   ];
-  return <>
-  <div style={{ fontSize: "20px" }}>
-                  Passive Power <span class={styles.priceTagNoBold}>$numbergoeshere</span>
-                </div>
-  {upgradeList}</>;
+  return (
+    <>
+      <div style={{ fontSize: "20px" }}>
+        Passive Power <span class={styles.priceTagNoBold}>${totalPassive?.toFixed(2)}</span>
+      </div>
+      {upgradeList}
+    </>
+  );
 };
 
 export default observer(PassiveUpgradesList);

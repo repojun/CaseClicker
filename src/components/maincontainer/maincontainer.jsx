@@ -133,7 +133,7 @@ const MainContainer = ({ children, className = " ", ...props }) => {
             }}
           >
             {" "}
-            <AiOutlineSetting /> Premium Store
+            <AiOutlineSetting /> Profile Store
           </div>
           <div className={styles.navbutton} onClick={() => toggleModal()}>
             <AiOutlineSetting /> Settings
