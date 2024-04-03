@@ -36,7 +36,7 @@
   font-size: 32px;
   font-weight: bold;
   color: #ffffff;
-  display:flex;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
@@ -50,39 +50,3 @@
   column-gap: 10px;
   margin-top: 20px;
 }
-
-@keyframes fadeIn {
-  from {
-      opacity: 0;
-  }
-
-  to {
-      opacity: 1;
-  }
-}
-
-@keyframes fadeOut {
-  from {
-      opacity: 1;
-  }
-
-  to {
-      opacity: 0;
-  }
-}
-
-
-
-.money {
-  font-weight: bold;
-  color: #15e815;
-  text-shadow: 0px 0px 10px #05ff09b0;
-}
-
-
-
-
-
-
-
-  

@@ -35,18 +35,8 @@ const SettingsModal = ({ modal, toggleModal }) => {
           <div className={styles.modalContent}>
             <div className={styles.modalTitle}>Settings</div>
 
-            <CheckBox
-              id={1}
-              title="Disable Sound"
-              description="Disable all sound effects."
-              checked={disableSound}
-              onChange={handleDisableSound}
-            />
-            <CheckBox
-              id={2}
-              title="Enable Theme Song"
-              description="Play the theme song."
-            />
+            <CheckBox id={1} title="Disable Sound" description="Disable all sound effects." checked={disableSound} onChange={handleDisableSound} />
+            <CheckBox id={2} title="Enable Theme Song" description="Play the theme song." />
 
             <div className={styles.buttonContainer}>
               <div onClick={toggleModal}>

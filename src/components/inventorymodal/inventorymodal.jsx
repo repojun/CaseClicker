@@ -20,6 +20,12 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, rarity, pu
     toggleModal(null, null, price, entityName, null, null, sell, consume, keep);
   };
 
+  const handleClose = () => {
+    toggleModal();
+    setFirstRow(null);
+    setSecondRow(null);
+  };
+
   const lunchbox = [
     "strangeliquid", // Contraband
     "robosandwich", // Ultra Rare
@@ -316,7 +322,13 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, rarity, pu
                 />
               </div>
               <div>
-                <OutlineButton title="Close" minWidth={"60px"} click={toggleModal} />
+                <OutlineButton
+                  title="Close"
+                  minWidth={"60px"}
+                  click={() => {
+                    handleClose();
+                  }}
+                />
               </div>
             </div>
           </div>
