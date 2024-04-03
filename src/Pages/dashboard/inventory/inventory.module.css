@@ -125,6 +125,10 @@
 }
 
 .priceText {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 6px;
   font-weight: bold;
 
 }
@@ -153,5 +157,5 @@
 .searchBar:hover {
   border: 2px solid var(--blue-text-colour);
   transition: 0.2s;
-  box-shadow: 0 0px 15px rgba(var(var(--blue-text-colour)),0.64);
+  box-shadow: 0 0px 15px var(--blue-text-glow);
 }

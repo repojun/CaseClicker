@@ -14,6 +14,7 @@ module.exports = mongoose.model(
     netWorth: { type: Number, default: 0},
     premiumBalance: { type: Number, default: 0 },
     profilePicture: { type: String, default: "/defaultpfp.png" },
+    bio: {type: String, default: ""},
     inventory: {
       glock_fade: {
         viewname: { type: String, default: "Glock - Fade" },

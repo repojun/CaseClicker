@@ -52,7 +52,7 @@
 }
 
 .metricContentSubtext {
-  color: rgba((var(--blue-text-colour)),0.64);
+  color: var(--blue-text-glow);
   font-size: 10px;
   text-shadow: none;
   margin: none;

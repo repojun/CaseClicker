@@ -53,21 +53,27 @@ function Leaderboard() {
               <div className={styles.topThreeCard}>
                 <div className={styles.topThreeCardFlex}>
                   <img src={`${topThree[0].profilePicture}`} className={styles.avatarLargeFirst} alt="" onClick={() => navigate(`/profile/${topThree[0].username}`)}></img>
-                  <div className={styles.leaderboardName}>#1 {topThree[0].username}</div>
+                  <div className={styles.leaderboardName} onClick={() => navigate(`/profile/${topThree[0].username}`)}>
+                    #1 {topThree[0].username}
+                  </div>
                   <span className={styles.balance}>${topThree[0].networth}</span>
                 </div>
               </div>
               <div className={styles.topThreeCard}>
                 <div className={styles.topThreeCardFlex}>
                   <img src={`${topThree[1].profilePicture}`} className={styles.avatarLargeSecond} alt="" onClick={() => navigate(`/profile/${topThree[1].username}`)}></img>
-                  <div className={styles.leaderboardName}>#2 {topThree[1].username}</div>
+                  <div className={styles.leaderboardName} onClick={() => navigate(`/profile/${topThree[1].username}`)}>
+                    #2 {topThree[1].username}
+                  </div>
                   <span className={styles.balance}>${topThree[1].networth}</span>
                 </div>
               </div>
               <div className={styles.topThreeCard}>
                 <div className={styles.topThreeCardFlex}>
                   <img src={`${topThree[2].profilePicture}`} className={styles.avatarLargeThird} alt="" onClick={() => navigate(`/profile/${topThree[2].username}`)}></img>
-                  <div className={styles.leaderboardName}>#3 {topThree[2].username}</div>
+                  <div className={styles.leaderboardName} onClick={() => navigate(`/profile/${topThree[2].username}`)}>
+                    #3 {topThree[2].username}
+                  </div>
                   <span className={styles.balance}>${topThree[2].networth}</span>
                 </div>
               </div>

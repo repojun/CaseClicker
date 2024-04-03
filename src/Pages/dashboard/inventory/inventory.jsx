@@ -3,7 +3,7 @@ import MainContainer from "../../../components/maincontainer/maincontainer";
 import Header from "../../../components/mainheader/header";
 import SubContainer from "../../../components/subcontainer/subcontainer";
 import OutlineButton from "../../../components/outlinebutton/outlinebutton";
-import { BsSteam } from "react-icons/bs";
+import { FaMoneyCheck } from "react-icons/fa";
 import React, { useEffect, useState } from "react";
 import { observer } from "mobx-react-lite";
 import InventoryComponent from "../../../components/inventorycomponent/inventorycomponent";
@@ -90,8 +90,8 @@ function Inventory() {
             <div className={styles.buttonContainerMain}>
               <div className={styles.buttonContainerLeft}>
                 <div className={styles.priceText}>
-                  {" "}
-                  <BsSteam /> Total Price: <span className={styles.priceTag}> ${networthHello} </span>{" "}
+                  <FaMoneyCheck />
+                  Total Price: <span className={styles.priceTag}> ${networthHello?.toFixed(2)} </span>{" "}
                 </div>
               </div>
               <div className={styles.buttonContainerRight}>

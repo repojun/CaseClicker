@@ -16,7 +16,7 @@
   border-radius: 25px;
   box-shadow: 0px 0px 20px -2px#000000ad;
   margin: 40px;
-  min-height: 600px;
+  min-height: 900px;
   min-width: 1200px;
   display: flex;
   justify-content: center;
@@ -73,9 +73,16 @@
   color: var(--blue-text-colour);
 }
 
-.metricTitleValue {
+.metricTitleNetWorth {
   font-size: 16px;
   color: #15e815;
+  text-shadow: 0px 0px 15px #15e815;
+}
+
+
+.metricTitleValue {
+  font-size: 16px;
+  color: var(--blue-text-colour);
   /* box-shadow: 0px 0px 20px #05ff09;
   border-radius: 50%; */
 }
@@ -104,7 +111,7 @@
 }
 
 .metricContentSubtext {
-  color: rgba((var(--blue-text-colour)),0.64);
+  color: var(--blue-text-glow);
   font-size: 10px;
   text-shadow: none;
   margin: none;
@@ -128,6 +135,13 @@
   transition: 0.2s;
 }
 
+.metricValueNetWorth {
+  font-size: 45px;
+  color: #15e815;
+  text-shadow: 0px 0px 15px #15e815;
+}
+
+
 .metricValue {
   font-size: 45px;
 }
@@ -136,6 +150,16 @@
   font-weight: bold;
   font-size: 25px;
   color: var(--blue-text-colour);
+  vertical-align: text-top;
+  margin-right: 5px;
+}
+
+
+.dollarNetWorth {
+  font-weight: bold;
+  font-size: 25px;
+  color: #15e815;
+  text-shadow: 0px 0px 15px #15e815;
   vertical-align: text-top;
   margin-right: 5px;
 }

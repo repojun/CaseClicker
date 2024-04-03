@@ -54,7 +54,9 @@ function Profile() {
   if (!username || !userData)
     return (
       <MainContainer>
-        <SubContainer>User Not Found</SubContainer>
+        <SubContainer>
+        <div className={styles.subContainer} />
+        </SubContainer>
       </MainContainer>
     );
 
@@ -81,15 +83,15 @@ function Profile() {
                         <AiFillCreditCard size={22} />
                       </div>
                     </div>
-                    <div className={styles.metricValue}>
-                      <span className={styles.dollar}>$</span>
+                    <div className={styles.metricValueNetWorth}>
+                      <span className={styles.dollarNetWorth}>$</span>
                       {userData.netWorth.toFixed(2)}
                     </div>
                   </div>
 
                   <div className={styles.metricBlock}>
                     <div className={styles.metricTitleContainer}>
-                      <div className={styles.metricTitle}> Statistic </div>
+                      <div className={styles.metricTitle}> Balance </div>
                       <div className={styles.metricTitleValue}>
                         <AiFillCalculator size={22} />
                       </div>

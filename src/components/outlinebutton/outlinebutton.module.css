@@ -1,6 +1,6 @@
 :root {
 --backgroundColor: rgb(187, 211, 255);
---backgroundColorGlow: rgba(var(--backgroundColor),0.64);
+--backgroundColorGlow: var(--blue-text-glow);
 --minWidth: auto;
 }
 

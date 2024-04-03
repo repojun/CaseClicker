@@ -1,14 +1,13 @@
 import styles from "./mainpage.module.css";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import MainContainer from "../../../components/maincontainer/maincontainer";
 import SubContainer from "../../../components/subcontainer/subcontainer";
-import ClickUpgradesList from "../../../components/upgradelists/clickupgrades/clickupgradeslist";
 import PassiveUpgradesList from "../../../components/upgradelists/passiveupgradeslist/passiveupgradeslist";
 import Axios from "../../../api/agent";
 import { observer } from "mobx-react-lite";
 import useContextStore from "../../../context";
 
-var baseClick = 100;
+var baseClick = 0.01;
 var multiplier = 1;
 
 function MainPage() {

@@ -68,34 +68,29 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, rarity, pu
 
   const populateRows = (caseName) => {
     let images = [];
-
-    if (caseName == "brokenfang") {
-      images = brokenfang
-        .map((entname) => {
-          const item = user.inventory && user.inventory[entname];
-          return item ? { image: item.image, rarity: item.rarity } : null;
-        })
-        .filter((item) => item !== null);
+  
+    switch (caseName) {
+      case "brokenfang":
+        images = brokenfang;
+        break;
+      case "dream":
+        images = dream;
+        break;
+      case "recoil":
+        images = recoil;
+        break;
+      default:
+        console.log("Invalid case name");
+        return;
     }
-
-    if (caseName == "dream") {
-      images = dream
-        .map((entname) => {
-          const item = user.inventory && user.inventory[entname];
-          return item ? { image: item.image, rarity: item.rarity } : null;
-        })
-        .filter((item) => item !== null);
-    }
-
-    if (caseName == "recoil") {
-      images = recoil
-        .map((entname) => {
-          const item = user.inventory && user.inventory[entname];
-          return item ? { image: item.image, rarity: item.rarity } : null;
-        })
-        .filter((item) => item !== null);
-    }
-
+  
+    images = images
+      .map((entname) => {
+        const item = user.inventory && user.inventory[entname];
+        return item ? { image: item.image, rarity: item.rarity } : null;
+      })
+      .filter((item) => item !== null);
+  
     const firstRow = images.slice(0, 5);
     const secondRow = images.slice(5);
     setFirstRow(firstRow);
@@ -119,11 +114,11 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, rarity, pu
   const selectRandomItems = async (caseName, price) => {
     console.log("CASE NAME: " + caseName);
     handleModalsFinal(price, caseName, false, true);
+  
     const getRarity = () => {
       let selectedRarity;
-
       const randomChoice = Math.random();
-
+  
       switch (true) {
         case randomChoice <= 0.55:
           selectedRarity = "Common";
@@ -140,78 +135,43 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, rarity, pu
         default:
           selectedRarity = "Contraband";
       }
-
+  
       return selectedRarity;
     };
-
-    let selectedItems = [];
-    if (caseName === "brokenfang") {
+  
+    const handleCase = (caseItems) => {
       const selectedRarity = getRarity();
-
-      selectedItems = brokenfang.filter((entname) => {
+  
+      let selectedItems = caseItems.filter((entname) => {
         const item = user.inventory && user.inventory[entname];
         return item && item.purchasable === 0 && item.rarity === selectedRarity;
       });
-
-      const images = brokenfang
-        .map((entname) => {
-          const item = user.inventory && user.inventory[entname];
-          return item ? { image: item.image, rarity: item.rarity } : null;
-        })
-        .filter((item) => item !== null);
-
+  
+      const images = caseItems.map((entname) => {
+        const item = user.inventory && user.inventory[entname];
+        return item ? { image: item.image, rarity: item.rarity } : null;
+      }).filter((item) => item !== null);
+  
       const firstRow = images.slice(0, 5);
       const secondRow = images.slice(5);
       const lastIndex = selectedItems.length - 1;
       const lastSelectedItem = selectedItems[Math.floor(Math.random() * (lastIndex + 1))];
-
+  
       handleItems(firstRow, secondRow, lastSelectedItem);
-    }
-
-    if (caseName === "dream") {
-      const selectedRarity = getRarity();
-
-      selectedItems = dream.filter((entname) => {
-        const item = user.inventory && user.inventory[entname];
-        return item && item.purchasable === 0 && item.rarity === selectedRarity;
-      });
-
-      const images = dream
-        .map((entname) => {
-          const item = user.inventory && user.inventory[entname];
-          return item ? { image: item.image, rarity: item.rarity } : null;
-        })
-        .filter((item) => item !== null);
-
-      const firstRow = images.slice(0, 5);
-      const secondRow = images.slice(5);
-      const lastIndex = selectedItems.length - 1;
-      const lastSelectedItem = selectedItems[Math.floor(Math.random() * (lastIndex + 1))];
-
-      handleItems(firstRow, secondRow, lastSelectedItem);
-    }
-
-    if (caseName === "recoil") {
-      const selectedRarity = getRarity();
-
-      selectedItems = recoil.filter((entname) => {
-        const item = user.inventory && user.inventory[entname];
-        return item && item.purchasable === 0 && item.rarity === selectedRarity;
-      });
-
-      const images = recoil
-        .map((entname) => {
-          const item = user.inventory && user.inventory[entname];
-          return item ? { image: item.image, rarity: item.rarity } : null;
-        })
-        .filter((item) => item !== null);
-
-      const firstRow = images.slice(0, 5);
-      const secondRow = images.slice(5);
-      const lastIndex = selectedItems.length - 1;
-      const lastSelectedItem = selectedItems[Math.floor(Math.random() * (lastIndex + 1))];
-
-      handleItems(firstRow, secondRow, lastSelectedItem);
+    };
+  
+    switch (caseName) {
+      case "brokenfang":
+        handleCase(brokenfang);
+        break;
+      case "dream":
+        handleCase(dream);
+        break;
+      case "recoil":
+        handleCase(recoil);
+        break;
+      default:
+        console.log("Invalid case name");
     }
   };
 

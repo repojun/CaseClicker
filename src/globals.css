@@ -24,6 +24,7 @@
   --metric-colour: #243451;
   --metric-colour-highlight: #30476e;
   --blue-text-colour: #bbd3ff;
+  --blue-text-glow: rgb(187, 211, 255, 0.3);
   --main-background-colour: #1e283b;
 
   --tile-start-rgb: 239, 245, 249;

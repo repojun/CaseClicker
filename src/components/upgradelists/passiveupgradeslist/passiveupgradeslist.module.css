@@ -1,6 +1,6 @@
 :root {
   --backgroundColor: var(--blue-text-colour);
-  --backgroundColorGlow: rgba((var(--blue-text-colour)),0.64);
+  --backgroundColorGlow: var(--blue-text-glow);
 }
 
 .upgradeButton {
