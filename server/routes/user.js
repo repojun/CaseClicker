@@ -11,9 +11,11 @@ const setItem = require("../middleware/user/setitem");
 const topTen = require("../middleware/user/topten");
 const userposition = require("../middleware/user/userposition");
 const getItem = require("../middleware/user/getitem");
+const handlePayPal = require("../middleware/user/paypal");
 
 router.get("/exists", userExists);
 router.get("/topten", topTen);
+router.post("/handlepaypal", handlePayPal);
 router.post("/getitem", getItem);
 router.post("/userposition", userposition);
 router.post("/setprofilepicture", setProfilePicture);
