@@ -11,7 +11,7 @@ import { FaBuilding, FaLaptopCode } from "react-icons/fa";
 
 const PassiveUpgradesList = ({ frontendArray, moneyFunction, props }) => {
   const {
-    userStore: { user, setBalance, setPassiveUpgrade, setPassiveUpgradeLevel },
+    userStore: { user, setBalance, setPassiveUpgrade, setPassiveUpgradeLevel, setPassivePower, getPassivePower },
   } = useContextStore();
 
   const [passiveIncome1, setPassiveIncome1] = useState(0);
@@ -94,10 +94,30 @@ const PassiveUpgradesList = ({ frontendArray, moneyFunction, props }) => {
       moneyFunction(price);
       setPassiveUpgrade(ID, 1);
       let newLevel = user.passiveUpgrades[`passiveUpgrade${ID}`].level++ + 1;
-      console.log(newLevel);
+      getPassivePower();
+
+      switch (ID) {
+        case 1:
+          setPassivePower(0.01);
+          break;
+        case 2:
+          setPassivePower(0.04);
+          break;
+        case 3:
+          setPassivePower(0.08);
+          break;
+        case 4:
+          setPassivePower(0.16);
+          break;
+        default:
+      }
+
+      const newPassivePower = getPassivePower();
       setPassiveUpgradeLevel(ID, newLevel);
-      const levelQuery = await Axios("/api/user/setpassiveupgradelevel", "POST", { passiveUpgradeID: ID, newLevel: newLevel });
-      const upgradeQuery = await Axios("/api/user/setpassiveupgrade", "POST", {
+
+      await Axios("/api/user/setpassivepower", "POST", { passivePower: newPassivePower });
+      await Axios("/api/user/setpassiveupgradelevel", "POST", { passiveUpgradeID: ID, newLevel: newLevel });
+      await Axios("/api/user/setpassiveupgrade", "POST", {
         passiveUpgradeID: ID,
       });
     } else {
@@ -129,7 +149,7 @@ const PassiveUpgradesList = ({ frontendArray, moneyFunction, props }) => {
       ID: 1,
       title: "Factory",
       description: "Factories to produce materials!",
-      price: (1 + Math.pow(1.13, user.passiveUpgrades?.passiveUpgrade1?.level - 1)).toFixed(2),
+      price: (1 + Math.pow(1.14, user.passiveUpgrades?.passiveUpgrade1?.level - 1)).toFixed(2),
       level: user.passiveUpgrades?.passiveUpgrade1?.level,
       isBought: user.passiveUpgrades?.passiveUpgrade1?.value,
       icon: <MdFactory />,
@@ -138,7 +158,7 @@ const PassiveUpgradesList = ({ frontendArray, moneyFunction, props }) => {
       ID: 2,
       title: "Restaurant",
       description: "Provide food and earn money!",
-      price: (10 + Math.pow(1.14, user.passiveUpgrades?.passiveUpgrade2?.level - 1)).toFixed(2),
+      price: (20 + Math.pow(1.15, user.passiveUpgrades?.passiveUpgrade2?.level - 1)).toFixed(2),
       level: user.passiveUpgrades?.passiveUpgrade2?.level,
       isBought: user.passiveUpgrades?.passiveUpgrade2?.value,
       icon: <IoRestaurant />,
@@ -147,7 +167,7 @@ const PassiveUpgradesList = ({ frontendArray, moneyFunction, props }) => {
       ID: 3,
       title: "Tech Company",
       description: "Sell computers and earn money!",
-      price: (30 + Math.pow(1.15, user.passiveUpgrades?.passiveUpgrade3?.level - 1)).toFixed(2),
+      price: (80 + Math.pow(1.15, user.passiveUpgrades?.passiveUpgrade3?.level - 1)).toFixed(2),
       level: user.passiveUpgrades?.passiveUpgrade3?.level,
       isBought: user.passiveUpgrades?.passiveUpgrade3?.value,
       icon: <FaLaptopCode />,
@@ -156,7 +176,7 @@ const PassiveUpgradesList = ({ frontendArray, moneyFunction, props }) => {
       ID: 4,
       title: "Building",
       description: "Buildings to earn money!",
-      price: (50 + Math.pow(1.16, user.passiveUpgrades?.passiveUpgrade4?.level - 1)).toFixed(2),
+      price: (150 + Math.pow(1.16, user.passiveUpgrades?.passiveUpgrade4?.level - 1)).toFixed(2),
       level: user.passiveUpgrades?.passiveUpgrade4?.level,
       isBought: user.passiveUpgrades?.passiveUpgrade4?.value,
       icon: <FaBuilding />,

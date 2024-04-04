@@ -3,7 +3,7 @@ import { makeObservable, observable, action } from "mobx";
 class userStore {
   constructor() {
     this.user = {};
-    makeObservable(this, { user: observable, setUser: action, setItemAdd: action, setPremiumBalance: action, setItem: action, setBalance: action, setNetWorth: action, setPassiveUpgrade: action, setPassiveUpgradeLevel: action });
+    makeObservable(this, { user: observable, setUser: action, setItemAdd: action, setPremiumBalance: action, setItem: action, setPassivePower: action, setBalance: action, setNetWorth: action, setPassiveUpgrade: action, setPassiveUpgradeLevel: action });
   }
 
   setUser = (user) => {
@@ -47,17 +47,27 @@ class userStore {
   };
 
   getNetworth = () => {
-    const items = !this?.user?.inventory ? [] : Object.values(this.user.inventory)
-      .filter(({ value }) => value > 0)
-      .map((item) => {
-        if (item.value > 1) {
-          return Array.from({ length: item.value }, () => item);
-        }
-        return item;
-      })
-      .flat(Infinity);
+    const items = !this?.user?.inventory
+      ? []
+      : Object.values(this.user.inventory)
+          .filter(({ value }) => value > 0)
+          .map((item) => {
+            if (item.value > 1) {
+              return Array.from({ length: item.value }, () => item);
+            }
+            return item;
+          })
+          .flat(Infinity);
 
-      return items?.reduce((acc, item) => acc + item.price, 0)
+    return items?.reduce((acc, item) => acc + item.price, 0);
+  };
+
+  setPassivePower = (passiveAdd) => {
+    this.user.passivePower += passiveAdd;
+  };
+
+  getPassivePower = () => {
+    return this.user.passivePower;
   };
 }
 

@@ -12,9 +12,11 @@ const topTen = require("../middleware/user/topten");
 const userposition = require("../middleware/user/userposition");
 const getItem = require("../middleware/user/getitem");
 const handlePayPal = require("../middleware/user/paypal");
+const setPassivePower = require("../middleware/user/setpassivepower");
 
 router.get("/exists", userExists);
 router.get("/topten", topTen);
+router.post("/setpassivepower", setPassivePower);
 router.post("/handlepaypal", handlePayPal);
 router.post("/getitem", getItem);
 router.post("/userposition", userposition);
