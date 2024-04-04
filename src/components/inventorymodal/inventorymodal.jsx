@@ -69,6 +69,8 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, rarity, pu
 
   const dream = [
     "karambit_fade", // Contraband
+    "bayonet", // Contraband
+    "flipknife", // Contraband
     "awp_fade", // Ultra Rare
     "ump_fade", // Ultra Rare
     "ak_icecoaled", // Rare
@@ -83,6 +85,7 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, rarity, pu
 
   const electron = [
     "karambit_gold", // Contraband
+    "karambit_fade", // Contraband
     "awp_gungir", // Ultra Rare
     "ak_gold", // Ultra Rare
     "m4a1_goldencoil", // Rare
@@ -161,7 +164,7 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, rarity, pu
       const randomChoice = Math.random();
 
       switch (true) {
-        case randomChoice <= 0.6:
+        case randomChoice <= 0.7:
           selectedRarity = "Common";
           break;
         case randomChoice <= 0.95:

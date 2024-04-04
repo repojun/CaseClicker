@@ -43,8 +43,14 @@ function Inventory() {
     setEntityName(entityName);
     setRarity(rarity);
     setPurchasable(purchasable);
-    const audio = new Audio("/sfx/clickButton.wav");
-    audio.play();
+
+    if (consume == true) {
+      const audio = new Audio("/sfx/caseOpen.wav");
+      audio.play();
+    } else {
+      const audio = new Audio("/sfx/clickButton.wav");
+      audio.play();
+    }
 
     if (consume === true) {
       await Axios("/api/user/setitem", "POST", {
