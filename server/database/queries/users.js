@@ -73,6 +73,13 @@ const updateUserBalance = async (userID, balance) => {
   await user.save();
 };
 
+const addUserBalancePaypal = async (userID, amountToAdd) => {
+  const user = await userSchema.findOne({ id: userID });
+  user.balance += amountToAdd;
+  user.netWorth += amountToAdd;
+  await user.save();
+};
+
 const updateUserInventory = async (userID, item, add) => {
   const user = await userSchema.findOne({ id: userID });
 

@@ -26,8 +26,8 @@
   min-width: 550px;
   max-width: 100%;
   display: flex;
-  justify-self: left;
-  align-items: left;
+  justify-self: center;
+  align-items: center;
   flex-direction: column;
   row-gap: 12px;
 }
@@ -49,4 +49,29 @@
   align-items: center;
   column-gap: 10px;
   margin-top: 20px;
+}
+.money {
+  font-weight: bold;
+  color: #15e815;
+  text-shadow: 0px 0px 10px #05ff09b0;
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+
+  to {
+      opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+      opacity: 1;
+  }
+
+  to {
+      opacity: 0;
+  }
 }

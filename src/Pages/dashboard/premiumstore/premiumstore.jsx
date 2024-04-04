@@ -18,19 +18,14 @@ function PremiumStore() {
   const [price, setPrice] = useState(0);
 
   const toggleModal = (price) => {
-    console.log("Howdy");
     setPrice(price);
     setModal(!modal);
-    console.log("HOEY MODAL " + modal)
   };
 
   const shopItems = [
-    { ID: 1, price: 500, title: "+1,000 Dollars", image: "/coin1000.png" },
-    { ID: 2, price: 1000, title: "+10,000 Dollars", image: "/coin10000.png" },
-    { ID: 3, price: 2500, title: "+$100,000 Dollars", image: "/coin100000.png" },
-    { ID: 4, price: 500, title: "+$1,000 Dollars", image: "/coin1000.png" },
-    { ID: 5, price: 1000, title: "+$10,000 Dollars", image: "/coin10000.png" },
-    { ID: 6, price: 2500, title: "+$100,000 Dollars", image: "/coin100000.png" },
+    { ID: 1, price: 5.99, title: "+1,000 Dollars", image: "/coin1000.png" },
+    { ID: 2, price: 25.99, title: "+10,000 Dollars", image: "/coin10000.png" },
+    { ID: 3, price: 49.99, title: "+$100,000 Dollars", image: "/coin100000.png" },
   ];
 
   function chunkArray(array, size) {
@@ -55,7 +50,7 @@ function PremiumStore() {
           {itemChunks.map((chunk, index) => (
             <div key={index} className={styles.itemContainer}>
               {chunk.map((item, mapIndex) => (
-                <ShopItem key={mapIndex} price={item.price} premium={true} title={item.title} image={item.image} square={true} click={() => toggleModal(item.price)} />
+                <ShopItem key={mapIndex} price={"$" + item.price.toFixed(2)} premium={true} title={item.title} image={item.image} square={true} click={() => toggleModal(item.price)} />
               ))}
             </div>
           ))}
