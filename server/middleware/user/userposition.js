@@ -3,7 +3,6 @@ const { getCookie } = require("../../cookies/get");
 
 const userposition = async (req, res) => {
   const { userID } = req.body;
-  console.log("USER ID: " + userID);
   try { 
     const position = await getUserPosition(userID);
 

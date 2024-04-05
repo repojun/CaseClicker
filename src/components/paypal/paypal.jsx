@@ -12,7 +12,6 @@ export default function PayPal({ total, userId, openModal, closeModal }) {
         openModal();
       });
   };
-  console.log("CLIENT_ID IS HERE: " + process.env.REACT_APP_PAYPAL_CLIENT_ID);
 
   return (
     <PayPalScriptProvider
@@ -29,7 +28,6 @@ export default function PayPal({ total, userId, openModal, closeModal }) {
             total: total,
             user: userId,
           });
-          console.log("P IS HERE: " + p);
           return actions.order.create(p);
         }}
         onApprove={(_, actions) => onApprove(actions)}

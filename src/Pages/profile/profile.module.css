@@ -187,6 +187,64 @@
   margin-top: 25px;
 }
 
+.badgeBlock {
+  color: white;
+  align-items: center;
+  min-width: 1290px;
+  max-width: 1290px;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  padding: 25px;
+  background-color: var(--metric-colour);
+  border-radius: 30px;
+  transition: 0.4s;
+  margin-top: 25px;
+}
+
+.badgeContainer {
+  flex: 1;
+  display: flex;
+  min-width: 100%;
+  row-gap: 20px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.badgeRow {
+  flex: 1;
+  flex-grow: 1;
+  min-width: 100%;
+  column-gap: 125px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.badge {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--blue-text-colour);
+  font-size: 64px;
+  width: 175px;
+  height: 175px;
+  background-color: var(--metric-colour-highlight);
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+.badge:hover {
+  color:var(--metric-colour-highlight);
+  background-color: var(--blue-text-colour);
+  border-radius: 47%;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+
 .bioBody {
   font-size: 20px;
 }

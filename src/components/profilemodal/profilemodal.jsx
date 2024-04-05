@@ -27,8 +27,6 @@ const ProfileModal = ({ modal, toggleModal }) => {
     setImageLink("");
   };
 
-  console.log("Current image link:", imageLink);
-
   return (
     <>
       {modal && (

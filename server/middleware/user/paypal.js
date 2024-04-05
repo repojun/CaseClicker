@@ -61,7 +61,6 @@ async function handlePayPal(request, response) {
     }
     response.status(200).send();
   } catch (error) {
-    console.log("ERROR", error);
     response.status(500).send();
   }
 }

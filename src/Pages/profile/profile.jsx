@@ -8,16 +8,23 @@ import SubContainer from "../../components/subcontainer/subcontainer";
 import Axios from "../../api/agent";
 import { AiFillDollarCircle, AiFillHeart, AiFillCreditCard, AiFillCalculator } from "react-icons/ai";
 import ProfileModal from "../../components/profilemodal/profilemodal";
+import BadgeModal from "../../components/profilemodal/badgemodal";
 import { FaRegEdit } from "react-icons/fa";
+import { CiCirclePlus } from "react-icons/ci";
 
 function Profile() {
   const [userData, setUserData] = useState(null);
   const [userPos, setUserPos] = useState(null);
   const { username } = useParams();
   const [modal, setModal] = useState(false);
+  const [badgeModal, setBadgeModal] = useState(false);
 
   const toggleModal = () => {
     setModal(!modal);
+  };
+
+  const toggleBadgeModal = () => {
+    setBadgeModal(!badgeModal);
   };
 
   useEffect(() => {
@@ -64,7 +71,9 @@ function Profile() {
     <>
       <MainContainer>
         <SubContainer>
-          <ProfileModal modal={modal} toggleModal={toggleModal}></ProfileModal>
+          <ProfileModal modal={modal} toggleModal={toggleModal} ></ProfileModal>
+          <BadgeModal modal={badgeModal} toggleModal={toggleBadgeModal} positionID={1}></BadgeModal>
+
           <div className={styles.flex}>
             <div className={styles.subContainer}>
               <div className={styles.subContainerSep}>
@@ -129,11 +138,43 @@ function Profile() {
                   </div>
                 </div>
                 <div className={styles.bioBlock}>
-                  <div className={styles.bioTitle}>
-                    Profile Bio
-                  </div>
+                  <div className={styles.bioTitle}>Profile Bio</div>
+                  <div className={styles.bioBody}>Devin Miles Haney (/ˈheɪni/; born November 17, 1998) is an American professional boxer. He has held multiple world championships in two weight classes, including the World Boxing Council (WBC) super lightweight title since December 2023. Previously he held the undisputed championship[a] at lightweight from 2022 to August 2023.[3] As of June 2023, he is ranked as the world's best active lightweight by ESPN and the Transnational Boxing Rankings Board, and third by BoxRec.[4][5][6]</div>
+                </div>
+
+                <div className={styles.badgeBlock}>
+                  <div className={styles.bioTitle}>Badge Showcase</div>
                   <div className={styles.bioBody}>
-                  Devin Miles Haney (/ˈheɪni/; born November 17, 1998) is an American professional boxer. He has held multiple world championships in two weight classes, including the World Boxing Council (WBC) super lightweight title since December 2023. Previously he held the undisputed championship[a] at lightweight from 2022 to August 2023.[3] As of June 2023, he is ranked as the world's best active lightweight by ESPN and the Transnational Boxing Rankings Board, and third by BoxRec.[4][5][6]
+                    <div className={styles.badgeContainer}>
+                      <div className={styles.badgeRow}>
+                        <div className={styles.badge} onClick={() => toggleBadgeModal()}>
+                          <CiCirclePlus />
+                        </div>
+                        <div className={styles.badge}>
+                          <CiCirclePlus />
+                        </div>
+                        <div className={styles.badge}>
+                          <CiCirclePlus />
+                        </div>
+                        <div className={styles.badge}>
+                          <CiCirclePlus />
+                        </div>
+                      </div>
+                      <div className={styles.badgeRow}>
+                        <div className={styles.badge}>
+                          <CiCirclePlus />
+                        </div>
+                        <div className={styles.badge}>
+                          <CiCirclePlus />
+                        </div>
+                        <div className={styles.badge}>
+                          <CiCirclePlus />
+                        </div>
+                        <div className={styles.badge}>
+                          <CiCirclePlus />
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

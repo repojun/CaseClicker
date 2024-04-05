@@ -587,22 +587,52 @@ module.exports = mongoose.model(
         entname: { type: String, default: "powerup" },
       },
     },
+    badges: {
+      badge1: {
+        viewname: { type: String, default: "Badge 1" },
+        image: { type: String, default: "/badges/badge1.png" },
+        value: { type: Number, default: 1 },
+        profilePosition: { type: Number, default: -1 },
+      },
+      badge2: {
+        viewname: { type: String, default: "Badge 2" },
+        image: { type: String, default: "/badges/badge2.png" },
+        value: { type: Number, default: 1 },
+        profilePosition: { type: Number, default: -1 },
+      },
+      badge3: {
+        viewname: { type: String, default: "Badge 3" },
+        image: { type: String, default: "/placeholder.png" },
+        value: { type: Number, default: 1 },
+        profilePosition: { type: Number, default: -1 },
+      },
+      badge4: {
+        viewname: { type: String, default: "Badge 4" },
+        image: { type: String, default: "/placeholder.png" },
+        value: { type: Number, default: 1 },
+        profilePosition: { type: Number, default: -1 },
+      },
+    },
     passiveUpgrades: {
       passiveUpgrade1: {
         level: { type: Number, default: 0 },
         value: { type: Number, default: 0, min: 0 },
+        power: { type: Number, default: 0.005 },
       },
       passiveUpgrade2: {
         level: { type: Number, default: 0 },
         value: { type: Number, default: 0, min: 0 },
+        power: { type: Number, default: 0.02 },
       },
       passiveUpgrade3: {
         level: { type: Number, default: 0 },
         value: { type: Number, default: 0, min: 0 },
+        power: { type: Number, default: 0.04 },
       },
       passiveUpgrade4: {
         level: { type: Number, default: 0 },
         value: { type: Number, default: 0, min: 0 },
+        power: { type: Number, default: 0.08 },
       },
     },
   })

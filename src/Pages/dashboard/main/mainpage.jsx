@@ -7,7 +7,7 @@ import Axios from "../../../api/agent";
 import { observer } from "mobx-react-lite";
 import useContextStore from "../../../context";
 
-var baseClick = 200;
+var baseClick = 1000;
 var multiplier = 1;
 
 function MainPage() {

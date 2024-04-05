@@ -164,7 +164,7 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, rarity, pu
       const randomChoice = Math.random();
 
       switch (true) {
-        case randomChoice <= 0.7:
+        case randomChoice <= 0.65:
           selectedRarity = "Common";
           break;
         case randomChoice <= 0.95:

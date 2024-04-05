@@ -21,6 +21,30 @@
   text-shadow: 0px 0px 10px #05ff09b0;
 }
 
+.badge {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--blue-text-colour);
+  width: 100px;
+  height: 100px;
+  background-color: var(--metric-colour-highlight);
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+.badgeImage {
+  width:100px;
+  height: 100px;
+}
+.badge:hover {
+  color:var(--metric-colour-highlight);
+  background-color: var(--blue-text-colour);
+  border-radius: 47%;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
 .modalContent {
   padding: 30px;
   background-color: var(--sidebar-colour);
@@ -69,6 +93,40 @@
   justify-content: center;
   align-items: center;
   column-gap: 10px;
+}
+
+.badgeBlock {
+  color: white;
+  align-items: center;
+  min-width: 700px;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  padding: 25px;
+  background-color: var(--metric-colour);
+  border-radius: 30px;
+  transition: 0.4s;
+  margin-top: 5px;
+}
+
+.badgeContainer {
+  flex: 1;
+  display: flex;
+  min-width: 100%;
+  row-gap: 20px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.badgeRow {
+  flex: 1;
+  min-width: 100%;
+  column-gap: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @keyframes fadeIn {

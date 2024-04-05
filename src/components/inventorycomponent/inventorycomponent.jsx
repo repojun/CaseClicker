@@ -34,13 +34,6 @@ const InventoryComponent = ({ purchase }) => {
 
     console.log(totalPrice);
 
-    // const updateNetworth = async () => {
-    //   await Axios("/api/user/setnetworth", "POST", {
-    //     networth: totalPrice,
-    //   });
-    // };
-
-    // updateNetworth();
     setNetWorth(totalPrice);
   }, [inventory]);
 

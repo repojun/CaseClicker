@@ -43,8 +43,6 @@ const updateMessages = async (userID, username, message) => {
 
 const updateSpecificMessage = async (messageID, liked) => {
   const message = await messageSchema.findOne({ _id: messageID })
-  console.log("message" + message);
-  console.log("message likes " + message.likes)
   if (liked == true) {
     message.likes = message.likes + 1;
 
