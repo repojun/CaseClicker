@@ -56,7 +56,7 @@ function Profile() {
             key={`empty-${i}`}
             className={styles.badge}
             onClick={() => {
-              toggleBadgeModal(i);
+              toggleBadgeModal(i + 1);
             }}
           >
             <CiCirclePlus />
