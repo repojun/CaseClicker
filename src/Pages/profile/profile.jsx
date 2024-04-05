@@ -1,7 +1,6 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { observer } from "mobx-react-lite";
 import { useParams } from "react-router-dom";
-import useContextStore from "../../context";
 import styles from "./profile.module.css";
 import MainContainer from "../../components/maincontainer/maincontainer";
 import SubContainer from "../../components/subcontainer/subcontainer";
@@ -9,24 +8,66 @@ import Axios from "../../api/agent";
 import { AiFillDollarCircle, AiFillHeart, AiFillCreditCard, AiFillCalculator } from "react-icons/ai";
 import ProfileModal from "../../components/profilemodal/profilemodal";
 import BadgeModal from "../../components/profilemodal/badgemodal";
-import { FaRegEdit } from "react-icons/fa";
 import { CiCirclePlus } from "react-icons/ci";
 
 function Profile() {
   const [userData, setUserData] = useState(null);
-  const [userPos, setUserPos] = useState(null);
   const { username } = useParams();
   const [modal, setModal] = useState(false);
   const [badgeModal, setBadgeModal] = useState(false);
+  const [currentID, setCurrentID] = useState(0);
 
   const toggleModal = () => {
     setModal(!modal);
   };
 
-  const toggleBadgeModal = () => {
+  const toggleBadgeModal = (newID) => {
+    setCurrentID(newID);
     setBadgeModal(!badgeModal);
   };
 
+  const renderBadges = () => {
+    if (userData && userData.badges) {
+      const filteredBadges = Object.values(userData.badges).filter((badge) => badge.value === 1 && badge.profilePosition !== -1);
+      filteredBadges.sort((a, b) => a.profilePosition - b.profilePosition);
+
+      const badgeComponents = [];
+      const maxBadges = 4;
+
+      filteredBadges.slice(0, maxBadges).forEach((badge, index) => {
+        const badgeComponent = (
+          <div
+            key={index}
+            className={styles.badge}
+            onClick={() => {
+              toggleBadgeModal(index);
+            }}
+          >
+            <img src={badge.image} className={styles.badgeImage} />
+          </div>
+        );
+        badgeComponents.push(badgeComponent);
+      });
+
+      const emptySlots = maxBadges - badgeComponents.length;
+      for (let i = 0; i < emptySlots; i++) {
+        badgeComponents.push(
+          <div
+            key={`empty-${i}`}
+            className={styles.badge}
+            onClick={() => {
+              toggleBadgeModal(i);
+            }}
+          >
+            <CiCirclePlus />
+          </div>
+        );
+      }
+
+      return <div className={styles.badgeRow}>{badgeComponents}</div>;
+    }
+    return null;
+  };
   useEffect(() => {
     const getUser = async () => {
       try {
@@ -71,8 +112,8 @@ function Profile() {
     <>
       <MainContainer>
         <SubContainer>
-          <ProfileModal modal={modal} toggleModal={toggleModal} ></ProfileModal>
-          <BadgeModal modal={badgeModal} toggleModal={toggleBadgeModal} positionID={1}></BadgeModal>
+          <ProfileModal modal={modal} toggleModal={toggleModal}></ProfileModal>
+          <BadgeModal modal={badgeModal} toggleModal={toggleBadgeModal} positionID={currentID}></BadgeModal>
 
           <div className={styles.flex}>
             <div className={styles.subContainer}>
@@ -145,36 +186,7 @@ function Profile() {
                 <div className={styles.badgeBlock}>
                   <div className={styles.bioTitle}>Badge Showcase</div>
                   <div className={styles.bioBody}>
-                    <div className={styles.badgeContainer}>
-                      <div className={styles.badgeRow}>
-                        <div className={styles.badge} onClick={() => toggleBadgeModal()}>
-                          <CiCirclePlus />
-                        </div>
-                        <div className={styles.badge}>
-                          <CiCirclePlus />
-                        </div>
-                        <div className={styles.badge}>
-                          <CiCirclePlus />
-                        </div>
-                        <div className={styles.badge}>
-                          <CiCirclePlus />
-                        </div>
-                      </div>
-                      <div className={styles.badgeRow}>
-                        <div className={styles.badge}>
-                          <CiCirclePlus />
-                        </div>
-                        <div className={styles.badge}>
-                          <CiCirclePlus />
-                        </div>
-                        <div className={styles.badge}>
-                          <CiCirclePlus />
-                        </div>
-                        <div className={styles.badge}>
-                          <CiCirclePlus />
-                        </div>
-                      </div>
-                    </div>
+                    <div className={styles.badgeContainer}>{renderBadges()}</div>
                   </div>
                 </div>
               </div>

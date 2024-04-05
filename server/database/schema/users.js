@@ -590,24 +590,28 @@ module.exports = mongoose.model(
     badges: {
       badge1: {
         viewname: { type: String, default: "Badge 1" },
+        entname: { type: String, default: "badge1"},
         image: { type: String, default: "/badges/badge1.png" },
         value: { type: Number, default: 1 },
         profilePosition: { type: Number, default: -1 },
       },
       badge2: {
         viewname: { type: String, default: "Badge 2" },
+        entname: { type: String, default: "badge2"},
         image: { type: String, default: "/badges/badge2.png" },
         value: { type: Number, default: 1 },
         profilePosition: { type: Number, default: -1 },
       },
       badge3: {
         viewname: { type: String, default: "Badge 3" },
+        entname: { type: String, default: "badge3"},
         image: { type: String, default: "/placeholder.png" },
         value: { type: Number, default: 1 },
         profilePosition: { type: Number, default: -1 },
       },
       badge4: {
         viewname: { type: String, default: "Badge 4" },
+        entname: { type: String, default: "badge4"},
         image: { type: String, default: "/placeholder.png" },
         value: { type: Number, default: 1 },
         profilePosition: { type: Number, default: -1 },

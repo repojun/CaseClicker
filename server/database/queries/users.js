@@ -57,7 +57,7 @@ const updateUserPassivePower = async (userID, newPassivePower) => {
   const user = await userSchema.findOne({ id: userID });
   user.passivePower = newPassivePower;
   await user.save();
-}
+};
 
 const updateUserBalance = async (userID, balance) => {
   const user = await userSchema.findOne({ id: userID });
@@ -124,6 +124,20 @@ const updateUserPassiveUpgrade = async (userID, passiveUpgradeID) => {
   await user.save();
 };
 
+const updateUserBadgePosition = async (userID, badgeName, badgePosition) => {
+  const user = await userSchema.findOne({ id: userID });
+  console.log(badgePosition);
+
+  for (const [name, badge] of Object.entries(user.badges)) {
+    if (badge.profilePosition === badgePosition && name !== badgeName) {
+      badge.profilePosition = -1;
+    }
+  }
+
+  user.badges[badgeName].profilePosition = badgePosition;
+  await user.save();
+};
+
 const updateUserPassiveUpgradeLevel = async (userID, passiveUpgradeID, level) => {
   const user = await userSchema.findOne({ id: userID });
   // user[`passiveUpgrade${passiveUpgradeID}`] = 1;
@@ -161,4 +175,4 @@ const createUser = async (email, username, password) => {
   return userQuery;
 };
 
-module.exports = { fetchUser, createUser, fetchLogin, fetchItemName, updateUserPassivePower, addUserBalancePaypal, updateUserBalance, getUserPosition, updateUserProfilePicture, updateUserInventory, updateUserPassiveUpgrade, updateUserPassiveUpgradeLevel, updateUserPremiumBalance, fetchUserByName, fetchTopTen };
+module.exports = { fetchUser, createUser, fetchLogin, fetchItemName, updateUserBadgePosition, updateUserPassivePower, addUserBalancePaypal, updateUserBalance, getUserPosition, updateUserProfilePicture, updateUserInventory, updateUserPassiveUpgrade, updateUserPassiveUpgradeLevel, updateUserPremiumBalance, fetchUserByName, fetchTopTen };

@@ -3,7 +3,7 @@ import { makeObservable, observable, action } from "mobx";
 class userStore {
   constructor() {
     this.user = {};
-    makeObservable(this, { user: observable, setUser: action, setItemAdd: action, setPremiumBalance: action, setItem: action, setPassivePower: action, setBalance: action, setNetWorth: action, setPassiveUpgrade: action, setPassiveUpgradeLevel: action });
+    makeObservable(this, { user: observable, setUser: action, setBadgePosition: action, setItemAdd: action, setPremiumBalance: action, setItem: action, setPassivePower: action, setBalance: action, setNetWorth: action, setPassiveUpgrade: action, setPassiveUpgradeLevel: action });
   }
 
   setUser = (user) => {
@@ -69,6 +69,17 @@ class userStore {
   getPassivePower = () => {
     return this.user.passivePower;
   };
+
+  setBadge = (badgeName) => {
+    this.user.badges[badgeName].value = 1;
+  };
+
+  setBadgePosition = (badgeName, newPosition) => {
+    console.log("I got here " + badgeName);
+    this.user.badges[badgeName].profilePosition = newPosition;
+    
+  };
+  
 }
 
 export default userStore;

@@ -236,6 +236,11 @@
   transition: 0.4s;
 }
 
+.badgeImage {
+  width:100px;
+  height: 100px;
+}
+
 .badge:hover {
   color:var(--metric-colour-highlight);
   background-color: var(--blue-text-colour);

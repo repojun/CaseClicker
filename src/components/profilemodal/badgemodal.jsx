@@ -5,11 +5,9 @@ import { observer } from "mobx-react-lite";
 import useContextStore from "../../context";
 import styles from "./profilemodal.module.css";
 
-const BadgeModal = ({ modal, toggleModal }) => {
+const BadgeModal = ({ modal, toggleModal, positionID }) => {
   const {
-    userStore: {
-      user: { badges = {} },
-    },
+    userStore: { user: { badges = {} } = {}, setBadgePosition },
   } = useContextStore();
 
   const badgesWithValueOne = Object.entries(badges).filter(([key, badgeData]) => badgeData.value === 1);
@@ -19,7 +17,18 @@ const BadgeModal = ({ modal, toggleModal }) => {
     viewname: badgeData.viewname,
     image: badgeData.image,
     value: badgeData.value,
+    entname: badgeData.entname,
   }));
+
+  const handleFinal = async (entname, positionID) => {
+    console.log("ENTNAME: " + entname);
+    console.log("POSITION: " + positionID);
+    await Axios("/api/user/setbadgeposition", "POST", {
+      badgeName: entname,
+      badgePosition: positionID,
+    });
+    setBadgePosition(entname, positionID);
+  };
 
   return (
     <>
@@ -40,7 +49,7 @@ const BadgeModal = ({ modal, toggleModal }) => {
                     <div key={rowIndex} className={styles.badgeRow}>
                       {row.map((badge) => (
                         <div key={badge.id} className={styles.badge}>
-                          <img src={badge.image} className={styles.badgeImage} />
+                          <img src={badge.image} className={styles.badgeImage} onClick={() => handleFinal(badge.entname, positionID)} />
                         </div>
                       ))}
                     </div>
