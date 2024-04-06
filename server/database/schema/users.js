@@ -13,7 +13,8 @@ module.exports = mongoose.model(
     passivePower: { type: Number, default: 0 },
     netWorth: { type: Number, default: 0 },
     premiumBalance: { type: Number, default: 0 },
-    passiveIncome: { type: Number, default: 0 },
+    passiveIncomeStore: { type: Number, default: 0 },
+    passiveLimit: {type: Number, default: 5},
     profilePicture: { type: String, default: "/defaultpfp.png" },
     bio: { type: String, default: "" },
     inventory: {

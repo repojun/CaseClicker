@@ -14,9 +14,11 @@ const getItem = require("../middleware/user/getitem");
 const handlePayPal = require("../middleware/user/paypal");
 const setPassivePower = require("../middleware/user/setpassivepower");
 const setBadgePosition = require("../middleware/user/setbadgeposition");
+const setPassiveIncomeStore = require("../middleware/user/setPassiveIncomeStore");
 
 router.get("/exists", userExists);
 router.get("/topten", topTen);
+router.post("/setPassiveIncomeStore", setPassiveIncomeStore)
 router.post("/setbadgeposition", setBadgePosition)
 router.post("/setpassivepower", setPassivePower);
 router.post("/handlepaypal", handlePayPal);

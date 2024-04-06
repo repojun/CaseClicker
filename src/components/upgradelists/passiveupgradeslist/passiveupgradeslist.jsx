@@ -11,30 +11,56 @@ import { FaBuilding, FaLaptopCode } from "react-icons/fa";
 
 const PassiveUpgradesList = ({ frontendArray, moneyFunction, props }) => {
   const {
-    userStore: { user, setBalance, setPassiveUpgrade, setPassiveUpgradeLevel, setPassivePower, getPassivePower },
+    userStore: { user, setBalance, setPassiveUpgrade, setPassiveUpgradeLevel, setPassivePower, getPassivePower, getPassiveLimit, getPassiveIncomeStore, setPassiveIncomeStore },
   } = useContextStore();
-
+  const passiveIncomeStore = getPassiveIncomeStore();
   const [passiveMoney, setPassiveMoney] = useState(0);
   const totalPassive = getPassivePower();
+  const passiveLimit = getPassiveLimit();
 
   useEffect(() => {
     if (user && user.balance !== null) {
-      const interval = setInterval(async () => {
-        const passivePower = getPassivePower();
-        setPassiveMoney((prevPassiveMoney) => prevPassiveMoney + passivePower);
-        console.log(passiveMoney);
-      }, 1000);
-
-      return () => clearInterval(interval);
+      if (!(passiveIncomeStore >= passiveLimit)) {
+        const interval = setInterval(async () => {
+          const passivePower = getPassivePower();
+          const passiveIncomeStore = getPassiveIncomeStore();
+          let newIncomeStore = passiveIncomeStore + passivePower;
+          setPassiveIncomeStore(newIncomeStore);
+          if (newIncomeStore != 0) {
+            await Axios("/api/user/setpassiveincomestore", "POST", { income: newIncomeStore });
+          }
+        }, 1000);
+        return () => clearInterval(interval);
+      } else {
+        setPassiveMoney(passiveLimit);
+      }
     }
-  }, [user]);
+  }, [user, passiveMoney]);
 
-  const passiveCollect = async () => {
-    let newBalanceVariable = user.balance + passiveMoney;
-    console.log(newBalanceVariable);
-    console.log(passiveMoney);
-    setPassiveMoney(0);
+  const passiveCollect = async (e) => {
+    var Xlocation = e.clientX;
+    var Ylocation = e.clientY;
+    var newElement = // Stores div in variable to be stored in useStateArray
+      (
+        <div
+          className={styles.priceGainAnimation}
+          style={{
+            top: Ylocation,
+            left: Xlocation,
+            fontSize: "30px",
+            whiteSpace: "nowrap",
+          }}
+        >
+          +${passiveIncomeStore.toFixed(3)}
+        </div>
+      );
+    frontendArray(newElement);
+    const audio = new Audio("/sfx/coinSound.wav");
+    audio.play();
+    let newBalanceVariable = user.balance + passiveIncomeStore;
+    setPassiveIncomeStore(0);
     setBalance(newBalanceVariable);
+    await Axios("/api/user/setpassiveincomestore", "POST", { income: 0 });
     const query = await Axios("/api/user/setbalance", "POST", {
       balance: newBalanceVariable,
     });
@@ -165,8 +191,8 @@ const PassiveUpgradesList = ({ frontendArray, moneyFunction, props }) => {
       <div style={{ fontSize: "20px" }}>
         Passive Power <span class={styles.priceTagNoBold}>${totalPassive?.toFixed(3)}</span>
       </div>
-      <div className={styles.upgradeButton} onClick={() => passiveCollect()}>
-        Click To Collect: ${passiveMoney.toFixed(3)}
+      <div className={styles.upgradeButton} onClick={(event) => passiveCollect(event)}>
+        Click To Collect: ${passiveIncomeStore?.toFixed(3)}/${[passiveLimit?.toFixed(2)]}
       </div>
       {upgradeList}
     </>

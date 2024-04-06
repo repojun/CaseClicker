@@ -70,12 +70,23 @@ class userStore {
     return this.user.passivePower;
   };
 
+  getPassiveLimit = () => {
+    return this.user.passiveLimit;
+  };
+
+  getPassiveIncomeStore = () => {
+    return this.user.passiveIncomeStore;
+  };
+
+  setPassiveIncomeStore = (newStore) => {
+    this.user.passiveIncomeStore = newStore;
+  }
+
   setBadge = (badgeName) => {
     this.user.badges[badgeName].value = 1;
   };
 
   setBadgePosition = (badgeName, newPosition) => {
-    console.log("I got here " + badgeName);
     this.user.badges[badgeName].profilePosition = newPosition;
     
   };
