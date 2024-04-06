@@ -14,7 +14,7 @@ module.exports = mongoose.model(
     netWorth: { type: Number, default: 0 },
     premiumBalance: { type: Number, default: 0 },
     passiveIncomeStore: { type: Number, default: 0 },
-    passiveLimit: {type: Number, default: 5},
+    passiveLimit: { type: Number, default: 5 },
     profilePicture: { type: String, default: "/defaultpfp.png" },
     bio: { type: String, default: "" },
     inventory: {
@@ -182,7 +182,7 @@ module.exports = mongoose.model(
       },
       glock_neonoir: {
         viewname: { type: String, default: "Glock - Neo Noir" },
-        entname: { type: String, default: "glock_neonoirs" },
+        entname: { type: String, default: "glock_neonoir" },
         value: { type: Number, default: 0, min: 0, min: 0 },
         price: { type: Number, default: 600 },
         image: { type: String, default: "/skins/glock_neonoir.png" },
@@ -591,28 +591,28 @@ module.exports = mongoose.model(
     badges: {
       badge1: {
         viewname: { type: String, default: "Badge 1" },
-        entname: { type: String, default: "badge1"},
+        entname: { type: String, default: "badge1" },
         image: { type: String, default: "/badges/badge1.png" },
         value: { type: Number, default: 1 },
         profilePosition: { type: Number, default: -1 },
       },
       badge2: {
         viewname: { type: String, default: "Badge 2" },
-        entname: { type: String, default: "badge2"},
+        entname: { type: String, default: "badge2" },
         image: { type: String, default: "/badges/badge2.png" },
         value: { type: Number, default: 1 },
         profilePosition: { type: Number, default: -1 },
       },
       badge3: {
         viewname: { type: String, default: "Badge 3" },
-        entname: { type: String, default: "badge3"},
+        entname: { type: String, default: "badge3" },
         image: { type: String, default: "/placeholder.png" },
         value: { type: Number, default: 1 },
         profilePosition: { type: Number, default: -1 },
       },
       badge4: {
         viewname: { type: String, default: "Badge 4" },
-        entname: { type: String, default: "badge4"},
+        entname: { type: String, default: "badge4" },
         image: { type: String, default: "/placeholder.png" },
         value: { type: Number, default: 1 },
         profilePosition: { type: Number, default: -1 },
@@ -639,6 +639,12 @@ module.exports = mongoose.model(
         value: { type: Number, default: 0, min: 0 },
         power: { type: Number, default: 0.08 },
       },
+    },
+    clickUpgrade: {
+      level: { type: Number, default: 1},
+    },
+    passiveIncomeUpgrade: {
+      level: { type: Number, default: 1},
     },
   })
 );

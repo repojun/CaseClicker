@@ -14,7 +14,6 @@ const PassiveUpgradesList = ({ frontendArray, moneyFunction, props }) => {
     userStore: { user, setBalance, setPassiveUpgrade, setPassiveUpgradeLevel, setPassivePower, getPassivePower, getPassiveLimit, getPassiveIncomeStore, setPassiveIncomeStore },
   } = useContextStore();
   const passiveIncomeStore = getPassiveIncomeStore();
-  const [passiveMoney, setPassiveMoney] = useState(0);
   const totalPassive = getPassivePower();
   const passiveLimit = getPassiveLimit();
 
@@ -32,10 +31,10 @@ const PassiveUpgradesList = ({ frontendArray, moneyFunction, props }) => {
         }, 1000);
         return () => clearInterval(interval);
       } else {
-        setPassiveMoney(passiveLimit);
+        setPassiveIncomeStore(passiveLimit);
       }
     }
-  }, [user, passiveMoney]);
+  }, [user, passiveIncomeStore]);
 
   const passiveCollect = async (e) => {
     var Xlocation = e.clientX;
