@@ -14,22 +14,31 @@ const PassiveUpgradesList = ({ frontendArray, moneyFunction, props }) => {
     userStore: { user, setBalance, setPassiveUpgrade, setPassiveUpgradeLevel, setPassivePower, getPassivePower },
   } = useContextStore();
 
+  const [passiveMoney, setPassiveMoney] = useState(0);
   const totalPassive = getPassivePower();
 
   useEffect(() => {
     if (user && user.balance !== null) {
       const interval = setInterval(async () => {
         const passivePower = getPassivePower();
-        let newBalanceVariable = user.balance + passivePower;
-        setBalance(newBalanceVariable);
-        const query = await Axios("/api/user/setbalance", "POST", {
-          balance: newBalanceVariable,
-        });
+        setPassiveMoney((prevPassiveMoney) => prevPassiveMoney + passivePower);
+        console.log(passiveMoney);
       }, 1000);
 
       return () => clearInterval(interval);
     }
   }, [user]);
+
+  const passiveCollect = async () => {
+    let newBalanceVariable = user.balance + passiveMoney;
+    console.log(newBalanceVariable);
+    console.log(passiveMoney);
+    setPassiveMoney(0);
+    setBalance(newBalanceVariable);
+    const query = await Axios("/api/user/setbalance", "POST", {
+      balance: newBalanceVariable,
+    });
+  };
 
   const clickCheck = async (e, price, isBought, ID) => {
     var Xlocation = e.clientX;
@@ -155,6 +164,9 @@ const PassiveUpgradesList = ({ frontendArray, moneyFunction, props }) => {
     <>
       <div style={{ fontSize: "20px" }}>
         Passive Power <span class={styles.priceTagNoBold}>${totalPassive?.toFixed(3)}</span>
+      </div>
+      <div className={styles.upgradeButton} onClick={() => passiveCollect()}>
+        Click To Collect: ${passiveMoney.toFixed(3)}
       </div>
       {upgradeList}
     </>
