@@ -3,6 +3,31 @@
   --backgroundColorGlow: var(--blue-text-glow);
 }
 
+
+
+
+.upgradeButtonSmall {
+  padding: 8px;
+  font-size: 15px;
+  color: var(--blue-text-colour);
+  border-radius: 23px;
+  border: 2px solid var(--blue-text-colour);
+  transition: 0.4s;
+  text-align: center;
+  width: auto;
+  user-select: none;
+}
+
+.upgradeButtonSmall:hover {
+  padding: 8px;
+  color: #2d2d2d !important;
+  background-color: var(--backgroundColor);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.2s;
+  box-shadow: 0 0px 15px var(--backgroundColorGlow);
+}
+
 .upgradeButton {
   padding: 8px;
   color: var(--blue-text-colour);

@@ -11,11 +11,12 @@ import { FaBuilding, FaLaptopCode } from "react-icons/fa";
 
 const PassiveUpgradesList = ({ frontendArray, moneyFunction, props }) => {
   const {
-    userStore: { user, setBalance, setPassiveUpgrade, setPassiveUpgradeLevel, setPassivePower, getPassivePower, getPassiveLimit, getPassiveIncomeStore, setPassiveIncomeStore },
+    userStore: { user, setBalance, setPassiveUpgrade, setPassiveUpgradeLevel, setPassivePower, setPassiveLimit, getPassivePower, getPassiveLimit, getPassiveIncomeStore, setPassiveIncomeStore },
   } = useContextStore();
   const passiveIncomeStore = getPassiveIncomeStore();
   const totalPassive = getPassivePower();
-  const passiveLimit = getPassiveLimit();
+  const passiveLimitCost = 10.0;
+  let passiveLimit = getPassiveLimit();
 
   useEffect(() => {
     if (user && user.balance !== null) {
@@ -63,6 +64,47 @@ const PassiveUpgradesList = ({ frontendArray, moneyFunction, props }) => {
     const query = await Axios("/api/user/setbalance", "POST", {
       balance: newBalanceVariable,
     });
+  };
+
+  const passiveCollectUpgrade = async (e) => {
+    var Xlocation = e.clientX;
+    var Ylocation = e.clientY;
+    if (user.balance >= passiveLimitCost) {
+      const audio = new Audio("/sfx/clickButton.wav");
+      audio.play();
+      let newBalance = user.balance - passiveLimitCost;
+      passiveLimit += 2.5;
+      setBalance(newBalance);
+      setPassiveLimit(passiveLimit);
+      await Axios("/api/user/setbalance", "POST", {
+        balance: newBalance,
+      });
+
+      await Axios("/api/user/setpassivelimit", "POST", {
+        passiveLimit: passiveLimit,
+      });
+    } else {
+      const audio = new Audio("/sfx/error.wav");
+      audio.play();
+      var newElement = // Stores div in variable to be stored in useStateArray
+        (
+          <div
+            className={styles.priceLossAnimation}
+            style={{
+              top: Ylocation,
+              left: Xlocation,
+              fontSize: "30px",
+              whiteSpace: "nowrap",
+            }}
+          >
+            Broke
+          </div>
+        );
+      frontendArray(newElement);
+      setTimeout(() => {
+        // REMOVE ARRAY ITEMS HERE
+      }, 3000);
+    }
   };
 
   const clickCheck = async (e, price, isBought, ID) => {
@@ -190,9 +232,15 @@ const PassiveUpgradesList = ({ frontendArray, moneyFunction, props }) => {
       <div style={{ fontSize: "20px" }}>
         Passive Power <span class={styles.priceTagNoBold}>${totalPassive?.toFixed(3)}</span>
       </div>
-      <div className={styles.upgradeButton} onClick={(event) => passiveCollect(event)}>
-        Click To Collect: ${passiveIncomeStore?.toFixed(3)}/${[passiveLimit?.toFixed(2)]}
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", columnGap: "10px", marginBottom: "15px" }}>
+        <div className={styles.upgradeButton} onClick={(event) => passiveCollect(event)}>
+          Click To Collect: ${passiveIncomeStore?.toFixed(3)}/${[passiveLimit?.toFixed(2)]}
+        </div>
+        <div className={styles.upgradeButtonSmall} onClick={(event) => passiveCollectUpgrade(event)}>
+          Upgrade: ${passiveLimitCost.toFixed(2)}
+        </div>
       </div>
+
       {upgradeList}
     </>
   );

@@ -59,6 +59,12 @@ const updateUserPassivePower = async (userID, newPassivePower) => {
   await user.save();
 };
 
+const updateUserPassiveLimit = async (userID, newPassiveLimit) => {
+  const user = await userSchema.findOne({ id: userID });
+  user.passiveLimit = newPassiveLimit;
+  await user.save();
+}
+
 const updateUserBalance = async (userID, balance) => {
   const user = await userSchema.findOne({ id: userID });
 
@@ -181,4 +187,4 @@ const createUser = async (email, username, password) => {
   return userQuery;
 };
 
-module.exports = { fetchUser, createUser, fetchLogin, fetchItemName, updatePassiveIncomeStore, updateUserBadgePosition, updateUserPassivePower, addUserBalancePaypal, updateUserBalance, getUserPosition, updateUserProfilePicture, updateUserInventory, updateUserPassiveUpgrade, updateUserPassiveUpgradeLevel, updateUserPremiumBalance, fetchUserByName, fetchTopTen };
+module.exports = { fetchUser, createUser, fetchLogin, fetchItemName, updateUserPassiveLimit, updatePassiveIncomeStore, updateUserBadgePosition, updateUserPassivePower, addUserBalancePaypal, updateUserBalance, getUserPosition, updateUserProfilePicture, updateUserInventory, updateUserPassiveUpgrade, updateUserPassiveUpgradeLevel, updateUserPremiumBalance, fetchUserByName, fetchTopTen };

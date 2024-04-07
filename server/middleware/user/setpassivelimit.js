@@ -1,9 +1,9 @@
 const { getCookie } = require("../../cookies/get");
-const { fetchUser, updateUserPassivePower } = require("../../database/queries/users");
+const { fetchUser, updateUserPassiveLimit } = require("../../database/queries/users");
 
-const setPassivePower = async (req, res) => {
-  const { passivePower } = req.body;
-  if (!passivePower) {
+const setPassiveLimit = async (req, res) => {
+  const { passiveLimit } = req.body;
+  if (!passiveLimit) {
     return res.sendStatus(400);
   }
 
@@ -14,8 +14,8 @@ const setPassivePower = async (req, res) => {
     return res.sendStatus(404);
   }
 
-  await updateUserPassivePower(user.id, passivePower);
+  await updateUserPassiveLimit(user.id, passiveLimit);
   return res.sendStatus(200);
 };
 
-module.exports = setPassivePower;
+module.exports = setPassiveLimit;

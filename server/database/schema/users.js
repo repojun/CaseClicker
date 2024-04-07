@@ -641,10 +641,10 @@ module.exports = mongoose.model(
       },
     },
     clickUpgrade: {
-      level: { type: Number, default: 1},
+      level: { type: Number, default: 1 },
     },
     passiveIncomeUpgrade: {
-      level: { type: Number, default: 1},
+      level: { type: Number, default: 1 },
     },
   })
 );

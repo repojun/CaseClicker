@@ -3,7 +3,7 @@ import { makeObservable, observable, action } from "mobx";
 class userStore {
   constructor() {
     this.user = {};
-    makeObservable(this, { user: observable, setUser: action, setBadgePosition: action, setItemAdd: action, setPremiumBalance: action, setItem: action, setPassivePower: action, setBalance: action, setNetWorth: action, setPassiveUpgrade: action, setPassiveUpgradeLevel: action });
+    makeObservable(this, { user: observable, setUser: action, setBadgePosition: action, setPassiveLimit: action, setItemAdd: action, setPremiumBalance: action, setItem: action, setPassivePower: action, setBalance: action, setNetWorth: action, setPassiveUpgrade: action, setPassiveUpgradeLevel: action });
   }
 
   setUser = (user) => {
@@ -73,6 +73,10 @@ class userStore {
   getPassiveLimit = () => {
     return this.user.passiveLimit;
   };
+
+  setPassiveLimit = (limit) => {
+    this.user.passiveLimit = limit;
+  }
 
   getPassiveIncomeStore = () => {
     return this.user.passiveIncomeStore;
