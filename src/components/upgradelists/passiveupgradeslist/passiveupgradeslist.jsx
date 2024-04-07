@@ -15,7 +15,7 @@ const PassiveUpgradesList = ({ frontendArray, moneyFunction, props }) => {
   } = useContextStore();
   const passiveIncomeStore = getPassiveIncomeStore();
   const totalPassive = getPassivePower();
-  const passiveLimitCost = 10.0;
+  const passiveLimitCost = 20.0;
   let passiveLimit = getPassiveLimit();
 
   useEffect(() => {

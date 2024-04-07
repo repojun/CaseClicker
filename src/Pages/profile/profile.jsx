@@ -8,6 +8,8 @@ import Axios from "../../api/agent";
 import { AiFillDollarCircle, AiFillHeart, AiFillCreditCard, AiFillCalculator } from "react-icons/ai";
 import ProfileModal from "../../components/profilemodal/profilemodal";
 import BadgeModal from "../../components/profilemodal/badgemodal";
+import BioModal from "../../components/profilemodal/biomodal";
+
 import { CiCirclePlus } from "react-icons/ci";
 
 function Profile() {
@@ -15,6 +17,7 @@ function Profile() {
   const { username } = useParams();
   const [modal, setModal] = useState(false);
   const [badgeModal, setBadgeModal] = useState(false);
+  const [bioModal, setBioModal] = useState(false);
   const [currentID, setCurrentID] = useState(0);
 
   const toggleModal = () => {
@@ -26,6 +29,9 @@ function Profile() {
     setBadgeModal(!badgeModal);
   };
 
+  const toggleBioModal = () => {
+    setBioModal(!bioModal);
+  }
   const renderBadges = () => {
     if (userData && userData.badges) {
       const filteredBadges = Object.values(userData.badges).filter((badge) => badge.value === 1 && badge.profilePosition !== -1);
@@ -114,7 +120,7 @@ function Profile() {
         <SubContainer>
           <ProfileModal modal={modal} toggleModal={toggleModal}></ProfileModal>
           <BadgeModal modal={badgeModal} toggleModal={toggleBadgeModal} positionID={currentID}></BadgeModal>
-
+          <BioModal modal={bioModal} toggleModal={toggleBioModal}></BioModal>
           <div className={styles.flex}>
             <div className={styles.subContainer}>
               <div className={styles.subContainerSep}>
@@ -178,9 +184,9 @@ function Profile() {
                     </div>
                   </div>
                 </div>
-                <div className={styles.bioBlock}>
+                <div className={styles.bioBlock} onClick={() => toggleBioModal()}>
                   <div className={styles.bioTitle}>Profile Bio</div>
-                  <div className={styles.bioBody}>Devin Miles Haney (/ˈheɪni/; born November 17, 1998) is an American professional boxer. He has held multiple world championships in two weight classes, including the World Boxing Council (WBC) super lightweight title since December 2023. Previously he held the undisputed championship[a] at lightweight from 2022 to August 2023.[3] As of June 2023, he is ranked as the world's best active lightweight by ESPN and the Transnational Boxing Rankings Board, and third by BoxRec.[4][5][6]</div>
+                  <div className={styles.bioBody}>{userData.bio}</div>
                 </div>
 
                 <div className={styles.badgeBlock}>

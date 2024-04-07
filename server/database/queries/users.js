@@ -63,7 +63,7 @@ const updateUserPassiveLimit = async (userID, newPassiveLimit) => {
   const user = await userSchema.findOne({ id: userID });
   user.passiveLimit = newPassiveLimit;
   await user.save();
-}
+};
 
 const updateUserBalance = async (userID, balance) => {
   const user = await userSchema.findOne({ id: userID });
@@ -124,10 +124,10 @@ const updateUserPremiumBalance = async (userID, premiumBalance) => {
 };
 
 const updatePassiveIncomeStore = async (userID, passiveIncomeStore) => {
-  const user = await userSchema.findOne({id: userID});
+  const user = await userSchema.findOne({ id: userID });
   user.passiveIncomeStore = passiveIncomeStore;
   await user.save();
-}
+};
 
 const updateUserPassiveUpgrade = async (userID, passiveUpgradeID) => {
   const user = await userSchema.findOne({ id: userID });
@@ -154,6 +154,12 @@ const updateUserPassiveUpgradeLevel = async (userID, passiveUpgradeID, level) =>
   const user = await userSchema.findOne({ id: userID });
   // user[`passiveUpgrade${passiveUpgradeID}`] = 1;
   user.passiveUpgrades[`passiveUpgrade${passiveUpgradeID}`].level = level;
+  await user.save();
+};
+
+const updateUserBio = async (userID, bio) => {
+  const user = await userSchema.findOne({ id: userID });
+  user.bio = bio;
   await user.save();
 };
 
@@ -187,4 +193,4 @@ const createUser = async (email, username, password) => {
   return userQuery;
 };
 
-module.exports = { fetchUser, createUser, fetchLogin, fetchItemName, updateUserPassiveLimit, updatePassiveIncomeStore, updateUserBadgePosition, updateUserPassivePower, addUserBalancePaypal, updateUserBalance, getUserPosition, updateUserProfilePicture, updateUserInventory, updateUserPassiveUpgrade, updateUserPassiveUpgradeLevel, updateUserPremiumBalance, fetchUserByName, fetchTopTen };
+module.exports = { fetchUser, createUser, fetchLogin, fetchItemName, updateUserBio, updateUserPassiveLimit, updatePassiveIncomeStore, updateUserBadgePosition, updateUserPassivePower, addUserBalancePaypal, updateUserBalance, getUserPosition, updateUserProfilePicture, updateUserInventory, updateUserPassiveUpgrade, updateUserPassiveUpgradeLevel, updateUserPremiumBalance, fetchUserByName, fetchTopTen };

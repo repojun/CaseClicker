@@ -16,10 +16,11 @@ const setPassivePower = require("../middleware/user/setpassivepower");
 const setBadgePosition = require("../middleware/user/setbadgeposition");
 const setPassiveIncomeStore = require("../middleware/user/setpassiveincomestore");
 const setPassiveLimit = require("../middleware/user/setpassivelimit");
-
+const setBio = require("../middleware/user/setbio");
 
 router.get("/exists", userExists);
 router.get("/topten", topTen);
+router.post("/setbio", setBio);
 router.post("/setpassivelimit", setPassiveLimit)
 router.post("/setpassiveincomestore", setPassiveIncomeStore)
 router.post("/setbadgeposition", setBadgePosition)
