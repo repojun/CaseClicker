@@ -96,10 +96,12 @@
   transition: 0.2s;
   background-color: #6a2d2db3;
   cursor: pointer;
+  border-radius: 15px;
 }
 
 .navbutton:hover {
   transition: 0.2s;
   background-color: #2d426a;
   cursor: pointer;
+  border-radius: 15px;
 }

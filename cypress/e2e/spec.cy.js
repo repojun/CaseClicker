@@ -89,8 +89,6 @@ describe("User Register", () => {
       cy.get('[data-testid="cypress-profile-confirm"]').click();
 
 
-      cy.get('[data-testid="cypress-main-dashboard"]').click();
-
       cy.get('[data-testid="cypress-main-investments"]').click();
 
       cy.get('[data-testid="cypress-main-inventory"]').click();

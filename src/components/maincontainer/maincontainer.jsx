@@ -15,16 +15,12 @@ import { MdOutlineMessage } from "react-icons/md";
 import { RiLogoutBoxRLine } from "react-icons/ri";
 
 const MainContainer = ({ children, className = " ", ...props }) => {
-  const [selectedTab, setSelectedTab] = useState(0);
   const {
     userStore: { user },
   } = useContextStore();
 
   const [modal, setModal] = useState(false);
 
-  const selectTab = (tabIndex) => {
-    setSelectedTab(tabIndex);
-  };
 
   const toggleModal = () => {
     const audio = new Audio("/sfx/clickButton.wav");
@@ -59,9 +55,8 @@ const MainContainer = ({ children, className = " ", ...props }) => {
         <div>
           <div
             data-testid="cypress-main-mainpage"
-            className={`${styles.navbutton} ${selectedTab === 1 ? styles.selected : ""}`}
+            className={styles.navbutton}
             onClick={() => {
-              selectTab(1);
               navigateFunction("/dashboard/mainpage");
             }}
           >
@@ -69,20 +64,18 @@ const MainContainer = ({ children, className = " ", ...props }) => {
           </div>
           <div
             data-testid="cypress-main-investments"
-            className={`${styles.navbutton} ${selectedTab === 3 ? styles.selected : ""}`}
+            className={styles.navbutton}
             onClick={() => {
               navigateFunction("/dashboard/investments");
-              selectTab(3);
             }}
           >
             <AiOutlineStock /> Investments
           </div>
           <div
             data-testid="cypress-main-inventory"
-            className={`${styles.navbutton} ${selectedTab === 4 ? styles.selected : ""}`}
+            className={styles.navbutton}
             onClick={() => {
               navigateFunction("/dashboard/inventory");
-              selectTab(4);
             }}
           >
             {" "}
@@ -91,10 +84,9 @@ const MainContainer = ({ children, className = " ", ...props }) => {
 
           <div
             data-testid="cypress-main-leaderboard"
-            className={`${styles.navbutton} ${selectedTab === 5 ? styles.selected : ""}`}
+            className={styles.navbutton}
             onClick={() => {
               navigateFunction("/dashboard/leaderboard");
-              selectTab(5);
             }}
           >
             {" "}
@@ -108,10 +100,9 @@ const MainContainer = ({ children, className = " ", ...props }) => {
         <div>
           <div
             data-testid="cypress-main-store"
-            className={`${styles.navbutton} ${selectedTab === 6 ? styles.selected : ""}`}
+            className={styles.navbutton}
             onClick={() => {
               navigateFunction("/dashboard/store");
-              selectTab(6);
             }}
           >
             {" "}
@@ -119,20 +110,18 @@ const MainContainer = ({ children, className = " ", ...props }) => {
           </div>
           <div
             data-testid="cypress-main-premiumstore"
-            className={`${styles.navbutton} ${selectedTab === 7 ? styles.selected : ""}`}
+            className={styles.navbutton}
             onClick={() => {
               navigateFunction("/dashboard/premiumstore");
-              selectTab(7);
             }}
           >
             <IoDiamondOutline /> Profile Store
           </div>
           <div
             data-testid="cypress-main-messageboard"
-            className={`${styles.navbutton} ${selectedTab === 6 ? styles.selected : ""}`}
+            className={styles.navbutton}
             onClick={() => {
               navigateFunction("/dashboard/messageboard");
-              selectTab(6);
             }}
           >
             <MdOutlineMessage /> Message Board
@@ -144,17 +133,15 @@ const MainContainer = ({ children, className = " ", ...props }) => {
         <hr className={styles.divider}></hr>
         <div
           data-testid="cypress-main-messageboard"
-          className={`${styles.navbuttonLogout} ${selectedTab === 6 ? styles.selected : ""}`}
+          className={styles.navbuttonLogout}
           onClick={() => {
             navigateFunction("/dashboard/messageboard");
-            selectTab(6);
           }}
         >
           <RiLogoutBoxRLine /> Log Out
         </div>
       </div>
       <div className={styles.right}>
-        {/* <img className={styles.bgtest} src="/BG1.png" /> */}
         <div>{children}</div>
       </div>
     </div>
