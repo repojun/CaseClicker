@@ -42,8 +42,8 @@
   border: none;
   border-radius: 6px;
   background-color: #bbd3ff43;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-top: 25px;
+  margin-bottom: 25px;
   margin-left: 20px;
   margin-right: 20px;
 }
@@ -69,12 +69,33 @@
 }
 
 .navbutton {
+  display:flex;
+  align-items: center;
+  column-gap: 12px;
   font-size: 16px;
   text-align: left;
   color: var(--blue-text-colour);
   padding: 15px;
   transition: 0.2s;
   margin-left: 15px;
+}
+
+.navbuttonLogout {
+  display:flex;
+  align-items: center;
+  column-gap: 12px;
+  font-size: 16px;
+  text-align: left;
+  color: #ff4343;
+  padding: 15px;
+  transition: 0.2s;
+  margin-left: 15px;
+}
+
+.navbuttonLogout:hover {
+  transition: 0.2s;
+  background-color: #6a2d2db3;
+  cursor: pointer;
 }
 
 .navbutton:hover {

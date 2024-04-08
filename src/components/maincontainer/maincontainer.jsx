@@ -1,12 +1,18 @@
 "use client";
 import styles from "./maincontainer.module.css";
-import { AiOutlineStock, AiOutlineSlack, AiOutlineSliders, AiOutlineSetting, AiOutlineDeploymentUnit } from "react-icons/ai";
+import { AiOutlineStock, AiOutlineSlack, AiOutlineSliders, AiOutlineSetting, AiOutlineDeploymentUnit, AiOutlineDashboard } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { React, useState } from "react";
 import { observer } from "mobx-react-lite";
 import useContextStore from "../../context";
 import SettingsModal from "../settingsmodal/settingsmodal";
 import { GoTrophy } from "react-icons/go";
+import { IoGameControllerOutline } from "react-icons/io5";
+import { MdOutlineBackpack } from "react-icons/md";
+import { AiOutlineShop } from "react-icons/ai";
+import { IoDiamondOutline } from "react-icons/io5";
+import { MdOutlineMessage } from "react-icons/md";
+import { RiLogoutBoxRLine } from "react-icons/ri";
 
 const MainContainer = ({ children, className = " ", ...props }) => {
   const [selectedTab, setSelectedTab] = useState(0);
@@ -59,19 +65,7 @@ const MainContainer = ({ children, className = " ", ...props }) => {
               navigateFunction("/dashboard/mainpage");
             }}
           >
-            {" "}
-            <AiOutlineSliders /> Play Game
-          </div>
-          <div
-            data-testid="cypress-main-dashboard"
-            className={`${styles.navbutton} ${selectedTab === 2 ? styles.selected : ""}`}
-            onClick={() => {
-              navigateFunction("/dashboard/");
-              selectTab(2);
-            }}
-          >
-            {" "}
-            <AiOutlineDeploymentUnit /> Dashboard{" "}
+            <IoGameControllerOutline /> Play Game
           </div>
           <div
             data-testid="cypress-main-investments"
@@ -81,7 +75,6 @@ const MainContainer = ({ children, className = " ", ...props }) => {
               selectTab(3);
             }}
           >
-            {" "}
             <AiOutlineStock /> Investments
           </div>
           <div
@@ -93,7 +86,7 @@ const MainContainer = ({ children, className = " ", ...props }) => {
             }}
           >
             {" "}
-            <AiOutlineSlack /> Inventory
+            <MdOutlineBackpack /> Inventory
           </div>
 
           <div
@@ -122,7 +115,7 @@ const MainContainer = ({ children, className = " ", ...props }) => {
             }}
           >
             {" "}
-            <AiOutlineSetting /> Store
+            <AiOutlineShop /> Store
           </div>
           <div
             data-testid="cypress-main-premiumstore"
@@ -132,11 +125,7 @@ const MainContainer = ({ children, className = " ", ...props }) => {
               selectTab(7);
             }}
           >
-            {" "}
-            <AiOutlineSetting /> Profile Store
-          </div>
-          <div className={styles.navbutton} onClick={() => toggleModal()}>
-            <AiOutlineSetting /> Settings
+            <IoDiamondOutline /> Profile Store
           </div>
           <div
             data-testid="cypress-main-messageboard"
@@ -146,11 +135,23 @@ const MainContainer = ({ children, className = " ", ...props }) => {
               selectTab(6);
             }}
           >
-            {" "}
-            <AiOutlineSetting /> Message Board
+            <MdOutlineMessage /> Message Board
+          </div>
+          <div className={styles.navbutton} onClick={() => toggleModal()}>
+            <AiOutlineSetting /> Settings
           </div>
         </div>
         <hr className={styles.divider}></hr>
+        <div
+          data-testid="cypress-main-messageboard"
+          className={`${styles.navbuttonLogout} ${selectedTab === 6 ? styles.selected : ""}`}
+          onClick={() => {
+            navigateFunction("/dashboard/messageboard");
+            selectTab(6);
+          }}
+        >
+          <RiLogoutBoxRLine /> Log Out
+        </div>
       </div>
       <div className={styles.right}>
         {/* <img className={styles.bgtest} src="/BG1.png" /> */}

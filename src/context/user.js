@@ -3,7 +3,7 @@ import { makeObservable, observable, action } from "mobx";
 class userStore {
   constructor() {
     this.user = {};
-    makeObservable(this, { user: observable, setUser: action, setBadgePosition: action, setPassiveLimit: action, setItemAdd: action, setPremiumBalance: action, setItem: action, setPassivePower: action, setBalance: action, setNetWorth: action, setPassiveUpgrade: action, setPassiveUpgradeLevel: action });
+    makeObservable(this, { user: observable, setUser: action, setBadgePosition: action, setPassiveIncomeStore: action, setPassiveLimit: action, setItemAdd: action, setPremiumBalance: action, setItem: action, setPassivePower: action, setBalance: action, setNetWorth: action, setPassiveUpgrade: action, setPassiveUpgradeLevel: action });
   }
 
   setUser = (user) => {
@@ -61,6 +61,26 @@ class userStore {
 
     return items?.reduce((acc, item) => acc + item.price, 0);
   };
+
+  getBalance = () => {
+    return this.user.balance;
+  }
+
+  getJoinDate = () => {
+    this.user.registeredAt;
+
+    const date = new Date(this.user.registeredAt);
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear().toString().slice(-2);
+    
+    const formattedDay = day < 10 ? "0" + day : day;
+    const formattedMonth = month < 10 ? "0" + month : month;
+
+    const finalDate = `${formattedDay}/${formattedMonth}/${year}`;
+
+    return finalDate;
+  }
 
   setPassivePower = (passiveAdd) => {
     this.user.passivePower += passiveAdd;

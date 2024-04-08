@@ -1,6 +1,5 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import Dashboard from "./Pages/dashboard/dashboard";
 import Investments from "./Pages/dashboard/investments/investments";
 import Inventory from "./Pages/dashboard/inventory/inventory";
 import MainPage from "./Pages/dashboard/main/mainpage";
@@ -37,14 +36,6 @@ function App() {
           element={
             <RouteAuthenticated>
               <MessageBoard />
-            </RouteAuthenticated>
-          }
-        />
-        <Route
-          path="/dashboard"
-          element={
-            <RouteAuthenticated>
-              <Dashboard />
             </RouteAuthenticated>
           }
         />

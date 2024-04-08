@@ -53,7 +53,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 15px;
   flex-direction: row;
   border: none;
   outline: none;
@@ -62,14 +62,16 @@
 }
 
 .textButton {
-  color:#6d7ea0ef;
+  color: #6d7ea0ef;
   transition: 0.4s;
+  text-align: center;
+
 }
 
 .textButton:hover {
   transition: 0.2s;
-  color:var(--blue-text-colour);
+  color: var(--blue-text-colour);
   text-shadow: 0px 0px 15px var(--blue-text-colour);
-  cursor:pointer;
+  cursor: pointer;
   text-decoration: underline;
 }

@@ -9,13 +9,12 @@ import "react-toastify/dist/ReactToastify.css";
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const { username: poop } = useParams();
   const navigate = useNavigate();
 
   const handleLogin = async () => {
     try {
       const query = await Axios("/api/login", "POST", { username, password });
-      navigate("/dashboard/");
+      navigate("/profile/" + username)
     } catch (error) {
       const errorCode = error.response.status;
       const errorMessage = error.response.data;
@@ -72,11 +71,9 @@ export default function Login() {
             <div data-testid="cypress-login-button">
               <OutlineButton title="Login" type="submit" click={handleLogin}></OutlineButton>
             </div>
-            <div data-testid="cypress-login-signup-button">
-              <OutlineButton title="Sign Up" click={() => navigate("/register/")}></OutlineButton>
-            </div>
           </div>
-          <div className={styles.textButton}>Forgot your password?</div>
+          <div className={styles.textButton} onClick={() => navigate("/register")}>Not registered? Create an account</div>
+
         </form>
       </div>
     </div>
