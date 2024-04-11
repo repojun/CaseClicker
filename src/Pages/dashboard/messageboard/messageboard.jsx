@@ -47,7 +47,6 @@ function MessageBoard() {
   }, []);
 
   const likeButton = async (messageID, liked) => {
-    console.log("message ID: " + messageID);
     await Axios("/api/messages/setmessagelike", "POST", {
       messageID: messageID,
       liked: liked

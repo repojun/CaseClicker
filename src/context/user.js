@@ -31,7 +31,6 @@ class userStore {
   };
 
   setItemAdd = (item, add) => {
-    console.log(item, add, this.user.inventory[item]?.value, "FIRST LOG");
     if (add === true) {
       this.user.inventory[item].value++;
     }
@@ -39,7 +38,6 @@ class userStore {
     if (add === false) {
       this.user.inventory[item].value--;
     }
-    console.log(item, add, this.user.inventory[item]?.value, "SECOND LOG");
   };
 
   setNetWorth = (newValue) => {
@@ -73,7 +71,7 @@ class userStore {
     const day = date.getDate();
     const month = date.getMonth() + 1;
     const year = date.getFullYear().toString().slice(-2);
-    
+
     const formattedDay = day < 10 ? "0" + day : day;
     const formattedMonth = month < 10 ? "0" + month : month;
 
@@ -114,6 +112,8 @@ class userStore {
     this.user.badges[badgeName].profilePosition = newPosition;
     
   };
+
+
   
 }
 

@@ -13,6 +13,7 @@ import { AiOutlineShop } from "react-icons/ai";
 import { IoDiamondOutline } from "react-icons/io5";
 import { MdOutlineMessage } from "react-icons/md";
 import { RiLogoutBoxRLine } from "react-icons/ri";
+import Axios from "../../api/agent";
 
 const MainContainer = ({ children, className = " ", ...props }) => {
   const {
@@ -21,7 +22,10 @@ const MainContainer = ({ children, className = " ", ...props }) => {
 
   const [modal, setModal] = useState(false);
 
-
+  const logout = async () => {
+    await Axios("/api/user/clearcookie", "GET");
+    navigate("/");
+  };
   const toggleModal = () => {
     const audio = new Audio("/sfx/clickButton.wav");
     audio.play();
@@ -62,15 +66,7 @@ const MainContainer = ({ children, className = " ", ...props }) => {
           >
             <IoGameControllerOutline /> Play Game
           </div>
-          <div
-            data-testid="cypress-main-investments"
-            className={styles.navbutton}
-            onClick={() => {
-              navigateFunction("/dashboard/investments");
-            }}
-          >
-            <AiOutlineStock /> Investments
-          </div>
+        
           <div
             data-testid="cypress-main-inventory"
             className={styles.navbutton}
@@ -81,6 +77,7 @@ const MainContainer = ({ children, className = " ", ...props }) => {
             {" "}
             <MdOutlineBackpack /> Inventory
           </div>
+
 
           <div
             data-testid="cypress-main-leaderboard"
@@ -96,6 +93,8 @@ const MainContainer = ({ children, className = " ", ...props }) => {
           {/* <GoTrophy /> */}
         </div>
         <hr className={styles.divider}></hr>
+
+
 
         <div>
           <div
@@ -115,7 +114,7 @@ const MainContainer = ({ children, className = " ", ...props }) => {
               navigateFunction("/dashboard/premiumstore");
             }}
           >
-            <IoDiamondOutline /> Profile Store
+            <IoDiamondOutline /> Premium Store
           </div>
           <div
             data-testid="cypress-main-messageboard"
@@ -132,15 +131,15 @@ const MainContainer = ({ children, className = " ", ...props }) => {
         </div>
         <hr className={styles.divider}></hr>
         <div
-          data-testid="cypress-main-messageboard"
           className={styles.navbuttonLogout}
           onClick={() => {
-            navigateFunction("/dashboard/messageboard");
+            logout();
           }}
         >
           <RiLogoutBoxRLine /> Log Out
         </div>
       </div>
+
       <div className={styles.right}>
         <div>{children}</div>
       </div>

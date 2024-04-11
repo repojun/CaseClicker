@@ -43,9 +43,6 @@ const Home = () => {
           <div className={styles.navItem} onClick={() => move("features")}>
             Features
           </div>
-          <div className={styles.navItem}>hey</div>
-          <div className={styles.navItem}>hey</div>
-          <div className={styles.navItem}>hey</div>
         </div>
         <div className={styles.navButtonContainer}>
           <div className={styles.navButton} onClick={() => navigateFunction("/login")}>
@@ -65,7 +62,7 @@ const Home = () => {
             </div>
             <div className={styles.welcomeBody}>Inlcuding new, innovative and social features!</div>
             <div className={styles.buttonContainer}>
-              <div className={styles.welcomeButtonLeft} onClick={() => navigateFunction("/dashboard")}>
+              <div className={styles.welcomeButtonLeft} onClick={() => navigateFunction("/dashboard/mainpage")}>
                 Play NOW
               </div>
               <div className={styles.welcomeButtonRight} onClick={() => move("features")}>

@@ -27,7 +27,7 @@ export default function Investments() {
 
   const handleClick = (e) => {
     money = money + 1 * multiplier;
- 
+
     var Xlocation = e.clientX; // Get client's X and Y coordinates on click
     var Ylocation = e.clientY;
 
@@ -84,7 +84,6 @@ export default function Investments() {
                   className={styles.gradientButtonAdd}
                   onClick={upgradeClick}
                 >
-                  {" "}
                   Upgrade
                 </div>
                 <div style={{ fontWeight: "bold" }}>Balance:</div>

@@ -60,8 +60,6 @@ function Inventory() {
       setItemAdd(entityName, false);
     }
     if (sell === true) {
-      console.log(entityName);
-      console.log("Complete Sell Here");
       setItemAdd(entityName, false);
 
       var newBalanceVariable = balance + price;

@@ -4,8 +4,7 @@ const { fetchUser, updateUserBadgePosition } = require("../../database/queries/u
 const setBadgePosition = async (req, res) => {
   const { badgeName, badgePosition } = req.body;
   if (!badgeName || !badgePosition === null) {
-    console.log(badgeName);
-    console.log(badgePosition);
+
     return res.sendStatus(400);
   }
 

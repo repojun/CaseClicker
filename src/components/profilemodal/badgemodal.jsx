@@ -21,8 +21,6 @@ const BadgeModal = ({ modal, toggleModal, positionID }) => {
   }));
 
   const handleFinal = async (entname, positionID) => {
-    console.log("ENTNAME: " + entname);
-    console.log("POSITION: " + positionID);
     await Axios("/api/user/setbadgeposition", "POST", {
       badgeName: entname,
       badgePosition: positionID,

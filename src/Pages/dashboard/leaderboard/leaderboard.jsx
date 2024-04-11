@@ -16,7 +16,6 @@ function Leaderboard() {
       try {
         const response = await Axios("/api/user/topten", "GET", {});
         setLeaderboardData(response);
-        console.log("LEADERBOARD DATA: ", response);
       } catch (error) {
         // toast
       }
@@ -37,8 +36,6 @@ function Leaderboard() {
   const topThree = leaderboardData?.slice(0, 3)?.map((user) => ({ username: user.username, balance: user.balance.toFixed(2), networth: user.netWorth.toFixed(2), profilePicture: user.profilePicture }));
   const restOfLeaderboard = leaderboardData?.slice(3)?.map((user) => ({ username: user.username, balance: user.balance.toFixed(2), networth: user.netWorth.toFixed(2), profilePicture: user.profilePicture }));
 
-  console.log("Top Three:", topThree);
-  console.log("Rest of Leaderboard:", restOfLeaderboard);
 
   return (
     <>

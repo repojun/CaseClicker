@@ -138,7 +138,6 @@ const updateUserPassiveUpgrade = async (userID, passiveUpgradeID) => {
 
 const updateUserBadgePosition = async (userID, badgeName, badgePosition) => {
   const user = await userSchema.findOne({ id: userID });
-  console.log(badgePosition);
 
   for (const [name, badge] of Object.entries(user.badges)) {
     if (badge.profilePosition === badgePosition && name !== badgeName) {

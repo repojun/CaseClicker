@@ -17,7 +17,9 @@ const setBadgePosition = require("../middleware/user/setbadgeposition");
 const setPassiveIncomeStore = require("../middleware/user/setpassiveincomestore");
 const setPassiveLimit = require("../middleware/user/setpassivelimit");
 const setBio = require("../middleware/user/setbio");
+const clearCookie = require("../middleware/user/clearcookie");
 
+router.get("/clearcookie", clearCookie);
 router.get("/exists", userExists);
 router.get("/topten", topTen);
 router.post("/setbio", setBio);

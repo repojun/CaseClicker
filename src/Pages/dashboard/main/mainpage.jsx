@@ -7,7 +7,7 @@ import Axios from "../../../api/agent";
 import { observer } from "mobx-react-lite";
 import useContextStore from "../../../context";
 
-var baseClick = 0.01;
+var baseClick = 10;
 var multiplier = 1;
 
 function MainPage() {
@@ -86,11 +86,7 @@ function MainPage() {
                 <div style={{ fontSize: "20px" }}>
                   Click Power: <span class={styles.priceTagNoBold}>${clickPower.toFixed(2)}</span>
                 </div>
-                {/* <div className={styles.grid}>
-                  <ClickUpgradesList setPassivePower={setPassivePower} multiplierFunction={handleMultiplierChange} frontendArray={handleMoneyArrayChange} moneyFunction={handleBalanceChange} balance={balance} />
-                </div> */}
                 <div className={styles.upgradeFlex}>
-                  {/* <ClickUpgradesList></ClickUpgradesList> */}
                 </div>
               </div>
               <div class={styles.upgradeContainer}>

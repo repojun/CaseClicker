@@ -156,7 +156,6 @@ const InventoryModal = ({ modal, toggleModal, price, image, itemName, rarity, pu
   };
 
   const selectRandomItems = async (caseName, price) => {
-    console.log("CASE NAME: " + caseName);
     handleModalsFinal(price, caseName, false, true);
 
     const getRarity = () => {

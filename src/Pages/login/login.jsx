@@ -72,7 +72,7 @@ export default function Login() {
               <OutlineButton title="Login" type="submit" click={handleLogin}></OutlineButton>
             </div>
           </div>
-          <div className={styles.textButton} onClick={() => navigate("/register")}>Not registered? Create an account</div>
+          <div data-testid="cypress-login-signup-button" className={styles.textButton} onClick={() => navigate("/register")}>Not registered? Create an account</div>
 
         </form>
       </div>

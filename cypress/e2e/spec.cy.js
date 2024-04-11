@@ -74,8 +74,8 @@ describe("User Register", () => {
       cy.get('[data-testid="cypress-login-button"]').click();
 
       // User is welcomed with their username
-      cy.url().should("include", "/dashboard");
-      cy.contains("Welcome back " + randomUsername);
+      cy.url().should("include", "/profile");
+      cy.contains(randomUsername);
 
       cy.get('[data-testid="cypress-main-mainpage"]').click();
       cy.contains("Balance").should("be.visible");
@@ -89,7 +89,6 @@ describe("User Register", () => {
       cy.get('[data-testid="cypress-profile-confirm"]').click();
 
 
-      cy.get('[data-testid="cypress-main-investments"]').click();
 
       cy.get('[data-testid="cypress-main-inventory"]').click();
       cy.get('[data-testid="cypress-main-store"]').click();

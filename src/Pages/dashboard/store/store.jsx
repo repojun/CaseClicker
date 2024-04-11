@@ -38,7 +38,7 @@ function Store() {
   };
 
   const finalPurchase = async (entityName) => {
-    setModal(!modal)
+    setModal(!modal);
     const audio = new Audio("/sfx/clickButton.wav");
     audio.play();
     if (user.balance >= price) {
@@ -51,7 +51,7 @@ function Store() {
 
       const query2 = await Axios("/api/user/setitem", "POST", {
         item: entityName,
-        add: true
+        add: true,
       });
 
       toast.success("💰 Purchase Completed!", {
@@ -64,7 +64,6 @@ function Store() {
         progress: undefined,
         theme: "dark",
       });
-
     } else {
       toast.error("Insufficient Funds!", {
         position: "bottom-right",
@@ -83,31 +82,12 @@ function Store() {
     <>
       <MainContainer>
         <SubContainer>
-          <ToastContainer
-            position="bottom-right"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="dark"
-          />
+          <ToastContainer position="bottom-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="dark" />
           <div className={styles.centerTitle}>
             <Header title="Store" />
           </div>
           <StoreComponent purchase={purchase} />
-          <Modal
-            modal={modal}
-            toggleModal={toggleModal}
-            finalPurchase={finalPurchase}
-            image={image}
-            itemName={itemName}
-            price={price}
-            entityName={entityName}
-          />
+          <Modal modal={modal} toggleModal={toggleModal} finalPurchase={finalPurchase} image={image} itemName={itemName} price={price} entityName={entityName} />
         </SubContainer>
       </MainContainer>
     </>
