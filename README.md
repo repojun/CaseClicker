@@ -1,3 +1,7 @@
+<center>
+  <img src="https://arjun.needs-to-s.top/7bUuh84.png" alt="Logo" width="200">
+</center>
+
 # Setting up the Website
 
 This repository contains the necessary files to set up a website using Node.js, React, MongoDB, and Express.js.
@@ -54,3 +58,4 @@ Before setting up the website, ensure you have the following installed on your s
 ## Usage
 
 Once the development server is running, you can begin using the website.
+
