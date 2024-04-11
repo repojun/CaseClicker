@@ -1,70 +1,56 @@
-# Getting Started with Create React App
+# Setting up the Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This repository contains the necessary files to set up a website using Node.js, React, MongoDB, and Express.js.
 
-## Available Scripts
+## Prerequisites
 
-In the project directory, you can run:
+Before setting up the website, ensure you have the following installed on your system:
 
-### `npm start`
+- [Node.js](https://nodejs.org/en): Node.js is a JavaScript runtime that allows you to run JavaScript code outside of a web browser.
+- [npm (Node Package Manager)](https://www.npmjs.com): npm is a package manager for Node.js that helps you install and manage dependencies for your projects.
+- [MongoDB](https://www.mongodb.com): MongoDB is a popular NoSQL database used for storing and managing data in your application.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Setup Instructions
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. Clone this repository to your local machine using Git:
 
-### `npm test`
+    ```
+    git clone <repository_url>
+    ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. After cloning, navigate to the project directory in your terminal.
 
-### `npm run build`
+3. Install front-end packages by running the following command:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    ```
+    npm i
+    ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. Open a second terminal and navigate to the `server` directory inside the project.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+5. Install server-side packages by running:
 
-### `npm run eject`
+    ```
+    cd server
+    npm i
+    ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+6. Once all packages are installed, start the development server by running the following commands in both terminals:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    ```
+    npm start
+    ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+7. The development server should now be running. You can access the website by navigating to [http://localhost:3000](http://localhost:3000) in your web browser.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Components
 
-## Learn More
+- **Node.js**: A JavaScript runtime for executing JavaScript code outside of a web browser.
+- **npm**: Node Package Manager for installing and managing project dependencies.
+- **MongoDB**: NoSQL database for storing and managing data in the application.
+- **React**: JavaScript library for building user interfaces.
+- **Express.js**: Web application framework for Node.js, providing features for building web servers and APIs.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Usage
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Once the development server is running, you can begin using the website.
