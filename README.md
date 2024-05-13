@@ -1,7 +1,10 @@
 <center>
   <img src="https://arjun.needs-to-s.top/7bUuh84.png" alt="Logo" width="200">
 </center>
+# Demo Video
+If you wish to simply see how the project works, feel free to watch this video instead:
 
+ [https://youtu.be/WaJI4El9kuk](https://youtu.be/WaJI4El9kuk)
 # Setting up the Website
 
 This repository contains the necessary files to set up a website using Node.js, React, MongoDB, and Express.js.
@@ -39,13 +42,26 @@ Before setting up the website, ensure you have the following installed on your s
     npm i
     ```
 
-6. Once all packages are installed, start the development server by running the following commands in both terminals:
+6. Once all packages are installed, start the development server by running the following commands in both server and front end terminals:
 
     ```
     npm start
     ```
+7. To avoid leaderboard issues, open cypress testing to populate the database and following instructions:
 
-7. The development server should now be running. You can access the website by navigating to [http://localhost:3000](http://localhost:3000) in your web browser.
+    ```
+    npx cypress open
+    ```
+      Upon following the screenshots, the tests should begin to run and the database will populate!
+
+      Open E2E Testing:
+      <img src="https://arjun.needs-to-s.top/4DPEwJs.png">
+      Select spec.cy.js:
+      <img src="https://arjun.needs-to-s.top/9wkrbBN.png">
+      Tests running:
+      <img src="https://arjun.needs-to-s.top/AWbV64K.png">
+
+8. The development server should now be running. You can access the website by navigating to [http://localhost:3000](http://localhost:3000) in your web browser.
 
 ## Components
 
@@ -57,5 +73,5 @@ Before setting up the website, ensure you have the following installed on your s
 
 ## Usage
 
-Once the development server is running, you can begin using the website.
+Once the development server is running, you can begin using the website by navigating to [http://localhost:3000](http://localhost:3000) in your web browser.
 
